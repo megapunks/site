@@ -6,6 +6,7 @@ import BunnyDisplay from "../components/BunnyDisplay";
 import FeedResult from "../components/FeedResult";
 import { getBunnyContract } from "../lib/bunnyContract";
 import FloatingItemsBackground from "../components/FloatingItemsBackground";
+import { Event } from "ethers"; // ✅ اضافه شده
 
 export default function Home() {
   const { address, isConnected } = useAccount();
@@ -23,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     const switchNetworkAutomatically = async () => {
-      if (!window.ethereum) return;
+      if (typeof window === "undefined" || !window.ethereum) return;
       if (chain?.id === correctChainId) return;
 
       try {
@@ -114,9 +115,9 @@ export default function Home() {
       const tx = await contract.feedBunny();
       const receipt = await tx.wait();
 
-      const event = receipt.events?.find((e) => e.event === "BunnyFed");
-      if (event) {
-        const { food, xpGained } = event.args!;
+      const event = receipt.events?.find((e: Event) => e.event === "BunnyFed"); // ✅ تایپ اضافه شد
+      if (event && event.args) {
+        const { food, xpGained } = event.args as any;
         setResultData({ food, xp: Number(xpGained) });
         setShowResult(true);
         fetchStats();
@@ -139,7 +140,6 @@ export default function Home() {
 
   return (
     <div className="relative flex flex-col min-h-screen font-pixel text-yellow-200 overflow-hidden">
-      {/* 💫 پس‌زمینه پرتابی */}
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
         <FloatingItemsBackground />
       </div>
