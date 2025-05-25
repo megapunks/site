@@ -1,5 +1,5 @@
-// /pages/_app.tsx
 import '../styles/globals.css';
+import { AppProps } from 'next/app';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 import { Chain } from 'wagmi';
@@ -30,11 +30,7 @@ const megaETH: Chain = {
 
 const { chains, provider } = configureChains(
   [megaETH],
-  [
-    jsonRpcProvider({
-      rpc: () => ({ http: 'https://rpc.megaeth.xyz' }),
-    }),
-  ]
+  [jsonRpcProvider({ rpc: () => ({ http: 'https://rpc.megaeth.xyz' }) })]
 );
 
 const client = createClient({
@@ -43,7 +39,7 @@ const client = createClient({
   provider,
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
       <ClickSplashEffect />
