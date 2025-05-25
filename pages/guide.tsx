@@ -1,9 +1,10 @@
+// pages/guide.tsx
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function GuidePage() {
   return (
-    <div className="flex flex-col min-h-screen font-pixel text-yellow-200 bg-[#1e1b4b]">
+    <div className="flex flex-col min-h-screen font-pixel text-yellow-200">
       <Header />
 
       <main className="flex-1 max-w-4xl mx-auto px-6 py-10 text-base leading-relaxed">
@@ -12,19 +13,19 @@ export default function GuidePage() {
             How to Play Feed the BunnyPunk
           </h1>
 
+          {/* 🎮 Game Objective */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">🎮 Game Objective</h2>
             <p>
               Feed your bunny every <strong>8 hours</strong> to earn XP and evolve it.
-              Random food gives you different XP , higher levels unlock new visuals!
+              Random food gives you different XP. Higher levels unlock new visuals!
             </p>
           </section>
 
+          {/* 🍓 Food Rewards */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">🍓 Random Food Rewards</h2>
-            <p>
-              Every feeding gives a random food. Some are rare and more rewarding:
-            </p>
+            <p>Each feeding gives a random food. Some are rare and more rewarding:</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-6">
               {[
@@ -53,16 +54,19 @@ export default function GuidePage() {
             </p>
           </section>
 
+          {/* ⏳ Cooldown */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">⏳ Feeding Cooldown</h2>
             <p>
-              Feed every 8 hours. If you skip 24h, you lose <strong>5 XP</strong> from hunger.
+              You can feed your bunny every 8 hours. Skipping 24 hours results in losing{" "}
+              <strong>5 XP</strong> due to hunger.
             </p>
           </section>
 
+          {/* 📈 Bunny Levels */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">📈 Bunny Levels</h2>
-            <p>Your bunny evolves through 5 levels. Each level has a unique look:</p>
+            <p>Your bunny evolves through 5 levels. Each has a unique appearance:</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               {[
@@ -86,23 +90,27 @@ export default function GuidePage() {
             </div>
           </section>
 
+          {/* 🏆 Leaderboard Rewards */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">🏆 Leaderboard & Rewards</h2>
-            <p>Top players (by XP) get:</p>
+            <p>Top players (by XP) receive:</p>
             <ul className="list-disc list-inside mt-2 space-y-1 text-yellow-100">
               <li>🎟️ Free NFT mint access</li>
               <li>🎖️ Whitelist spots</li>
               <li>💰 Testnet prize drops</li>
             </ul>
             <p className="text-xs text-yellow-400 mt-2 italic">
-              *All based on real on chain activity.
+              *All rewards are based on verifiable on-chain activity.
             </p>
           </section>
 
+          {/* 🚀 Future Plans */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">🚀 What's Next?</h2>
             <p>
-              This is just the beginning. We're currently on MegaETH Testnet, but BunnyPunk is built to evolve. Expect more mechanics soon — including items, training boosts, PvE duels, and seasonal events. Community input will shape where we go next. Got ideas? Join us on Discord and help decide the future of BunnyPunk.
+              This is just the beginning. BunnyPunk is evolving fast. Upcoming features include
+              items, training boosts, PvE duels, and seasonal events. Got ideas? Join our community
+              on Discord and shape the future!
             </p>
           </section>
         </div>

@@ -22,12 +22,12 @@ const foodAssets: Record<string, { image: string; message: string; sound: string
   "Strawberry": {
     image: "/foods/strawberry.png",
     message: "🍓 Yum! A juicy strawberry!",
-    sound: "/sounds/berry.mp3",
+    sound: "/sounds/munch.mp3",
   },
   "Berry": {
     image: "/foods/berry.png",
     message: "🫐 Lucky find! Rare berry eaten!",
-    sound: "/sounds/berry.mp3",
+    sound: "/sounds/munch.mp3",
   },
 };
 
@@ -44,7 +44,7 @@ export default function FeedResult({ data, onClose }: Props) {
   useEffect(() => {
     // پخش صدا
     const audio = new Audio(foodInfo.sound);
-    audio.volume = 0.6;
+    audio.volume = 0.5;
     audio.play().catch((err) => console.warn("🔇 Sound blocked:", err));
 
     // بستن خودکار بعد از 4 ثانیه
