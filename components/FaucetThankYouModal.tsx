@@ -12,7 +12,7 @@ export default function FaucetThankYouModal({
   twitterHandle,
 }: Props) {
   const tweetText = encodeURIComponent(
-    `I just claimed 0.001 $MEGAETH from the @${twitterHandle} faucet! 🐰🚰\nTry it here: https://ymegapunks.xyz/faucet`
+    `I just claimed 0.001 $MEGAETH from the @${twitterHandle} faucet! 🐰🚰\nTry it here: https://megapunks.org/faucet`
   );
 
   return (
@@ -29,15 +29,15 @@ export default function FaucetThankYouModal({
 
       <div className="flex flex-col space-y-2">
         <a
-          href={`https://twitter.com/intent/tweet?text=${tweetText}`}
+          href={`https://x.com/intent/tweet?text=${tweetText}`}
           target="_blank"
           rel="noopener noreferrer"
           className="button-pixel"
         >
-          🐦 Tweet it
+           Post it on X
         </a>
         <a
-          href={`https://twitter.com/${twitterHandle}`}
+          href={`https://x.com/${twitterHandle}`}
           target="_blank"
           rel="noopener noreferrer"
           className="button-pixel"

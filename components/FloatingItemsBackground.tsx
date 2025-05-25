@@ -23,7 +23,7 @@ export default function FloatingItemsBackground() {
             key={i}
             src={item}
             alt="floating"
-            className="absolute animate-fall pointer-events-none opacity-30"
+            className="absolute animate-fall pointer-events-none opacity-10"
             style={{
               top: "-100px",
               left,
