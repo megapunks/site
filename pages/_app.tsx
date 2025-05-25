@@ -18,6 +18,9 @@ const megaETH: Chain = {
     default: {
       http: ['https://rpc.megaeth.xyz'],
     },
+    public: {
+      http: ['https://rpc.megaeth.xyz'],
+    },
   },
   blockExplorers: {
     default: { name: 'MegaETH Explorer', url: 'https://explorer.megaeth.xyz' },
@@ -27,23 +30,26 @@ const megaETH: Chain = {
 
 const { chains, provider } = configureChains(
   [megaETH],
-  [jsonRpcProvider({ rpc: () => ({ http: 'https://rpc.megaeth.xyz' }) })]
+  [
+    jsonRpcProvider({
+      rpc: () => ({ http: 'https://rpc.megaeth.xyz' }),
+    }),
+  ]
 );
 
 const client = createClient({
   autoConnect: true,
-  connectors: [], // بدون RainbowKit فعلاً کانکتور نیاز نداریم
+  connectors: [],
   provider,
 });
 
 function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={client}>
-        <ClickSplashEffect />
+      <ClickSplashEffect />
       <Component {...pageProps} />
     </WagmiConfig>
   );
 }
 
 export default MyApp;
-
