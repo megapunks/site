@@ -89,7 +89,7 @@ export default function Home() {
       const players = await contract.getAllPlayers();
 
       const entries = await Promise.all(
-        players.map(async (addr) => {
+        players.map(async (addr: string) => {
           const xp = await contract.getXP(addr);
           const level = await contract.getLevel(addr);
           return { address: addr, xp: Number(xp), level: Number(level) };
