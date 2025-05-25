@@ -1,19 +1,19 @@
-"use client"; // در صورت استفاده از App Router (اختیاری ولی مفید)
+"use client"; // اگه از App Router استفاده می‌کنی
 
 import { useEffect, useState } from "react";
 
 export default function SwitchNetwork() {
-  const [canSwitch, setCanSwitch] = useState(false);
+  const [hasEthereum, setHasEthereum] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-      setCanSwitch(true);
+      setHasEthereum(true);
     }
   }, []);
 
   const switchToMegaETH = async () => {
     if (typeof window === "undefined" || typeof window.ethereum === "undefined") {
-      alert("❌ MetaMask not available in this environment.");
+      alert("🦊 MetaMask not available.");
       return;
     }
 
@@ -45,13 +45,13 @@ export default function SwitchNetwork() {
             ],
           });
 
-          alert("✅ MegaETH added!");
+          alert("✅ MegaETH Testnet added!");
           setTimeout(() => window.location.reload(), 1500);
-        } catch (err) {
-          alert("❌ Failed to add MegaETH network.");
+        } catch (addError) {
+          console.error("⛔ Failed to add MegaETH:", addError);
         }
       } else {
-        alert("❌ Failed to switch network.");
+        console.error("⛔ Failed to switch:", switchError);
       }
     }
   };
@@ -59,7 +59,7 @@ export default function SwitchNetwork() {
   return (
     <button
       onClick={switchToMegaETH}
-      disabled={!canSwitch}
+      disabled={!hasEthereum}
       className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition"
     >
       🌐 Switch to MegaETH Testnet
