@@ -1,11 +1,10 @@
-// lib/provider.ts
 import { ethers } from "ethers";
 
 export const getProvider = () => {
   if (typeof window === "undefined" || !window.ethereum) {
-    throw new Error("🦊 MetaMask is not available");
+    throw new Error("MetaMask not available");
   }
 
-  // ✅ استفاده از 'any' برای جلوگیری از خطای network changed
-  return new ethers.providers.Web3Provider(window.ethereum, "any");
+  // 👇 این خط باعث رفع خطای type میشه
+  return new ethers.providers.Web3Provider(window.ethereum as any, "any");
 };
