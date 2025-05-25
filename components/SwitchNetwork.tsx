@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
+
 export default function SwitchNetwork() {
+  const [canSwitch, setCanSwitch] = useState(false);
+
+  useEffect(() => {
+    // فقط وقتی window.ethereum موجود بود، دکمه فعال باشه
+    if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+      setCanSwitch(true);
+    }
+  }, []);
+
   const switchToMegaETH = async () => {
-    // بررسی وجود window و ethereum
     if (typeof window === "undefined" || typeof window.ethereum === "undefined") {
       alert("❌ Please use a browser with MetaMask installed.");
       return;
@@ -51,6 +61,7 @@ export default function SwitchNetwork() {
     <button
       onClick={switchToMegaETH}
       className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition"
+      disabled={!canSwitch}
     >
       🌐 Switch to MegaETH Testnet
     </button>
