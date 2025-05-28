@@ -1,4 +1,3 @@
-// pages/admin.tsx
 import { useAccount } from "wagmi";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -37,6 +36,9 @@ export default function AdminPage() {
           })
         );
 
+        // Sort by XP descending
+        fullData.sort((a, b) => b.xp - a.xp);
+
         setPlayers(fullData);
       } catch (err) {
         console.error("❌ Failed to fetch player data:", err);
@@ -47,8 +49,8 @@ export default function AdminPage() {
   }, [isAdmin]);
 
   const exportToCSV = () => {
-    const header = ["Address,XP,Level"];
-    const rows = players.map((p) => `${p.address},${p.xp},${p.level}`);
+    const header = ["Rank,Address,XP,Level"];
+    const rows = players.map((p, i) => `${i + 1},${p.address},${p.xp},${p.level}`);
     const csvContent = [...header, ...rows].join("\n");
 
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
@@ -73,7 +75,7 @@ export default function AdminPage() {
         ) : (
           <>
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-2xl text-yellow-300">  Full Player List</h1>
+              <h1 className="text-2xl text-yellow-300">📊 Full Player List</h1>
               <button
                 onClick={exportToCSV}
                 className="button-pixel bg-yellow-300 text-black hover:bg-yellow-200"
@@ -86,14 +88,16 @@ export default function AdminPage() {
               <table className="w-full table-auto text-sm border border-yellow-300">
                 <thead>
                   <tr className="bg-yellow-300 text-black">
+                    <th className="py-2 px-4 border">#</th>
                     <th className="py-2 px-4 border">Address</th>
                     <th className="py-2 px-4 border">XP</th>
                     <th className="py-2 px-4 border">Level</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {players.map((user) => (
+                  {players.map((user, index) => (
                     <tr key={user.address} className="border-t border-yellow-300">
+                      <td className="py-2 px-4 text-center">{index + 1}</td>
                       <td className="py-2 px-4 font-mono">{user.address}</td>
                       <td className="py-2 px-4">{user.xp}</td>
                       <td className="py-2 px-4">{user.level}</td>
