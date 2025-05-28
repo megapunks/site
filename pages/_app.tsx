@@ -1,10 +1,9 @@
 // pages/_app.tsx
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { WagmiConfig, createConfig, configureChains } from 'wagmi';
+import { WagmiConfig, createConfig } from 'wagmi'; // ❌ configureChains حذف شد
 import { http } from 'wagmi';
 import { Chain } from 'wagmi/chains';
-import { jsonRpcProvider } from '@wagmi/core/providers/jsonRpc';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ClickSplashEffect from '../components/ClickSplashEffect';
 
@@ -33,7 +32,7 @@ const config = createConfig({
   transports: {
     [megaETH.id]: http('https://rpc.megaeth.xyz'),
   },
-  ssr: true, // اگر Server-Side Rendering نیاز داری
+  ssr: true,
 });
 
 const queryClient = new QueryClient();
