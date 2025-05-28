@@ -24,18 +24,18 @@ export default function Home() {
 
   useEffect(() => {
     const switchNetworkAutomatically = async () => {
-      if (typeof window === "undefined" || !window.ethereum) return;
+      if (typeof window === "undefined" || typeof window.ethereum === "undefined") return;
       if (chainId === correctChainId) return;
 
       try {
-        await window.ethereum.request({
+        await window.ethereum.request?.({
           method: "wallet_switchEthereumChain",
           params: [{ chainId: "0x18c6" }],
         });
       } catch (switchError: any) {
         if (switchError.code === 4902) {
           try {
-            await window.ethereum.request({
+            await window.ethereum.request?.({
               method: "wallet_addEthereumChain",
               params: [
                 {
