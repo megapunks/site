@@ -1,6 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/faucet": "pages/faucet.js"
-}
+{"/admin":"pages/admin.html","/_error":"pages/_error.js","/_document":"pages/_document.js","/api/request-faucet":"pages/api/request-faucet.js","/faucet":"pages/faucet.html","/guide":"pages/guide.html","/_app":"pages/_app.js","/":"pages/index.html","/404":"pages/404.html"}
