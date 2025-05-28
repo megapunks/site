@@ -9,8 +9,8 @@ const RATE_LIMIT_FILE = path.resolve("./data/rate-limit.json");
 
 // تنظیمات فاست
 const FAUCET_AMOUNT = "0.001"; // مقدار MegaETH برای ارسال
-const REQUIRED_MAINNET_BALANCE = ethers.utils.parseEther("0.02");
-const COOLDOWN_SECONDS = 48 * 60 * 60; // 48 ساعت
+const REQUIRED_MAINNET_BALANCE = ethers.utils.parseEther("0.01");
+const COOLDOWN_SECONDS = 24 * 60 * 60; // 48 ساعت
 
 // provider برای اتریوم مین‌نت (از .env)
 // request-faucet.ts

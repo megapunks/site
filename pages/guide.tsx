@@ -15,17 +15,16 @@ export default function GuidePage() {
 
           {/* 🎮 Game Objective */}
           <section className="mb-10">
-            <h2 className="text-lg mb-2 text-yellow-300">🎮 Game Objective</h2>
+            <h2 className="text-lg mb-2 text-yellow-300">🎮 Game Goal</h2>
             <p>
-              Feed your bunny every <strong>8 hours</strong> to earn XP and evolve it.
-              Random food gives you different XP. Higher levels unlock new visuals!
+              Feed your bunny every <strong>8 hours</strong> to get XP and help it grow. Each food gives you some XP. When your level goes up, your bunny changes how it looks!
             </p>
           </section>
 
           {/* 🍓 Food Rewards */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">🍓 Random Food Rewards</h2>
-            <p>Each feeding gives a random food. Some are rare and more rewarding:</p>
+            <p>Every time you feed your bunny, you get a random food. Some foods are rare and give more XP.</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-6">
               {[
@@ -50,7 +49,7 @@ export default function GuidePage() {
             </div>
 
             <p className="mt-4">
-              All randomness is on-chain and provably fair via the smart contract.
+              All randomness is done by the smart contract and is 100% fair and on chain.
             </p>
           </section>
 
@@ -58,15 +57,15 @@ export default function GuidePage() {
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">⏳ Feeding Cooldown</h2>
             <p>
-              You can feed your bunny every 8 hours. Skipping 24 hours results in losing{" "}
-              <strong>5 XP</strong> due to hunger.
+              You can feed your bunny every 8 hours. If you don’t feed it for 24 hours, it loses {" "}
+              <strong>5 XP</strong> because it gets hungry.
             </p>
           </section>
 
           {/* 📈 Bunny Levels */}
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">📈 Bunny Levels</h2>
-            <p>Your bunny evolves through 5 levels. Each has a unique appearance:</p>
+            <p>Your bunny grows through 5 levels. Each level gives your bunny a new look.</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               {[
@@ -108,9 +107,9 @@ export default function GuidePage() {
           <section className="mb-10">
             <h2 className="text-lg mb-2 text-yellow-300">🚀 What's Next?</h2>
             <p>
-              This is just the beginning. BunnyPunk is evolving fast. Upcoming features include
-              items, training boosts, PvE duels, and seasonal events. Got ideas? Join our community
-              on Discord and shape the future!
+              This is only the start. BunnyPunk is growing quickly. Soon you’ll see new features like items, training boosts, battles, and special events.
+
+Got cool ideas? Come hang out with us on Discord and help build what’s next!
             </p>
           </section>
         </div>

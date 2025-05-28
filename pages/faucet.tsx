@@ -49,7 +49,7 @@ export default function FaucetPage() {
         <div className="bg-[#312e81] p-6 rounded-xl shadow-md border border-yellow-300">
           <h1 className="text-lg mb-3">🚰 MegaETH Faucet</h1>
           <p className="text-sm mb-4">
-            Claim <strong>0.001 MEGAETH</strong> every 48h if you hold 0.02 ETH on mainnet.
+            Claim <strong>0.001 MEGAETH</strong> every 24h if you hold 0.01 ETH on mainnet.
           </p>
 
           <div className="mb-4 flex justify-center">
