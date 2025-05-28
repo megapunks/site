@@ -1,7 +1,7 @@
 // pages/_app.tsx
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { WagmiConfig, createConfig } from 'wagmi'; // ❌ configureChains حذف شد
+import { WagmiConfig, createConfig } from 'wagmi';
 import { http } from 'wagmi';
 import { Chain } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -10,7 +10,6 @@ import ClickSplashEffect from '../components/ClickSplashEffect';
 const megaETH: Chain = {
   id: 6342,
   name: 'MegaETH Testnet',
-  network: 'megaeth',
   nativeCurrency: {
     name: 'MEGA',
     symbol: 'MEGA',
