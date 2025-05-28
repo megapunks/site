@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface Props {
   level?: number;
@@ -20,11 +20,20 @@ export default function BunnyDisplay({
   const [secondsLeft, setSecondsLeft] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const nextFeed = lastFed + 8 * 60 * 60;
-      const diff = nextFeed - Math.floor(Date.now() / 1000);
+    const update = () => {
+      if (!lastFed || lastFed === 0) {
+        setSecondsLeft(0);
+        return;
+      }
+
+      const now = Math.floor(Date.now() / 1000);
+      const nextFeedTime = lastFed + 8 * 60 * 60;
+      const diff = nextFeedTime - now;
       setSecondsLeft(diff > 0 ? diff : 0);
-    }, 1000);
+    };
+
+    update(); // initial run
+    const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
   }, [lastFed]);
 
@@ -39,6 +48,8 @@ export default function BunnyDisplay({
     level === 4 ? 899 : 1500;
 
   const progress = useMemo(() => Math.min((xp / maxXP) * 100, 100), [xp, maxXP]);
+
+  const canFeed = isConnected && cooldownPassed && secondsLeft === 0;
 
   return (
     <div className="bg-[#312e81] text-yellow-200 rounded-xl shadow-lg p-6 mt-6 max-w-[540px] mx-auto font-pixel">
@@ -63,7 +74,7 @@ export default function BunnyDisplay({
           />
         </div>
 
-        {!cooldownPassed && (
+        {secondsLeft > 0 && (
           <div className="mt-4 text-red-300 text-lg">
             ⏳ Next feed in: {hrs}h {mins}m {secs}s
           </div>
@@ -71,7 +82,7 @@ export default function BunnyDisplay({
 
         <div className="mt-4">
           {isConnected ? (
-            cooldownPassed ? (
+            canFeed ? (
               <button onClick={onFeed} className="button-pixel">
                 🥕 Feed Bunny
               </button>

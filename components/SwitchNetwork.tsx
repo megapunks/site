@@ -1,9 +1,10 @@
-"use client"; // اگه از App Router استفاده می‌کنی
+"use client";
 
 import { useEffect, useState } from "react";
 
 export default function SwitchNetwork() {
   const [hasEthereum, setHasEthereum] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
@@ -12,10 +13,9 @@ export default function SwitchNetwork() {
   }, []);
 
   const switchToMegaETH = async () => {
-    if (typeof window === "undefined" || typeof window.ethereum === "undefined") {
-      alert("🦊 MetaMask not available.");
-      return;
-    }
+    if (!hasEthereum || loading) return;
+
+    setLoading(true);
 
     try {
       await window.ethereum.request({
@@ -53,16 +53,20 @@ export default function SwitchNetwork() {
       } else {
         console.error("⛔ Failed to switch:", switchError);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <button
       onClick={switchToMegaETH}
-      disabled={!hasEthereum}
-      className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition"
+      disabled={!hasEthereum || loading}
+      className={`${
+        loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+      } text-white px-5 py-2 rounded-lg transition`}
     >
-      🌐 Switch to MegaETH Testnet
+      {loading ? "⏳ Switching..." : "🌐 Switch to MegaETH Testnet"}
     </button>
   );
 }

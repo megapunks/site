@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/faucet": "pages/faucet.js",
-  "/": "pages/index.js",
-  "/guide": "pages/guide.js"
+  "/": "pages/index.js"
 }

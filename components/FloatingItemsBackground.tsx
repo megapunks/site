@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const FLOATING_ITEMS = [
   "/floats/berry-float.png",
   "/floats/carrot-float.png",
@@ -9,32 +13,44 @@ const FLOATING_ITEMS = [
   "/floats/carrot-float2.png",
 ];
 
+interface FloatingItem {
+  src: string;
+  left: string;
+  delay: string;
+  size: string;
+}
+
 export default function FloatingItemsBackground() {
+  const [items, setItems] = useState<FloatingItem[]>([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 15 }).map((_, i) => ({
+      src: FLOATING_ITEMS[i % FLOATING_ITEMS.length],
+      left: `${Math.floor(Math.random() * 100)}%`,
+      delay: `${(Math.random() * 20).toFixed(2)}s`,
+      size: `${40 + Math.floor(Math.random() * 40)}px`,
+    }));
+    setItems(generated);
+  }, []);
+
   return (
     <>
-      {[...Array(15)].map((_, i) => {
-        const item = FLOATING_ITEMS[i % FLOATING_ITEMS.length];
-        const left = `${Math.floor(Math.random() * 100)}%`;
-        const delay = (Math.random() * 20).toFixed(2); // بیشتر تصادفی
-        const size = `${40 + Math.floor(Math.random() * 40)}px`; // 40 تا 80 پیکسل
-
-        return (
-          <img
-            key={i}
-            src={item}
-            alt="floating"
-            className="absolute animate-fall pointer-events-none opacity-10"
-            style={{
-              top: "-100px",
-              left,
-              width: size,
-              height: "auto",
-              animationDelay: `${delay}s`,
-              zIndex: 0,
-            }}
-          />
-        );
-      })}
+      {items.map((item, i) => (
+        <img
+          key={i}
+          src={item.src}
+          alt="floating"
+          className="absolute animate-fall pointer-events-none opacity-10"
+          style={{
+            top: "-100px",
+            left: item.left,
+            width: item.size,
+            height: "auto",
+            animationDelay: item.delay,
+            zIndex: 0,
+          }}
+        />
+      ))}
     </>
   );
 }

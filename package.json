@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.77.2",
     "autoprefixer": "^10.4.14",
+    "axios": "^1.9.0",
     "ethers": "^5.7.2",
     "next": "^14.0.0",
     "postcss": "^8.4.21",
@@ -17,7 +19,8 @@
     "react-google-recaptcha": "^3.1.0",
     "react-modal": "^3.16.3",
     "tailwindcss": "^3.3.2",
-    "wagmi": "0.12.17"
+    "viem": "^2.30.5",
+    "wagmi": "^2.15.4"
   },
   "devDependencies": {
     "@types/node": "22.15.21",

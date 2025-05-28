@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { useAccount, useNetwork } from "wagmi";
+import { useAccount, useChainId } from "wagmi";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BunnyDisplay from "../components/BunnyDisplay";
 import FeedResult from "../components/FeedResult";
 import { getBunnyContract } from "../lib/bunnyContract";
 import FloatingItemsBackground from "../components/FloatingItemsBackground";
-import { Event } from "ethers"; // ✅ اضافه شده
+import { Event } from "ethers";
 
 export default function Home() {
   const { address, isConnected } = useAccount();
-  const { chain } = useNetwork();
+  const chainId = useChainId();
 
   const [xp, setXP] = useState(0);
   const [level, setLevel] = useState(1);
@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const switchNetworkAutomatically = async () => {
       if (typeof window === "undefined" || !window.ethereum) return;
-      if (chain?.id === correctChainId) return;
+      if (chainId === correctChainId) return;
 
       try {
         await window.ethereum.request({
@@ -59,13 +59,13 @@ export default function Home() {
     if (isConnected) {
       switchNetworkAutomatically();
     }
-  }, [isConnected, chain]);
+  }, [isConnected, chainId]);
 
   const shortenAddress = (addr: string) =>
     addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
   const fetchStats = async () => {
-    if (!address || chain?.id !== correctChainId) return;
+    if (!address || chainId !== correctChainId) return;
     try {
       const contract = await getBunnyContract();
       const [xpRes, levelRes, lastFedRes] = await Promise.all([
@@ -73,12 +73,24 @@ export default function Home() {
         contract.getLevel(address),
         contract.getLastFed(address),
       ]);
-      setXP(Number(xpRes));
-      setLevel(Number(levelRes));
-      setLastFed(Number(lastFedRes));
+      const xpVal = Number(xpRes);
+      const lvlVal = Number(levelRes);
+      const fedVal = Number(lastFedRes);
 
-      const nextFeed = Number(lastFedRes) + 8 * 60 * 60;
-      setCooldownPassed(Date.now() / 1000 > nextFeed);
+      setXP(xpVal);
+      setLevel(lvlVal);
+      setLastFed(fedVal);
+
+      const now = Math.floor(Date.now() / 1000);
+      const nextFeed = fedVal + 8 * 60 * 60;
+      const isNewUser = fedVal === 0;
+
+      const cooldown = isNewUser || now > nextFeed;
+      setCooldownPassed(cooldown);
+
+      console.log("📊 XP:", xpVal, "Level:", lvlVal, "Last Fed:", fedVal);
+      console.log("🕒 Time Now:", now, "Next Feed Time:", nextFeed);
+      console.log("✅ Cooldown Passed:", cooldown);
     } catch (err) {
       console.error("❌ Failed to fetch bunny stats:", err);
     }
@@ -105,7 +117,7 @@ export default function Home() {
   };
 
   const feed = async () => {
-    if (!address || chain?.id !== correctChainId) {
+    if (!address || chainId !== correctChainId) {
       alert("Please connect your wallet and switch to MegaETH network.");
       return;
     }
@@ -115,7 +127,7 @@ export default function Home() {
       const tx = await contract.feedBunny();
       const receipt = await tx.wait();
 
-      const event = receipt.events?.find((e: Event) => e.event === "BunnyFed"); // ✅ تایپ اضافه شد
+      const event = receipt.events?.find((e: Event) => e.event === "BunnyFed");
       if (event && event.args) {
         const { food, xpGained } = event.args as any;
         setResultData({ food, xp: Number(xpGained) });
@@ -131,12 +143,12 @@ export default function Home() {
 
   useEffect(() => {
     fetchLeaderboard();
-    if (isConnected && chain?.id === correctChainId) {
+    if (isConnected && chainId === correctChainId) {
       fetchStats();
     }
-  }, [address, chain]);
+  }, [address, chainId]);
 
-  const canFeed = isConnected && chain?.id === correctChainId && cooldownPassed;
+  const canFeed = isConnected && chainId === correctChainId && cooldownPassed;
 
   return (
     <div className="relative flex flex-col min-h-screen font-pixel text-yellow-200 overflow-hidden">

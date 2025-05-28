@@ -1,10 +1,15 @@
 import { ethers } from "ethers";
 
-export const getProvider = () => {
+declare global {
+  interface Window {
+    ethereum?: import("ethers").providers.ExternalProvider;
+  }
+}
+
+export const getProvider = (): ethers.providers.Web3Provider => {
   if (typeof window === "undefined" || !window.ethereum) {
-    throw new Error("MetaMask not available");
+    throw new Error("🦊 MetaMask not available");
   }
 
-  // 👇 این خط باعث رفع خطای type میشه
-  return new ethers.providers.Web3Provider(window.ethereum as any, "any");
+  return new ethers.providers.Web3Provider(window.ethereum, "any");
 };

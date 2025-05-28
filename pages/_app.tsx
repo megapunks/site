@@ -1,12 +1,15 @@
+// pages/_app.tsx
 import '../styles/globals.css';
-import { AppProps } from 'next/app';
-import { WagmiConfig, createClient, configureChains } from 'wagmi';
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-import { Chain } from 'wagmi';
-import ClickSplashEffect from "../components/ClickSplashEffect";
+import type { AppProps } from 'next/app';
+import { WagmiConfig, createConfig, configureChains } from 'wagmi';
+import { http } from 'wagmi';
+import { Chain } from 'wagmi/chains';
+import { jsonRpcProvider } from '@wagmi/core/providers/jsonRpc';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ClickSplashEffect from '../components/ClickSplashEffect';
 
 const megaETH: Chain = {
-  id: 1337,
+  id: 6342,
   name: 'MegaETH Testnet',
   network: 'megaeth',
   nativeCurrency: {
@@ -18,9 +21,6 @@ const megaETH: Chain = {
     default: {
       http: ['https://rpc.megaeth.xyz'],
     },
-    public: {
-      http: ['https://rpc.megaeth.xyz'],
-    },
   },
   blockExplorers: {
     default: { name: 'MegaETH Explorer', url: 'https://explorer.megaeth.xyz' },
@@ -28,24 +28,23 @@ const megaETH: Chain = {
   testnet: true,
 };
 
-const { chains, provider } = configureChains(
-  [megaETH],
-  [jsonRpcProvider({ rpc: () => ({ http: 'https://rpc.megaeth.xyz' }) })]
-);
-
-const client = createClient({
-  autoConnect: true,
-  connectors: [],
-  provider,
+const config = createConfig({
+  chains: [megaETH],
+  transports: {
+    [megaETH.id]: http('https://rpc.megaeth.xyz'),
+  },
+  ssr: true, // اگر Server-Side Rendering نیاز داری
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+const queryClient = new QueryClient();
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={client}>
-      <ClickSplashEffect />
-      <Component {...pageProps} />
+    <WagmiConfig config={config}>
+      <QueryClientProvider client={queryClient}>
+        <ClickSplashEffect />
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </WagmiConfig>
   );
 }
-
-export default MyApp;
