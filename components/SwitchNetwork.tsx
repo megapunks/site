@@ -13,12 +13,12 @@ export default function SwitchNetwork() {
   }, []);
 
   const switchToMegaETH = async () => {
-    if (!hasEthereum || loading) return;
+    if (!hasEthereum || loading || typeof window === "undefined" || !window.ethereum) return;
 
     setLoading(true);
 
     try {
-      await window.ethereum.request({
+      await window.ethereum?.request?.({
         method: "wallet_switchEthereumChain",
         params: [{ chainId: "0x18c6" }],
       });
@@ -28,7 +28,7 @@ export default function SwitchNetwork() {
     } catch (switchError: any) {
       if (switchError.code === 4902) {
         try {
-          await window.ethereum.request({
+          await window.ethereum?.request?.({
             method: "wallet_addEthereumChain",
             params: [
               {
