@@ -10,13 +10,13 @@ export default function ConnectWalletButton() {
   const { disconnect } = useDisconnect();
   const { address, isConnected } = useAccount();
 
-  return isConnected ? (
+  return isConnected && address ? (
     <button onClick={() => disconnect()} className="button-pixel">
       {shorten(address)} ✖
     </button>
   ) : (
     <button onClick={() => connect({ connector: injected() })} className="button-pixel">
-      🔌 Connect Wallet
+       Connect Wallet
     </button>
   );
 }
