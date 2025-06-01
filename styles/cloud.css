@@ -1,0 +1,23 @@
+@keyframes floatX {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+.float-left-right-slow {
+  animation: floatX 20s ease-in-out infinite alternate;
+  position: absolute;
+}
+
+.float-left-right-fast {
+  animation: floatX 10s ease-in-out infinite alternate;
+  position: absolute;
+}
+
+.float-left-right-carrot {
+  animation: floatX 14s ease-in-out infinite alternate;
+  position: absolute;
+}

@@ -1,0 +1,23 @@
+# Node
+node_modules/
+.env
+.env.local
+
+# Next.js
+.next/
+out/
+dist/
+
+# Hardhat
+/cache
+/artifacts
+/typechain
+/typechain-types
+/coverage
+/coverage.json
+ignition/deployments/chain-31337
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
