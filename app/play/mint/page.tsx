@@ -8,11 +8,11 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 
 const MINT_LEVELS = [
-  { level: 1, xpRange: "0-99", image: "/bunnies/level-1.png" },
-  { level: 2, xpRange: "100-249", image: "/bunnies/level-2.png" },
-  { level: 3, xpRange: "250-499", image: "/bunnies/level-3.png" },
-  { level: 4, xpRange: "500-899", image: "/bunnies/level-4.png" },
-  { level: 5, xpRange: "900+", image: "/bunnies/level-5.png" },
+  { level: 1, xpRange: "0-249", image: "/bunnies/level-1.png" },
+  { level: 2, xpRange: "250-499", image: "/bunnies/level-2.png" },
+  { level: 3, xpRange: "500-899", image: "/bunnies/level-3.png" },
+  { level: 4, xpRange: "900-1499", image: "/bunnies/level-4.png" },
+  { level: 5, xpRange: "1500+", image: "/bunnies/level-5.png" },
 ];
 
 export default function MintPage() {
