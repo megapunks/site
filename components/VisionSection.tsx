@@ -8,7 +8,7 @@ export default function VisionSection() {
           🧠 Our Vision
         </h2>
 
-        <blockquote className="text-yellow-100 text-lg md:text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-yellow-400/20 shadow-lg italic">
+        <blockquote className="text-yellow-100 text-2xl md:text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-yellow-400/20 shadow-lg italic">
           "We believe interaction with blockchain should be <span className="text-yellow-300 font-bold">simple</span>,  
           <span className="text-yellow-300 font-bold">rewarding</span>, and  
           <span className="text-yellow-300 font-bold"> fun</span>.  

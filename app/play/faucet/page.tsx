@@ -47,12 +47,12 @@ export default function FaucetPage() {
         />
 
         <div className="bg-[#312e81] p-8 rounded-xl shadow-md border border-yellow-300">
-          <h1 className="text-lg mb-5 text-yellow-100">🚰 MegaPunk Faucet</h1>
+          <h1 className="text-2xl mb-5 text-yellow-100">🚰 MegaPunk Faucet</h1>
 
-          <div className="text-sm mb-6 text-center leading-relaxed space-y-2">
+          <div className="text-lg mb-6 text-center leading-relaxed space-y-2">
             <p>Claim <strong>free MEGAETH</strong> every <strong>24h</strong> based on your NFT:</p>
 
-            <div className="flex justify-center gap-10 text-sm">
+            <div className="flex justify-center gap-10 text-lg">
               <div className="text-left space-y-1">
                 <div>🫐 <strong>Level 5</strong></div>
                 <div>🍓 <strong>Level 4</strong></div>

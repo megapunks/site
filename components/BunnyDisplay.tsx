@@ -52,23 +52,23 @@ export default function BunnyDisplay({
   const canFeed = isConnected && cooldownPassed && secondsLeft === 0;
 
   return (
-    <div className="bg-[#312e81] text-yellow-200 rounded-xl shadow-lg p-6 mt-6 max-w-[540px] mx-auto font-pixel">
-      <h2 className="text-2xl mb-3">Your Bunny Punk</h2>
+    <div className="bg-[#312e81] text-yellow-200 rounded-xl shadow-lg p-6 mt-6 max-w-[600px] mx-auto font-pixel">
+      <h2 className="text-2xl mb-3">Feed Your Bunny Punk</h2>
 
-      <div className="border-4 border-yellow-400 rounded-xl overflow-hidden bg-[#1e1b4b]">
+      <div className="w-[470px] h-[470px] border-4 border-yellow-400 rounded-xl overflow-hidden bg-[#1e1b4b] mx-auto flex items-center justify-center">
         <Image
           src={`/bunnies/level-${level}.png`}
           alt={`Level ${level} Bunny`}
           width={512}
           height={512}
-          className="w-full h-auto"
+          className="object-contain max-w-full max-h-full"
           priority
         />
       </div>
 
       <div className="mt-4 text-center">
-        <p className="text-xl">Level {level}</p>
-        <p className="text-lg">XP: {xp} / {maxXP}</p>
+        <p className="text-2xl">Level {level}</p>
+        <p className="text-xl">XP: {xp} / {maxXP}</p>
 
         <div className="w-full h-3 bg-yellow-100 rounded-full mt-2">
           <div

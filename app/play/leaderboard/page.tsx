@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { getBunnyContract } from "@/lib/bunnyContract";
-import UserCardVisual from "@/components/UserCardVisual"; // ✅ مطمئن شو که این فایل ساخته شده
+import { ethers } from "ethers";
+import UserActivityCard from "@/components/UserActivityCard";
+import TaskPanel from "@/components/TaskPanel";
 
 type Player = {
   address: string;
@@ -11,6 +13,14 @@ type Player = {
   level: number;
   feeds: number;
   missed: number;
+};
+
+const GUEST_STATS: Player = {
+  address: "0x0000000000000000000000000000000000000000",
+  xp: 123,
+  level: 2,
+  feeds: 7,
+  missed: 1,
 };
 
 export default function LeaderboardPage() {
@@ -52,9 +62,12 @@ export default function LeaderboardPage() {
             setUserRank(index + 1);
             setUserStats(sorted[index]);
           }
+        } else {
+          setUserStats(GUEST_STATS);
         }
       } catch (err) {
         console.error("Failed to fetch leaderboard:", err);
+        setUserStats(GUEST_STATS);
       }
     };
 
@@ -65,24 +78,32 @@ export default function LeaderboardPage() {
     address.slice(0, 6) + "..." + address.slice(-4);
 
   return (
-    <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 font-pixel flex flex-col items-center px-4 py-12">
-      <h1 className="text-3xl text-yellow-300 mb-8">🏆 Leaderboard</h1>
-
-      {userStats && userRank && (
-        <div className="mb-10 w-full flex justify-center animate-fade-in">
-          <UserCardVisual
-            rank={userRank}
-            level={userStats.level}
-            xp={userStats.xp}
-            feeds={userStats.feeds}
-            missed={userStats.missed}
-            address={userStats.address}
-          />
+    <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 px-4 py-12 flex flex-col items-center font-body">
+      
+      {/* 🐰 کارت نمایشی حتی بدون کیف */}
+      {userStats && (
+        <div className="mb-10 w-full max-w-5xl flex flex-col md:flex-row gap-6 animate-fade-in">
+          <div className="w-full md:w-2/3">
+            <UserActivityCard
+              rank={userRank || 42}
+              level={userStats.level}
+              xp={userStats.xp}
+              feeds={userStats.feeds}
+              missed={userStats.missed}
+            />
+          </div>
+          <div className="w-full md:w-1/3">
+            <TaskPanel userStats={userStats} isGuest={!currentUser} />
+          </div>
         </div>
       )}
 
+      {/* 🏆 تیتر لیدربورد */}
+      <h1 className="text-3xl text-yellow-300 mb-8 font-pixel">🏆 Leaderboard</h1>
+
+      {/* 📋 جدول کاربران */}
       <div className="w-full max-w-5xl overflow-x-auto">
-        <table className="w-full table-auto text-sm border border-yellow-300">
+        <table className="w-full table-auto text-base border border-yellow-300">
           <thead>
             <tr className="bg-yellow-300 text-black text-left">
               <th className="py-2 px-4 border text-center">#</th>

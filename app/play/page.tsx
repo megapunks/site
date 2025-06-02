@@ -1,4 +1,3 @@
-// app/play/page.tsx
 'use client';
 
 import { useEffect, useState } from "react";
@@ -7,7 +6,7 @@ import BunnyDisplay from "@/components/BunnyDisplay";
 import FeedResult from "@/components/FeedResult";
 import { getBunnyContract } from "@/lib/bunnyContract";
 import FloatingItemsBackground from "@/components/FloatingItemsBackground";
-import { Event } from "ethers";
+import { Event, ethers } from "ethers"; // ✅ اضافه شد: ethers
 
 export default function Home() {
   const { address, isConnected } = useAccount();
@@ -91,7 +90,12 @@ export default function Home() {
 
     try {
       const contract = await getBunnyContract();
-      const tx = await contract.feedBunny();
+
+      // ✅ اضافه شد: ارسال دقیق 0.0001 ETH (100000000000000 wei)
+      const tx = await contract.feedBunny({
+        value: ethers.utils.parseEther("0.0001"),
+      });
+
       const receipt = await tx.wait();
 
       const event = receipt.events?.find((e: Event) => e.event === "BunnyFed");

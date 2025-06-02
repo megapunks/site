@@ -66,8 +66,8 @@ export default function WalletCheckerPage() {
         />
 
         <div className="bg-[#312e81] p-6 rounded-xl shadow-md border border-yellow-300">
-          <h1 className="text-lg mb-3 text-yellow-100">🔍 Wallet Checker</h1>
-          <p className="text-sm mb-4">
+          <h1 className="text-2xl mb-3 text-yellow-100">🔍 Wallet Checker</h1>
+          <p className="text-xl mb-4">
             Check if your wallet is eligible for whitelist, free mint or guaranteed mint spot.
           </p>
 

@@ -28,16 +28,16 @@ export default function AboutSection() {
           </h2>
 
          
-          <p className="text-yellow-100 text-base leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
+          <p className="text-yellow-100 text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
             <strong>MegaPunks</strong> is a fun and interactive mini game built on the <strong>MegaETH testnet</strong>.  
             We launched the project five months ago with a single, powerful mission: to build a strong, loyal community that not only supports the MegaETH ecosystem but actively helps it grow.
           </p>
 
           
-          <p className="text-yellow-100 text-base leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
+          <p className="text-yellow-100 text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
             Our goal is to make blockchain interaction feel natural and enjoyable.  
             With a simple, gamified system, users feed, level up, and evolve their digital BunnyPunks  all onchain.  
-            MegaPunks isn’t just a testnet game; it's a movement to connect people with the future of Web3 in the most fun and meaningful way possible.
+            MegaPunks isn’t just a testnet game, it's a movement to connect people with the future of Web3 in the most fun and meaningful way possible.
           </p>
         </div>
 

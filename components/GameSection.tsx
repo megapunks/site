@@ -28,12 +28,12 @@ export default function GameSection() {
             🎮 The BunnyPunk Game
           </h2>
 
-          <p className="text-yellow-100 text-base leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
+          <p className="text-yellow-100 text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
             The BunnyPunk Game is your first step into a fully on-chain, gamified experience on the MegaETH testnet.  
             Every 8 hours, you can feed your bunny and help it grow stronger. Over time, your actions help it evolve, unlock new forms, and potentially earn unique rewards in the future.
           </p>
 
-          <p className="text-yellow-100 text-base leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
+          <p className="text-yellow-100 text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-yellow-400/20">
             But it’s more than just a game ,  it’s a stress test for the MegaETH chain.  
             Every click, every level-up, every interaction is recorded fully onchain, helping us simulate real-world usage at scale.  
             You’re not just playing , you’re building, contributing, and shaping the network’s future.

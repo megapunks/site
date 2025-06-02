@@ -23,7 +23,7 @@ export default function TwitterNoticeSection() {
         <h2 className="text-3xl md:text-4xl font-pixel text-yellow-300 mb-6 flex items-center justify-center gap-3">
           💔 Why a New Twitter?
         </h2>
-        <p className="text-yellow-100 text-base leading-relaxed bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-yellow-400/20 mb-6">
+        <p className="text-yellow-100 text-xl leading-relaxed bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-yellow-400/20 mb-6">
           Our original Twitter account was unfortunately suspended.  
           It was a tough moment, but it reminded us how powerful our community truly is.  
           Instead of slowing down, we chose to rebuild  stronger, sharper, and more united than ever.  

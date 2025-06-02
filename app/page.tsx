@@ -10,7 +10,8 @@ import FinalLineSection from "@/components/FinalLineSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#1e1b4b] text-yellow-200 font-pixel">
+    <main className="min-h-screen bg-[#1e1b4b] text-yellow-200 font-body text-2xl">
+
       <HeroSection />
       <AboutSection />
       <TwitterNoticeSection />

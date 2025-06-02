@@ -109,7 +109,7 @@ export default function MintPage() {
 
   return (
     <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 font-pixel py-10 px-4">
-      <h1 className="text-2xl text-center mb-8">🐰 Mint Your BunnyPunk NFT</h1>
+      <h1 className="text-3xl text-center mb-8">🐰 Mint Your BunnyPunk NFT 🐰 </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {MINT_LEVELS.map(({ level, xpRange, image }) => {
@@ -124,7 +124,7 @@ export default function MintPage() {
             >
               <Image src={image} alt={`Level ${level}`} width={200} height={200} />
               <h2 className="mt-4 text-2xl text-yellow-100">Level {level}</h2>
-              <p className="text-base text-yellow-300 mb-3">XP: {xpRange}</p>
+              <p className="text-lg text-yellow-300 mb-3">XP: {xpRange}</p>
               <button
                 onClick={() => handleMint(level)}
                 disabled={disabled}

@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import abi from "./bunnyAbi.json";
 import { getProvider } from "./provider";
 
-export const contractAddress = "0x6283A608f3BBfE88B9550Ce1d3E60CD8D0AF7bC9";
+export const contractAddress = "0xC0043f4fB8c722d121295179E44667B309B14332";
 
 export const getBunnyContract = async (): Promise<ethers.Contract> => {
   const provider = getProvider();

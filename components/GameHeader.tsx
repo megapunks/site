@@ -16,13 +16,13 @@ export default function GameHeader() {
     { href: "/play/guide", label: "How to play" },
     { href: "/play/faucet", label: "Faucet" },
     { href: "/play/mint", label: "Mint" },
-    { href: "/play/leaderboard", label: "Leaderboard" },
+    { href: "/play/leaderboard", label: "Dashboard" },
     { href: "/play/wallet-checker", label: "Wallet Checker" },
   ];
 
   return (
     <header className="bg-[#1e1b4b] shadow-md sticky top-0 z-50 border-b border-[#312e81]">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between font-pixel text-yellow-400 text-[17px] relative">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between font-pixel text-yellow-400 text-[20px] relative">
         {/* Left: Logo */}
         <Link href={(pathname || "").startsWith("/play") ? "/play" : "/"}>
           <img src="/logo.svg" alt="MegaPunks" className="h-10" />
