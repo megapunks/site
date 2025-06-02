@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast'
 import Header from '@/components/HeaderSwitcher'
 import Footer from '@/components/Footer'
 import '@/styles/globals.css'
+
 import ClickSplashEffect from "@/components/ClickSplashEffect";
 
 

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { getBunnyContract } from "@/lib/bunnyContract";
+import UserCardVisual from "@/components/UserCardVisual"; // ✅ مطمئن شو که این فایل ساخته شده
 
 type Player = {
   address: string;
@@ -50,12 +51,6 @@ export default function LeaderboardPage() {
           if (index !== -1) {
             setUserRank(index + 1);
             setUserStats(sorted[index]);
-          } else {
-            const fullIndex = fullData.findIndex((p) => p.address.toLowerCase() === currentUser.toLowerCase());
-            if (fullIndex !== -1) {
-              setUserRank(fullIndex + 1);
-              setUserStats(fullData[fullIndex]);
-            }
           }
         }
       } catch (err) {
@@ -74,16 +69,15 @@ export default function LeaderboardPage() {
       <h1 className="text-3xl text-yellow-300 mb-8">🏆 Leaderboard</h1>
 
       {userStats && userRank && (
-        <div className="bg-gradient-to-br from-yellow-400/20 to-yellow-100/5 border-2 border-yellow-300 rounded-2xl px-6 py-6 mb-10 shadow-xl animate-fade-in w-full max-w-xl text-center">
-          <h2 className="text-xl mb-4 text-yellow-100 font-bold">✨ Your Bunny Stats ✨</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm sm:text-base text-yellow-200 font-pixel">
-            <div>🏅 Rank<br /><span className="text-yellow-300 text-lg">{userRank}</span></div>
-            <div>⚡ XP<br /><span className="text-yellow-300 text-lg">{userStats.xp}</span></div>
-            <div>📈 Level<br /><span className="text-yellow-300 text-lg">{userStats.level}</span></div>
-            <div>🥕 Feeds<br /><span className="text-yellow-300 text-lg">{userStats.feeds}</span></div>
-            <div>⏳ Missed<br /><span className="text-yellow-300 text-lg">{userStats.missed}</span></div>
-            <div>🧍 You<br /><span className="text-yellow-300 text-sm">{maskAddress(userStats.address)}</span></div>
-          </div>
+        <div className="mb-10 w-full flex justify-center animate-fade-in">
+          <UserCardVisual
+            rank={userRank}
+            level={userStats.level}
+            xp={userStats.xp}
+            feeds={userStats.feeds}
+            missed={userStats.missed}
+            address={userStats.address}
+          />
         </div>
       )}
 
@@ -108,7 +102,10 @@ export default function LeaderboardPage() {
                   className={`border-t border-yellow-300 ${isCurrentUser ? 'font-bold bg-[#2e2b80]' : ''}`}
                 >
                   <td className="py-2 px-4 text-center">{index + 1}</td>
-                  <td className="py-2 px-4 font-mono">{maskAddress(user.address)} {isCurrentUser && <span className="text-yellow-300">(You)</span>}</td>
+                  <td className="py-2 px-4 font-mono">
+                    {maskAddress(user.address)}
+                    {isCurrentUser && <span className="text-yellow-300"> (You)</span>}
+                  </td>
                   <td className="py-2 px-4 text-center">{user.xp}</td>
                   <td className="py-2 px-4 text-center">{user.level}</td>
                   <td className="py-2 px-4 text-center">{user.feeds}</td>
