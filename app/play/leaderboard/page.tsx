@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { getBunnyContract } from "@/lib/bunnyContract";
-import { ethers } from "ethers";
 import UserActivityCard from "@/components/UserActivityCard";
 import TaskPanel from "@/components/TaskPanel";
 
@@ -13,6 +12,7 @@ type Player = {
   level: number;
   feeds: number;
   missed: number;
+  isDead?: boolean; // ✅
 };
 
 const GUEST_STATS: Player = {
@@ -21,6 +21,7 @@ const GUEST_STATS: Player = {
   level: 2,
   feeds: 7,
   missed: 1,
+  isDead: false,
 };
 
 export default function LeaderboardPage() {
@@ -37,11 +38,12 @@ export default function LeaderboardPage() {
 
         const fullData: Player[] = await Promise.all(
           all.map(async (addr: string) => {
-            const [xp, level, feeds, missed] = await Promise.all([
+            const [xp, level, feeds, missed, isDead] = await Promise.all([
               contract.getXP(addr),
               contract.getLevel(addr),
               contract.getFeedCount(addr),
               contract.getMissedDays(addr),
+              contract.isBunnyDead(addr), // ✅
             ]);
             return {
               address: addr,
@@ -49,6 +51,7 @@ export default function LeaderboardPage() {
               level: Number(level),
               feeds: Number(feeds),
               missed: Number(missed),
+              isDead: Boolean(isDead),
             };
           })
         );
@@ -61,12 +64,13 @@ export default function LeaderboardPage() {
           if (index !== -1) {
             setUserRank(index + 1);
             setUserStats(sorted[index]);
+            return;
           }
-        } else {
-          setUserStats(GUEST_STATS);
         }
+
+        setUserStats(GUEST_STATS);
       } catch (err) {
-        console.error("Failed to fetch leaderboard:", err);
+        console.error("Leaderboard fetch error:", err);
         setUserStats(GUEST_STATS);
       }
     };
@@ -79,17 +83,17 @@ export default function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 px-4 py-12 flex flex-col items-center font-body">
-      
-      {/* 🐰 کارت نمایشی حتی بدون کیف */}
+
       {userStats && (
         <div className="mb-10 w-full max-w-5xl flex flex-col md:flex-row gap-6 animate-fade-in">
           <div className="w-full md:w-2/3">
             <UserActivityCard
-              rank={userRank || 42}
+              rank={userRank || 9999}
               level={userStats.level}
               xp={userStats.xp}
               feeds={userStats.feeds}
               missed={userStats.missed}
+              isDead={userStats.isDead} // ✅
             />
           </div>
           <div className="w-full md:w-1/3">
@@ -98,10 +102,8 @@ export default function LeaderboardPage() {
         </div>
       )}
 
-      {/* 🏆 تیتر لیدربورد */}
       <h1 className="text-3xl text-yellow-300 mb-8 font-pixel">🏆 Leaderboard</h1>
 
-      {/* 📋 جدول کاربران */}
       <div className="w-full max-w-5xl overflow-x-auto">
         <table className="w-full table-auto text-base border border-yellow-300">
           <thead>

@@ -1,12 +1,5 @@
 [
 	{
-		"inputs": [],
-		"name": "backupAllPlayers",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -16,25 +9,6 @@
 		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "timestamp",
-				"type": "uint256"
-			}
-		],
-		"name": "BackupSaved",
-		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -62,6 +36,25 @@
 		"type": "event"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "newXP",
+				"type": "uint256"
+			}
+		],
+		"name": "BunnyRevived",
+		"type": "event"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "bytes32",
@@ -69,7 +62,7 @@
 				"type": "bytes32"
 			}
 		],
-		"name": "claimLinkReward",
+		"name": "claimMonthlyReward",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -82,7 +75,7 @@
 				"type": "bytes32"
 			}
 		],
-		"name": "claimMonthlyReward",
+		"name": "claimPromoReward",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -146,28 +139,22 @@
 		"type": "event"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			}
-		],
-		"name": "restoreBackup",
+		"inputs": [],
+		"name": "reviveBunny",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_tweetXP",
+				"name": "tweetXP",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_monthlyXP",
+				"name": "monthlyXP",
 				"type": "uint256"
 			}
 		],
@@ -495,6 +482,44 @@
 				"internalType": "address",
 				"name": "user",
 				"type": "address"
+			}
+		],
+		"name": "isBunnyDead",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isDead",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
 			},
 			{
 				"internalType": "bytes32",
@@ -603,33 +628,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "REWARD_LARGE",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "REWARD_MEDIUM",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "REWARD_MEGA",
+		"name": "REVIVE_COST",
 		"outputs": [
 			{
 				"internalType": "uint256",

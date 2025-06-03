@@ -8,6 +8,7 @@ interface Props {
   cooldownPassed?: boolean;
   onFeed?: () => void;
   isConnected?: boolean;
+  isDead?: boolean; // ✅ جدید
 }
 
 export default function BunnyDisplay({
@@ -17,6 +18,7 @@ export default function BunnyDisplay({
   cooldownPassed = true,
   onFeed,
   isConnected = false,
+  isDead = false, // ✅ مقدار پیش‌فرض
 }: Props) {
   const [secondsLeft, setSecondsLeft] = useState(0);
 
@@ -49,7 +51,7 @@ export default function BunnyDisplay({
     level === 4 ? 1499 : 2000;
 
   const progress = useMemo(() => Math.min((xp / maxXP) * 100, 100), [xp, maxXP]);
-  const canFeed = isConnected && cooldownPassed && secondsLeft === 0;
+  const canFeed = isConnected && cooldownPassed && secondsLeft === 0 && !isDead;
 
   return (
     <div className="bg-[#312e81] text-yellow-200 rounded-xl shadow-lg p-6 mt-6 max-w-[600px] mx-auto font-pixel">
@@ -57,8 +59,8 @@ export default function BunnyDisplay({
 
       <div className="w-[470px] h-[470px] border-4 border-yellow-400 rounded-xl overflow-hidden bg-[#1e1b4b] mx-auto flex items-center justify-center">
         <Image
-          src={`/bunnies/level-${level}.png`}
-          alt={`Level ${level} Bunny`}
+          src={isDead ? `/bunnies/dead.png` : `/bunnies/level-${level}.png`} // ✅ تصویر خرگوش مرده
+          alt={isDead ? "Dead Bunny" : `Level ${level} Bunny`}
           width={512}
           height={512}
           className="object-contain max-w-full max-h-full"
@@ -67,17 +69,26 @@ export default function BunnyDisplay({
       </div>
 
       <div className="mt-4 text-center">
-        <p className="text-2xl">Level {level}</p>
-        <p className="text-xl">XP: {xp} / {maxXP}</p>
+        {isDead ? (
+          <>
+            <p className="text-xl text-red-300 mt-4">☠️ Your bunny is dead</p>
+            <p className="text-sm text-yellow-100 mt-1">Revive it to keep growing!</p>
+          </>
+        ) : (
+          <>
+            <p className="text-2xl">Level {level}</p>
+            <p className="text-xl">XP: {xp} / {maxXP}</p>
 
-        <div className="w-full h-3 bg-yellow-100 rounded-full mt-2">
-          <div
-            className="h-3 bg-yellow-400 rounded-full transition-all"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+            <div className="w-full h-3 bg-yellow-100 rounded-full mt-2">
+              <div
+                className="h-3 bg-yellow-400 rounded-full transition-all"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </>
+        )}
 
-        {secondsLeft > 0 && (
+        {!isDead && secondsLeft > 0 && (
           <div className="mt-4 text-red-300 text-lg">
             ⏳ Next feed in: {hrs}h {mins}m {secs}s
           </div>
@@ -91,7 +102,7 @@ export default function BunnyDisplay({
               </button>
             ) : (
               <button disabled className="button-pixel opacity-50 cursor-not-allowed">
-                Bunny is full!
+                {isDead ? "☠️ Bunny is dead" : "Bunny is full!"}
               </button>
             )
           ) : (

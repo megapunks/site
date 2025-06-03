@@ -12,7 +12,9 @@ export default function FaucetPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string | null>(null);
   const [faucetAmount, setFaucetAmount] = useState<string>("0.001");
+  const [reason, setReason] = useState<string>("your NFT level"); // جدید ✅
   const [showModal, setShowModal] = useState(false);
+
   const TWITTER_HANDLE = "Megaeth_Punks";
 
   const handleFaucet = async () => {
@@ -25,8 +27,13 @@ export default function FaucetPage() {
         address,
         captcha: captchaToken,
       });
+
       setResult(res.data.message);
       setFaucetAmount(res.data.amount || "0.001");
+
+      // اگر API دلیل رو برگردونه
+      setReason(res.data.reason || "your NFT level"); // می‌تونی اینو از سرور تعیین کنی
+
       if (res.data.message?.toLowerCase().includes("success")) {
         setShowModal(true);
       }
@@ -38,7 +45,7 @@ export default function FaucetPage() {
   };
 
   return (
-    <div className="   p-6 rounded-xl shadow-md">
+    <div className="p-6 rounded-xl shadow-md">
       <main className="flex-1 px-4 py-8 max-w-3xl mx-auto text-center fade-in">
         <img
           src="/bunnies/faucet-banner.png"
@@ -98,6 +105,7 @@ export default function FaucetPage() {
         onRequestClose={() => setShowModal(false)}
         twitterHandle={TWITTER_HANDLE}
         amount={faucetAmount}
+        reason={reason}
       />
     </div>
   );

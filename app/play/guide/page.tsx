@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'How to Play - BunnyPunk Guide',
-  description: 'Learn how to play BunnyPunk, level up, and climb the leaderboard.',
+  description: 'Learn how to play BunnyPunk, level up, claim NFTs, and win prizes.',
 };
 
 export default function GuidePage() {
@@ -9,24 +9,23 @@ export default function GuidePage() {
       <main className="flex-1 max-w-4xl mx-auto px-6 py-10 text-[18px] leading-relaxed font-body">
         <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-yellow-300 shadow-lg">
           <h1 className="text-3xl mb-8 text-center text-yellow-100 font-pixel">
-            How to Play Feed the BunnyPunk
+            🐰 How to Play BunnyPunk
           </h1>
 
-          {/* 🎮 Game Goal */}
+          {/* 🎯 Game Goal */}
           <section className="mb-10">
-            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🎮 Game Goal</h2>
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🎯 Goal of the Game</h2>
             <p>
-              Feed your bunny every <strong>8 hours</strong> to get XP and help it grow.
-              Each food gives you some XP. When your level goes up, your bunny changes how it looks!
+              Feed your bunny every <strong>8 hours</strong> to earn XP, level up, and climb the leaderboard. 
+              The more you care for your bunny, the higher your level and your rewards!
             </p>
           </section>
 
-          {/* 🍓 Food Rewards */}
+          {/* 🍽️ Food Rewards */}
           <section className="mb-10">
-            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🍓 Random Food Rewards</h2>
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🍽️ Food & XP Rewards</h2>
             <p>
-              Every time you feed your bunny, you get a random food.
-              Some foods are rare and give more XP.
+              Feeding gives your bunny a random food, with XP based on rarity:
             </p>
 
             <div className="grid grid-cols-2 gap-4 mt-6">
@@ -50,23 +49,44 @@ export default function GuidePage() {
             </div>
 
             <p className="mt-4">
-              All randomness is done by the smart contract and is 100% fair and onchain.
+              All randomness is handled on-chain via smart contracts. 100% fair.
             </p>
           </section>
 
-          {/* ⏳ Cooldown */}
+          {/* ⏳ Cooldown & Hunger */}
           <section className="mb-10">
-            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">⏳ Feeding Cooldown</h2>
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">⏳ Cooldown & Hunger</h2>
+            <p>You can feed your bunny once every <strong>8 hours</strong>.</p>
+            <p className="mt-2">
+              If you forget to feed, XP will decay:
+            </p>
+
+            <ul className="list-disc list-inside mt-3 text-yellow-100 space-y-1">
+              <li>1 day missed → -5 XP</li>
+              <li>2 days → -10 XP</li>
+              <li>3 days → -20 XP</li>
+              <li>4 days → -50 XP</li>
+              <li>5+ days → ☠️ Bunny dies!</li>
+            </ul>
+
+            <p className="mt-3">
+              When dead, bunny cannot earn XP until revived.
+            </p>
+          </section>
+
+          {/* 💖 Revive Mechanic */}
+          <section className="mb-10">
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">💖 Revive Your Bunny</h2>
             <p>
-              You can feed your bunny every 8 hours.
-              If you don’t feed it for 24 hours, it loses <strong>5 XP</strong> because it gets hungry.
+              If your bunny dies, you can revive it for <strong>0.01 ETH</strong>.
+              This will restore <strong>50% of your last XP</strong>.
             </p>
           </section>
 
-          {/* 📈 Levels */}
+          {/* 📈 Levels & Evolution */}
           <section className="mb-10">
-            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">📈 Bunny Levels</h2>
-            <p>Your bunny evolves through 5 levels. Each level gives your bunny a new appearance!</p>
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">📈 Bunny Levels & Evolution</h2>
+            <p>Your bunny evolves as you level up. Visual upgrades at each stage!</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               {[
@@ -90,27 +110,52 @@ export default function GuidePage() {
             </div>
           </section>
 
-          {/* 🏆 Leaderboard */}
+          {/* 🎁 Level NFTs */}
           <section className="mb-10">
-            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🏆 Leaderboard & Rewards</h2>
-            <p>Top players (by XP) receive:</p>
-            <ul className="list-disc list-inside mt-2 space-y-1 text-yellow-100">
-              <li>🎟️ Free NFT mint access</li>
-              <li>🎖️ Whitelist spots</li>
-              <li>💰 Testnet prize drops</li>
-            </ul>
-            <p className="text-xs text-yellow-400 mt-2 italic">
-              *All rewards are based on verifiable on-chain activity.
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🎁 Claimable Level NFTs</h2>
+            <p>
+              When you reach a new level, you unlock the right to claim a unique <strong>Level NFT</strong>.
+              These NFTs give you:
             </p>
+            <ul className="list-disc list-inside mt-2 text-yellow-100 space-y-1">
+              <li>💸 Daily faucet rewards</li>
+              <li>📸 Snapshot eligibility for airdrops</li>
+              <li>🛡️ Access to exclusive features</li>
+            </ul>
           </section>
 
-          {/* 🚀 Future Plans */}
+          {/* 🏆 Leaderboard & Prizes */}
           <section className="mb-10">
-            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🚀 What's Next?</h2>
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🏆 Leaderboard & Rewards</h2>
             <p>
-              This is only the start. BunnyPunk is growing quickly.
-              Soon you’ll see new features like items, training boosts, battles, and special events.
-              Got cool ideas? Come hang out with us on Discord and help build what’s next!
+              The top 100 players are ranked publicly.
+              You can view your own stats anytime, even without wallet connection.
+            </p>
+
+            <p className="mt-3">
+              🎁 <strong>Real rewards</strong> for top players include:
+            </p>
+            <ul className="list-disc list-inside mt-2 text-yellow-100 space-y-1">
+              <li>💰 Cash prizes</li>
+              <li>🎟️ Guaranteed NFT access</li>
+              <li>🏆 Share of future revenue from mainnet MegaPunk collection</li>
+            </ul>
+          </section>
+
+          {/* 🚀 Roadmap */}
+          <section className="mb-10">
+            <h2 className="text-xl mb-2 text-yellow-300 font-pixel">🚀 What’s Coming Next?</h2>
+            <p>
+              This is just the beginning. Upcoming features:
+            </p>
+            <ul className="list-disc list-inside mt-2 text-yellow-100 space-y-1">
+              <li>⚔️ PvP Bunny Battles</li>
+              <li>🎒 Item system and power-ups</li>
+              <li>🔄 NFT trading & burning</li>
+              <li>🎉 Seasonal events with big rewards</li>
+            </ul>
+            <p className="mt-4">
+              Join us on Discord to help shape the game!
             </p>
           </section>
         </div>
