@@ -166,13 +166,14 @@ export default function NFTClaimPage() {
   return (
     <div className="min-h-screen font-pixel text-yellow-200 bg-[#1e1b4b]">
       <div className="w-full bg-gradient-to-r from-purple-800 via-indigo-700 to-purple-800 h-12 overflow-hidden relative">
-        <div className="absolute whitespace-nowrap animate-marquee text-white font-bold text-lg px-4">
-          🎉 Limited NFT Drop! | Complete tasks & get rewarded | MegaPunks on MegaETH!
+        <div className="absolute whitespace-nowrap animate-marquee text-white font-bold text-xl px-4">
+          🤝 Community Collabs: Complete partner quests, earn XP & claim limited NFTs – Powered by MegaPunks on MegaETH!
+
         </div>
       </div>
 
       <main className="max-w-7xl mx-auto px-4 py-12">
-        <h1 className="text-4xl mb-4 text-center">🎁 Claim Your MegaPunks NFT</h1>
+        <h1 className="text-4xl mb-4 text-center">🎁 Claim Your MegaPunks Partner NFT 🎁</h1>
 
         <div className="flex justify-between items-center my-6 px-2 text-lg text-yellow-100 font-bold">
           <div>📈 Your XP: <span className="text-green-300">{totalXP}</span></div>

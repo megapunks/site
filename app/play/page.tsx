@@ -22,7 +22,6 @@ export default function Home() {
 
   const correctChainId = 6342;
 
-  // 🔁 Switch to MegaETH Testnet
   useEffect(() => {
     const switchNetworkAutomatically = async () => {
       if (typeof window === "undefined" || typeof window.ethereum === "undefined") return;
@@ -62,7 +61,6 @@ export default function Home() {
     }
   }, [isConnected, chainId]);
 
-  // 📊 Fetch Bunny Stats
   const fetchStats = async () => {
     if (!address || chainId !== correctChainId) return;
     try {
@@ -86,7 +84,6 @@ export default function Home() {
     }
   };
 
-  // 🍽️ Feed Bunny
   const feed = async () => {
     if (!address || chainId !== correctChainId) {
       alert("Please connect your wallet and switch to MegaETH.");
@@ -114,7 +111,6 @@ export default function Home() {
     }
   };
 
-  // 💖 Revive Bunny
   const revive = async () => {
     try {
       const contract = await getBunnyContract();
@@ -139,13 +135,13 @@ export default function Home() {
   const canFeed = isConnected && chainId === correctChainId && cooldownPassed && !isDead;
 
   return (
-    <div className="relative flex flex-col min-h-screen font-pixel text-yellow-200 overflow-hidden">
+    <div className="relative flex flex-col min-h-screen font-pixel text-yellow-200 overflow-hidden bg-[#1e1b4b]">
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
         <FloatingItemsBackground />
       </div>
 
-      <main className="relative z-10 flex-1 px-4 py-8 max-w-5xl mx-auto text-center">
-        <div className="flex justify-center fade-in">
+      <main className="relative z-10 flex-1 px-4 sm:px-6 py-10 max-w-6xl mx-auto w-full text-center">
+        <div className="flex justify-center mb-10 fade-in">
           <BunnyDisplay
             level={level}
             xp={xp}
@@ -157,18 +153,20 @@ export default function Home() {
         </div>
 
         {showResult && resultData && (
-          <FeedResult data={resultData} onClose={() => setShowResult(false)} />
+          <div className="max-w-full px-4">
+            <FeedResult data={resultData} onClose={() => setShowResult(false)} />
+          </div>
         )}
 
         {isDead && (
-          <div className="mt-10 bg-red-800/50 text-red-100 border border-red-400 rounded-xl p-6 max-w-xl mx-auto">
-            <p className="text-2xl font-bold mb-4">☠️ Your bunny is dead!</p>
-            <p className="mb-4 text-base">
+          <div className="mt-10 bg-red-800/50 text-red-100 border border-red-400 rounded-xl p-6 max-w-xl mx-auto w-full text-base sm:text-lg">
+            <p className="text-xl sm:text-2xl font-bold mb-4">☠️ Your bunny is dead!</p>
+            <p className="mb-4">
               To revive it, pay <strong>0.01 ETH</strong>. Half of your XP will be restored.
             </p>
             <button
               onClick={revive}
-              className="button-pixel bg-yellow-300 text-black px-6 py-3 border-2 border-black hover:bg-yellow-400"
+              className="button-pixel bg-yellow-300 text-black px-6 py-3 border-2 border-black hover:bg-yellow-400 text-sm sm:text-base"
             >
               💖 Revive Bunny
             </button>

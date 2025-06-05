@@ -2,6 +2,7 @@
 
 import { Typewriter } from "react-simple-typewriter";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -9,24 +10,30 @@ export default function HeroSection() {
       className="relative w-full min-h-[80vh] flex flex-col items-center justify-center text-center text-yellow-200 px-4 sm:px-6 bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/Herrobanner.png')" }}
     >
-      
-      <img
+      {/* Floating Images */}
+      <Image
         src="/strawberry.png"
         alt="strawberry"
-        className="absolute top-10 left-[20%] w-10 sm:w-14 opacity-90 float-left-right-fast"
+        width={56}
+        height={56}
+        className="absolute top-10 left-[20%] w-10 sm:w-14 opacity-90 animate-float-fast"
       />
-      <img
+      <Image
         src="/cloud.png"
         alt="cloud"
-        className="absolute top-2 left-[42%] w-28 sm:w-40 opacity-80 float-left-right-slow"
+        width={100}
+        height={100}
+        className="absolute top-2 left-[42%] w-28 sm:w-40 opacity-80 animate-float-slow"
       />
-      <img
+      <Image
         src="/carrot.png"
         alt="carrot"
-        className="absolute top-10 right-[20%] w-12 sm:w-20 opacity-90 float-left-right-carrot"
+        width={64}
+        height={64}
+        className="absolute top-10 right-[20%] w-12 sm:w-20 opacity-90 animate-float-medium"
       />
 
-      
+      {/* Text */}
       <div className="z-10 max-w-2xl w-full px-2">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-pixel mb-4 drop-shadow-xl leading-tight">
           Welcome to MegaPunks
@@ -43,6 +50,7 @@ export default function HeroSection() {
           />
         </h2>
 
+        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/play">
             <button className="bg-[#facc15] text-black font-pixel px-6 py-3 border-4 border-black hover:scale-105 transition-all duration-200 shadow-xl w-[240px] sm:w-auto">

@@ -12,12 +12,14 @@ export default function FaucetPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string | null>(null);
   const [faucetAmount, setFaucetAmount] = useState<string>("0.001");
-  const [reason, setReason] = useState<string>("your NFT level"); // جدید ✅
+  const [reason, setReason] = useState<string>("your NFT level");
   const [showModal, setShowModal] = useState(false);
+
   const TWITTER_HANDLE = "Megaeth_Punks";
 
   const handleFaucet = async () => {
-    if (!captchaToken || !address) return;
+    if (!captchaToken || !address || loading) return;
+
     setLoading(true);
     setResult(null);
 
@@ -29,9 +31,7 @@ export default function FaucetPage() {
 
       setResult(res.data.message);
       setFaucetAmount(res.data.amount || "0.001");
-
-      // اگر API دلیل رو برگردونه
-      setReason(res.data.reason || "your NFT level"); // می‌تونی اینو از سرور تعیین کنی
+      setReason(res.data.reason || "your NFT level");
 
       if (res.data.message?.toLowerCase().includes("success")) {
         setShowModal(true);
@@ -44,8 +44,8 @@ export default function FaucetPage() {
   };
 
   return (
-    <div className="p-6 rounded-xl shadow-md">
-      <main className="flex-1 px-4 py-8 max-w-3xl mx-auto text-center fade-in">
+    <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 py-12 px-4 flex flex-col items-center font-body">
+      <main className="w-full max-w-3xl text-center">
         <img
           src="/bunnies/faucet-banner.png"
           alt="Faucet Bunny"
@@ -56,7 +56,9 @@ export default function FaucetPage() {
           <h1 className="text-2xl mb-5 text-yellow-100">🚰 MegaPunk Faucet</h1>
 
           <div className="text-lg mb-6 text-center leading-relaxed space-y-2">
-            <p>Claim <strong>free MEGAETH</strong> every <strong>24h</strong> based on your NFT:</p>
+            <p>
+              Claim <strong>free MEGAETH</strong> every <strong>24h</strong> based on your NFT:
+            </p>
 
             <div className="flex justify-center gap-10 text-lg">
               <div className="text-left space-y-1">
@@ -88,7 +90,7 @@ export default function FaucetPage() {
           <button
             onClick={handleFaucet}
             disabled={!captchaToken || !isConnected || loading}
-            className="button-pixel w-full"
+            className={`button-pixel w-full ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             {loading ? "Checking..." : "Claim Faucet"}
           </button>
