@@ -10,7 +10,7 @@ export const megaeth = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ['https://rpc.megaeth.xyz'],
+      http: ['https://carrot.megaeth.com/rpc'],
     },
   },
   blockExplorers: {

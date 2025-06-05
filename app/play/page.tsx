@@ -42,7 +42,7 @@ export default function Home() {
                   chainId: "0x18c6",
                   chainName: "MegaETH Testnet",
                   nativeCurrency: { name: "MegaETH", symbol: "MEGA", decimals: 18 },
-                  rpcUrls: ["https://rpc.megaeth.xyz"],
+                  rpcUrls: ["https://carrot.megaeth.com/rpc"],
                   blockExplorerUrls: ["https://explorer.megaeth.xyz"],
                 },
               ],
