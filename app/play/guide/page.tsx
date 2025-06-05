@@ -1,10 +1,5 @@
 'use client';
 
-export const metadata = {
-  title: 'How to Play - BunnyPunk Guide',
-  description: 'Learn how to play BunnyPunk, level up, claim NFTs, and win prizes.',
-};
-
 export default function GuidePage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -18,7 +13,7 @@ export default function GuidePage() {
           <section className="mb-8 sm:mb-10">
             <h2 className="text-lg sm:text-xl mb-2 text-yellow-300 font-pixel">🎯 Goal of the Game</h2>
             <p>
-              Feed your bunny every <strong>8 hours</strong> to earn XP, level up, and climb the leaderboard. 
+              Feed your bunny every <strong>8 hours</strong> to earn XP, level up, and climb the leaderboard.
               The more you care for your bunny, the higher your level and your rewards!
             </p>
           </section>
