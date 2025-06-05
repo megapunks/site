@@ -35,6 +35,19 @@ export default function LeaderboardPage() {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       setLoading(true);
+
+      // 1. Try loading from cache
+      const cached = localStorage.getItem("cachedLeaderboard");
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          setPlayers(parsed);
+          console.log("✅ Loaded cached leaderboard.");
+        } catch (e) {
+          console.warn("⚠️ Failed to parse cached leaderboard.");
+        }
+      }
+
       try {
         const contract = await getBunnyContract();
         const all = await contract.getAllPlayers();
@@ -60,10 +73,11 @@ export default function LeaderboardPage() {
         );
 
         const sorted = fullData
-          .filter((p) => p.xp > 0 || p.feeds > 0) // فیلتر بازیکن‌های واقعی
+          .filter((p) => p.xp > 0 || p.feeds > 0)
           .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
         setPlayers(sorted.slice(0, 100));
+        localStorage.setItem("cachedLeaderboard", JSON.stringify(sorted.slice(0, 100)));
 
         if (currentUser) {
           const index = sorted.findIndex(
@@ -77,16 +91,21 @@ export default function LeaderboardPage() {
           }
         }
 
-        // مهمان یا آدرس پیدا نشد
         setUserStats(GUEST_STATS);
       } catch (err) {
-        console.error("Leaderboard fetch error:", err);
-        setUserStats(GUEST_STATS);
+        console.error("❌ Leaderboard fetch error:", err);
+        if (!userStats) {
+          setUserStats(GUEST_STATS);
+        }
       }
+
       setLoading(false);
     };
 
     fetchLeaderboard();
+
+    const interval = setInterval(fetchLeaderboard, 10 * 60 * 1000); // Every 10 mins
+    return () => clearInterval(interval);
   }, [currentUser]);
 
   const maskAddress = (address: string) =>
@@ -119,6 +138,12 @@ export default function LeaderboardPage() {
           <h1 className="text-2xl sm:text-3xl text-yellow-300 mb-6 sm:mb-8 font-pixel text-center">
             🏆 Leaderboard
           </h1>
+
+          {players.length === 0 ? (
+            <p className="text-yellow-100 mb-6">
+              ❌ Couldn’t fetch leaderboard. Showing last saved snapshot.
+            </p>
+          ) : null}
 
           <div className="w-full max-w-5xl overflow-x-auto rounded-lg border border-yellow-300">
             <table className="w-full table-auto text-sm sm:text-base">
