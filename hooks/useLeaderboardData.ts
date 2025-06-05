@@ -20,12 +20,11 @@ export function useLeaderboardData(limit = 50) {
     setLoading(true);
     try {
       const contract = await getBunnyContract();
-      const all = await contract.getAllPlayers();
-
+      const all: string[] = await contract.getAllPlayers();
       const limited = all.slice(0, limit);
 
-      const playerData: Player[] = await Promise.all(
-        limited.map(async (addr) => {
+      const playerData = await Promise.all(
+        limited.map(async (addr: string): Promise<Player | null> => {
           try {
             const [xp, lvl, feeds, missed, dead] = await Promise.all([
               contract.getXP(addr),
@@ -43,17 +42,18 @@ export function useLeaderboardData(limit = 50) {
               isDead: Boolean(dead),
             };
           } catch (err) {
+            console.warn(`❌ Failed to fetch player data for ${addr}`, err);
             return null;
           }
         })
       );
 
-      const sorted = playerData
-        .filter(Boolean)
-        .filter(p => p!.xp > 0 || p!.feeds > 0)
-        .sort((a, b) => b!.xp - a!.xp || b!.level - a!.level);
+      const filtered: Player[] = playerData
+        .filter((p): p is Player => p !== null)
+        .filter((p) => p.xp > 0 || p.feeds > 0)
+        .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
-      setPlayers(sorted as Player[]);
+      setPlayers(filtered);
       setLastUpdated(Date.now());
       setError(null);
     } catch (err) {
@@ -64,10 +64,10 @@ export function useLeaderboardData(limit = 50) {
     }
   };
 
-  // 🔁 Auto-refresh every 10 minutes
+  // 🔁 Refresh every 10 minutes
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 10 * 60 * 1000); // 10 دقیقه
+    const interval = setInterval(fetchData, 10 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
