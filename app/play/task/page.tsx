@@ -34,7 +34,7 @@ const TASKS: Record<Task, {
   },
   follow2: {
     label: "⭐ Follow Artist +10 XP",
-    url: "https://x.com/ArtistHandle",
+    url: "https://x.com/Megaeth_Punks",
     taskId: "follow-nft-2",
     taskType: "follow",
     icon: "⭐",
@@ -42,7 +42,7 @@ const TASKS: Record<Task, {
   },
   like_rt: {
     label: "🔁 Like & RT +20 XP",
-    url: "https://x.com/Megaeth_Punks/status/123",
+    url: "https://x.com/Megaeth_Punks/status/1930188883574014357",
     taskId: "rt-nft",
     taskType: "likeRT",
     icon: "🔁",
