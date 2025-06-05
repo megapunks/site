@@ -28,7 +28,7 @@
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "xpGained",
+				"name": "xp",
 				"type": "uint256"
 			}
 		],
@@ -47,7 +47,7 @@
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "newXP",
+				"name": "xp",
 				"type": "uint256"
 			}
 		],
@@ -55,36 +55,41 @@
 		"type": "event"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "promoId",
-				"type": "bytes32"
-			}
-		],
-		"name": "claimMonthlyReward",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "promoId",
-				"type": "bytes32"
-			}
-		],
-		"name": "claimPromoReward",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
-		"name": "claimTweetReward",
+		"name": "claimProfileShare",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "taskId",
+				"type": "bytes32"
+			}
+		],
+		"name": "claimSpecialTask",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "taskId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "string",
+				"name": "taskType",
+				"type": "string"
+			}
+		],
+		"name": "claimTask",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -110,32 +115,7 @@
 				"type": "uint256"
 			}
 		],
-		"name": "MonthlyRewardClaimed",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bytes32",
-				"name": "promoId",
-				"type": "bytes32"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "xp",
-				"type": "uint256"
-			}
-		],
-		"name": "PromoRewardClaimed",
+		"name": "ProfileShared",
 		"type": "event"
 	},
 	{
@@ -148,17 +128,25 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "tweetXP",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "monthlyXP",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "newReceiver",
+				"type": "address"
 			}
 		],
-		"name": "setRewardValues",
+		"name": "setFeeReceiver",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "setOwner",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -179,37 +167,33 @@
 				"type": "uint256"
 			}
 		],
-		"name": "TweetRewardClaimed",
+		"name": "SpecialTaskClaimed",
 		"type": "event"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "",
+				"name": "user",
 				"type": "address"
-			}
-		],
-		"name": "backup",
-		"outputs": [
+			},
 			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "taskId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
 				"internalType": "uint256",
 				"name": "xp",
 				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "lastFed",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "feedCount",
-				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "TaskClaimed",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -235,6 +219,11 @@
 				"internalType": "uint256",
 				"name": "feedCount",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastDeathXP",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -255,12 +244,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "FEE",
+		"name": "feeReceiver",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "",
-				"type": "uint256"
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -268,12 +257,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "feeReceiver",
+		"name": "FOOD_FEE",
 		"outputs": [
 			{
-				"internalType": "address",
+				"internalType": "uint256",
 				"name": "",
-				"type": "address"
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -371,6 +360,25 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "lastFed",
+				"type": "uint256"
+			}
+		],
+		"name": "getHungerPenalty",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "user",
 				"type": "address"
@@ -439,6 +447,30 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "taskId",
+				"type": "bytes32"
+			}
+		],
+		"name": "hasClaimedTask",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -518,35 +550,11 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "promoId",
-				"type": "bytes32"
-			}
-		],
-		"name": "isPromoClaimed",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "lastTweetTime",
+		"name": "lastShareProfileTime",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -559,7 +567,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "monthlyRewardXP",
+		"name": "MAX_HUNGER_PENALTY",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -603,30 +611,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
-			}
-		],
-		"name": "promoClaimed",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "REVIVE_COST",
 		"outputs": [
@@ -641,7 +625,44 @@
 	},
 	{
 		"inputs": [],
-		"name": "REWARD_SMALL",
+		"name": "TASK_FEE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "taskCompleted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "XP_DISCORD",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -654,7 +675,59 @@
 	},
 	{
 		"inputs": [],
-		"name": "tweetRewardXP",
+		"name": "XP_FOLLOW",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "XP_LIKE_RT",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "XP_SHARE_PROFILE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "XP_SIMPLE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "XP_SPECIAL",
 		"outputs": [
 			{
 				"internalType": "uint256",

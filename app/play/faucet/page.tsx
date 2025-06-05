@@ -14,7 +14,6 @@ export default function FaucetPage() {
   const [faucetAmount, setFaucetAmount] = useState<string>("0.001");
   const [reason, setReason] = useState<string>("your NFT level"); // جدید ✅
   const [showModal, setShowModal] = useState(false);
-
   const TWITTER_HANDLE = "Megaeth_Punks";
 
   const handleFaucet = async () => {

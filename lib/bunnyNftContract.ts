@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import abi from "./bunnyNftAbi.json";
 import { getProvider } from "./provider";
 
-const contractAddress = "0x5d9624A386891957A5C5af9De6129F0d6d4Dc906";
+const contractAddress = "0x86D4C135ef60B90350596dF4Ba220A01ac932342";
 
 export const getNftContract = async (): Promise<ethers.Contract> => {
   const provider = getProvider();

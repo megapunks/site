@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useAccount, useChainId } from "wagmi";
+import { getBunnyContract } from "@/lib/bunnyContract";
 import BunnyDisplay from "@/components/BunnyDisplay";
 import FeedResult from "@/components/FeedResult";
-import { getBunnyContract } from "@/lib/bunnyContract";
 import FloatingItemsBackground from "@/components/FloatingItemsBackground";
 import { Event, ethers } from "ethers";
 
@@ -18,10 +18,11 @@ export default function Home() {
   const [cooldownPassed, setCooldownPassed] = useState(true);
   const [showResult, setShowResult] = useState(false);
   const [resultData, setResultData] = useState<{ food: string; xp: number } | null>(null);
-  const [isDead, setIsDead] = useState(false); // 🆕
+  const [isDead, setIsDead] = useState(false);
 
   const correctChainId = 6342;
 
+  // 🔁 Switch to MegaETH Testnet
   useEffect(() => {
     const switchNetworkAutomatically = async () => {
       if (typeof window === "undefined" || typeof window.ethereum === "undefined") return;
@@ -48,10 +49,10 @@ export default function Home() {
               ],
             });
           } catch (err) {
-            console.error("❌ Failed to add network:", err);
+            console.error("❌ Failed to add MegaETH:", err);
           }
         } else {
-          console.error("❌ Failed to switch network:", switchError);
+          console.error("❌ Failed to switch:", switchError);
         }
       }
     };
@@ -61,6 +62,7 @@ export default function Home() {
     }
   }, [isConnected, chainId]);
 
+  // 📊 Fetch Bunny Stats
   const fetchStats = async () => {
     if (!address || chainId !== correctChainId) return;
     try {
@@ -69,50 +71,50 @@ export default function Home() {
         contract.getXP(address),
         contract.getLevel(address),
         contract.getLastFed(address),
-        contract.isBunnyDead(address), // 🆕
+        contract.isBunnyDead(address),
       ]);
 
       setXP(Number(xpRes));
       setLevel(Number(levelRes));
       setLastFed(Number(lastFedRes));
-      setIsDead(Boolean(isDeadRes)); // 🆕
+      setIsDead(Boolean(isDeadRes));
 
       const now = Math.floor(Date.now() / 1000);
-      const cooldown = lastFedRes === 0 || now > Number(lastFedRes) + 8 * 3600;
-      setCooldownPassed(cooldown);
+      setCooldownPassed(lastFedRes === 0 || now > Number(lastFedRes) + 8 * 3600);
     } catch (err) {
-      console.error("❌ Failed to fetch bunny stats:", err);
+      console.error("❌ Failed to fetch stats:", err);
     }
   };
 
+  // 🍽️ Feed Bunny
   const feed = async () => {
     if (!address || chainId !== correctChainId) {
-      alert("Please connect your wallet and switch to MegaETH network.");
+      alert("Please connect your wallet and switch to MegaETH.");
       return;
     }
 
     try {
       const contract = await getBunnyContract();
-
       const tx = await contract.feedBunny({
         value: ethers.utils.parseEther("0.0001"),
       });
 
       const receipt = await tx.wait();
-
       const event = receipt.events?.find((e: Event) => e.event === "BunnyFed");
+
       if (event && event.args) {
-        const { food, xpGained } = event.args as any;
+        const { food, xp: xpGained } = event.args as any;
         setResultData({ food, xp: Number(xpGained) });
         setShowResult(true);
         fetchStats();
       }
     } catch (err: any) {
-      console.error("❌ Error feeding bunny:", err);
+      console.error("❌ Feed Error:", err);
       alert(err?.reason || err?.message || "Unknown error occurred.");
     }
   };
 
+  // 💖 Revive Bunny
   const revive = async () => {
     try {
       const contract = await getBunnyContract();
@@ -123,7 +125,7 @@ export default function Home() {
       alert("🐰 Your bunny has been revived!");
       fetchStats();
     } catch (err: any) {
-      console.error("❌ Error reviving bunny:", err);
+      console.error("❌ Revive Error:", err);
       alert(err?.reason || err?.message || "Error reviving bunny.");
     }
   };
@@ -154,16 +156,16 @@ export default function Home() {
           />
         </div>
 
-        {/* 🍽️ نتیجه غذا دادن */}
         {showResult && resultData && (
           <FeedResult data={resultData} onClose={() => setShowResult(false)} />
         )}
 
-        {/* ☠️ وضعیت مرگ خرگوش */}
         {isDead && (
           <div className="mt-10 bg-red-800/50 text-red-100 border border-red-400 rounded-xl p-6 max-w-xl mx-auto">
             <p className="text-2xl font-bold mb-4">☠️ Your bunny is dead!</p>
-            <p className="mb-4 text-base">To revive it, pay <strong>0.01 ETH</strong>. Half of your XP will be restored.</p>
+            <p className="mb-4 text-base">
+              To revive it, pay <strong>0.01 ETH</strong>. Half of your XP will be restored.
+            </p>
             <button
               onClick={revive}
               className="button-pixel bg-yellow-300 text-black px-6 py-3 border-2 border-black hover:bg-yellow-400"

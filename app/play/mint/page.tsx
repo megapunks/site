@@ -15,6 +15,23 @@ const MINT_LEVELS = [
   { level: 5, xpRange: "1500+", image: "/bunnies/level-5.png" },
 ];
 
+const xpRequirements: Record<number, number> = {
+  1: 0,
+  2: 250,
+  3: 500,
+  4: 900,
+  5: 1500,
+};
+
+// ✅ IPFS links pointing to JSON files inside your folder CID
+const ipfsHashes: Record<number, string> = {
+  1: "QmWcL1iD4z4PCJCqup52AGavC7GkKGfuNErWaVGKzWC4S7/1.json",
+  2: "QmWcL1iD4z4PCJCqup52AGavC7GkKGfuNErWaVGKzWC4S7/2.json",
+  3: "QmWcL1iD4z4PCJCqup52AGavC7GkKGfuNErWaVGKzWC4S7/3.json",
+  4: "QmWcL1iD4z4PCJCqup52AGavC7GkKGfuNErWaVGKzWC4S7/4.json",
+  5: "QmWcL1iD4z4PCJCqup52AGavC7GkKGfuNErWaVGKzWC4S7/5.json",
+};
+
 export default function MintPage() {
   const { address } = useAccount();
   const chainId = useChainId();
@@ -23,6 +40,7 @@ export default function MintPage() {
   const [userXP, setUserXP] = useState<number>(0);
   const [mintedLevels, setMintedLevels] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mintingLevel, setMintingLevel] = useState<number | null>(null);
 
   const isCorrectNetwork = chainId === 6342;
 
@@ -45,6 +63,7 @@ export default function MintPage() {
         setMintedLevels(mintedLevelsArr);
       } catch (e) {
         console.error("Error fetching data:", e);
+        toast.error("❌ Failed to load your XP and mint data.");
       }
       setLoading(false);
     };
@@ -53,9 +72,13 @@ export default function MintPage() {
   }, [address, chainId]);
 
   const handleMint = async (level: number) => {
-    if (!address) return;
+    if (!address) {
+      toast.error("Please connect your wallet.");
+      return;
+    }
+
     if (!isCorrectNetwork) {
-      toast.error("Please switch to MegaETH Testnet");
+      toast.error("Please switch to MegaETH Testnet.");
       switchChain?.({ chainId: 6342 });
       return;
     }
@@ -70,13 +93,6 @@ export default function MintPage() {
       ]);
 
       const xpValue = Number(xp);
-      const xpRequirements: Record<number, number> = {
-        1: 0,
-        2: 100,
-        3: 250,
-        4: 500,
-        5: 900,
-      };
 
       if (alreadyMinted) {
         toast.error("You've already minted this level.");
@@ -88,54 +104,70 @@ export default function MintPage() {
         return;
       }
 
-      const ipfsHashes: Record<number, string> = {
-        1: "bafkreicwghzhppuntlt4aimsrn6yzceqptaq5oacqgusksrn5kxmf47jry",
-        2: "bafkreic4pxauosicpjjklh6a7wod5ayde6lpftao4xrwsvsorynzbzhsxa",
-        3: "bafkreiaf2xegvp5na5mf525dq7i5kvwsowxz2ha7r6roknpdxzvuizyrwi",
-        4: "bafkreiftnxz5uit6ys2mewtry6hbhedmyar3n6dmxahocfldsw2nygbfua",
-        5: "bafkreictn445z67hp4x75sia27wpaimelyzp2gxrl4zyavobc3hscznd7e",
-      };
+      const tokenUri = `https://ipfs.io/ipfs/${ipfsHashes[level]}`;
+      setMintingLevel(level);
 
-      const tokenUri = `ipfs://${ipfsHashes[level]}`;
       const tx = await nftContract.mintNFT(level, tokenUri);
       await tx.wait();
 
-      toast.success("✅ Mint successful!");
+      toast.success(`✅ Successfully minted BunnyPunk Level ${level}!`);
+
+      // Refresh minted levels
+      const updatedMintedLevels = await Promise.all(
+        MINT_LEVELS.map(({ level }) => nftContract.hasMintedLevel(address, level))
+      );
+      const newMinted = MINT_LEVELS.filter((_, i) => updatedMintedLevels[i]).map((m) => m.level);
+      setMintedLevels(newMinted);
     } catch (err) {
-      toast.error("❌ Mint failed");
+      toast.error("❌ Mint failed. Please try again.");
       console.error("Mint Error:", err);
+    } finally {
+      setMintingLevel(null);
     }
   };
 
   return (
     <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 font-pixel py-10 px-4">
-      <h1 className="text-3xl text-center mb-8">🐰 Mint Your BunnyPunk NFT 🐰 </h1>
+      <h1 className="text-3xl text-center mb-8">🐰 Mint Your BunnyPunk NFT 🐰</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {MINT_LEVELS.map(({ level, xpRange, image }) => {
-          const isUnlocked = userXP >= (level === 1 ? 0 : level === 2 ? 100 : level === 3 ? 250 : level === 4 ? 500 : 900);
-          const alreadyMinted = mintedLevels.includes(level);
-          const disabled = !isUnlocked || alreadyMinted;
+      {loading ? (
+        <p className="text-center">Loading your XP and NFT info...</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {MINT_LEVELS.map(({ level, xpRange, image }) => {
+            const isUnlocked = userXP >= xpRequirements[level];
+            const alreadyMinted = mintedLevels.includes(level);
+            const disabled = !isUnlocked || alreadyMinted;
+            const isMinting = mintingLevel === level;
 
-          return (
-            <div
-              key={level}
-              className={`rounded-xl border p-6 flex flex-col items-center bg-[#312e81] border-yellow-300 shadow-md transition-all card-animate ${disabled ? "opacity-50 grayscale" : ""}`}
-            >
-              <Image src={image} alt={`Level ${level}`} width={200} height={200} />
-              <h2 className="mt-4 text-2xl text-yellow-100">Level {level}</h2>
-              <p className="text-lg text-yellow-300 mb-3">XP: {xpRange}</p>
-              <button
-                onClick={() => handleMint(level)}
-                disabled={disabled}
-                className="button-pixel px-6 py-2 mt-2 text-lg"
+            return (
+              <div
+                key={level}
+                className={`rounded-xl border p-6 flex flex-col items-center bg-[#312e81] border-yellow-300 shadow-md transition-all card-animate ${
+                  disabled ? "opacity-50 grayscale" : ""
+                }`}
               >
-                {alreadyMinted ? "Already Minted" : isUnlocked ? "Mint" : "Locked"}
-              </button>
-            </div>
-          );
-        })}
-      </div>
+                <Image src={image} alt={`Level ${level}`} width={200} height={200} />
+                <h2 className="mt-4 text-2xl text-yellow-100">Level {level}</h2>
+                <p className="text-lg text-yellow-300 mb-3">XP: {xpRange}</p>
+                <button
+                  onClick={() => handleMint(level)}
+                  disabled={disabled || isMinting}
+                  className="button-pixel px-6 py-2 mt-2 text-lg"
+                >
+                  {alreadyMinted
+                    ? "Already Minted"
+                    : isMinting
+                    ? "Minting..."
+                    : isUnlocked
+                    ? "Mint"
+                    : "Locked"}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
