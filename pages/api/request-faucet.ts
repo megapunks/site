@@ -6,116 +6,123 @@ import path from "path";
 
 // Constants
 const RATE_LIMIT_FILE = path.resolve("./data/rate-limit.json");
+
 const LEVEL_AMOUNTS: Record<number, string> = {
   5: "0.02",
   4: "0.005",
   3: "0.003",
   2: "0.002",
 };
+
 const DEFAULT_AMOUNT = "0.001";
 const REQUIRED_MAINNET_BALANCE = ethers.utils.parseEther("0.01");
-const NFT_COOLDOWN = 24 * 60 * 60;
+
+const NFT_COOLDOWN = 24 * 60 * 60; // 24h
 const DEFAULT_COOLDOWN = 24 * 60 * 60;
 
-// Env checks
-const PRIVATE_KEY = process.env.FAUCET_PRIVATE_KEY;
-const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT;
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
-const MAINNET_RPC = process.env.MAINNET_RPC_URL;
-
-if (!PRIVATE_KEY || !NFT_CONTRACT_ADDRESS || !RECAPTCHA_SECRET_KEY || !MAINNET_RPC) {
-  throw new Error("❌ Missing required environment variables.");
-}
-
 // Providers
-const providerMainnet = new ethers.providers.JsonRpcProvider(MAINNET_RPC);
+const providerMainnet = new ethers.providers.JsonRpcProvider(process.env.MAINNET_RPC_URL!);
 const providerMega = new ethers.providers.StaticJsonRpcProvider("https://carrot.megaeth.com/rpc", {
   chainId: 6342,
   name: "megaeth",
 });
-const faucetWallet = new ethers.Wallet(PRIVATE_KEY, providerMega);
 
-// ABI
+// Faucet wallet
+const faucetWallet = new ethers.Wallet(process.env.FAUCET_PRIVATE_KEY!, providerMega);
+
+// NFT Contract ABI
+const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT!;
 const NFT_ABI = [
-  "function hasMintedLevel(address user, uint256 level) view returns (bool)"
+  "function hasMintedLevel(address user, uint256 level) view returns (bool)",
 ];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
   const { address, captcha } = req.body;
-
   if (!address || !captcha) {
     return res.status(400).json({ error: "Missing address or captcha." });
   }
 
-  // ✅ CAPTCHA
+  // ✅ CAPTCHA Verification
   try {
-    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    const captchaVerify = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${RECAPTCHA_SECRET_KEY}&response=${captcha}`,
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
     });
-    const result = await response.json();
-    if (!result.success) return res.status(400).json({ error: "Invalid CAPTCHA." });
+
+    const captchaResult = await captchaVerify.json();
+    if (!captchaResult.success) {
+      return res.status(400).json({ error: "Invalid CAPTCHA." });
+    }
   } catch (err) {
-    return res.status(500).json({ error: "CAPTCHA verification failed." });
+    return res.status(500).json({ error: "Failed to verify CAPTCHA." });
   }
 
-  // ✅ NFT Check
+  // ✅ Check NFT Ownership
   const nftContract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, providerMega);
+
   let maxLevel = 0;
-  for (let i = 5; i >= 2; i--) {
+  for (let level = 5; level >= 2; level--) {
     try {
-      if (await nftContract.hasMintedLevel(address, i)) {
-        maxLevel = i;
+      const has = await nftContract.hasMintedLevel(address, level);
+      if (has) {
+        maxLevel = level;
         break;
       }
-    } catch (e) {
-      console.warn(`❌ Error checking NFT level ${i}:`, e);
+    } catch (err) {
+      console.error(`Error checking NFT level ${level}:`, err);
     }
   }
 
   const isHolder = maxLevel > 0;
   const amount = isHolder ? LEVEL_AMOUNTS[maxLevel] : DEFAULT_AMOUNT;
+  const cooldown = isHolder ? NFT_COOLDOWN : DEFAULT_COOLDOWN;
   const reason = isHolder
     ? `holding Level ${maxLevel} BunnyPunk NFT`
     : `holding ≥0.01 ETH on Ethereum Mainnet`;
-  const cooldown = isHolder ? NFT_COOLDOWN : DEFAULT_COOLDOWN;
 
-  // ✅ If no NFT: check mainnet balance
+  // ✅ If no NFT, check Mainnet ETH balance
   if (!isHolder) {
     try {
       const balance = await providerMainnet.getBalance(address);
       if (balance.lt(REQUIRED_MAINNET_BALANCE)) {
-        return res.status(400).json({ error: "Not enough ETH on mainnet." });
+        return res.status(400).json({
+          error: "Insufficient ETH on Ethereum Mainnet (min 0.01 ETH required).",
+        });
       }
     } catch (err) {
       console.error("Mainnet balance check failed:", err);
-      return res.status(500).json({ error: "Mainnet balance check failed." });
+      return res.status(500).json({ error: "Failed to check mainnet balance." });
     }
   }
 
   // ✅ Rate limiting
   let db: Record<string, number> = {};
   try {
-    const raw = await fs.readFile(RATE_LIMIT_FILE, "utf-8");
-    db = JSON.parse(raw);
-  } catch (_) {}
+    const data = await fs.readFile(RATE_LIMIT_FILE, "utf-8");
+    db = JSON.parse(data);
+  } catch (_) {
+    db = {};
+  }
 
   const now = Math.floor(Date.now() / 1000);
   const lastClaim = db[address] || 0;
-  const nextClaimIn = cooldown - (now - lastClaim);
+  const nextClaimInSeconds = cooldown - (now - lastClaim);
 
-  if (nextClaimIn > 0) {
-    const h = Math.floor(nextClaimIn / 3600);
-    const m = Math.floor((nextClaimIn % 3600) / 60);
+  if (nextClaimInSeconds > 0) {
+    const hours = Math.floor(nextClaimInSeconds / 3600);
+    const minutes = Math.floor((nextClaimInSeconds % 3600) / 60);
     return res.status(429).json({
-      error: `⏳ Please wait ${h}h ${m}m before claiming again.`,
+      error: `⏳ Please wait ${hours}h ${minutes}m before claiming again.`,
+      nextClaimIn: `${hours}h ${minutes}m`,
     });
   }
 
-  // ✅ Faucet transaction
+  // ✅ Send faucet transaction
   let txHash = "";
   try {
     const tx = await faucetWallet.sendTransaction({
@@ -124,23 +131,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
     txHash = tx.hash;
     await tx.wait();
-  } catch (err: any) {
-    console.error("❌ Faucet transaction failed:", err);
+  } catch (err) {
+    console.error("Faucet tx failed:", err);
     return res.status(500).json({ error: "Faucet transaction failed." });
   }
 
-  // ✅ Save to rate-limit db
+  // ✅ Update rate-limit file
   try {
     db[address] = now;
     await fs.mkdir(path.dirname(RATE_LIMIT_FILE), { recursive: true });
     await fs.writeFile(RATE_LIMIT_FILE, JSON.stringify(db, null, 2));
   } catch (err) {
-    console.warn("⚠️ Failed to write rate-limit db:", err);
+    console.warn("Rate-limit save failed:", err);
   }
 
-  // ✅ Success
+  // ✅ Done!
   res.status(200).json({
-    message: "✅ Faucet sent successfully!",
+    message: `✅ Faucet sent successfully!`,
     amount,
     reason,
     level: maxLevel || "none",
