@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getBunnyContract } from "@/lib/bunnyContract";
 import { ethers } from "ethers";
 
-type TaskType = "profile_share" | "discord" | "follow1" | "follow2" | "like_rt1" | "like_rt2" | "like_rt3" ;
+type TaskType = "profile_share" | "discord" | "follow1" | "follow2" | "like_rt2" | "like_rt3" ;
 
 const TASKS: Record<TaskType, {
   label: string;
