@@ -6,7 +6,7 @@ import { useAccount, useChainId } from 'wagmi';
 import { getBunnyContract } from '@/lib/bunnyContract';
 import { getCollabNFTContract } from '@/lib/collabNFTContract';
 
-type Task = 'discord' | 'follow1' | 'follow2' | 'like_rt1';
+type Task = 'discord' | 'follow1' | 'follow2' | 'like_rt3';
 
 const TASKS: Record<Task, {
   label: string;
@@ -40,10 +40,10 @@ const TASKS: Record<Task, {
     icon: "⭐",
     xp: 10,
   },
-  like_rt1: {
+  like_rt3: {
     label: "🔁 Like & RT +20 XP",
-    url: "https://x.com/Megaeth_Punks/status/1930188883574014357",
-    taskId: "rt-task-1", // SAME as TaskPanel
+    url: "https://x.com/Megaeth_Punks/status/1931007917035008045",
+    taskId: "rt-task-3", // SAME as TaskPanel
     taskType: "likeRT",
     icon: "🔁",
     xp: 20,
