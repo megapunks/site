@@ -5,7 +5,7 @@ interface Props {
   onRequestClose: () => void;
   twitterHandle: string;
   amount: string;
-  reason?: string; // دلیل دریافت فاست (NFT یا Mainnet)
+  reason?: string; // (NFT  or Mainnet)
 }
 
 export default function FaucetThankYouModal({

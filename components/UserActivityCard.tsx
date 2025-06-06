@@ -25,7 +25,7 @@ export default function UserActivityCard({
   rank,
   isDead,
 }: Props) {
-  // حداکثر XP در هر لول برای نوار پیشرفت
+  
   const maxXP =
     level === 1
       ? 249

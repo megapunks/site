@@ -21,12 +21,12 @@ export default function WhatsNextSection() {
 
   return (
     <section className="w-full py-20 px-6 bg-[#1e1b4b] text-center font-body">
-      {/* تیتر اصلی با فونت پیکسلی */}
+      
       <h2 className="text-3xl md:text-4xl font-pixel text-yellow-300 mb-10 flex items-center justify-center gap-3">
         🚀 What’s Next?
       </h2>
 
-      {/* کارت‌ها */}
+      
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
         {features.map((f, i) => (
           <div
@@ -34,9 +34,9 @@ export default function WhatsNextSection() {
             className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-yellow-400/20 shadow-lg hover:scale-105 transition-transform"
           >
             <div className="text-4xl mb-4">{f.icon}</div>
-            {/* عنوان کارت با فونت پیکسلی */}
+           
             <h3 className="text-xl font-pixel text-yellow-200 mb-2">{f.title}</h3>
-            {/* متن توضیحی با فونت ساده */}
+            
             <p className="text-yellow-100 text-sm leading-relaxed font-body">{f.desc}</p>
           </div>
         ))}

@@ -6,7 +6,7 @@ import { useAccount, useChainId } from 'wagmi';
 import { getBunnyContract } from '@/lib/bunnyContract';
 import { getCollabNFTContract } from '@/lib/collabNFTContract';
 
-type Task = 'discord' | 'follow1' | 'follow2' | 'like_rt';
+type Task = 'discord' | 'follow1' | 'follow2' | 'like_rt1';
 
 const TASKS: Record<Task, {
   label: string;
@@ -27,23 +27,23 @@ const TASKS: Record<Task, {
   follow1: {
     label: "⭐ Follow MegaPunks +10 XP",
     url: "https://x.com/Megaeth_Punks",
-    taskId: "follow-task-1",
+    taskId: "follow-task-1", // SAME as TaskPanel
     taskType: "follow",
     icon: "⭐",
     xp: 10,
   },
   follow2: {
-    label: "⭐ Follow Artist +10 XP",
-    url: "https://x.com/Megaeth_Punks",
-    taskId: "follow-nft-2",
+    label: "⭐ Follow Our Support +10 XP",
+    taskId: "follow-task-2",
     taskType: "follow",
+    url: "https://x.com/megapunksupport",
     icon: "⭐",
     xp: 10,
   },
-  like_rt: {
+  like_rt1: {
     label: "🔁 Like & RT +20 XP",
     url: "https://x.com/Megaeth_Punks/status/1930188883574014357",
-    taskId: "rt-nft",
+    taskId: "rt-task-1", // SAME as TaskPanel
     taskType: "likeRT",
     icon: "🔁",
     xp: 20,
@@ -69,7 +69,6 @@ export default function NFTClaimPage() {
 
   const allTasksCompleted = Object.values(taskStates).every(state => state === 'done');
 
-  // 🚀 Load everything together
   useEffect(() => {
     if (!isConnected || chainId !== correctChainId || !address) return;
 
@@ -78,11 +77,9 @@ export default function NFTClaimPage() {
         const bunny = await getBunnyContract();
         const nft = await getCollabNFTContract();
 
-        // Fetch XP
         const xp = await bunny.getXP(address);
         setTotalXP(Number(xp));
 
-        // Fetch claimed tasks
         const claimedStates: Record<Task, 'done' | 'idle'> = {} as any;
         for (const key of Object.keys(TASKS) as Task[]) {
           const task = TASKS[key];
@@ -91,11 +88,9 @@ export default function NFTClaimPage() {
         }
         setTaskStates(claimedStates);
 
-        // Fetch active token ID
         const id = await nft.activeTokenId();
         setActiveTokenId(Number(id));
 
-        // Check if NFT already claimed
         const balance = await nft.balanceOf(address, Number(id));
         setNFTClaimed(Number(balance) > 0);
       } catch (err) {
@@ -106,7 +101,6 @@ export default function NFTClaimPage() {
     load();
   }, [address, isConnected, chainId]);
 
-  // ⏱ Timer for task confirmation
   useEffect(() => {
     const interval = setInterval(() => {
       setTimers(prev => {
@@ -125,14 +119,12 @@ export default function NFTClaimPage() {
     return () => clearInterval(interval);
   }, [taskStates]);
 
-  // 🔗 Open task link
   const openTask = (key: Task) => {
     window.open(TASKS[key].url, '_blank');
     setTaskStates(prev => ({ ...prev, [key]: 'waiting' }));
     setTimers(prev => ({ ...prev, [key]: 30 }));
   };
 
-  // ✅ Claim XP for a task
   const claimTask = async (key: Task) => {
     try {
       const contract = await getBunnyContract();
@@ -147,7 +139,6 @@ export default function NFTClaimPage() {
     }
   };
 
-  // 🎁 Claim NFT
   const claimNFT = async () => {
     if (!allTasksCompleted || nftClaimed || activeTokenId === null) {
       return alert("👀 Complete all tasks or already claimed.");
@@ -168,7 +159,6 @@ export default function NFTClaimPage() {
       <div className="w-full bg-gradient-to-r from-purple-800 via-indigo-700 to-purple-800 h-12 overflow-hidden relative">
         <div className="absolute whitespace-nowrap animate-marquee text-white font-bold text-xl px-4">
           🤝 Community Collabs: Complete partner quests, earn XP & claim limited NFTs – Powered by MegaPunks on MegaETH!
-
         </div>
       </div>
 

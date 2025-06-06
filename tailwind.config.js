@@ -18,8 +18,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        pixel: ['"Pixel"', 'monospace'],  // برای تیتر و دکمه‌ها
-        body: ['"VT323"', 'monospace'],   // برای بدنه و متن‌ها
+        pixel: ['"Pixel"', 'monospace'],  
+        body: ['"VT323"', 'monospace'],   
       },
     },
   },

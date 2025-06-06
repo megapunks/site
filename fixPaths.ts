@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const directory = './app'; // اگر ساختار پروژه‌ات متفاوت بود، این مسیر رو تغییر بده
+const directory = './app'; 
 const fileTypes = ['.ts', '.tsx', '.js', '.jsx'];
 
 function replaceInFile(filePath: string) {
