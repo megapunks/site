@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getBunnyContract } from "@/lib/bunnyContract";
 import { ethers } from "ethers";
 
-type TaskType = "profile_share" | "discord" | "follow1" | "follow2" | "like_rt2" | "like_rt3" ;
+type TaskType = "profile_share" | "discord" | "follow1" | "follow2" | "like_rt2" | "like_rt3" | "like_rt4" ;
 
 const TASKS: Record<TaskType, {
   label: string;
@@ -59,6 +59,14 @@ const TASKS: Record<TaskType, {
     taskId: "rt-task-3",
     taskType: "likeRT",
     url: "https://x.com/Megaeth_Punks/status/1931007917035008045",
+    icon: "🔁",
+    xp: 20,
+  },
+  like_rt4: {
+    label: "🔁 Like & RT +20 XP",
+    taskId: "rt-task-4",
+    taskType: "likeRT",
+    url: "https://x.com/Megaeth_Punks/status/1931717958444720391",
     icon: "🔁",
     xp: 20,
   },
