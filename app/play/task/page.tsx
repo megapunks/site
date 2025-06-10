@@ -167,7 +167,7 @@ export default function NFTClaimPage() {
 
         <div className="flex justify-between items-center my-6 px-2 text-lg text-yellow-100 font-bold">
           <div>📈 Your XP: <span className="text-green-300">{totalXP}</span></div>
-          <div>🕒 Tasks must be completed before: <span className="text-red-300">Jun 10, 2025</span></div>
+          <div>🕒 Tasks must be completed before: <span className="text-red-300">Jun 15, 2025</span></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-10">
