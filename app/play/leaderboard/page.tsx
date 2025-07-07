@@ -2,21 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import { getBunnyContract } from "@/lib/bunnyContract";
 import UserActivityCard from "@/components/UserActivityCard";
 import TaskPanel from "@/components/TaskPanel";
 
-type Player = {
+interface Player {
   address: string;
+  baseXP: number;
+  newXP: number;
   xp: number;
   level: number;
   feeds: number;
   missed: number;
   isDead?: boolean;
-};
+}
 
 const GUEST_STATS: Player = {
   address: "0x0000000000000000000000000000000000000000",
+  baseXP: 0,
+  newXP: 123,
   xp: 123,
   level: 2,
   feeds: 7,
@@ -26,7 +29,6 @@ const GUEST_STATS: Player = {
 
 export default function LeaderboardPage() {
   const { address: currentUser } = useAccount();
-
   const [players, setPlayers] = useState<Player[]>([]);
   const [userRank, setUserRank] = useState<number | null>(null);
   const [userStats, setUserStats] = useState<Player | null>(null);
@@ -36,80 +38,38 @@ export default function LeaderboardPage() {
     const fetchLeaderboard = async () => {
       setLoading(true);
 
-      // 1. Try loading from cache
-      const cached = localStorage.getItem("cachedLeaderboard");
-      if (cached) {
-        try {
-          const parsed = JSON.parse(cached);
-          setPlayers(parsed);
-          console.log("✅ Loaded cached leaderboard.");
-        } catch (e) {
-          console.warn("⚠️ Failed to parse cached leaderboard.");
-        }
-      }
-
       try {
-        const contract = await getBunnyContract();
-        const all = await contract.getAllPlayers();
-
-        const fullData: Player[] = await Promise.all(
-          all.map(async (addr: string) => {
-            const [xp, level, feeds, missed, isDead] = await Promise.all([
-              contract.getXP(addr),
-              contract.getLevel(addr),
-              contract.getFeedCount(addr),
-              contract.getMissedDays(addr),
-              contract.isBunnyDead(addr),
-            ]);
-            return {
-              address: addr,
-              xp: Number(xp),
-              level: Number(level),
-              feeds: Number(feeds),
-              missed: Number(missed),
-              isDead: Boolean(isDead),
-            };
-          })
-        );
-
-        const sorted = fullData
+        const res = await fetch("/leaderboard.json?_t=" + Date.now());
+        const data: Player[] = await res.json();
+        const sorted = data
           .filter((p) => p.xp > 0 || p.feeds > 0)
           .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
-        setPlayers(sorted.slice(0, 100));
-        localStorage.setItem("cachedLeaderboard", JSON.stringify(sorted.slice(0, 100)));
+        setPlayers(sorted);
 
         if (currentUser) {
-          const index = sorted.findIndex(
-            (p) => p.address.toLowerCase() === currentUser.toLowerCase()
-          );
+          const index = sorted.findIndex(p => p.address.toLowerCase() === currentUser.toLowerCase());
           if (index !== -1) {
             setUserRank(index + 1);
             setUserStats(sorted[index]);
-            setLoading(false);
-            return;
+          } else {
+            setUserStats(GUEST_STATS);
           }
-        }
-
-        setUserStats(GUEST_STATS);
-      } catch (err) {
-        console.error("❌ Leaderboard fetch error:", err);
-        if (!userStats) {
+        } else {
           setUserStats(GUEST_STATS);
         }
+      } catch (err) {
+        console.error("❌ Failed to load leaderboard from JSON:", err);
+        setUserStats(GUEST_STATS);
       }
 
       setLoading(false);
     };
 
     fetchLeaderboard();
-
-    const interval = setInterval(fetchLeaderboard, 10 * 60 * 1000); // Every 10 mins
-    return () => clearInterval(interval);
   }, [currentUser]);
 
-  const maskAddress = (address: string) =>
-    address.slice(0, 6) + "..." + address.slice(-4);
+  const mask = (addr: string) => addr.slice(0, 6) + "..." + addr.slice(-4);
 
   return (
     <div className="min-h-screen bg-[#1e1b4b] text-yellow-200 px-4 py-10 flex flex-col items-center font-body">
@@ -139,12 +99,6 @@ export default function LeaderboardPage() {
             🏆 Leaderboard
           </h1>
 
-          {players.length === 0 ? (
-            <p className="text-yellow-100 mb-6">
-              ❌ Couldn’t fetch leaderboard. Showing last saved snapshot.
-            </p>
-          ) : null}
-
           <div className="w-full max-w-5xl overflow-x-auto rounded-lg border border-yellow-300">
             <table className="w-full table-auto text-sm sm:text-base">
               <thead>
@@ -159,21 +113,18 @@ export default function LeaderboardPage() {
               </thead>
               <tbody>
                 {players.map((user, index) => {
-                  const isCurrentUser =
-                    currentUser?.toLowerCase() === user.address.toLowerCase();
+                  const isCurrent = currentUser?.toLowerCase() === user.address.toLowerCase();
                   return (
                     <tr
                       key={user.address}
                       className={`border-t border-yellow-300 ${
-                        isCurrentUser ? "font-bold bg-[#2e2b80]" : ""
+                        isCurrent ? "font-bold bg-[#2e2b80]" : ""
                       }`}
                     >
                       <td className="py-2 px-4 text-center">{index + 1}</td>
                       <td className="py-2 px-4 font-mono break-all">
-                        {maskAddress(user.address)}
-                        {isCurrentUser && (
-                          <span className="text-yellow-300"> (You)</span>
-                        )}
+                        {mask(user.address)}
+                        {isCurrent && <span className="text-yellow-300"> (You)</span>}
                       </td>
                       <td className="py-2 px-4 text-center">{user.xp}</td>
                       <td className="py-2 px-4 text-center">{user.level}</td>

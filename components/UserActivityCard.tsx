@@ -25,7 +25,6 @@ export default function UserActivityCard({
   rank,
   isDead,
 }: Props) {
-  
   const maxXP =
     level === 1
       ? 249
