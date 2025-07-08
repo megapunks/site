@@ -2,18 +2,21 @@ name: Generate Leaderboard Snapshot
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # هر 6 ساعت
-  workflow_dispatch:       # قابلیت اجرای دستی
+    - cron: '0 */6 * * *' # every 6 hours
+  workflow_dispatch: # manual trigger
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout repo
+      - name: 📥 Checkout repo
         uses: actions/checkout@v3
 
-      - name: 🧰 Setup Node.js
+      - name: 🧪 Create .env file for snapshot script
+        run: echo "SNAPSHOT_PRIVATE_KEY=${{ secrets.SNAPSHOT_PRIVATE_KEY }}" > .env
+
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -21,19 +24,16 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: ⚙️ Generate leaderboard snapshot
+      - name: 📊 Generate leaderboard snapshot
         run: npm run generate:leaderboard
-        env:
-          SNAPSHOT_PRIVATE_KEY: ${{ secrets.SNAPSHOT_PRIVATE_KEY }}
 
-      - name: 🔐 Set git credentials and remote
+      - name: 🪪 Set Git credentials
         run: |
-          git config --global user.email "leaderboard@megapunks.org"
-          git config --global user.name "leaderboard-bot"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
+          git config user.name "leaderboard-bot"
+          git config user.email "bot@megapunks.org"
 
-      - name: 🚀 Commit and push snapshot
+      - name: 🧠 Commit and push snapshot
         run: |
           git add public/leaderboard.json
-          git commit -m "🔄 Update leaderboard snapshot [bot]" || echo "No changes to commit"
-          git push
+          git commit -m "🔁 Update leaderboard snapshot [bot]" || echo "No changes to commit"
+          git push origin main
