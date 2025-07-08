@@ -1,39 +1,40 @@
 name: Generate Leaderboard Snapshot
 
 on:
-  workflow_dispatch: 
   schedule:
-    - cron: '0 */6 * * *' 
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:  # Manual trigger
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🛎️ Checkout repo
+      - name: 📦 Checkout repo
         uses: actions/checkout@v3
 
-      - name: ⚙️ Setup Node.js
+      - name: 🔧 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
-        run: npm install
+      - name: 📥 Install dependencies
+        run: npm ci
 
       - name: 🧠 Generate leaderboard snapshot
         env:
           SNAPSHOT_PRIVATE_KEY: ${{ secrets.SNAPSHOT_PRIVATE_KEY }}
         run: npm run generate:leaderboard
 
-      - name: 🔐 Set git credentials and remote
+      - name: 🔑 Set git credentials
         run: |
-          git config user.name "leaderboard-bot"
-          git config user.email "bot@megapunks.org"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/megapunks/site.git
+          git config --global user.name "leaderboard-bot"
+          git config --global user.email "bot@megapunks.org"
 
       - name: 🚀 Commit and push snapshot
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}  # ✅ your personal access token
         run: |
           git add public/leaderboard.json
           git commit -m "📊 Auto-update leaderboard [CI]" || echo "No changes to commit"
-          git push origin main
+          git push https://x-access-token:${GH_PAT}@github.com/megapunks/site.git HEAD:main
