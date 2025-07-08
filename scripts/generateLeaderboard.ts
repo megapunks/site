@@ -6,59 +6,133 @@ const abi = require("../lib/bunnyAbi.json");
 
 const contractAddress = "0x20273d97114adc750376B4180b290C418485f15A";
 const rpcUrl = "https://carrot.megaeth.com/rpc";
-const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
 
-// 🔐 بارگیری کلید خصوصی از .env
+const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
 const privateKey = process.env.SNAPSHOT_PRIVATE_KEY;
+
 if (!privateKey) {
   console.error("❌ SNAPSHOT_PRIVATE_KEY not found in .env");
   process.exit(1);
 }
 
-// 🧠 ساخت Signer و کانترکت با دسترسی کامل (owner)
 const wallet = new ethers.Wallet(privateKey, provider);
 const contract = new ethers.Contract(contractAddress, abi, wallet);
 
+interface Player {
+  address: string;
+  baseXP: number;
+  newXP: number;
+  xp: number;
+  level: number;
+  feeds: number;
+  missed: number;
+  isDead: boolean;
+}
+
 const main = async () => {
-  console.log("📦 Reading players from contract...");
-  const addresses = await contract.getPlayers(0, 1000); // onlyOwner ✅
+  try {
+    console.log("📦 Reading players from contract...");
+    const addresses: string[] = await contract.getPlayers(0, 1000);
+    console.log(`📊 Found ${addresses.length} players. Fetching stats...`);
 
-  console.log(`📊 Found ${addresses.length} players. Fetching stats...`);
+    const results = await Promise.all(
+      addresses.map(async (addr: string): Promise<Player | null> => {
+        const result: Player = {
+          address: addr,
+          baseXP: 0,
+          newXP: 0,
+          xp: 0,
+          level: 0,
+          feeds: 0,
+          missed: 0,
+          isDead: false,
+        };
 
-  const data = await Promise.all(
-    addresses.map(async (addr) => {
-      const [bunny, level, feeds, missed, isDead] = await Promise.all([
-        contract.bunnies(addr),
-        contract.getLevel(addr),
-        contract.getFeedCount(addr),
-        contract.getMissedDays(addr),
-        contract.isBunnyDead(addr),
-      ]);
+        try {
+          const bunny = await contract.bunnies(addr);
+          result.baseXP = Number(bunny?.baseXP || 0);
+          result.newXP = Number(bunny?.newXP || 0);
+          result.xp = result.baseXP + result.newXP;
+        } catch (err: unknown) {
+          const reason =
+            typeof err === "object" && err !== null && ("reason" in err || "message" in err)
+              ? (err as any).reason || (err as any).message
+              : "unknown error";
+          console.warn(`⚠️ ${addr} (bunnies):`, reason);
+        }
 
-      return {
-        address: addr,
-        baseXP: Number(bunny.baseXP),
-        newXP: Number(bunny.newXP),
-        xp: Number(bunny.baseXP) + Number(bunny.newXP),
-        level: Number(level),
-        feeds: Number(feeds),
-        missed: Number(missed),
-        isDead: Boolean(isDead),
-      };
-    })
-  );
+        try {
+          const level = await contract.getLevel(addr);
+          result.level = Number(level);
+        } catch (err: unknown) {
+          const reason =
+            typeof err === "object" && err !== null && ("reason" in err || "message" in err)
+              ? (err as any).reason || (err as any).message
+              : "unknown error";
+          console.warn(`⚠️ ${addr} (level):`, reason);
+        }
 
-  const sorted = data
-    .filter((p) => p.xp > 0 || p.feeds > 0)
-    .sort((a, b) => b.xp - a.xp || b.level - a.level);
+        try {
+          const feeds = await contract.getFeedCount(addr);
+          result.feeds = Number(feeds);
+        } catch (err: unknown) {
+          const reason =
+            typeof err === "object" && err !== null && ("reason" in err || "message" in err)
+              ? (err as any).reason || (err as any).message
+              : "unknown error";
+          console.warn(`⚠️ ${addr} (feeds):`, reason);
+        }
 
-  const filePath = path.join(__dirname, "../public/leaderboard.json");
-  fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
+        try {
+          const missed = await contract.getMissedDays(addr);
+          result.missed = Number(missed);
+        } catch (err: unknown) {
+          const reason =
+            typeof err === "object" && err !== null && ("reason" in err || "message" in err)
+              ? (err as any).reason || (err as any).message
+              : "unknown error";
+          console.warn(`⚠️ ${addr} (missed):`, reason);
+        }
 
-  console.log(`✅ Leaderboard snapshot saved (${sorted.length} players)`);
+        try {
+          const isDead = await contract.isBunnyDead(addr);
+          result.isDead = Boolean(isDead);
+        } catch (err: unknown) {
+          const reason =
+            typeof err === "object" && err !== null && ("reason" in err || "message" in err)
+              ? (err as any).reason || (err as any).message
+              : "unknown error";
+          console.warn(`⚠️ ${addr} (isDead):`, reason);
+        }
+
+        // اگه هیچ دیتایی نداشت، حذفش کن
+        if (
+          result.baseXP === 0 &&
+          result.newXP === 0 &&
+          result.level === 0 &&
+          result.feeds === 0 &&
+          result.missed === 0
+        ) {
+          return null;
+        }
+
+        return result;
+      })
+    );
+
+    const players: Player[] = results.filter((p): p is Player => p !== null);
+
+    const sorted = players
+      .filter((p) => p.xp > 0 || p.feeds > 0)
+      .sort((a, b) => b.xp - a.xp || b.level - a.level);
+
+    const filePath = path.join(__dirname, "../public/leaderboard.json");
+    fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
+    console.log(`✅ Leaderboard snapshot saved (${sorted.length} players)`);
+  } catch (err) {
+    console.error("❌ Error during leaderboard generation:", err);
+    process.exit(1);
+  }
 };
 
-main().catch((err) => {
-  console.error("❌ Error:", err);
-  process.exit(1);
-});
+main();
