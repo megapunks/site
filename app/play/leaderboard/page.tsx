@@ -41,15 +41,12 @@ export default function LeaderboardPage() {
         const res = await fetch("/leaderboard.json?_t=" + Date.now());
         const allPlayers: Player[] = await res.json();
 
-        // مرتب‌سازی کلی همه پلیرها
         const sorted = allPlayers
           .filter((p) => p.xp > 0 || p.feeds > 0)
           .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
-        // فقط 100 نفر اول برای نمایش جدول
         setTopPlayers(sorted.slice(0, 100));
 
-        // پیدا کردن کاربر لاگین‌شده در کل جدول
         if (currentUser) {
           const index = sorted.findIndex(
             (p) => p.address.toLowerCase() === currentUser.toLowerCase()
@@ -101,9 +98,12 @@ export default function LeaderboardPage() {
             </div>
           )}
 
-          <h1 className="text-2xl sm:text-3xl text-yellow-300 mb-6 sm:mb-8 font-pixel text-center">
-            🏆 Leaderboard – Top 100 Players
+          <h1 className="text-2xl sm:text-3xl text-yellow-300 mb-2 sm:mb-3 font-pixel text-center">
+            🏆 Leaderboard
           </h1>
+          <p className="text-yellow-100 mb-6 text-sm text-center">
+            Updates every 6 hours
+          </p>
 
           <div className="w-full max-w-5xl overflow-x-auto rounded-lg border border-yellow-300">
             <table className="w-full table-auto text-sm sm:text-base">
@@ -120,12 +120,11 @@ export default function LeaderboardPage() {
               <tbody>
                 {topPlayers.map((user, index) => {
                   const isCurrent = currentUser?.toLowerCase() === user.address.toLowerCase();
+                  const missedDisplay = user.isDead || user.missed > 1000 ? "💀 Dead" : user.missed;
                   return (
                     <tr
                       key={user.address}
-                      className={`border-t border-yellow-300 ${
-                        isCurrent ? "font-bold bg-[#2e2b80]" : ""
-                      }`}
+                      className={`border-t border-yellow-300 ${isCurrent ? "font-bold bg-[#2e2b80]" : ""}`}
                     >
                       <td className="py-2 px-4 text-center">{index + 1}</td>
                       <td className="py-2 px-4 font-mono break-all">
@@ -135,7 +134,7 @@ export default function LeaderboardPage() {
                       <td className="py-2 px-4 text-center">{user.xp}</td>
                       <td className="py-2 px-4 text-center">{user.level}</td>
                       <td className="py-2 px-4 text-center">{user.feeds}</td>
-                      <td className="py-2 px-4 text-center">{user.missed}</td>
+                      <td className="py-2 px-4 text-center">{missedDisplay}</td>
                     </tr>
                   );
                 })}
