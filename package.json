@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate:leaderboard": "ts-node scripts/generateLeaderboard.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.77.2",
@@ -36,4 +37,5 @@
     "pino-pretty": "^13.0.0",
     "typescript": "5.8.3"
   }
+  
 }

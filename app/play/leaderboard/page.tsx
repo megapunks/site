@@ -39,7 +39,7 @@ export default function LeaderboardPage() {
       setLoading(true);
 
       try {
-        const res = await fetch("/leaderboard.json?_t=" + Date.now());
+        const res = await fetch("/api/leaderboard?_t=" + Date.now());
         const data: Player[] = await res.json();
         const sorted = data
           .filter((p) => p.xp > 0 || p.feeds > 0)
@@ -59,7 +59,7 @@ export default function LeaderboardPage() {
           setUserStats(GUEST_STATS);
         }
       } catch (err) {
-        console.error("❌ Failed to load leaderboard from JSON:", err);
+        console.error("❌ Failed to load leaderboard from API:", err);
         setUserStats(GUEST_STATS);
       }
 

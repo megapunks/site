@@ -1,19 +1,26 @@
 import { NextResponse } from "next/server";
 import { getBunnyContract } from "@/lib/bunnyContract";
+import fs from "fs";
+import path from "path";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
     const contract = await getBunnyContract();
+    const pageSize = 100;
+    let page = 0;
+    let addresses: string[] = [];
 
-    const addresses = [
-      "0x20273d97114adc750376B4180b290C418485f15A", // خودت
-      "0x0000000000000000000000000000000000000001",
-      "0x0000000000000000000000000000000000000002"
-    ];
+    while (true) {
+      const chunk = await contract.getPlayers(page * pageSize, pageSize) as string[];
+      if (chunk.length === 0) break;
+      addresses.push(...chunk);
+      if (chunk.length < pageSize) break;
+      page++;
+    }
 
-    const data = await Promise.all(
+    const players = await Promise.all(
       addresses.map(async (addr) => {
         const [bunny, level, feeds, missed, isDead] = await Promise.all([
           contract.bunnies(addr),
@@ -35,13 +42,15 @@ export async function GET() {
       })
     );
 
-    const sorted = data
+    const sorted = players
       .filter((p) => p.xp > 0 || p.feeds > 0)
       .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
-    return NextResponse.json(sorted); // ✅ فقط خروجی بده، ننویس به فایل
+    const filePath = path.join(process.cwd(), "public", "leaderboard.json");
+    fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
+
+    return NextResponse.json({ ok: true, count: sorted.length });
   } catch (err: any) {
-    console.error("❌ Error generating leaderboard:", err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
