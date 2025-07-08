@@ -1,35 +1,37 @@
-name: ♻️ Generate Leaderboard Snapshot
+name: Generate Leaderboard Snapshot
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # هر ۶ ساعت
-  workflow_dispatch:         # اجرای دستی
+    - cron: '0 */6 * * *' # هر 6 ساعت
+  workflow_dispatch: # اجرا با دست دستی هم ممکن باشه
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧾 Checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: ⚙️ Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: 🧠 Generate leaderboard snapshot
+      - name: Generate leaderboard snapshot
         run: npm run generate:leaderboard
-        env:
-          SNAPSHOT_PRIVATE_KEY: ${{ secrets.SNAPSHOT_PRIVATE_KEY }}
 
-      - name: 🚀 Commit and push snapshot
+      - name: Set git credentials and remote
         run: |
           git config user.name "leaderboard-bot"
           git config user.email "bot@megapunks.org"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/megapunks/site.git
+
+      - name: Commit and push snapshot
+        run: |
           git add public/leaderboard.json
-          git diff --quiet || git commit -m "🔁 Auto update leaderboard"
+          git commit -m "📊 Auto update leaderboard snapshot"
           git push
