@@ -29,40 +29,46 @@ const GUEST_STATS: Player = {
 
 export default function LeaderboardPage() {
   const { address: currentUser } = useAccount();
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [topPlayers, setTopPlayers] = useState<Player[]>([]);
+  const [userStats, setUserStats] = useState<Player>(GUEST_STATS);
   const [userRank, setUserRank] = useState<number | null>(null);
-  const [userStats, setUserStats] = useState<Player | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
       setLoading(true);
-
       try {
-        const res = await fetch("/api/leaderboard?_t=" + Date.now());
-        const data: Player[] = await res.json();
-        const sorted = data
+        const res = await fetch("/leaderboard.json?_t=" + Date.now());
+        const allPlayers: Player[] = await res.json();
+
+        // مرتب‌سازی کلی همه پلیرها
+        const sorted = allPlayers
           .filter((p) => p.xp > 0 || p.feeds > 0)
           .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
-        setPlayers(sorted);
+        // فقط 100 نفر اول برای نمایش جدول
+        setTopPlayers(sorted.slice(0, 100));
 
+        // پیدا کردن کاربر لاگین‌شده در کل جدول
         if (currentUser) {
-          const index = sorted.findIndex(p => p.address.toLowerCase() === currentUser.toLowerCase());
+          const index = sorted.findIndex(
+            (p) => p.address.toLowerCase() === currentUser.toLowerCase()
+          );
           if (index !== -1) {
-            setUserRank(index + 1);
             setUserStats(sorted[index]);
+            setUserRank(index + 1);
           } else {
             setUserStats(GUEST_STATS);
+            setUserRank(null);
           }
         } else {
           setUserStats(GUEST_STATS);
+          setUserRank(null);
         }
       } catch (err) {
-        console.error("❌ Failed to load leaderboard from API:", err);
+        console.error("❌ Failed to load leaderboard snapshot:", err);
         setUserStats(GUEST_STATS);
       }
-
       setLoading(false);
     };
 
@@ -96,7 +102,7 @@ export default function LeaderboardPage() {
           )}
 
           <h1 className="text-2xl sm:text-3xl text-yellow-300 mb-6 sm:mb-8 font-pixel text-center">
-            🏆 Leaderboard
+            🏆 Leaderboard – Top 100 Players
           </h1>
 
           <div className="w-full max-w-5xl overflow-x-auto rounded-lg border border-yellow-300">
@@ -112,7 +118,7 @@ export default function LeaderboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {players.map((user, index) => {
+                {topPlayers.map((user, index) => {
                   const isCurrent = currentUser?.toLowerCase() === user.address.toLowerCase();
                   return (
                     <tr
