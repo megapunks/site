@@ -3,7 +3,7 @@ name: Generate Leaderboard Snapshot
 on:
   schedule:
     - cron: '0 */6 * * *'  # Every 6 hours
-  workflow_dispatch:
+  workflow_dispatch:        # Manual trigger
 
 jobs:
   generate:
@@ -26,14 +26,15 @@ jobs:
           SNAPSHOT_PRIVATE_KEY: ${{ secrets.SNAPSHOT_PRIVATE_KEY }}
         run: npm run generate:leaderboard
 
-      - name: 🔑 Set git credentials
+      - name: 🚀 Commit and push snapshot
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "leaderboard-bot"
           git config --global user.email "bot@megapunks.org"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/megapunks/site.git
 
-      - name: 🚀 Commit and push snapshot
-        run: |
           git add public/leaderboard.json
-          git commit -m "📊 Auto-update leaderboard [CI]" || echo "no changes"
+          git commit -m "📊 Auto-update leaderboard [CI]" || echo "No changes to commit"
+
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/megapunks/site.git
           git push origin HEAD:main
