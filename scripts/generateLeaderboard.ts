@@ -1,15 +1,29 @@
-import { ethers } from "ethers";
-import fs from "fs";
-import path from "path";
-import abi from "../lib/bunnyAbi.json";
+require("dotenv").config();
+const { ethers } = require("ethers");
+const fs = require("fs");
+const path = require("path");
+const abi = require("../lib/bunnyAbi.json");
 
 const contractAddress = "0x20273d97114adc750376B4180b290C418485f15A";
-const provider = new ethers.JsonRpcProvider("https://carrot.megaeth.com/rpc");
+const rpcUrl = "https://carrot.megaeth.com/rpc";
+const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
+
+// 🔐 بارگیری کلید خصوصی از .env
+const privateKey = process.env.SNAPSHOT_PRIVATE_KEY;
+if (!privateKey) {
+  console.error("❌ SNAPSHOT_PRIVATE_KEY not found in .env");
+  process.exit(1);
+}
+
+// 🧠 ساخت Signer و کانترکت با دسترسی کامل (owner)
+const wallet = new ethers.Wallet(privateKey, provider);
+const contract = new ethers.Contract(contractAddress, abi, wallet);
 
 const main = async () => {
-  const contract = new ethers.Contract(contractAddress, abi, provider);
+  console.log("📦 Reading players from contract...");
+  const addresses = await contract.getPlayers(0, 1000); // onlyOwner ✅
 
-  const addresses: string[] = await contract.getPlayers(0, 1000); // یا از فایل ثابت
+  console.log(`📊 Found ${addresses.length} players. Fetching stats...`);
 
   const data = await Promise.all(
     addresses.map(async (addr) => {
@@ -35,15 +49,16 @@ const main = async () => {
   );
 
   const sorted = data
-    .filter(p => p.xp > 0 || p.feeds > 0)
+    .filter((p) => p.xp > 0 || p.feeds > 0)
     .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
   const filePath = path.join(__dirname, "../public/leaderboard.json");
   fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
-  console.log(`✅ Leaderboard generated (${sorted.length} players)`);
+
+  console.log(`✅ Leaderboard snapshot saved (${sorted.length} players)`);
 };
 
-main().catch(err => {
+main().catch((err) => {
   console.error("❌ Error:", err);
   process.exit(1);
 });
