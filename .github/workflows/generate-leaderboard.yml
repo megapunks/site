@@ -1,9 +1,9 @@
 name: Generate Leaderboard Snapshot
 
 on:
-  workflow_dispatch: # اجازه اجرای دستی
+  workflow_dispatch: 
   schedule:
-    - cron: '0 */6 * * *' # اجرای هر 6 ساعت
+    - cron: '0 */6 * * *' 
 
 jobs:
   generate:
