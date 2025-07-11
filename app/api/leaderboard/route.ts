@@ -1,101 +1,98 @@
+import { NextResponse } from "next/server";
 import { getBunnyContract } from "@/lib/bunnyContract";
 import fs from "fs";
 import path from "path";
 
-const withRetry = async <T>(fn: () => Promise<T>, retries = 2, delayMs = 300): Promise<T> => {
-  let lastErr;
+export const dynamic = "force-dynamic";
+
+function delay(ms: number) {
+  return new Promise((res) => setTimeout(res, ms));
+}
+
+async function withRetry<T>(fn: () => Promise<T>, retries = 3, delayMs = 300): Promise<T> {
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
     } catch (err) {
-      lastErr = err;
-      await new Promise(res => setTimeout(res, delayMs));
+      if (i < retries - 1) await delay(delayMs);
+      else throw err;
     }
   }
-  throw lastErr;
-};
+  throw new Error("Unreachable");
+}
 
+export async function GET() {
+  try {
+    const contract = await getBunnyContract();
+    const pageSize = 100;
+    let page = 0;
+    let addresses: string[] = [];
 
-const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
-// ─────────────────────────────────────────────
-const generateLeaderboard = async () => {
-  const contract = await getBunnyContract();
-  const pageSize = 100;
-  let page = 0;
-  let addresses: string[] = [];
-
-  console.log("📦 Reading players from contract...");
-
- 
-  while (true) {
-    const chunk = await withRetry(() => contract.getPlayers(page * pageSize, pageSize));
-    if (!chunk.length) break;
-    addresses.push(...chunk);
-    if (chunk.length < pageSize) break;
-    page++;
-  }
-
-  console.log(`📊 Total unique players: ${addresses.length}`);
-
-  const players = [];
-
-  for (let i = 0; i < addresses.length; i++) {
-    const addr = addresses[i];
-
-    try {
-      const [bunny, level, feeds, missed, isDead] = await Promise.all([
-        withRetry(() => contract.bunnies(addr)),
-        withRetry(() => contract.getLevel(addr)),
-        withRetry(() => contract.getFeedCount(addr)),
-        withRetry(() => contract.getMissedDays(addr)),
-        withRetry(() => contract.isBunnyDead(addr)),
-      ]);
-
-      players.push({
-        address: addr,
-        baseXP: Number(bunny.baseXP),
-        newXP: Number(bunny.newXP),
-        xp: Number(bunny.baseXP) + Number(bunny.newXP),
-        level: Number(level),
-        feeds: Number(feeds),
-        missed: Number(missed),
-        isDead: Boolean(isDead),
-      });
-    } catch (err: any) {
-      console.warn(`⚠️ ${addr}: ${err.message}`);
-      players.push({
-        address: addr,
-        baseXP: 0,
-        newXP: 0,
-        xp: 0,
-        level: 0,
-        feeds: 0,
-        missed: 0,
-        isDead: false,
-      });
+    while (true) {
+      const chunk = await withRetry(() =>
+        contract.getPlayers(page * pageSize, pageSize)
+      ) as string[];
+      if (!chunk.length) break;
+      addresses.push(...chunk);
+      if (chunk.length < pageSize) break;
+      page++;
     }
 
-
-    if ((i + 1) % 10 === 0) {
-      await delay(400);
+    const filePath = path.join(process.cwd(), "public", "leaderboard.json");
+    let previousData: any[] = [];
+    if (fs.existsSync(filePath)) {
+      previousData = JSON.parse(fs.readFileSync(filePath, "utf8"));
     }
+
+    const players = await Promise.all(
+      addresses.map(async (addr) => {
+        try {
+          const [bunnyRaw, levelRaw, feedsRaw, missedRaw, isDeadRaw] = await Promise.all([
+            withRetry(() => contract.bunnies(addr)),
+            withRetry(() => contract.getLevel(addr)),
+            withRetry(() => contract.getFeedCount(addr)),
+            withRetry(() => contract.getMissedDays(addr)),
+            withRetry(() => contract.isBunnyDead(addr)),
+          ]);
+
+          const bunny = bunnyRaw as { baseXP: bigint; newXP: bigint };
+
+          return {
+            address: addr,
+            baseXP: Number(bunny.baseXP),
+            newXP: Number(bunny.newXP),
+            xp: Number(bunny.baseXP) + Number(bunny.newXP),
+            level: Number(levelRaw),
+            feeds: Number(feedsRaw),
+            missed: Number(missedRaw),
+            isDead: Boolean(isDeadRaw),
+          };
+        } catch (err) {
+          // fallback to previous data if available
+          const fallback = previousData.find((p) => p.address.toLowerCase() === addr.toLowerCase());
+          if (fallback) return fallback;
+          // if no previous data, include empty defaults
+          return {
+            address: addr,
+            baseXP: 0,
+            newXP: 0,
+            xp: 0,
+            level: 0,
+            feeds: 0,
+            missed: 0,
+            isDead: false,
+          };
+        }
+      })
+    );
+
+    const sorted = players
+      .filter((p) => p.xp > 0 || p.feeds > 0)
+      .sort((a, b) => b.xp - a.xp || b.level - a.level);
+
+    fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
+    return NextResponse.json({ ok: true, count: sorted.length });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
-
-  
-  const sorted = players
-    .filter((p) => p.xp > 0 || p.feeds > 0)
-    .sort((a, b) => b.xp - a.xp || b.level - a.level);
-
-
-  const filePath = path.join(process.cwd(), "public", "leaderboard.json");
-  fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
-
-  console.log(`✅ Leaderboard snapshot saved (${sorted.length} players)`);
-};
-
-
-generateLeaderboard().catch((err) => {
-  console.error("❌ Failed to generate leaderboard:", err);
-  process.exit(1);
-});
+}
