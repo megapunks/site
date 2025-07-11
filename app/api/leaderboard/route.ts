@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 
 export const dynamic = "force-dynamic";
+<<<<<<< Updated upstream
 
 function delay(ms: number) {
   return new Promise((res) => setTimeout(res, ms));
@@ -20,6 +21,8 @@ async function withRetry<T>(fn: () => Promise<T>, retries = 3, delayMs = 300): P
   }
   throw new Error("Unreachable");
 }
+=======
+>>>>>>> Stashed changes
 
 export async function GET() {
   try {
@@ -29,15 +32,20 @@ export async function GET() {
     let addresses: string[] = [];
 
     while (true) {
+<<<<<<< Updated upstream
       const chunk = await withRetry(() =>
         contract.getPlayers(page * pageSize, pageSize)
       ) as string[];
+=======
+      const chunk: string[] = await contract.getPlayers(page * pageSize, pageSize);
+>>>>>>> Stashed changes
       if (!chunk.length) break;
       addresses.push(...chunk);
       if (chunk.length < pageSize) break;
       page++;
     }
 
+<<<<<<< Updated upstream
     const filePath = path.join(process.cwd(), "public", "leaderboard.json");
     let previousData: any[] = [];
     if (fs.existsSync(filePath)) {
@@ -57,11 +65,25 @@ export async function GET() {
 
           const bunny = bunnyRaw as { baseXP: bigint; newXP: bigint };
 
+=======
+    const players = await Promise.all(
+      addresses.map(async (addr) => {
+        try {
+          const [bunny, level, feeds, missed, isDead] = await Promise.all([
+            contract.bunnies(addr),
+            contract.getLevel(addr),
+            contract.getFeedCount(addr),
+            contract.getMissedDays(addr),
+            contract.isBunnyDead(addr),
+          ]);
+
+>>>>>>> Stashed changes
           return {
             address: addr,
             baseXP: Number(bunny.baseXP),
             newXP: Number(bunny.newXP),
             xp: Number(bunny.baseXP) + Number(bunny.newXP),
+<<<<<<< Updated upstream
             level: Number(levelRaw),
             feeds: Number(feedsRaw),
             missed: Number(missedRaw),
@@ -72,6 +94,14 @@ export async function GET() {
           const fallback = previousData.find((p) => p.address.toLowerCase() === addr.toLowerCase());
           if (fallback) return fallback;
           // if no previous data, include empty defaults
+=======
+            level: Number(level),
+            feeds: Number(feeds),
+            missed: Number(missed),
+            isDead: Boolean(isDead),
+          };
+        } catch {
+>>>>>>> Stashed changes
           return {
             address: addr,
             baseXP: 0,
@@ -90,7 +120,13 @@ export async function GET() {
       .filter((p) => p.xp > 0 || p.feeds > 0)
       .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
+<<<<<<< Updated upstream
     fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
+=======
+    const filePath = path.join(process.cwd(), "public", "leaderboard.json");
+    fs.writeFileSync(filePath, JSON.stringify(sorted, null, 2));
+
+>>>>>>> Stashed changes
     return NextResponse.json({ ok: true, count: sorted.length });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
