@@ -10,12 +10,32 @@
     "isDead": false
   },
   {
-    "address": "0x5e4be30aeccb0c4f9811eb3876d0271ea826eb67",
-    "baseXP": 1200,
-    "newXP": 950,
-    "xp": 2150,
+    "address": "0xa5cf9535d8c963fddf8b4d2910688fd08e3d4fd5",
+    "baseXP": 970,
+    "newXP": 775,
+    "xp": 1745,
     "level": 5,
-    "feeds": 47,
+    "feeds": 39,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x9ac1ca4be88ea3a35a7e9178a5a267482df27f8d",
+    "baseXP": 1030,
+    "newXP": 660,
+    "xp": 1690,
+    "level": 5,
+    "feeds": 29,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xbf83469bb3856b52576ef8ba1094359ab52f0092",
+    "baseXP": 890,
+    "newXP": 755,
+    "xp": 1645,
+    "level": 5,
+    "feeds": 32,
     "missed": 0,
     "isDead": false
   },
@@ -40,10 +60,30 @@
     "isDead": false
   },
   {
+    "address": "0x10e79d5900e919739d2061194546caa36a0ff12f",
+    "baseXP": 995,
+    "newXP": 570,
+    "xp": 1565,
+    "level": 5,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x58eb2f0640eec748956d925bb853f5f6b4a532a3",
     "baseXP": 930,
     "newXP": 625,
     "xp": 1555,
+    "level": 5,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x9ec3a0ea6637f86d836e0d0a6873ed300b12cd89",
+    "baseXP": 935,
+    "newXP": 615,
+    "xp": 1550,
     "level": 5,
     "feeds": 32,
     "missed": 0,
@@ -60,12 +100,52 @@
     "isDead": false
   },
   {
-    "address": "0x66a4c06b964b2d726bbeaee813be96a8c9dc6ae3",
-    "baseXP": 830,
-    "newXP": 630,
-    "xp": 1460,
+    "address": "0xd736899d87327cc17b5742b8aab3f7e75f5cbb5f",
+    "baseXP": 915,
+    "newXP": 605,
+    "xp": 1520,
+    "level": 5,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x80b21feaa7619e1e0beddce6d960dd1a5731e4fb",
+    "baseXP": 910,
+    "newXP": 595,
+    "xp": 1505,
+    "level": 5,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xc583ac1806dd8c4f48c64ef9bc02da39bde5948d",
+    "baseXP": 825,
+    "newXP": 660,
+    "xp": 1485,
     "level": 4,
-    "feeds": 35,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x85de66b9b6fa0950957cf72f125163ab1ebdb31b",
+    "baseXP": 815,
+    "newXP": 665,
+    "xp": 1480,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x64ecaf16062dd5efbe430eb393ab75fd138013e0",
+    "baseXP": 960,
+    "newXP": 520,
+    "xp": 1480,
+    "level": 4,
+    "feeds": 29,
     "missed": 0,
     "isDead": false
   },
@@ -74,6 +154,56 @@
     "baseXP": 930,
     "newXP": 530,
     "xp": 1460,
+    "level": 4,
+    "feeds": 29,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x726b56ef9657a77194c79d8adfbaab8fcb8bc069",
+    "baseXP": 845,
+    "newXP": 595,
+    "xp": 1440,
+    "level": 4,
+    "feeds": 28,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xff43af4aa698ba087129372db56a53d85e81039f",
+    "baseXP": 870,
+    "newXP": 560,
+    "xp": 1430,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x6a7244b2c84a122302c136ddefabd51b5eeb15c6",
+    "baseXP": 865,
+    "newXP": 565,
+    "xp": 1430,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5c410a852cd4c0a7b89bcca8a45a16f52e8d12ea",
+    "baseXP": 795,
+    "newXP": 625,
+    "xp": 1420,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x7bc5e7c33cc168fd14393a81b831d3bbca906460",
+    "baseXP": 855,
+    "newXP": 560,
+    "xp": 1415,
     "level": 4,
     "feeds": 29,
     "missed": 0,
@@ -90,6 +220,26 @@
     "isDead": false
   },
   {
+    "address": "0x630855e03e57a970067eacab4bb97d4cf7257ca4",
+    "baseXP": 855,
+    "newXP": 550,
+    "xp": 1405,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x1ae1c0e6cb1a248395ae0d37c6f4e414e4d73651",
+    "baseXP": 970,
+    "newXP": 430,
+    "xp": 1400,
+    "level": 4,
+    "feeds": 28,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x664b17ce5fa9c19cfd8c6500c167ffecb74b7676",
     "baseXP": 830,
     "newXP": 565,
@@ -100,52 +250,62 @@
     "isDead": false
   },
   {
-    "address": "0xe5482c23bba1569c4b51e7079efdd3938b9e6ce1",
-    "baseXP": 695,
-    "newXP": 680,
-    "xp": 1375,
+    "address": "0x185fa30699b5b6043edc14fa97d96c9b744c5a3c",
+    "baseXP": 875,
+    "newXP": 520,
+    "xp": 1395,
     "level": 4,
-    "feeds": 40,
+    "feeds": 32,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xf6cfcc755b18ef51457ac04c892f4486655de3bd",
-    "baseXP": 900,
-    "newXP": 470,
-    "xp": 1370,
+    "address": "0x9d351f62fb67c9cfe765f195f424f02c71c26552",
+    "baseXP": 790,
+    "newXP": 595,
+    "xp": 1385,
     "level": 4,
-    "feeds": 33,
+    "feeds": 31,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xa6b8656828937fb629d5b339b0c20aaa1251f377",
-    "baseXP": 825,
+    "address": "0x0c8aba2d98013b20c563c4e899f406d3d677359d",
+    "baseXP": 835,
     "newXP": 545,
-    "xp": 1370,
+    "xp": 1380,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x1bb0a453d80598d51e72966bc9df3207b31b0fe9",
+    "baseXP": 870,
+    "newXP": 505,
+    "xp": 1375,
     "level": 4,
     "feeds": 28,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x94b99f6667478bf4ddac73632149de593f6a4277",
-    "baseXP": 845,
-    "newXP": 500,
-    "xp": 1345,
+    "address": "0x64a865ddead1d08814949c50ed7bf6d9900c497d",
+    "baseXP": 810,
+    "newXP": 560,
+    "xp": 1370,
     "level": 4,
-    "feeds": 27,
+    "feeds": 32,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xf5d75542c34b16ea52941037861deb0f7c6316aa",
-    "baseXP": 855,
-    "newXP": 485,
-    "xp": 1340,
+    "address": "0x499099e292fe8a8de1e6e43e8cfa7d6566f3905e",
+    "baseXP": 845,
+    "newXP": 500,
+    "xp": 1345,
     "level": 4,
-    "feeds": 29,
+    "feeds": 30,
     "missed": 0,
     "isDead": false
   },
@@ -154,6 +314,36 @@
     "baseXP": 790,
     "newXP": 530,
     "xp": 1320,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xa2fbb2093ef1949a19fc9842036aa6800c3e5890",
+    "baseXP": 825,
+    "newXP": 475,
+    "xp": 1300,
+    "level": 4,
+    "feeds": 32,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xa379ab5d686f63c7a43d67c3d35174a3dcbc1fe7",
+    "baseXP": 875,
+    "newXP": 410,
+    "xp": 1285,
+    "level": 4,
+    "feeds": 28,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x3f9a402bb4aeb54dadda1e680b1451cfbb4d9325",
+    "baseXP": 720,
+    "newXP": 560,
+    "xp": 1280,
     "level": 4,
     "feeds": 32,
     "missed": 0,
@@ -180,33 +370,33 @@
     "isDead": false
   },
   {
-    "address": "0x5cf6ca52e9b3103e5d987f95c2391799310611e4",
-    "baseXP": 600,
-    "newXP": 650,
-    "xp": 1250,
+    "address": "0x41366abce6e1596354f9a2e4431105354d3811ae",
+    "baseXP": 850,
+    "newXP": 410,
+    "xp": 1260,
     "level": 4,
-    "feeds": 38,
+    "feeds": 28,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xa4fe9a46b9f932b83dc7d8e6a30896e1f8c95c89",
-    "baseXP": 760,
-    "newXP": 375,
-    "xp": 1135,
-    "level": 4,
-    "feeds": 17,
-    "missed": 2,
+    "address": "0xa429f7bea7e847ad5e9eeab9eefe966a6fa1eb89",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 1205,
+    "level": 3,
+    "feeds": 8,
+    "missed": 6,
     "isDead": false
   },
   {
-    "address": "0xb3171ca1d85e488ef649e7c3811bd120e3835fd8",
-    "baseXP": 770,
-    "newXP": 315,
-    "xp": 1085,
-    "level": 4,
-    "feeds": 17,
-    "missed": 2,
+    "address": "0x5e4be30aeccb0c4f9811eb3876d0271ea826eb67",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 1200,
+    "level": 5,
+    "feeds": 47,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -224,17 +414,7 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 1050,
-    "level": 0,
-    "feeds": 29,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x9ac1ca4be88ea3a35a7e9178a5a267482df27f8d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 1030,
-    "level": 5,
+    "level": 4,
     "feeds": 29,
     "missed": 0,
     "isDead": false
@@ -250,63 +430,23 @@
     "isDead": false
   },
   {
-    "address": "0x1ce541240ff07c4abcadae22bd0974b3250b5a77",
-    "baseXP": 670,
-    "newXP": 355,
-    "xp": 1025,
+    "address": "0xd3f2d01e5309f88f74bf2c6001a7629d1084c5d4",
+    "baseXP": 585,
+    "newXP": 420,
+    "xp": 1005,
     "level": 4,
-    "feeds": 17,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x130af48578549ad9904ca216fb7fecbe9f3cf30a",
-    "baseXP": 670,
-    "newXP": 355,
-    "xp": 1025,
-    "level": 4,
-    "feeds": 17,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x10e79d5900e919739d2061194546caa36a0ff12f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 995,
-    "level": 5,
-    "feeds": 32,
+    "feeds": 19,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xfd9931f8bdad892ff97e59cd65a79b59b41bf688",
-    "baseXP": 630,
-    "newXP": 365,
-    "xp": 995,
-    "level": 0,
-    "feeds": 17,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xa5cf9535d8c963fddf8b4d2910688fd08e3d4fd5",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 970,
-    "level": 5,
-    "feeds": 39,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x1ae1c0e6cb1a248395ae0d37c6f4e414e4d73651",
-    "baseXP": 0,
-    "newXP": 0,
+    "address": "0xfcdd9576e57ec7c6fb6e3cbcc776fe018f344211",
+    "baseXP": 945,
+    "newXP": 25,
     "xp": 970,
     "level": 4,
-    "feeds": 28,
-    "missed": 0,
+    "feeds": 3,
+    "missed": 18,
     "isDead": false
   },
   {
@@ -316,56 +456,6 @@
     "xp": 965,
     "level": 4,
     "feeds": 28,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xe9fbe0a03d07e13f9ecddc737e756590bc3db442",
-    "baseXP": 595,
-    "newXP": 365,
-    "xp": 960,
-    "level": 4,
-    "feeds": 36,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x64ecaf16062dd5efbe430eb393ab75fd138013e0",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 960,
-    "level": 0,
-    "feeds": 29,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xe12219f23dbc3e4d5bb6828491e5be0076bd513d",
-    "baseXP": 420,
-    "newXP": 535,
-    "xp": 955,
-    "level": 4,
-    "feeds": 30,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xfcdd9576e57ec7c6fb6e3cbcc776fe018f344211",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 945,
-    "level": 0,
-    "feeds": 3,
-    "missed": 18,
-    "isDead": false
-  },
-  {
-    "address": "0x9ec3a0ea6637f86d836e0d0a6873ed300b12cd89",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 935,
-    "level": 5,
-    "feeds": 32,
     "missed": 0,
     "isDead": false
   },
@@ -390,32 +480,22 @@
     "isDead": false
   },
   {
-    "address": "0xd736899d87327cc17b5742b8aab3f7e75f5cbb5f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 915,
-    "level": 5,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0xa6f955d5dae49ed7dda5014e43251654e2a7aeb2",
     "baseXP": 0,
     "newXP": 0,
     "xp": 915,
-    "level": 0,
+    "level": 4,
     "feeds": 28,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x80b21feaa7619e1e0beddce6d960dd1a5731e4fb",
+    "address": "0xf6cfcc755b18ef51457ac04c892f4486655de3bd",
     "baseXP": 0,
     "newXP": 0,
-    "xp": 910,
-    "level": 5,
-    "feeds": 32,
+    "xp": 900,
+    "level": 4,
+    "feeds": 33,
     "missed": 0,
     "isDead": false
   },
@@ -424,38 +504,8 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 900,
-    "level": 0,
+    "level": 4,
     "feeds": 26,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xbf83469bb3856b52576ef8ba1094359ab52f0092",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 890,
-    "level": 5,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x185fa30699b5b6043edc14fa97d96c9b744c5a3c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 875,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xa379ab5d686f63c7a43d67c3d35174a3dcbc1fe7",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 875,
-    "level": 4,
-    "feeds": 28,
     "missed": 0,
     "isDead": false
   },
@@ -464,38 +514,8 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 875,
-    "level": 4,
-    "feeds": 28,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xff43af4aa698ba087129372db56a53d85e81039f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 870,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x1bb0a453d80598d51e72966bc9df3207b31b0fe9",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 870,
-    "level": 4,
-    "feeds": 28,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x6a7244b2c84a122302c136ddefabd51b5eeb15c6",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 865,
     "level": 0,
-    "feeds": 32,
+    "feeds": 28,
     "missed": 0,
     "isDead": false
   },
@@ -510,17 +530,7 @@
     "isDead": false
   },
   {
-    "address": "0x630855e03e57a970067eacab4bb97d4cf7257ca4",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 855,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x7bc5e7c33cc168fd14393a81b831d3bbca906460",
+    "address": "0xf5d75542c34b16ea52941037861deb0f7c6316aa",
     "baseXP": 0,
     "newXP": 0,
     "xp": 855,
@@ -530,73 +540,53 @@
     "isDead": false
   },
   {
-    "address": "0x41366abce6e1596354f9a2e4431105354d3811ae",
+    "address": "0x94b99f6667478bf4ddac73632149de593f6a4277",
     "baseXP": 0,
     "newXP": 0,
-    "xp": 850,
+    "xp": 845,
+    "level": 4,
+    "feeds": 27,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x66a4c06b964b2d726bbeaee813be96a8c9dc6ae3",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 830,
+    "level": 4,
+    "feeds": 35,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xa6b8656828937fb629d5b339b0c20aaa1251f377",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 825,
     "level": 4,
     "feeds": 28,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x499099e292fe8a8de1e6e43e8cfa7d6566f3905e",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 845,
-    "level": 4,
-    "feeds": 30,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x726b56ef9657a77194c79d8adfbaab8fcb8bc069",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 845,
-    "level": 0,
-    "feeds": 28,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x0c8aba2d98013b20c563c4e899f406d3d677359d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 835,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xc583ac1806dd8c4f48c64ef9bc02da39bde5948d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 825,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xa2fbb2093ef1949a19fc9842036aa6800c3e5890",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 825,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x85de66b9b6fa0950957cf72f125163ab1ebdb31b",
-    "baseXP": 0,
-    "newXP": 0,
+    "address": "0x7426b2aa7cd8543d4891a79ad9bb5585be754025",
+    "baseXP": 155,
+    "newXP": 660,
     "xp": 815,
-    "level": 4,
-    "feeds": 32,
+    "level": 3,
+    "feeds": 48,
     "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x347ab785deb94379d2b294c513b4212d026c93b1",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 810,
+    "level": 3,
+    "feeds": 14,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -604,18 +594,8 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 810,
-    "level": 5,
+    "level": 0,
     "feeds": 28,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x64a865ddead1d08814949c50ed7bf6d9900c497d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 810,
-    "level": 4,
-    "feeds": 32,
     "missed": 0,
     "isDead": false
   },
@@ -626,26 +606,6 @@
     "xp": 805,
     "level": 4,
     "feeds": 28,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x5c410a852cd4c0a7b89bcca8a45a16f52e8d12ea",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 795,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x9d351f62fb67c9cfe765f195f424f02c71c26552",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 790,
-    "level": 4,
-    "feeds": 31,
     "missed": 0,
     "isDead": false
   },
@@ -670,6 +630,16 @@
     "isDead": false
   },
   {
+    "address": "0xb3171ca1d85e488ef649e7c3811bd120e3835fd8",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 770,
+    "level": 4,
+    "feeds": 17,
+    "missed": 2,
+    "isDead": false
+  },
+  {
     "address": "0xcc48656f7c7da6ce864f1a726d5e8dfb78999595",
     "baseXP": 0,
     "newXP": 0,
@@ -684,6 +654,26 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 770,
+    "level": 3,
+    "feeds": 14,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xa4fe9a46b9f932b83dc7d8e6a30896e1f8c95c89",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 760,
+    "level": 4,
+    "feeds": 17,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x340df0cd671cc84d286fe559b0aef5db2cc40cf7",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 760,
     "level": 3,
     "feeds": 14,
     "missed": 2,
@@ -710,23 +700,13 @@
     "isDead": false
   },
   {
-    "address": "0xa429f7bea7e847ad5e9eeab9eefe966a6fa1eb89",
-    "baseXP": 730,
+    "address": "0x314732e4ce628ba47d2ddea989beeaaefe81f257",
+    "baseXP": 0,
     "newXP": 0,
     "xp": 730,
     "level": 3,
-    "feeds": 8,
-    "missed": 6,
-    "isDead": false
-  },
-  {
-    "address": "0x3f9a402bb4aeb54dadda1e680b1451cfbb4d9325",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 720,
-    "level": 4,
-    "feeds": 32,
-    "missed": 0,
+    "feeds": 13,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -750,6 +730,16 @@
     "isDead": false
   },
   {
+    "address": "0xe5482c23bba1569c4b51e7079efdd3938b9e6ce1",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 695,
+    "level": 4,
+    "feeds": 40,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xa87ba93e782bd66912e7c0def505ddfb876fbb57",
     "baseXP": 0,
     "newXP": 0,
@@ -770,6 +760,36 @@
     "isDead": false
   },
   {
+    "address": "0xfa23b5da44c4ed29257eec4eef1e5cc53a8a6fee",
+    "baseXP": 0,
+    "newXP": 690,
+    "xp": 690,
+    "level": 3,
+    "feeds": 29,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xff90761d0f3a547f70ae1b21fe9759ae2a2f1a94",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 680,
+    "level": 3,
+    "feeds": 14,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x7885b5cab9f16366676ae9668ce80d3e27896549",
+    "baseXP": 575,
+    "newXP": 105,
+    "xp": 680,
+    "level": 3,
+    "feeds": 12,
+    "missed": 5,
+    "isDead": false
+  },
+  {
     "address": "0xe640ba590d3deb072e19ef3f6dd2bdedc1d462e6",
     "baseXP": 0,
     "newXP": 0,
@@ -780,12 +800,22 @@
     "isDead": false
   },
   {
-    "address": "0x594e8acdc5ce1f36568993d2adc1d6c891177292",
+    "address": "0x1ce541240ff07c4abcadae22bd0974b3250b5a77",
     "baseXP": 0,
     "newXP": 0,
-    "xp": 660,
-    "level": 2,
-    "feeds": 13,
+    "xp": 670,
+    "level": 4,
+    "feeds": 17,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x130af48578549ad9904ca216fb7fecbe9f3cf30a",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 670,
+    "level": 4,
+    "feeds": 17,
     "missed": 2,
     "isDead": false
   },
@@ -796,6 +826,16 @@
     "xp": 655,
     "level": 4,
     "feeds": 16,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x400f8a4832c2529a54285b2761128bce6085c145",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 655,
+    "level": 2,
+    "feeds": 13,
     "missed": 2,
     "isDead": false
   },
@@ -814,7 +854,7 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 650,
-    "level": 3,
+    "level": 0,
     "feeds": 15,
     "missed": 2,
     "isDead": false
@@ -840,6 +880,26 @@
     "isDead": false
   },
   {
+    "address": "0x7c52a33d608942489ef570ba6f6455746d962b07",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 640,
+    "level": 2,
+    "feeds": 14,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xad3215f4ea1720d612b48b580f90f7a141c8b408",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 635,
+    "level": 2,
+    "feeds": 15,
+    "missed": 2,
+    "isDead": false
+  },
+  {
     "address": "0x66998433bf56023cb1490c05d842dd58f4b89b90",
     "baseXP": 0,
     "newXP": 0,
@@ -850,12 +910,22 @@
     "isDead": false
   },
   {
-    "address": "0x353948b8f6e753603ff871e62805f16e8aa5a786",
+    "address": "0x7172d3cdc6225aaa649f7590f277907b5505af26",
+    "baseXP": 0,
+    "newXP": 630,
+    "xp": 630,
+    "level": 3,
+    "feeds": 38,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xfd9931f8bdad892ff97e59cd65a79b59b41bf688",
     "baseXP": 0,
     "newXP": 0,
     "xp": 630,
-    "level": 2,
-    "feeds": 14,
+    "level": 0,
+    "feeds": 17,
     "missed": 2,
     "isDead": false
   },
@@ -870,31 +940,11 @@
     "isDead": true
   },
   {
-    "address": "0xfe123c80a4b5b7f3635fa6289b78c470e220b8bc",
-    "baseXP": 0,
-    "newXP": 615,
-    "xp": 615,
-    "level": 3,
-    "feeds": 29,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x54f8b1eac2904032bcd46c9922f2369c21caeb4a",
-    "baseXP": 0,
-    "newXP": 615,
-    "xp": 615,
-    "level": 3,
-    "feeds": 26,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0xb2957922bd0a615ee09d47049ff8322cd263a686",
     "baseXP": 0,
     "newXP": 0,
     "xp": 615,
-    "level": 2,
+    "level": 0,
     "feeds": 14,
     "missed": 2,
     "isDead": false
@@ -905,8 +955,18 @@
     "newXP": 0,
     "xp": 605,
     "level": 2,
-    "feeds": 14,
+    "feeds": 0,
     "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x5cf6ca52e9b3103e5d987f95c2391799310611e4",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 600,
+    "level": 4,
+    "feeds": 38,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -920,23 +980,33 @@
     "isDead": false
   },
   {
-    "address": "0x373b0cdfce82031bec043137eb91557845959603",
+    "address": "0xe9fbe0a03d07e13f9ecddc737e756590bc3db442",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 595,
+    "level": 4,
+    "feeds": 36,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x7437ac7d6793ebb3b181b17dd11dbcde94e2976b",
     "baseXP": 0,
     "newXP": 0,
     "xp": 595,
     "level": 2,
-    "feeds": 14,
+    "feeds": 15,
     "missed": 2,
     "isDead": false
   },
   {
-    "address": "0xd3f2d01e5309f88f74bf2c6001a7629d1084c5d4",
+    "address": "0x45deb798eaa21ad30e5aa3d25aa515238bb02034",
     "baseXP": 0,
     "newXP": 0,
-    "xp": 585,
-    "level": 4,
-    "feeds": 19,
-    "missed": 0,
+    "xp": 590,
+    "level": 2,
+    "feeds": 14,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -950,43 +1020,23 @@
     "isDead": true
   },
   {
+    "address": "0xe43cbaf8f0e0ae06483f589869df90733ad6cedb",
+    "baseXP": 0,
+    "newXP": 585,
+    "xp": 585,
+    "level": 3,
+    "feeds": 27,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x45fb3bc350ea4a7e1601172fda721c05521d09af",
     "baseXP": 0,
     "newXP": 0,
     "xp": 585,
-    "level": 2,
+    "level": 0,
     "feeds": 13,
     "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x77f5c9bf75897c95ea8e368553e048c89695eb19",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 580,
-    "level": 2,
-    "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xe4c19067510e0cb050fcb91d451497b459f87d58",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 575,
-    "level": 2,
-    "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x7885b5cab9f16366676ae9668ce80d3e27896549",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 575,
-    "level": 0,
-    "feeds": 12,
-    "missed": 5,
     "isDead": false
   },
   {
@@ -1000,6 +1050,16 @@
     "isDead": true
   },
   {
+    "address": "0x2586f56fe0b80581640232e88406b0cc4183cda1",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 570,
+    "level": 3,
+    "feeds": 15,
+    "missed": 2,
+    "isDead": false
+  },
+  {
     "address": "0xf8a00c50062d9362e3ef300c562129e758cb2afb",
     "baseXP": 0,
     "newXP": 0,
@@ -1008,6 +1068,26 @@
     "feeds": 14,
     "missed": 8,
     "isDead": true
+  },
+  {
+    "address": "0x4cb4a31ff91bb17245fdd15f703a23cc39b91f14",
+    "baseXP": 0,
+    "newXP": 570,
+    "xp": 570,
+    "level": 3,
+    "feeds": 27,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xad14d00326480e69babe5d634f1cde988def8311",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 570,
+    "level": 0,
+    "feeds": 15,
+    "missed": 2,
+    "isDead": false
   },
   {
     "address": "0x2381ea60732063d2f0d6628d34d4f0310e4227c2",
@@ -1020,52 +1100,12 @@
     "isDead": false
   },
   {
-    "address": "0x347ab785deb94379d2b294c513b4212d026c93b1",
-    "baseXP": 565,
-    "newXP": 0,
-    "xp": 565,
-    "level": 3,
-    "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
     "address": "0xd2334ecc5e6727b7d374ff3c4f7b4f77ea7c48c6",
     "baseXP": 0,
     "newXP": 0,
     "xp": 565,
-    "level": 2,
+    "level": 0,
     "feeds": 15,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x340df0cd671cc84d286fe559b0aef5db2cc40cf7",
-    "baseXP": 550,
-    "newXP": 0,
-    "xp": 550,
-    "level": 3,
-    "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x6a9e771912c7b238c2a12034898f261c739294fa",
-    "baseXP": 0,
-    "newXP": 550,
-    "xp": 550,
-    "level": 3,
-    "feeds": 21,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xfefc5ea100699fc1cada72e15afe2e2a8f7e500a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 550,
-    "level": 2,
-    "feeds": 13,
     "missed": 2,
     "isDead": false
   },
@@ -1090,16 +1130,6 @@
     "isDead": false
   },
   {
-    "address": "0xff90761d0f3a547f70ae1b21fe9759ae2a2f1a94",
-    "baseXP": 530,
-    "newXP": 0,
-    "xp": 530,
-    "level": 3,
-    "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
     "address": "0x5ea987c3b37293b52da510bf073334f85a6c2067",
     "baseXP": 0,
     "newXP": 0,
@@ -1110,23 +1140,13 @@
     "isDead": false
   },
   {
-    "address": "0x314732e4ce628ba47d2ddea989beeaaefe81f257",
-    "baseXP": 520,
-    "newXP": 0,
+    "address": "0x9f1d80da21fa4855c247ebca0baa69d7bd7fea66",
+    "baseXP": 0,
+    "newXP": 520,
     "xp": 520,
     "level": 3,
-    "feeds": 13,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x3d39e14853fc2c32b75800fb5c1b1d2795dcb24f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 510,
-    "level": 2,
-    "feeds": 15,
-    "missed": 2,
+    "feeds": 19,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -1134,8 +1154,18 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 510,
-    "level": 0,
+    "level": 4,
     "feeds": 31,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x8b19f9ad34eca53c3d77e67eb9fff92b5f217894",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 505,
+    "level": 3,
+    "feeds": 22,
     "missed": 0,
     "isDead": false
   },
@@ -1144,27 +1174,7 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 505,
-    "level": 0,
-    "feeds": 15,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x8b19f9ad34eca53c3d77e67eb9fff92b5f217894",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 505,
-    "level": 0,
-    "feeds": 22,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x2586f56fe0b80581640232e88406b0cc4183cda1",
-    "baseXP": 502,
-    "newXP": 0,
-    "xp": 502,
-    "level": 3,
+    "level": 2,
     "feeds": 15,
     "missed": 2,
     "isDead": false
@@ -1180,23 +1190,13 @@
     "isDead": false
   },
   {
-    "address": "0x976387ca0f67602aed792ae7ebb2c60762780b41",
+    "address": "0x2f3ca287776893ead02d6b3f1de3bc9fe81a7597",
     "baseXP": 0,
     "newXP": 495,
     "xp": 495,
     "level": 2,
-    "feeds": 14,
+    "feeds": 16,
     "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x7437ac7d6793ebb3b181b17dd11dbcde94e2976b",
-    "baseXP": 492,
-    "newXP": 0,
-    "xp": 492,
-    "level": 2,
-    "feeds": 15,
-    "missed": 2,
     "isDead": false
   },
   {
@@ -1206,16 +1206,6 @@
     "xp": 487,
     "level": 2,
     "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xad3215f4ea1720d612b48b580f90f7a141c8b408",
-    "baseXP": 485,
-    "newXP": 0,
-    "xp": 485,
-    "level": 2,
-    "feeds": 15,
     "missed": 2,
     "isDead": false
   },
@@ -1230,22 +1220,22 @@
     "isDead": false
   },
   {
-    "address": "0xad14d00326480e69babe5d634f1cde988def8311",
-    "baseXP": 480,
+    "address": "0x594e8acdc5ce1f36568993d2adc1d6c891177292",
+    "baseXP": 482,
     "newXP": 0,
-    "xp": 480,
+    "xp": 482,
     "level": 2,
-    "feeds": 15,
+    "feeds": 13,
     "missed": 2,
     "isDead": false
   },
   {
-    "address": "0x2b9bc2ca48ea2ccca5e227d971425e04c812a4a5",
-    "baseXP": 0,
+    "address": "0x353948b8f6e753603ff871e62805f16e8aa5a786",
+    "baseXP": 477,
     "newXP": 0,
-    "xp": 475,
-    "level": 0,
-    "feeds": 15,
+    "xp": 477,
+    "level": 2,
+    "feeds": 14,
     "missed": 2,
     "isDead": false
   },
@@ -1260,10 +1250,10 @@
     "isDead": false
   },
   {
-    "address": "0x45deb798eaa21ad30e5aa3d25aa515238bb02034",
-    "baseXP": 465,
+    "address": "0xe4c19067510e0cb050fcb91d451497b459f87d58",
+    "baseXP": 467,
     "newXP": 0,
-    "xp": 465,
+    "xp": 467,
     "level": 2,
     "feeds": 14,
     "missed": 2,
@@ -1280,23 +1270,13 @@
     "isDead": false
   },
   {
-    "address": "0x7c52a33d608942489ef570ba6f6455746d962b07",
-    "baseXP": 460,
-    "newXP": 0,
+    "address": "0x499a497c9433557f3372a18ee88e3f3730abceb8",
+    "baseXP": 30,
+    "newXP": 430,
     "xp": 460,
     "level": 2,
-    "feeds": 14,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x400f8a4832c2529a54285b2761128bce6085c145",
-    "baseXP": 457,
-    "newXP": 0,
-    "xp": 457,
-    "level": 2,
-    "feeds": 13,
-    "missed": 2,
+    "feeds": 21,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -1340,12 +1320,72 @@
     "isDead": false
   },
   {
-    "address": "0xf57114d5c130de71713ca085e189d5b452fb8197",
-    "baseXP": 350,
-    "newXP": 90,
-    "xp": 440,
+    "address": "0x044e02a5ec7b4a4d07c981f00ca7c3e49be96f8c",
+    "baseXP": 0,
+    "newXP": 450,
+    "xp": 450,
     "level": 2,
-    "feeds": 16,
+    "feeds": 20,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x373b0cdfce82031bec043137eb91557845959603",
+    "baseXP": 447,
+    "newXP": 0,
+    "xp": 447,
+    "level": 2,
+    "feeds": 14,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x77f5c9bf75897c95ea8e368553e048c89695eb19",
+    "baseXP": 447,
+    "newXP": 0,
+    "xp": 447,
+    "level": 2,
+    "feeds": 14,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x3d39e14853fc2c32b75800fb5c1b1d2795dcb24f",
+    "baseXP": 445,
+    "newXP": 0,
+    "xp": 445,
+    "level": 2,
+    "feeds": 15,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xfefc5ea100699fc1cada72e15afe2e2a8f7e500a",
+    "baseXP": 432,
+    "newXP": 0,
+    "xp": 432,
+    "level": 2,
+    "feeds": 13,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x02aa319b5ce28294b7207bdce3bbcf4bf514c05b",
+    "baseXP": 320,
+    "newXP": 110,
+    "xp": 430,
+    "level": 2,
+    "feeds": 8,
+    "missed": 13,
+    "isDead": false
+  },
+  {
+    "address": "0xe12219f23dbc3e4d5bb6828491e5be0076bd513d",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 420,
+    "level": 4,
+    "feeds": 30,
     "missed": 0,
     "isDead": false
   },
@@ -1354,19 +1394,19 @@
     "baseXP": 405,
     "newXP": 0,
     "xp": 405,
-    "level": 0,
+    "level": 2,
     "feeds": 15,
     "missed": 2,
     "isDead": false
   },
   {
-    "address": "0xd677e6458c75f3a875aa98822cb6543f4ecf1177",
-    "baseXP": 0,
+    "address": "0x2b9bc2ca48ea2ccca5e227d971425e04c812a4a5",
+    "baseXP": 397,
     "newXP": 0,
-    "xp": 400,
-    "level": 1,
-    "feeds": 8,
-    "missed": 5,
+    "xp": 397,
+    "level": 2,
+    "feeds": 15,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -1380,43 +1420,13 @@
     "isDead": false
   },
   {
-    "address": "0x2626541d549b134519a65d4f25a4541f916fc104",
-    "baseXP": 0,
-    "newXP": 390,
-    "xp": 390,
-    "level": 2,
-    "feeds": 29,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xcb9c2ddb66a9b39ad3012c489caf311cf35c9af9",
-    "baseXP": 0,
-    "newXP": 390,
-    "xp": 390,
-    "level": 2,
-    "feeds": 17,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xb8a120819d130a12966cc60a476f07ab01c17360",
-    "baseXP": 0,
-    "newXP": 390,
-    "xp": 390,
-    "level": 2,
-    "feeds": 14,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x9d0ed8863ac12261b46fea1b832aba902889f7fe",
+    "address": "0x19f0d180e78dc21bd95689650d4838265db37978",
     "baseXP": 0,
     "newXP": 385,
     "xp": 385,
     "level": 2,
-    "feeds": 21,
-    "missed": 1,
+    "feeds": 15,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -1430,72 +1440,62 @@
     "isDead": false
   },
   {
-    "address": "0xa857ec0639fc780c5390b61f73fe1ef0340e1a08",
+    "address": "0x1e115de33ee2e947377bc91fd973dbe9393a4aa6",
     "baseXP": 0,
     "newXP": 380,
     "xp": 380,
     "level": 2,
-    "feeds": 14,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xa74dfc86f8e81351ece829d500a2a00a6f3d3226",
-    "baseXP": 0,
-    "newXP": 375,
-    "xp": 375,
-    "level": 2,
-    "feeds": 16,
+    "feeds": 13,
     "missed": 1,
     "isDead": false
   },
   {
-    "address": "0x6d350fb6948c0442a2526b9dc3d009abbbe523f9",
+    "address": "0xaeb60bf01b5c1a5381080b4b6c1a9f4e521661de",
     "baseXP": 0,
-    "newXP": 375,
-    "xp": 375,
+    "newXP": 380,
+    "xp": 380,
     "level": 2,
-    "feeds": 11,
+    "feeds": 19,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xd3b7e0ac7bc72fbafdb24985888a64b6e10907f9",
-    "baseXP": 0,
-    "newXP": 370,
+    "address": "0x0c363c9ccc95c99feb28324a15b401c92101b876",
+    "baseXP": 155,
+    "newXP": 215,
     "xp": 370,
     "level": 2,
-    "feeds": 22,
-    "missed": 0,
+    "feeds": 3,
+    "missed": 8,
     "isDead": false
   },
   {
-    "address": "0xc0e9d80504a520217ad30e446c738355c8d3cd9d",
+    "address": "0x4602d9f9dec124477e9a5f8944c3ee3b279570a7",
     "baseXP": 0,
     "newXP": 370,
     "xp": 370,
     "level": 2,
     "feeds": 14,
+    "missed": 1,
+    "isDead": false
+  },
+  {
+    "address": "0xb2997c8acf17d63f5d2aa08db5329b80ee219ba7",
+    "baseXP": 0,
+    "newXP": 370,
+    "xp": 370,
+    "level": 2,
+    "feeds": 19,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xfd66cd1ce67c056edb5a3318a5b158c43bebc442",
+    "address": "0xd9a5b8c4428db19c54611504c021f11204140db9",
     "baseXP": 0,
     "newXP": 365,
     "xp": 365,
     "level": 2,
-    "feeds": 14,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x01a0e9d3b866f7268f06b03331d7d4980db93bbc",
-    "baseXP": 0,
-    "newXP": 365,
-    "xp": 365,
-    "level": 2,
-    "feeds": 15,
+    "feeds": 23,
     "missed": 0,
     "isDead": false
   },
@@ -1510,12 +1510,22 @@
     "isDead": false
   },
   {
-    "address": "0x92a166c7d643d662bfd81946c6355e8b4184f9dd",
+    "address": "0x9d56f1628618cb9cb673d965d57ebcb0e6f9affe",
     "baseXP": 0,
-    "newXP": 355,
-    "xp": 355,
-    "level": 2,
+    "newXP": 0,
+    "xp": 350,
+    "level": 3,
     "feeds": 20,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xf57114d5c130de71713ca085e189d5b452fb8197",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 350,
+    "level": 2,
+    "feeds": 16,
     "missed": 0,
     "isDead": false
   },
@@ -1530,26 +1540,6 @@
     "isDead": false
   },
   {
-    "address": "0x9d56f1628618cb9cb673d965d57ebcb0e6f9affe",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 350,
-    "level": 0,
-    "feeds": 20,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xbf4146515d4c32ff7441eff9d32b7c017c0644d8",
-    "baseXP": 0,
-    "newXP": 345,
-    "xp": 345,
-    "level": 2,
-    "feeds": 16,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x51935ee0c3f31260b16ae7faca346e3de838102b",
     "baseXP": 0,
     "newXP": 345,
@@ -1560,63 +1550,33 @@
     "isDead": false
   },
   {
-    "address": "0x11305eb45fcf932d1a312c911c99b3980bf551b4",
-    "baseXP": 77,
-    "newXP": 255,
-    "xp": 332,
+    "address": "0x5ccba660f6adae25e9480ef9b67570a0c311014a",
+    "baseXP": 0,
+    "newXP": 335,
+    "xp": 335,
     "level": 2,
-    "feeds": 15,
+    "feeds": 17,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x02aa319b5ce28294b7207bdce3bbcf4bf514c05b",
-    "baseXP": 0,
-    "newXP": 0,
+    "address": "0x0dacd18480fbd5f80a1cc41fb8f51bb186fe0782",
+    "baseXP": 45,
+    "newXP": 275,
     "xp": 320,
     "level": 2,
-    "feeds": 8,
-    "missed": 13,
-    "isDead": false
-  },
-  {
-    "address": "0x3c52d8261446840ac816cf742790a9085090ea43",
-    "baseXP": 0,
-    "newXP": 310,
-    "xp": 310,
-    "level": 2,
-    "feeds": 9,
+    "feeds": 16,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xf42caa1d3f346f859157c5c2bf06d83379f5c824",
+    "address": "0x4470015801ca72ecca3e94b1c0125ed4ff91772c",
     "baseXP": 0,
-    "newXP": 305,
-    "xp": 305,
+    "newXP": 315,
+    "xp": 315,
     "level": 2,
-    "feeds": 7,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x38b75ceecf0a430fc2cb4e4bb751c4a7353fd6f1",
-    "baseXP": 0,
-    "newXP": 305,
-    "xp": 305,
-    "level": 2,
-    "feeds": 6,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0xa2ea6bc2ceff7fe0143b41665d3aca01c7cbd846",
-    "baseXP": 70,
-    "newXP": 230,
-    "xp": 300,
-    "level": 2,
-    "feeds": 13,
-    "missed": 0,
+    "feeds": 19,
+    "missed": 4,
     "isDead": false
   },
   {
@@ -1624,7 +1584,7 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 300,
-    "level": 0,
+    "level": 4,
     "feeds": 32,
     "missed": 1,
     "isDead": false
@@ -1640,43 +1600,13 @@
     "isDead": false
   },
   {
-    "address": "0x591305d91f62ac15282e3789d65f2c5696b473a5",
+    "address": "0x6b42229a06a23c3b1deb16f9a5e2a4462d9e9369",
     "baseXP": 0,
     "newXP": 290,
     "xp": 290,
     "level": 2,
-    "feeds": 16,
+    "feeds": 6,
     "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x17693958df6fcab2cdd28203a790f555a4fa34f6",
-    "baseXP": 0,
-    "newXP": 290,
-    "xp": 290,
-    "level": 2,
-    "feeds": 10,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x0c363c9ccc95c99feb28324a15b401c92101b876",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 290,
-    "level": 0,
-    "feeds": 3,
-    "missed": 8,
-    "isDead": false
-  },
-  {
-    "address": "0xb6bd1b9b3e6e3512bb354789289f6d8fbc0f65bc",
-    "baseXP": 135,
-    "newXP": 150,
-    "xp": 285,
-    "level": 2,
-    "feeds": 1,
-    "missed": 13,
     "isDead": false
   },
   {
@@ -1686,16 +1616,6 @@
     "xp": 285,
     "level": 2,
     "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x768144b29ff8e3cbfca51d96b46f2cf841fdb1ab",
-    "baseXP": 0,
-    "newXP": 280,
-    "xp": 280,
-    "level": 2,
-    "feeds": 9,
     "missed": 0,
     "isDead": false
   },
@@ -1720,12 +1640,12 @@
     "isDead": false
   },
   {
-    "address": "0x0c5f3d7574a2733f63e65491f42256fb120b9fa1",
+    "address": "0x0d7e3d4de520f4c5dfdc36c39a1e5d41e980fe2e",
     "baseXP": 0,
     "newXP": 275,
     "xp": 275,
     "level": 2,
-    "feeds": 14,
+    "feeds": 13,
     "missed": 0,
     "isDead": false
   },
@@ -1736,16 +1656,6 @@
     "xp": 275,
     "level": 2,
     "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xf28720b5f0be281359bc1bc5edb047b71082b4fb",
-    "baseXP": 0,
-    "newXP": 275,
-    "xp": 275,
-    "level": 2,
-    "feeds": 8,
     "missed": 0,
     "isDead": false
   },
@@ -1770,16 +1680,6 @@
     "isDead": false
   },
   {
-    "address": "0xaeeed1f1957e60a739f639e20c4ce5a1279f3c57",
-    "baseXP": 0,
-    "newXP": 270,
-    "xp": 270,
-    "level": 2,
-    "feeds": 13,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x28b81bee3dd53ad6ccc7718f97ce83b29035bfae",
     "baseXP": 0,
     "newXP": 270,
@@ -1800,64 +1700,44 @@
     "isDead": false
   },
   {
-    "address": "0xb653b2ce4c8ea853afc3b69160f931478b0f0229",
-    "baseXP": 0,
-    "newXP": 265,
-    "xp": 265,
-    "level": 2,
-    "feeds": 9,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xe1ebc95a0cd6e543cba41e33863649d11871e6cb",
-    "baseXP": 0,
-    "newXP": 265,
-    "xp": 265,
-    "level": 2,
-    "feeds": 5,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x5243d2e4a9a0be17dcf40bae4f9cdb8eb776a34d",
     "baseXP": 0,
     "newXP": 0,
     "xp": 265,
-    "level": 0,
+    "level": 3,
     "feeds": 16,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x2e277513a7f8b1888f19e5770c6d40a478134a99",
+    "address": "0xebbaedce6b4d9339280b933726e7902c38cf5064",
+    "baseXP": 0,
+    "newXP": 265,
+    "xp": 265,
+    "level": 2,
+    "feeds": 8,
+    "missed": 7,
+    "isDead": false
+  },
+  {
+    "address": "0xea20b607b7c4e6749f1f7889efe94030629fed61",
+    "baseXP": 0,
+    "newXP": 265,
+    "xp": 265,
+    "level": 2,
+    "feeds": 7,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xed737741c91c6a2ed9727d1eb6a032949744a83a",
     "baseXP": 0,
     "newXP": 260,
     "xp": 260,
     "level": 2,
     "feeds": 1,
-    "missed": 17,
+    "missed": 16,
     "isDead": true
-  },
-  {
-    "address": "0x0dc71b4a1e0d9db08b79e00a2d6778515bb9a556",
-    "baseXP": 0,
-    "newXP": 260,
-    "xp": 260,
-    "level": 2,
-    "feeds": 2,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xff2a8a949fcbe30370b9b640251addf04d3ca138",
-    "baseXP": 0,
-    "newXP": 255,
-    "xp": 255,
-    "level": 2,
-    "feeds": 10,
-    "missed": 2,
-    "isDead": false
   },
   {
     "address": "0x0b25eda27e92f3be8db0edebd536d0a0a17ac854",
@@ -1867,36 +1747,6 @@
     "level": 2,
     "feeds": 7,
     "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0xd57e9faaeb48acd002f99c876a960bc46a6cff42",
-    "baseXP": 0,
-    "newXP": 255,
-    "xp": 255,
-    "level": 2,
-    "feeds": 7,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xa470df3631ea72e734c0ef4dae965810f6e68034",
-    "baseXP": 0,
-    "newXP": 255,
-    "xp": 255,
-    "level": 2,
-    "feeds": 3,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0x17f67d8fc5dc6f0b4442564af539edddc76aaf1d",
-    "baseXP": 0,
-    "newXP": 255,
-    "xp": 255,
-    "level": 2,
-    "feeds": 3,
-    "missed": 0,
     "isDead": false
   },
   {
@@ -1910,26 +1760,6 @@
     "isDead": false
   },
   {
-    "address": "0x4d35f6f6357a8ab60576b2b0e2e7dc79f6506808",
-    "baseXP": 0,
-    "newXP": 250,
-    "xp": 250,
-    "level": 2,
-    "feeds": 5,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0xc01580c3d1ff832800e2536bcbfda1f11eadf67e",
-    "baseXP": 0,
-    "newXP": 250,
-    "xp": 250,
-    "level": 2,
-    "feeds": 4,
-    "missed": 2,
-    "isDead": false
-  },
-  {
     "address": "0x178d49fbe1aaf398f5000696300c2b0851e49914",
     "baseXP": 57,
     "newXP": 190,
@@ -1937,16 +1767,6 @@
     "level": 1,
     "feeds": 9,
     "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x95f43144b6e161afab45adf7f15aabfac658bc7f",
-    "baseXP": 0,
-    "newXP": 245,
-    "xp": 245,
-    "level": 1,
-    "feeds": 6,
-    "missed": 14,
     "isDead": false
   },
   {
@@ -1960,33 +1780,43 @@
     "isDead": false
   },
   {
-    "address": "0x09583a1a1e7e3dfb938f02f89abc1e0b35d9560b",
+    "address": "0x3e27e6a480feb8bbefb3a93fe0d07b06e644a342",
     "baseXP": 0,
     "newXP": 245,
     "xp": 245,
     "level": 1,
-    "feeds": 3,
-    "missed": 0,
+    "feeds": 4,
+    "missed": 1,
     "isDead": false
   },
   {
-    "address": "0x43a362050e15990403978031cc3361c550ff87c4",
-    "baseXP": 75,
-    "newXP": 165,
-    "xp": 240,
+    "address": "0x4f59a12b1cabf875338ea8eb482004bc5c710267",
+    "baseXP": 0,
+    "newXP": 245,
+    "xp": 245,
     "level": 1,
     "feeds": 2,
-    "missed": 18,
+    "missed": 1,
     "isDead": false
   },
   {
-    "address": "0x032cd46f158d45dd931215a2dd49dddb9c18d817",
+    "address": "0xe6607a55247cb8fbdb5066fe76c0b591e76f0ccf",
     "baseXP": 0,
     "newXP": 240,
     "xp": 240,
     "level": 1,
-    "feeds": 4,
-    "missed": 6,
+    "feeds": 11,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x90bb554dc6aa4612a158d07c74599183679357bb",
+    "baseXP": 0,
+    "newXP": 240,
+    "xp": 240,
+    "level": 1,
+    "feeds": 10,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -2000,43 +1830,63 @@
     "isDead": false
   },
   {
-    "address": "0xa54203d69a23f6b8f5145ecc00f1d8c90a904f77",
+    "address": "0xfac1999a9ee4fb49e75d783aaafdec895a8bd171",
     "baseXP": 0,
-    "newXP": 235,
-    "xp": 235,
+    "newXP": 240,
+    "xp": 240,
     "level": 1,
-    "feeds": 1,
+    "feeds": 2,
     "missed": 3,
     "isDead": false
   },
   {
-    "address": "0x9ee327974ecbbddbdf736750d302f72c63a04b32",
+    "address": "0x6743529cfb72d35e915906514e45644996367604",
     "baseXP": 0,
-    "newXP": 235,
-    "xp": 235,
+    "newXP": 240,
+    "xp": 240,
     "level": 1,
     "feeds": 1,
-    "missed": 3,
+    "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xd111886cb7eff60f390e8f4c4f7c288c21988d51",
-    "baseXP": 0,
-    "newXP": 235,
+    "address": "0xd677e6458c75f3a875aa98822cb6543f4ecf1177",
+    "baseXP": 205,
+    "newXP": 30,
     "xp": 235,
     "level": 1,
-    "feeds": 1,
-    "missed": 3,
+    "feeds": 8,
+    "missed": 5,
     "isDead": false
   },
   {
-    "address": "0x37c660a2005bbe02c817065cb6a70553a1166740",
+    "address": "0x2426079026043f3c19dc57a0ffb5309cf660b351",
     "baseXP": 0,
     "newXP": 235,
     "xp": 235,
     "level": 1,
     "feeds": 1,
-    "missed": 2,
+    "missed": 14,
+    "isDead": true
+  },
+  {
+    "address": "0x623e25d3ff94e180fc7d0de19643f9f56bbf5c71",
+    "baseXP": 0,
+    "newXP": 235,
+    "xp": 235,
+    "level": 1,
+    "feeds": 1,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0x9e3e83b4e0974a6c361830bb72d32b72f37268d2",
+    "baseXP": 0,
+    "newXP": 235,
+    "xp": 235,
+    "level": 1,
+    "feeds": 1,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -2054,30 +1904,70 @@
     "baseXP": 0,
     "newXP": 0,
     "xp": 230,
-    "level": 1,
+    "level": 0,
     "feeds": 10,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x3c96ac495b5a1c85b05a84af246c887677ade3cd",
+    "address": "0x0f5c591bfc8cd98b85579bfbcba2b101a194e187",
     "baseXP": 0,
-    "newXP": 230,
-    "xp": 230,
+    "newXP": 225,
+    "xp": 225,
+    "level": 1,
+    "feeds": 20,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xc4fd3b7707e11bf5a598ecb9aceba63f20c6742c",
+    "baseXP": 0,
+    "newXP": 225,
+    "xp": 225,
+    "level": 1,
+    "feeds": 8,
+    "missed": 1,
+    "isDead": false
+  },
+  {
+    "address": "0x2fc06d9811b52d2aecb3209b86e1793411994d1c",
+    "baseXP": 0,
+    "newXP": 225,
+    "xp": 225,
+    "level": 1,
+    "feeds": 9,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x8053e6f6347937ccd93c5c5a4f42008d42b348a6",
+    "baseXP": 0,
+    "newXP": 225,
+    "xp": 225,
     "level": 1,
     "feeds": 4,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xeae7d8cf54c44347e3cd9be223e7df8a4f1ba88c",
+    "address": "0xc83ed61f1a541232ec194cc34a072475f6254235",
+    "baseXP": 0,
+    "newXP": 225,
+    "xp": 225,
+    "level": 1,
+    "feeds": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x6dd74e43fbd34bcde70450f945e61350c618011c",
     "baseXP": 0,
     "newXP": 225,
     "xp": 225,
     "level": 1,
     "feeds": 2,
-    "missed": 16,
-    "isDead": true
+    "missed": 10,
+    "isDead": false
   },
   {
     "address": "0x00f834b3a5ae977d5943fe6da85896d91b888658",
@@ -2087,16 +1977,6 @@
     "level": 1,
     "feeds": 2,
     "missed": 5,
-    "isDead": false
-  },
-  {
-    "address": "0xf2d14261487d7891fa9426ab2989c112ebaedbde",
-    "baseXP": 0,
-    "newXP": 220,
-    "xp": 220,
-    "level": 1,
-    "feeds": 7,
-    "missed": 3,
     "isDead": false
   },
   {
@@ -2115,28 +1995,18 @@
     "newXP": 215,
     "xp": 215,
     "level": 1,
-    "feeds": 1,
+    "feeds": 0,
     "missed": 10,
     "isDead": false
   },
   {
-    "address": "0x2711d47b32516cbac68e5f1f084647b0f31bfbd0",
+    "address": "0x51d769a7e3f69e166eac6b1275dc21216c84f957",
     "baseXP": 0,
     "newXP": 215,
     "xp": 215,
     "level": 1,
-    "feeds": 1,
-    "missed": 9,
-    "isDead": false
-  },
-  {
-    "address": "0x6e11cbee1f6f417043818495c4cec5b03bcf19cb",
-    "baseXP": 0,
-    "newXP": 215,
-    "xp": 215,
-    "level": 1,
-    "feeds": 1,
-    "missed": 9,
+    "feeds": 5,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -2150,13 +2020,13 @@
     "isDead": false
   },
   {
-    "address": "0xa45e6d2741940aa75abeaf5b399ad6b5b353cc05",
+    "address": "0x172202cae664e4b15a56695177816e57f93555b3",
     "baseXP": 0,
     "newXP": 215,
     "xp": 215,
     "level": 1,
     "feeds": 1,
-    "missed": 9,
+    "missed": 6,
     "isDead": false
   },
   {
@@ -2164,6 +2034,66 @@
     "baseXP": 0,
     "newXP": 215,
     "xp": 215,
+    "level": 1,
+    "feeds": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x3bd62695ff1b6af4f0998e775b3558b64e6779c9",
+    "baseXP": 0,
+    "newXP": 210,
+    "xp": 210,
+    "level": 1,
+    "feeds": 6,
+    "missed": 11,
+    "isDead": false
+  },
+  {
+    "address": "0x02e0f81ab1a17647dce56386fe90cf1e6180590f",
+    "baseXP": 0,
+    "newXP": 210,
+    "xp": 210,
+    "level": 1,
+    "feeds": 5,
+    "missed": 6,
+    "isDead": false
+  },
+  {
+    "address": "0xf14841658b250934c3a7f7888ca61e52b0a044ac",
+    "baseXP": 0,
+    "newXP": 210,
+    "xp": 210,
+    "level": 1,
+    "feeds": 2,
+    "missed": 13,
+    "isDead": false
+  },
+  {
+    "address": "0x9cf46546d32b0698f4313936ff41ec4abdb4b49e",
+    "baseXP": 0,
+    "newXP": 210,
+    "xp": 210,
+    "level": 1,
+    "feeds": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x64c0f0003b98b4554a5964278e8dcb92e700eb63",
+    "baseXP": 0,
+    "newXP": 210,
+    "xp": 210,
+    "level": 1,
+    "feeds": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xedd028db23cab7cb92c8695b95624966b3cc8b87",
+    "baseXP": 0,
+    "newXP": 205,
+    "xp": 205,
     "level": 1,
     "feeds": 4,
     "missed": 0,
@@ -2180,13 +2110,23 @@
     "isDead": false
   },
   {
-    "address": "0x4e955e365b675c36b0d95d2fc9fa262d99feded0",
-    "baseXP": 72,
-    "newXP": 130,
-    "xp": 202,
+    "address": "0x75466dda57aed3bb068ce1afe63c41f73344834f",
+    "baseXP": 0,
+    "newXP": 205,
+    "xp": 205,
     "level": 1,
-    "feeds": 3,
+    "feeds": 4,
     "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xada6d92bde610714f2b91f13d39713e06dd30866",
+    "baseXP": 0,
+    "newXP": 205,
+    "xp": 205,
+    "level": 1,
+    "feeds": 6,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -2216,7 +2156,7 @@
     "xp": 195,
     "level": 1,
     "feeds": 4,
-    "missed": 14,
+    "missed": 0,
     "isDead": true
   },
   {
@@ -2230,13 +2170,33 @@
     "isDead": false
   },
   {
-    "address": "0xf5d868ecd9c9c9923c61da96f0779ef46f829457",
+    "address": "0x920f8b1dbf3399df54dbda00b72d3c5ed3afa171",
     "baseXP": 0,
     "newXP": 195,
     "xp": 195,
     "level": 1,
     "feeds": 1,
     "missed": 11,
+    "isDead": true
+  },
+  {
+    "address": "0x4b8df89f825c4a96f6eb33c8051b8c8b6a9c1540",
+    "baseXP": 0,
+    "newXP": 195,
+    "xp": 195,
+    "level": 1,
+    "feeds": 2,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x134d230fab42d29ce0c00b4c0d8cb9067054cf19",
+    "baseXP": 0,
+    "newXP": 195,
+    "xp": 195,
+    "level": 1,
+    "feeds": 2,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -2260,13 +2220,13 @@
     "isDead": false
   },
   {
-    "address": "0xc51f58fcd77348b4767e3d7eb4d7529e49787f26",
+    "address": "0xe24cbb454c6c0dfeb0611f8b65c32938f22569f7",
     "baseXP": 0,
     "newXP": 190,
     "xp": 190,
     "level": 1,
-    "feeds": 2,
-    "missed": 6,
+    "feeds": 1,
+    "missed": 7,
     "isDead": false
   },
   {
@@ -2280,13 +2240,13 @@
     "isDead": false
   },
   {
-    "address": "0x20337afb68ac8804ae07fa692bf678977f54e83b",
-    "baseXP": 5,
-    "newXP": 180,
+    "address": "0xa12ab984ddcc39928413b165141930c63503c2ab",
+    "baseXP": 0,
+    "newXP": 185,
     "xp": 185,
     "level": 1,
-    "feeds": 8,
-    "missed": 1,
+    "feeds": 13,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -2307,26 +2267,6 @@
     "level": 2,
     "feeds": 15,
     "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xb4d6770288d56b0ef7c6df626e1e6bdcfa343721",
-    "baseXP": 0,
-    "newXP": 180,
-    "xp": 180,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
-    "isDead": false
-  },
-  {
-    "address": "0x040b642c43827e39f2438bfca932c3f21cc37637",
-    "baseXP": 0,
-    "newXP": 180,
-    "xp": 180,
-    "level": 1,
-    "feeds": 8,
-    "missed": 4,
     "isDead": false
   },
   {
@@ -2365,8 +2305,38 @@
     "newXP": 0,
     "xp": 175,
     "level": 2,
-    "feeds": 20,
-    "missed": 1,
+    "feeds": 21,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5453db2081d4e14a2703ef31621f013ee841373f",
+    "baseXP": 0,
+    "newXP": 175,
+    "xp": 175,
+    "level": 1,
+    "feeds": 1,
+    "missed": 17,
+    "isDead": false
+  },
+  {
+    "address": "0xab002cc82f0f991da5f6b6790befad9f5cce1f2c",
+    "baseXP": 0,
+    "newXP": 175,
+    "xp": 175,
+    "level": 1,
+    "feeds": 1,
+    "missed": 17,
+    "isDead": false
+  },
+  {
+    "address": "0x97126f44dca4ef7c8fdb5e6ac6d993aac8a81e06",
+    "baseXP": 0,
+    "newXP": 175,
+    "xp": 175,
+    "level": 1,
+    "feeds": 1,
+    "missed": 16,
     "isDead": false
   },
   {
@@ -2390,7 +2360,17 @@
     "isDead": false
   },
   {
-    "address": "0xee44c476dda4a6db63068152f7c964d39d18cc6c",
+    "address": "0xffb8c9ec9951b1d22ae0676a8965de43412ceb7d",
+    "baseXP": 0,
+    "newXP": 175,
+    "xp": 175,
+    "level": 1,
+    "feeds": 1,
+    "missed": 16,
+    "isDead": false
+  },
+  {
+    "address": "0xbeaed0c6ceac44b3b2d3585df357932b55c0d4e9",
     "baseXP": 0,
     "newXP": 175,
     "xp": 175,
@@ -2410,14 +2390,14 @@
     "isDead": false
   },
   {
-    "address": "0xfa5b9e20387567b745cf44fd8bd1ea259476115f",
+    "address": "0x9f358c9359efd052b8316e75052718a6f47564c2",
     "baseXP": 0,
     "newXP": 175,
     "xp": 175,
     "level": 1,
     "feeds": 1,
     "missed": 15,
-    "isDead": false
+    "isDead": true
   },
   {
     "address": "0xd1f653ccd77d6aa6726c27f9506a070c08dc84c3",
@@ -2430,62 +2410,42 @@
     "isDead": false
   },
   {
-    "address": "0x2e350acb04aba5ca350d5ca3f7541eb38a9eee61",
+    "address": "0xe7205f4d352ed9444c72eb3e7fa96c860b861245",
     "baseXP": 0,
     "newXP": 175,
     "xp": 175,
     "level": 1,
     "feeds": 1,
-    "missed": 14,
+    "missed": 10,
     "isDead": false
   },
   {
-    "address": "0x2e53b7e601ec85fbbda9f56ab8dd98484f89eb20",
-    "baseXP": 0,
-    "newXP": 175,
-    "xp": 175,
-    "level": 1,
-    "feeds": 1,
-    "missed": 13,
-    "isDead": false
-  },
-  {
-    "address": "0x7c5cccf1e2ae97753ec55bdae04bb16de36afcd3",
-    "baseXP": 0,
-    "newXP": 175,
-    "xp": 175,
-    "level": 1,
-    "feeds": 1,
-    "missed": 12,
-    "isDead": false
-  },
-  {
-    "address": "0xa3576e271fcb1a7b8cdd0f297213eff9bcb3d654",
-    "baseXP": 0,
-    "newXP": 175,
-    "xp": 175,
-    "level": 1,
-    "feeds": 1,
-    "missed": 8,
-    "isDead": false
-  },
-  {
-    "address": "0x486a35d7a5bdb37a1024a4c645125af63a72a200",
-    "baseXP": 0,
-    "newXP": 175,
-    "xp": 175,
-    "level": 1,
-    "feeds": 6,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x8cc769177f7991dcb3c36af1f7d64f1e9259b418",
+    "address": "0xb4de1cb38f9b30e51959ac9772115b21bd23760d",
     "baseXP": 0,
     "newXP": 170,
     "xp": 170,
     "level": 1,
-    "feeds": 14,
+    "feeds": 3,
+    "missed": 16,
+    "isDead": true
+  },
+  {
+    "address": "0x97136df5029a10365210795d252cbd351ca57955",
+    "baseXP": 0,
+    "newXP": 170,
+    "xp": 170,
+    "level": 1,
+    "feeds": 1,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0x460a039487c9972b70c5b789bddecf5187ca86da",
+    "baseXP": 0,
+    "newXP": 165,
+    "xp": 165,
+    "level": 1,
+    "feeds": 11,
     "missed": 0,
     "isDead": false
   },
@@ -2510,16 +2470,6 @@
     "isDead": false
   },
   {
-    "address": "0xa44b993f5332ef282a2928b886a4cba594c9cbf0",
-    "baseXP": 0,
-    "newXP": 160,
-    "xp": 160,
-    "level": 1,
-    "feeds": 18,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x692e40c72f537f105b9ba2cebfdcf966f4e41948",
     "baseXP": 0,
     "newXP": 160,
@@ -2540,16 +2490,6 @@
     "isDead": false
   },
   {
-    "address": "0x7426b2aa7cd8543d4891a79ad9bb5585be754025",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 155,
-    "level": 3,
-    "feeds": 48,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0xfceb2c2575dbbff5daaf7d05c6be477c0af29794",
     "baseXP": 0,
     "newXP": 0,
@@ -2560,13 +2500,13 @@
     "isDead": false
   },
   {
-    "address": "0xf504550b5d7074e598715f6412b75422b0a6fc48",
+    "address": "0xdd51e1eaf7a8166640f6f9bfe514cc724bc66fe5",
     "baseXP": 0,
-    "newXP": 150,
-    "xp": 150,
+    "newXP": 155,
+    "xp": 155,
     "level": 1,
-    "feeds": 9,
-    "missed": 6,
+    "feeds": 1,
+    "missed": 18,
     "isDead": false
   },
   {
@@ -2577,16 +2517,6 @@
     "level": 1,
     "feeds": 1,
     "missed": 16,
-    "isDead": false
-  },
-  {
-    "address": "0xee49b79e295d127ab76914d1135253350e2c708d",
-    "baseXP": 0,
-    "newXP": 150,
-    "xp": 150,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
     "isDead": false
   },
   {
@@ -2610,8 +2540,8 @@
     "isDead": false
   },
   {
-    "address": "0xd6670183f24bfc381eed4be20ed1f9a8551c1961",
-    "baseXP": 150,
+    "address": "0xe754da9329c49ee45e8edaa4fa2e23f8f1996f11",
+    "baseXP": 0,
     "newXP": 0,
     "xp": 150,
     "level": 1,
@@ -2620,11 +2550,11 @@
     "isDead": false
   },
   {
-    "address": "0xe754da9329c49ee45e8edaa4fa2e23f8f1996f11",
+    "address": "0xd6670183f24bfc381eed4be20ed1f9a8551c1961",
     "baseXP": 0,
     "newXP": 0,
     "xp": 150,
-    "level": 0,
+    "level": 1,
     "feeds": 0,
     "missed": 20297,
     "isDead": false
@@ -2640,23 +2570,43 @@
     "isDead": false
   },
   {
-    "address": "0xc697d97de97662f880bf829d343356c0be133de4",
+    "address": "0x0ec7f62de4571934df433a6ec63360f3cca7356c",
     "baseXP": 0,
     "newXP": 145,
     "xp": 145,
     "level": 1,
-    "feeds": 6,
-    "missed": 0,
+    "feeds": 2,
+    "missed": 14,
+    "isDead": false
+  },
+  {
+    "address": "0x4ae23b4d3d41c1506580c7ff9a33afb9f50ee3bf",
+    "baseXP": 135,
+    "newXP": 10,
+    "xp": 145,
+    "level": 1,
+    "feeds": 1,
+    "missed": 4,
     "isDead": false
   },
   {
     "address": "0x6ac61aa7bd2700dba9aeaa13ad21734958619ef8",
-    "baseXP": 145,
+    "baseXP": 0,
     "newXP": 0,
     "xp": 145,
     "level": 1,
     "feeds": 0,
     "missed": 20297,
+    "isDead": false
+  },
+  {
+    "address": "0xa81eab4ebe6adf60471e18daed0990e1564dca7a",
+    "baseXP": 0,
+    "newXP": 145,
+    "xp": 145,
+    "level": 0,
+    "feeds": 11,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -2670,23 +2620,23 @@
     "isDead": false
   },
   {
-    "address": "0x72a1ec32165ec55c35d8d3deff56ed351515a084",
+    "address": "0xb6bd1b9b3e6e3512bb354789289f6d8fbc0f65bc",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 135,
+    "level": 2,
+    "feeds": 1,
+    "missed": 13,
+    "isDead": false
+  },
+  {
+    "address": "0x8be8d63f7611eef91e4cd7781cf5cc5e31bd727c",
     "baseXP": 0,
     "newXP": 135,
     "xp": 135,
     "level": 1,
-    "feeds": 6,
-    "missed": 8,
-    "isDead": true
-  },
-  {
-    "address": "0x4ae23b4d3d41c1506580c7ff9a33afb9f50ee3bf",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 135,
-    "level": 1,
-    "feeds": 1,
-    "missed": 4,
+    "feeds": 10,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -2700,18 +2650,8 @@
     "isDead": false
   },
   {
-    "address": "0xc5e3075112dd67cfb50a7fc19cf476b2fbefbbb3",
-    "baseXP": 0,
-    "newXP": 125,
-    "xp": 125,
-    "level": 1,
-    "feeds": 5,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x5d6295e8a9e9b5268b733de83b2fc7da6c706c8d",
-    "baseXP": 0,
+    "baseXP": 125,
     "newXP": 0,
     "xp": 125,
     "level": 1,
@@ -2731,7 +2671,7 @@
   },
   {
     "address": "0x5b26fbd61a6a0b00ceb715c7e17103cfd83db87e",
-    "baseXP": 0,
+    "baseXP": 120,
     "newXP": 0,
     "xp": 120,
     "level": 1,
@@ -2740,32 +2680,22 @@
     "isDead": false
   },
   {
-    "address": "0x41f98efecc3901efd2e1ee1c7f33f350ddddda6e",
-    "baseXP": 102,
-    "newXP": 15,
+    "address": "0xb4bddec502a1425f9a38daff8c1551e4c0c7f807",
+    "baseXP": 107,
+    "newXP": 10,
     "xp": 117,
     "level": 1,
-    "feeds": 2,
-    "missed": 18,
-    "isDead": false
-  },
-  {
-    "address": "0x32c15be32ae31d06037b56daa2eb125820d0f190",
-    "baseXP": 0,
-    "newXP": 115,
-    "xp": 115,
-    "level": 1,
-    "feeds": 7,
+    "feeds": 3,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x9ffab84c7839eae9a36b72ac39ee64636fa1d9da",
+    "address": "0x5a2857c8bd1049774bd3fa021f8e44f5e28e13c4",
     "baseXP": 0,
-    "newXP": 110,
-    "xp": 110,
+    "newXP": 115,
+    "xp": 115,
     "level": 1,
-    "feeds": 11,
+    "feeds": 16,
     "missed": 0,
     "isDead": false
   },
@@ -2780,6 +2710,26 @@
     "isDead": false
   },
   {
+    "address": "0x3ad81c9affa339c5ffdf53e6b277ee8277d21be1",
+    "baseXP": 0,
+    "newXP": 110,
+    "xp": 110,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0xeb2e79bf927543a9f32709bcefcfe6496eb3086a",
+    "baseXP": 0,
+    "newXP": 110,
+    "xp": 110,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
     "address": "0xd6f108cd5775f9f8978052234731b4496bf3308d",
     "baseXP": 0,
     "newXP": 0,
@@ -2790,6 +2740,16 @@
     "isDead": false
   },
   {
+    "address": "0x8649abc613342f0b3839692b661f006b11d2ddd5",
+    "baseXP": 97,
+    "newXP": 10,
+    "xp": 107,
+    "level": 1,
+    "feeds": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xa36c2c21c2d6a1a8f767b401737b08a98e37a5ce",
     "baseXP": 25,
     "newXP": 80,
@@ -2797,6 +2757,16 @@
     "level": 1,
     "feeds": 14,
     "missed": 4,
+    "isDead": false
+  },
+  {
+    "address": "0x41f98efecc3901efd2e1ee1c7f33f350ddddda6e",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 102,
+    "level": 1,
+    "feeds": 2,
+    "missed": 18,
     "isDead": false
   },
   {
@@ -2821,7 +2791,7 @@
   },
   {
     "address": "0x2c720e58447d41274af93992bf4ce96851f362d9",
-    "baseXP": 0,
+    "baseXP": 100,
     "newXP": 0,
     "xp": 100,
     "level": 1,
@@ -2850,13 +2820,13 @@
     "isDead": false
   },
   {
-    "address": "0xa42797c01ac2b72d7977b53f1e8c2a24357e240f",
+    "address": "0x76eab94acb86d33666b124d64f63e0d791c5ee31",
     "baseXP": 0,
     "newXP": 95,
     "xp": 95,
     "level": 1,
-    "feeds": 3,
-    "missed": 2,
+    "feeds": 5,
+    "missed": 10,
     "isDead": false
   },
   {
@@ -2880,16 +2850,6 @@
     "isDead": false
   },
   {
-    "address": "0x5c02eac567396f09e87e15a254613cbd8adefc7d",
-    "baseXP": 70,
-    "newXP": 20,
-    "xp": 90,
-    "level": 1,
-    "feeds": 2,
-    "missed": 20,
-    "isDead": true
-  },
-  {
     "address": "0xbe72ab892a37ca89533e42c0f5e489622c13c6d1",
     "baseXP": 0,
     "newXP": 90,
@@ -2897,16 +2857,6 @@
     "level": 1,
     "feeds": 4,
     "missed": 13,
-    "isDead": false
-  },
-  {
-    "address": "0xd30ca5e102a8bc05e4d80163a3553942b83241f5",
-    "baseXP": 0,
-    "newXP": 90,
-    "xp": 90,
-    "level": 1,
-    "feeds": 1,
-    "missed": 16,
     "isDead": false
   },
   {
@@ -2920,7 +2870,7 @@
     "isDead": false
   },
   {
-    "address": "0xafa9284d28d4b83ccf7ffe2c24aac2fa033ee34a",
+    "address": "0xee0ea6fd16afe26f386c702e122fd0768a93aa71",
     "baseXP": 0,
     "newXP": 90,
     "xp": 90,
@@ -2940,16 +2890,6 @@
     "isDead": false
   },
   {
-    "address": "0x3916a50e0a4abf9f1bbd28d3ea8ce530feaac73e",
-    "baseXP": 0,
-    "newXP": 80,
-    "xp": 80,
-    "level": 1,
-    "feeds": 12,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0xa37333f1c695dcad4cadce3950db6492e5f3f7c8",
     "baseXP": 80,
     "newXP": 0,
@@ -2957,6 +2897,26 @@
     "level": 1,
     "feeds": 2,
     "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0x61991ea8efa7344abc33f0bf309c6e24f8869fd2",
+    "baseXP": 0,
+    "newXP": 80,
+    "xp": 80,
+    "level": 1,
+    "feeds": 2,
+    "missed": 9,
+    "isDead": true
+  },
+  {
+    "address": "0x00df3231f973d9bba9df848b2fb690405b5b8888",
+    "baseXP": 0,
+    "newXP": 80,
+    "xp": 80,
+    "level": 1,
+    "feeds": 3,
+    "missed": 5,
     "isDead": false
   },
   {
@@ -2970,27 +2930,47 @@
     "isDead": false
   },
   {
-    "address": "0x61991ea8efa7344abc33f0bf309c6e24f8869fd2",
+    "address": "0xbdfc4f398ce4899a66112e921942da9216f45953",
     "baseXP": 0,
-    "newXP": 80,
-    "xp": 80,
-    "level": 0,
-    "feeds": 2,
-    "missed": 9,
-    "isDead": true
+    "newXP": 0,
+    "xp": 75,
+    "level": 3,
+    "feeds": 19,
+    "missed": 0,
+    "isDead": false
   },
   {
-    "address": "0xa28a92fba3c85aa186a4eee67743f9a0a57f70d5",
+    "address": "0x43a362050e15990403978031cc3361c550ff87c4",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 75,
+    "level": 1,
+    "feeds": 2,
+    "missed": 18,
+    "isDead": false
+  },
+  {
+    "address": "0xc19df42f42545a66551452436fd2c666f6459241",
     "baseXP": 0,
     "newXP": 75,
     "xp": 75,
     "level": 1,
     "feeds": 1,
-    "missed": 16,
+    "missed": 15,
     "isDead": false
   },
   {
-    "address": "0x58bf9a39e4d5e48a5314eb6a19cf5cd51ee809b4",
+    "address": "0xbfd30dfb736dc6dd26a5516062c94c1ae8e5bc7b",
+    "baseXP": 0,
+    "newXP": 75,
+    "xp": 75,
+    "level": 1,
+    "feeds": 7,
+    "missed": 1,
+    "isDead": false
+  },
+  {
+    "address": "0x7de3ad5351a017ccd178bb7d3a797ce7fb5592dc",
     "baseXP": 0,
     "newXP": 75,
     "xp": 75,
@@ -3010,43 +2990,63 @@
     "isDead": false
   },
   {
-    "address": "0x67b1216c0cd3e0badc3f2671e4fcec55dbb9531d",
+    "address": "0xa2ea6bc2ceff7fe0143b41665d3aca01c7cbd846",
     "baseXP": 0,
-    "newXP": 75,
-    "xp": 75,
+    "newXP": 0,
+    "xp": 70,
+    "level": 2,
+    "feeds": 13,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5c02eac567396f09e87e15a254613cbd8adefc7d",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 70,
+    "level": 1,
+    "feeds": 2,
+    "missed": 20,
+    "isDead": true
+  },
+  {
+    "address": "0x93d5b72ce7312c925ce15112be96493e50c02e76",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
     "level": 1,
     "feeds": 1,
-    "missed": 1,
+    "missed": 20,
     "isDead": false
   },
   {
-    "address": "0xbdfc4f398ce4899a66112e921942da9216f45953",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 75,
-    "level": 0,
-    "feeds": 19,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x0f03f1df2b5380af381a10333f5b2c584b33f386",
-    "baseXP": 72,
-    "newXP": 0,
-    "xp": 72,
-    "level": 1,
-    "feeds": 3,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xd085d21ed230cfa47e0ec64d69877200749cef4e",
+    "address": "0xc772c9eacf557cbeb20ab541c2b4a9f541cf121e",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
     "level": 1,
     "feeds": 1,
     "missed": 19,
+    "isDead": false
+  },
+  {
+    "address": "0x2e9722658ffca98aec6bfad9591bac50db4f40f5",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 18,
+    "isDead": false
+  },
+  {
+    "address": "0x9b7889fcceb9d57ff01cd3f25fcca58cf171b86b",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 18,
     "isDead": false
   },
   {
@@ -3070,16 +3070,6 @@
     "isDead": false
   },
   {
-    "address": "0x152c64dd327beefbf11d133565b03496455d50d4",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 17,
-    "isDead": false
-  },
-  {
     "address": "0x77c77335752733a337e2b3a29801a89a6fa260bf",
     "baseXP": 0,
     "newXP": 70,
@@ -3090,14 +3080,14 @@
     "isDead": true
   },
   {
-    "address": "0x1e9d29cfdea0d7db7d9b33bdad8885aedc23f5dc",
+    "address": "0xcf81e2a36d46354d96d48df651ff828f9377cc2d",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
     "level": 1,
     "feeds": 1,
     "missed": 17,
-    "isDead": false
+    "isDead": true
   },
   {
     "address": "0xc52409da1aa67fd0a0c7f2e47f43c4e5190f4f1e",
@@ -3110,7 +3100,7 @@
     "isDead": false
   },
   {
-    "address": "0xc6daaa0d813b4a1b23d3de5891fa4b3e492a3923",
+    "address": "0xfe2a7e9100071c04f626ae03d2549ac8295d4b48",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3120,7 +3110,7 @@
     "isDead": false
   },
   {
-    "address": "0xe54e1806fd4dbaf5e908942ede774b74c4ca09d2",
+    "address": "0xd471ac18867aa0d40fbd2b5ef171127a62a15ed5",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3130,7 +3120,7 @@
     "isDead": false
   },
   {
-    "address": "0xd471ac18867aa0d40fbd2b5ef171127a62a15ed5",
+    "address": "0xff5cc3d4c4c6ae7542061e39d0ce95b8bde167dc",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3160,17 +3150,37 @@
     "isDead": false
   },
   {
-    "address": "0xdde316bd986fad886f76067bac8723ef0805bbe6",
+    "address": "0x7fa618ea206f7c27e12dd21b3b3713cc66a893dd",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
     "level": 1,
     "feeds": 1,
-    "missed": 16,
-    "isDead": true
+    "missed": 15,
+    "isDead": false
   },
   {
     "address": "0x87414026c6b54a92c3067abb301b2e21eacef3f9",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0xf7e7c1aa347f441c716948f186b0ef6c6234d8c4",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0xb584c4716b030130b1644bc000b25b7a93fb7c8d",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3190,6 +3200,46 @@
     "isDead": false
   },
   {
+    "address": "0x59ad8755b4cf88b2cf4930241123c4b65f02e697",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0xc2907edf7092967c847e26065fc8023290ddc38f",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0x88da017c6d7a220e653e207134185a8345f3f421",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0x3dab515d259219d748f722ecc7376b21331e048b",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
     "address": "0x314174310c3934c6924ec451754064923840aa99",
     "baseXP": 0,
     "newXP": 70,
@@ -3200,43 +3250,23 @@
     "isDead": false
   },
   {
-    "address": "0x013b77c14ec5b2510452cda5f7db0f9875df229c",
+    "address": "0x745d71f5411fdfebc6cf4cce10e484cb6a3faaf7",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
     "level": 1,
     "feeds": 1,
-    "missed": 13,
-    "isDead": true
-  },
-  {
-    "address": "0x49d79f0d6a96ae5f6e6dd114fb602b56b3fed0ad",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 2,
-    "missed": 11,
-    "isDead": true
-  },
-  {
-    "address": "0xde625d11875ab3d9f725377f459f957046fd4791",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 13,
+    "missed": 14,
     "isDead": false
   },
   {
-    "address": "0x5106d075ee0f3a16c6915c834a3121366fa4f77d",
+    "address": "0x12a25d3a8d0ef4f1097ef0127a33ba09b7868c1a",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
     "level": 1,
     "feeds": 1,
-    "missed": 12,
+    "missed": 13,
     "isDead": false
   },
   {
@@ -3250,17 +3280,7 @@
     "isDead": true
   },
   {
-    "address": "0x02ae636c5e18e8c979ecc55db3d9bfcbcdec0653",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 11,
-    "isDead": false
-  },
-  {
-    "address": "0x4827a1ba796dd7150c7ee011a7f525417a4611be",
+    "address": "0x81b0279ee95ffefdda0c7b06bb896a9659e147d1",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3280,7 +3300,27 @@
     "isDead": false
   },
   {
-    "address": "0xcc7490242098eb01bc1d637c3732899445643fb5",
+    "address": "0x0b48cfa0ed4d9cd844a489ac5b9f91f936b94791",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 10,
+    "isDead": false
+  },
+  {
+    "address": "0xa86922b8b55853f4638d1889fb4f329c295fa2f3",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 10,
+    "isDead": false
+  },
+  {
+    "address": "0x4827616632a9ac010fb98e306dc967d5a99e044a",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3290,7 +3330,7 @@
     "isDead": false
   },
   {
-    "address": "0x18e5af061c11868d553eddc043f01416d00732bb",
+    "address": "0xed381987beedaa86b437f4beb919ae3fcdc10ace",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3300,17 +3340,7 @@
     "isDead": false
   },
   {
-    "address": "0x1a8131546072074fa43d84ebc76eb5bb7b2d6d5a",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 9,
-    "isDead": false
-  },
-  {
-    "address": "0xd8848c83309bd69d97bc812c34a74e069ae85d11",
+    "address": "0x224a0714beb94a2812e27d9ce76b1f793ffe462c",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3320,17 +3350,7 @@
     "isDead": false
   },
   {
-    "address": "0xbadc1123f9d295ce7f3e0083c06711f8bebaa309",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 8,
-    "isDead": false
-  },
-  {
-    "address": "0x65c21644f0c852ba6445fb469bd92b401e226532",
+    "address": "0xd10c742325b7d49c4bfd21f8447830a85934c7cd",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3340,7 +3360,27 @@
     "isDead": false
   },
   {
+    "address": "0x791c2c048f6b72b60c84d4cb7db20f6bc9da62b6",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 7,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x4cc2f8d9a9574fd8c41298f10ae8160c559ac7c1",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0x49bbed8a3298517772efc4defaf535b79f5c4ba7",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3360,7 +3400,17 @@
     "isDead": false
   },
   {
-    "address": "0x34deda0ec34e42331443b22f753182985f3264fe",
+    "address": "0x5b787e4888485dd1a0233c55d1c7736300903c5b",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 4,
+    "isDead": false
+  },
+  {
+    "address": "0x5567d9b78ca19b3c26cbb2e43e95fe37b6a246e0",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3380,27 +3430,7 @@
     "isDead": false
   },
   {
-    "address": "0x6ccc6c1d4cdf41a69ca1caa0facc047d1af21802",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xa7e15312ad151f449b7f3d6a5b5a17f65d49100b",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xb8566125b1a63b4e3c2c085a103607978c54d163",
+    "address": "0xcd3f48ef1d6e5142ccfc2dec8c3ef6feda83cfa4",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3420,7 +3450,17 @@
     "isDead": false
   },
   {
-    "address": "0x8a9e972e17bcf79965695ac84f6d4d080506f36f",
+    "address": "0x3df5396873fd17b427eeeff2738b3a59e255c119",
+    "baseXP": 0,
+    "newXP": 70,
+    "xp": 70,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xb057a043bd3d5ddbcd8f3b6e29dd4e0a054ff100",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3430,7 +3470,7 @@
     "isDead": false
   },
   {
-    "address": "0x4d71b8b6c3c6f726fc13f081062d8574f5d98433",
+    "address": "0x8a9e972e17bcf79965695ac84f6d4d080506f36f",
     "baseXP": 0,
     "newXP": 70,
     "xp": 70,
@@ -3450,38 +3490,8 @@
     "isDead": false
   },
   {
-    "address": "0x89b9dff98a080ed02aa1f95c8462ff93918b5415",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xb80e22cf18bb8891e264592c32c936c033e6e41c",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x82c3943fc8e47b56a4bc503086bf7a75c6767b40",
-    "baseXP": 0,
-    "newXP": 70,
-    "xp": 70,
-    "level": 1,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0xff48f8bf86d932a1c6f797c1659f4aa3cc9ed6b8",
-    "baseXP": 70,
+    "baseXP": 0,
     "newXP": 0,
     "xp": 70,
     "level": 1,
@@ -3491,7 +3501,7 @@
   },
   {
     "address": "0xfd17642823f7bf920e46e750096e748d34d3f5bd",
-    "baseXP": 70,
+    "baseXP": 0,
     "newXP": 0,
     "xp": 70,
     "level": 1,
@@ -3510,7 +3520,7 @@
     "isDead": false
   },
   {
-    "address": "0x07482e92b7980ee3744e3fd10ebd30cd4753adc1",
+    "address": "0x2ae13e64239541b84ee6302a0b39a16cdc969315",
     "baseXP": 70,
     "newXP": 0,
     "xp": 70,
@@ -3520,8 +3530,18 @@
     "isDead": false
   },
   {
-    "address": "0xecf8fa864cdc912052a9c5410619ccd0e12451ca",
+    "address": "0x07482e92b7980ee3744e3fd10ebd30cd4753adc1",
     "baseXP": 0,
+    "newXP": 0,
+    "xp": 70,
+    "level": 1,
+    "feeds": 0,
+    "missed": 20297,
+    "isDead": false
+  },
+  {
+    "address": "0xecf8fa864cdc912052a9c5410619ccd0e12451ca",
+    "baseXP": 70,
     "newXP": 0,
     "xp": 70,
     "level": 1,
@@ -3531,7 +3551,7 @@
   },
   {
     "address": "0xe6eb70556afa0c852ba1ee493b11a3403b3018ea",
-    "baseXP": 0,
+    "baseXP": 70,
     "newXP": 0,
     "xp": 70,
     "level": 1,
@@ -3540,28 +3560,28 @@
     "isDead": false
   },
   {
-    "address": "0x2ae13e64239541b84ee6302a0b39a16cdc969315",
+    "address": "0xd085d21ed230cfa47e0ec64d69877200749cef4e",
     "baseXP": 0,
-    "newXP": 0,
+    "newXP": 70,
     "xp": 70,
     "level": 0,
-    "feeds": 0,
-    "missed": 20297,
+    "feeds": 1,
+    "missed": 19,
     "isDead": false
   },
   {
-    "address": "0xc9ac106eebb9b8e537785b45b3bc9c4c6c80c454",
-    "baseXP": 0,
-    "newXP": 65,
-    "xp": 65,
+    "address": "0x74fd323d6621b36a531a8a0aafca10c55adb83fd",
+    "baseXP": 67,
+    "newXP": 0,
+    "xp": 67,
     "level": 1,
-    "feeds": 3,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 11,
     "isDead": false
   },
   {
     "address": "0x9938982d80fe77c36f8dd4f8bff0e1a7a41b247e",
-    "baseXP": 0,
+    "baseXP": 65,
     "newXP": 0,
     "xp": 65,
     "level": 1,
@@ -3571,7 +3591,7 @@
   },
   {
     "address": "0x7f538cb95968ac5e50f3b0ee02358c9e31ea3ce5",
-    "baseXP": 0,
+    "baseXP": 65,
     "newXP": 0,
     "xp": 65,
     "level": 1,
@@ -3580,38 +3600,28 @@
     "isDead": false
   },
   {
-    "address": "0x5609ff333f79de623ff5d6634ca76bf0aa32eb62",
-    "baseXP": 0,
-    "newXP": 60,
-    "xp": 60,
+    "address": "0x15291548a50fe232381b9ab065bae0805ef9e447",
+    "baseXP": 32,
+    "newXP": 30,
+    "xp": 62,
     "level": 1,
-    "feeds": 2,
-    "missed": 6,
-    "isDead": false
-  },
-  {
-    "address": "0xa439d81be81d76351ac2d1f16ef794c09de89cd2",
-    "baseXP": 0,
-    "newXP": 60,
-    "xp": 60,
-    "level": 1,
-    "feeds": 2,
+    "feeds": 6,
     "missed": 2,
     "isDead": false
   },
   {
-    "address": "0x4ea610b57196ca229a5bd9fe2851461f38ce210d",
+    "address": "0xbc429886c07f2230af275af93a383e5e878cc9c0",
     "baseXP": 0,
-    "newXP": 0,
+    "newXP": 60,
     "xp": 60,
     "level": 1,
-    "feeds": 0,
-    "missed": 20297,
+    "feeds": 2,
+    "missed": 4,
     "isDead": false
   },
   {
     "address": "0x2c0534261e88a688fd3a792f749bf1c19763d22a",
-    "baseXP": 0,
+    "baseXP": 60,
     "newXP": 0,
     "xp": 60,
     "level": 1,
@@ -3621,7 +3631,7 @@
   },
   {
     "address": "0xe999893b09822f02e6ecf37a370f4af091a4375e",
-    "baseXP": 0,
+    "baseXP": 60,
     "newXP": 0,
     "xp": 60,
     "level": 1,
@@ -3631,10 +3641,20 @@
   },
   {
     "address": "0x2d2a2b917cf6a5727929aa70d6cf120e04387338",
-    "baseXP": 0,
+    "baseXP": 60,
     "newXP": 0,
     "xp": 60,
     "level": 1,
+    "feeds": 0,
+    "missed": 20297,
+    "isDead": false
+  },
+  {
+    "address": "0x4ea610b57196ca229a5bd9fe2851461f38ce210d",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 60,
+    "level": 0,
     "feeds": 0,
     "missed": 20297,
     "isDead": false
@@ -3650,23 +3670,23 @@
     "isDead": false
   },
   {
-    "address": "0x39818d395af3b17462f0eba0754e3c562cf2ff8a",
+    "address": "0x4e52f8dde6cc9d933e5ca6dac3ad260e5a4a3686",
     "baseXP": 0,
     "newXP": 50,
     "xp": 50,
     "level": 1,
-    "feeds": 5,
-    "missed": 9,
+    "feeds": 1,
+    "missed": 16,
     "isDead": false
   },
   {
-    "address": "0x928b156a89b6d6dc7b5644dbf0e84fb0a9433239",
-    "baseXP": 50,
-    "newXP": 0,
+    "address": "0x6b31426b2fc2ff3040f233ea33a6167be469bb6a",
+    "baseXP": 5,
+    "newXP": 45,
     "xp": 50,
     "level": 1,
     "feeds": 4,
-    "missed": 3,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -3680,8 +3700,18 @@
     "isDead": false
   },
   {
-    "address": "0xb178605077b0f03c29ec6c11e7222c04df751936",
+    "address": "0xaa75845f7fafeab5cabb76eca13ef61851ac874f",
     "baseXP": 0,
+    "newXP": 50,
+    "xp": 50,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0xb178605077b0f03c29ec6c11e7222c04df751936",
+    "baseXP": 50,
     "newXP": 0,
     "xp": 50,
     "level": 1,
@@ -3700,38 +3730,28 @@
     "isDead": false
   },
   {
-    "address": "0x582045ea8b92f99b744c2e4c6d3667987f23479a",
-    "baseXP": 0,
-    "newXP": 45,
-    "xp": 45,
+    "address": "0xdef17530c9de5c58f150562b065617082450d2dc",
+    "baseXP": 30,
+    "newXP": 10,
+    "xp": 40,
     "level": 1,
     "feeds": 4,
-    "missed": 0,
+    "missed": 1,
     "isDead": false
   },
   {
-    "address": "0x305721518025fa0ff886290d0abcd4251ccf90ca",
-    "baseXP": 27,
-    "newXP": 15,
-    "xp": 42,
-    "level": 1,
-    "feeds": 2,
-    "missed": 6,
-    "isDead": false
-  },
-  {
-    "address": "0x398123176fb8fa1774254ea32db202e8b923cbf4",
+    "address": "0xb85b691491f1b6ca826d0a700ebcc27c85e8495a",
     "baseXP": 0,
     "newXP": 40,
     "xp": 40,
     "level": 1,
-    "feeds": 3,
-    "missed": 11,
-    "isDead": true
+    "feeds": 10,
+    "missed": 1,
+    "isDead": false
   },
   {
     "address": "0x622468ffc2ba8b4166d24685abd5493cd13ec0bf",
-    "baseXP": 40,
+    "baseXP": 0,
     "newXP": 0,
     "xp": 40,
     "level": 1,
@@ -3750,23 +3770,23 @@
     "isDead": false
   },
   {
-    "address": "0x499a497c9433557f3372a18ee88e3f3730abceb8",
+    "address": "0xe11fdb36fe7a3777ea1e2e47812748c1ec8d2553",
     "baseXP": 0,
-    "newXP": 0,
-    "xp": 30,
-    "level": 2,
-    "feeds": 21,
-    "missed": 0,
+    "newXP": 35,
+    "xp": 35,
+    "level": 1,
+    "feeds": 1,
+    "missed": 16,
     "isDead": false
   },
   {
-    "address": "0x20fb5889258f0ca10f277cd067dad6963e769d50",
+    "address": "0x940be08b712b35216393f1fe7b9fc13b2efd8a47",
     "baseXP": 0,
-    "newXP": 30,
-    "xp": 30,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
+    "newXP": 35,
+    "xp": 35,
+    "level": 0,
+    "feeds": 4,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -3777,6 +3797,26 @@
     "level": 1,
     "feeds": 1,
     "missed": 13,
+    "isDead": false
+  },
+  {
+    "address": "0x85f66166a240130ca78234679fff34336f8db04d",
+    "baseXP": 0,
+    "newXP": 30,
+    "xp": 30,
+    "level": 1,
+    "feeds": 1,
+    "missed": 12,
+    "isDead": false
+  },
+  {
+    "address": "0x7168b6336ebe62095513973298627893e5fd0155",
+    "baseXP": 0,
+    "newXP": 30,
+    "xp": 30,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
     "isDead": false
   },
   {
@@ -3800,8 +3840,18 @@
     "isDead": false
   },
   {
-    "address": "0xefa2d46e9583cfd453561ae050413e1604323a91",
+    "address": "0x0b649327a84d4471b34ed735a662f31c925f1a1f",
     "baseXP": 0,
+    "newXP": 25,
+    "xp": 25,
+    "level": 1,
+    "feeds": 3,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0xefa2d46e9583cfd453561ae050413e1604323a91",
+    "baseXP": 25,
     "newXP": 0,
     "xp": 25,
     "level": 1,
@@ -3820,17 +3870,17 @@
     "isDead": false
   },
   {
-    "address": "0x8de13180019ecd3ea773a625d7a73b196b29fcb3",
+    "address": "0x0d187213e66bf354dab7eb2de63ed54f8edf11f7",
     "baseXP": 0,
     "newXP": 20,
     "xp": 20,
     "level": 1,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
+    "feeds": 2,
+    "missed": 13,
+    "isDead": true
   },
   {
-    "address": "0x35ee07ec53555f82ee66606fe97282e05a9890fc",
+    "address": "0x80ebc094da3f6d946fd1fa66196e042478c4a18e",
     "baseXP": 0,
     "newXP": 15,
     "xp": 15,
@@ -3840,43 +3890,33 @@
     "isDead": false
   },
   {
-    "address": "0x8f24ade4c9e51b854a53d0665d7d46bb458e756b",
-    "baseXP": 0,
-    "newXP": 15,
-    "xp": 15,
-    "level": 1,
-    "feeds": 3,
-    "missed": 10,
-    "isDead": false
-  },
-  {
-    "address": "0xa4b636030d1926a537fb0d8d8a4db33083a880af",
+    "address": "0xf43d201a363464ba596e977aa87feb7e5fe08878",
     "baseXP": 0,
     "newXP": 15,
     "xp": 15,
     "level": 1,
     "feeds": 1,
-    "missed": 3,
+    "missed": 14,
     "isDead": false
   },
   {
-    "address": "0x5284951604d9b833166f2ca04d35b6d60fb577a2",
+    "address": "0xef5e1c176899ed45e059b975f9e0232730cd731e",
     "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
+    "newXP": 15,
+    "xp": 15,
     "level": 1,
     "feeds": 1,
-    "missed": 21,
+    "missed": 11,
     "isDead": false
   },
   {
-    "address": "0x564fc5027be63048121d54608cabf441e1f63473",
+    "address": "0xe4509ee22dc3ccb2892ddfd322db1e9024f0652e",
     "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
+    "newXP": 15,
+    "xp": 15,
     "level": 1,
     "feeds": 1,
-    "missed": 20,
+    "missed": 11,
     "isDead": false
   },
   {
@@ -3890,14 +3930,44 @@
     "isDead": false
   },
   {
-    "address": "0xa369a594c6bdd11735540f3399d31b2a32fec730",
+    "address": "0xb46a0f0ba16ce4e5599b020df3d9cc91e78e993b",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 3,
+    "missed": 12,
+    "isDead": true
+  },
+  {
+    "address": "0x9ea886dc372f06398a2ee23ffba2e10ef03ea6fe",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 19,
+    "isDead": false
+  },
+  {
+    "address": "0xa5bd16192fe5fa66a80bbc776c6d6b1d8c7cd529",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 2,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0x6efbfd40afcaff0c7b5d9f628e86da1758e8a1d9",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
     "missed": 18,
-    "isDead": false
+    "isDead": true
   },
   {
     "address": "0x604271d00e99eb218b29aa24714d05cec83984a6",
@@ -3910,14 +3980,14 @@
     "isDead": false
   },
   {
-    "address": "0x69f52fa79bf764b4e4cef2a7c5c9f7358551fd4b",
+    "address": "0x2bee4671c3292be3f5678a2e4942bebc0ccda30e",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
     "missed": 18,
-    "isDead": true
+    "isDead": false
   },
   {
     "address": "0x1e20931cba584cf479554679507240ec210e705c",
@@ -3930,7 +4000,7 @@
     "isDead": false
   },
   {
-    "address": "0xe92d17b6387032c3cf8dfde8795381d1c680942a",
+    "address": "0x47b1060c527bad082a4601435b3c29ae809802a1",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -3950,7 +4020,17 @@
     "isDead": false
   },
   {
-    "address": "0x9252302d4597f48d0fd1dfb14169658892cb877e",
+    "address": "0x7883879ae44faa803185cb98862a2d1954d010f2",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 17,
+    "isDead": true
+  },
+  {
+    "address": "0xc7da8d74586b8f1a0077936df0927bf274b41e4b",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -3960,27 +4040,7 @@
     "isDead": false
   },
   {
-    "address": "0xe644440734ad1aa2f4de483e49117a4e11fc5ce3",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 17,
-    "isDead": false
-  },
-  {
-    "address": "0xe45b1747619c2c6810b9649cd087995e13dfe8e2",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 17,
-    "isDead": false
-  },
-  {
-    "address": "0xeb4c73a842ebe970193d54f6b45a0ccc8a3b80d8",
+    "address": "0x38819768f210b764ba86dee6f3aa5ca576315868",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -3990,7 +4050,27 @@
     "isDead": false
   },
   {
-    "address": "0xfb404c547e4efe0be20790f36989ea598fc3cdff",
+    "address": "0xc6aee3221b567256a9b342630c1ac54b0616e224",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 16,
+    "isDead": false
+  },
+  {
+    "address": "0x5a13bf41a1281e438e31c9c601febd0c098e1f9b",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 16,
+    "isDead": false
+  },
+  {
+    "address": "0xb408f423853525a9515d600464419e1f10d0ef04",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4020,13 +4100,43 @@
     "isDead": false
   },
   {
-    "address": "0xf533bc3d3b4fd762c711c4a02ed453885189b6b8",
+    "address": "0x8a66b1ee1fb5b50f22ad655529c7aace5241d237",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
     "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0x099dc436afe676584e2c0f6b8c527da6f66cac98",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0xac4096740367875466cedf361fc058d133caa380",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 6,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x05ce02d44b69a65a572e0293a400846f5bfa0e31",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 6,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -4040,7 +4150,27 @@
     "isDead": false
   },
   {
-    "address": "0x44e97326eca5d9b0aad8115d01a9ca2f0a6a6fdb",
+    "address": "0x4c408728e3deaa23aa34568c8ef6bc01b350798a",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 6,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x3c18eb7f716966d9d15d741399487c513bd1a4c6",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 6,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x39f793d279a9ce16bb4f8db52b9f7384eab6b85d",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4070,6 +4200,16 @@
     "isDead": false
   },
   {
+    "address": "0x3d3da51e41bd7b6b57c76115e7117a69a6ff8fc3",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
     "address": "0xc05da7fe5eed3a06b00d89fb80e77ff3afb5c9bb",
     "baseXP": 0,
     "newXP": 10,
@@ -4080,7 +4220,7 @@
     "isDead": false
   },
   {
-    "address": "0x8cc7d79a96130c02e8f6a443bee6729a8405db95",
+    "address": "0x4a5c60ddb4ecb8d7b6cb0e967e0c962f73ea3ce4",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4090,7 +4230,7 @@
     "isDead": false
   },
   {
-    "address": "0xe5d84b238f67e9adff06a9bdbec540c3fab9189c",
+    "address": "0x6471eb05fcc3781ff9683bb31cbde02b2ea40183",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4100,67 +4240,67 @@
     "isDead": false
   },
   {
-    "address": "0x169ad703d891f9e18f8bf87c99e1e5486346c4ec",
+    "address": "0x42c10f69fc261ec51634b502f031195b0176018e",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
-    "feeds": 1,
-    "missed": 14,
+    "feeds": 2,
+    "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x5c5b1ca858b47f8f143a7057601cc5a54d65e6d2",
+    "address": "0x520b7b136ca2271f02531b427178235fca44bbee",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
-    "missed": 14,
-    "isDead": false
-  },
-  {
-    "address": "0x03ef616425b3aaaee08010f3898390fa542b89d4",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
-    "isDead": false
-  },
-  {
-    "address": "0x95b0dfeed8bcd0cffff97a3f8ac92ae657a1180f",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
+    "missed": 13,
     "isDead": true
   },
   {
-    "address": "0x44ef1c3abfa8d2d8d99a826ef997b85706b7aaaf",
+    "address": "0x78ca717053751d798ebf95ad9fd90103311da2f1",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
-    "missed": 12,
-    "isDead": true
+    "missed": 13,
+    "isDead": false
   },
   {
-    "address": "0x56170956ed8653db2b70a147e976d42659981124",
+    "address": "0xc515667a75e6ca1d47cdf18aff1836db64b132cb",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
-    "missed": 12,
+    "missed": 13,
+    "isDead": false
+  },
+  {
+    "address": "0xb47edb425234e0b373dafdf5f97fea99410a0b65",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 2,
+    "missed": 1,
     "isDead": false
   },
   {
     "address": "0x48828cd34fdc811c457ec74f2d2712f5c881ffa2",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 11,
+    "isDead": false
+  },
+  {
+    "address": "0x8d41cd35c467a8bd1d5e0ea7f07d644a0c304f88",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4177,6 +4317,16 @@
     "level": 1,
     "feeds": 1,
     "missed": 10,
+    "isDead": false
+  },
+  {
+    "address": "0xf602b5e172159734cc46d0c59c1239d62c1873d5",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 2,
+    "missed": 7,
     "isDead": false
   },
   {
@@ -4200,17 +4350,27 @@
     "isDead": false
   },
   {
-    "address": "0x13980623dd412cae6d5c4e0ac70a5483c5bf98c0",
+    "address": "0x567752946095c2f7474aa79f45fc11f3b2541593",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
-    "missed": 9,
-    "isDead": true
+    "missed": 8,
+    "isDead": false
   },
   {
-    "address": "0xe0ee3dec2de8363611982baabaa7afa17c8eea27",
+    "address": "0x18f9d6b0915c199756bc6c0bf0b0f880b360e8c2",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 8,
+    "isDead": false
+  },
+  {
+    "address": "0x54c595d82c70bcc0f7b7a0cceed93445163bdb0b",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4220,37 +4380,27 @@
     "isDead": false
   },
   {
-    "address": "0xed6e3833482a617e394165bdc611a7c66abd48f3",
+    "address": "0x6e11fc9b7df187b02127736772f0ab05b248a360",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
-    "feeds": 1,
-    "missed": 7,
+    "feeds": 5,
+    "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x788af51431275b2535104487125fce1f4d9569ea",
+    "address": "0x6141db7097aac8e27abba97f536da94633f57ca6",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
-    "feeds": 1,
-    "missed": 6,
+    "feeds": 2,
+    "missed": 2,
     "isDead": false
   },
   {
     "address": "0xbfb198d2457b6851f2800758d3be38bdd5f1ab15",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 6,
-    "isDead": false
-  },
-  {
-    "address": "0x14e1b90752e181cd9092d92500fbf935f69d6984",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4270,6 +4420,16 @@
     "isDead": false
   },
   {
+    "address": "0x39dad914177ea9a46766cbe62dd6ef79f48bf1ea",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 6,
+    "isDead": false
+  },
+  {
     "address": "0x66a63287e0e98a2ee32420229645957f93181f96",
     "baseXP": 0,
     "newXP": 10,
@@ -4280,13 +4440,43 @@
     "isDead": true
   },
   {
-    "address": "0xc276bcd768299222a3e9591c8f128d3b548ea7c1",
+    "address": "0xa983f442c601f0ad8799f9a3c3a86af1a45cb21b",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
-    "feeds": 3,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0xee87bfe7f0b3d039794ddb0df20e2f01beecc23a",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0x9d1998f74b3cd14b1c6af50c07cd9de6dd9b0bf7",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0xfd7ac2b19d361dd0bad89de6a18a398420bfcdce",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 5,
     "isDead": false
   },
   {
@@ -4296,21 +4486,11 @@
     "xp": 10,
     "level": 1,
     "feeds": 1,
-    "missed": 4,
+    "missed": 5,
     "isDead": false
   },
   {
-    "address": "0x3faef32ae63be125ade5a0b8f9b5edf8ef460cf5",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 4,
-    "isDead": false
-  },
-  {
-    "address": "0x4cfca4159f867f7f915217c74b23b77561b23766",
+    "address": "0xfe684385eea689942d6f441f9edd92db823b716c",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4330,7 +4510,7 @@
     "isDead": false
   },
   {
-    "address": "0x9fa3c2f4f3c961e64e3335a98f779cdd4bd9f8b3",
+    "address": "0x00000058b470df25c5189df13699a8317f34fb04",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
@@ -4340,103 +4520,13 @@
     "isDead": false
   },
   {
-    "address": "0xeaab4e4d6c822c3cc739621919179df9f1b18634",
+    "address": "0x397134335575eccc0e7629fe7a1f2ab8ed50343b",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
     "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0x0d7a0212b083e6222c3e033834436f55ad86fbf5",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0xf5b1516843b05617b78da217cc3a62ee119212eb",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0xafb570e7b46ba5a7ed16185425afd54cfdbbb8d2",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0x50ac157fcd3e0e1943e455e40855ae297abb5d2b",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0xf27299358993b7b482738530d4ec89fffdb223c9",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0xe09fc7c9b4787659f8cd553dea0ce13d095273b0",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0x5d8433d503861bda143638d9d275a4fb7d279b1b",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xa2248f5c8d13ef7ed62773dd991f2ed086495fc8",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x9bdff98e2474e8babb4f4b05c52ae417c3b39089",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 1,
-    "feeds": 1,
-    "missed": 2,
     "isDead": false
   },
   {
@@ -4450,18 +4540,38 @@
     "isDead": false
   },
   {
-    "address": "0x1cf7e3bd2461f22d4fe108b0c8bc989af8fc02ed",
+    "address": "0x0418f70c1e21facb44bf4cbfc3bf8f53196b4a43",
     "baseXP": 0,
     "newXP": 10,
     "xp": 10,
     "level": 1,
     "feeds": 1,
-    "missed": 0,
+    "missed": 1,
+    "isDead": false
+  },
+  {
+    "address": "0x1ffa4a00a3d89b35a885ac1e78b563f470b9391d",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 1,
+    "isDead": false
+  },
+  {
+    "address": "0xc9a07cdcc973db02d9fa2967a0f50f683423fd61",
+    "baseXP": 0,
+    "newXP": 10,
+    "xp": 10,
+    "level": 1,
+    "feeds": 1,
+    "missed": 1,
     "isDead": false
   },
   {
     "address": "0xd6614500a0fee69eacf44d6455f3a678b9d4ff05",
-    "baseXP": 10,
+    "baseXP": 0,
     "newXP": 0,
     "xp": 10,
     "level": 1,
@@ -4511,7 +4621,7 @@
   },
   {
     "address": "0x8895072743ce6331d3109a3f2b2a297a5a1d7cd7",
-    "baseXP": 0,
+    "baseXP": 10,
     "newXP": 0,
     "xp": 10,
     "level": 1,
@@ -4550,16 +4660,6 @@
     "isDead": false
   },
   {
-    "address": "0x9f498442dad00fb9abfd8c95f27b0bdfca27aff1",
-    "baseXP": 0,
-    "newXP": 10,
-    "xp": 10,
-    "level": 0,
-    "feeds": 2,
-    "missed": 1,
-    "isDead": false
-  },
-  {
     "address": "0xd8903f43fbaa6e7d698ef84c5636f00cabf15c6c",
     "baseXP": 5,
     "newXP": 0,
@@ -4567,6 +4667,16 @@
     "level": 1,
     "feeds": 1,
     "missed": 4,
+    "isDead": false
+  },
+  {
+    "address": "0x17506e98aefa1c78bfa721c4d97cee7a72e5d606",
+    "baseXP": 5,
+    "newXP": 0,
+    "xp": 5,
+    "level": 1,
+    "feeds": 2,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -4580,62 +4690,12 @@
     "isDead": false
   },
   {
-    "address": "0xfa23b5da44c4ed29257eec4eef1e5cc53a8a6fee",
+    "address": "0xfe123c80a4b5b7f3635fa6289b78c470e220b8bc",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 3,
     "feeds": 29,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x9f1d80da21fa4855c247ebca0baa69d7bd7fea66",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 3,
-    "feeds": 19,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xe10ce618839c7cc4589b66a543b165a9d2bca600",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 3,
-    "feeds": 20,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xe43cbaf8f0e0ae06483f589869df90733ad6cedb",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 3,
-    "feeds": 27,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x7172d3cdc6225aaa649f7590f277907b5505af26",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 3,
-    "feeds": 38,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x4cb4a31ff91bb17245fdd15f703a23cc39b91f14",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 3,
-    "feeds": 26,
     "missed": 0,
     "isDead": false
   },
@@ -4660,13 +4720,33 @@
     "isDead": false
   },
   {
-    "address": "0x4470015801ca72ecca3e94b1c0125ed4ff91772c",
+    "address": "0x54f8b1eac2904032bcd46c9922f2369c21caeb4a",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 3,
+    "feeds": 26,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5dd649c8c1c5381427c70f6b951167f09c7839c2",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 19,
-    "missed": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x9d0ed8863ac12261b46fea1b832aba902889f7fe",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 21,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -4680,12 +4760,32 @@
     "isDead": false
   },
   {
+    "address": "0x2bab7ff825678993feaf8f5769e47343c445c123",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 16,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xd75d4649dff2be91321e650a1ff739eea95e0279",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 29,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xfd66cd1ce67c056edb5a3318a5b158c43bebc442",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 14,
     "missed": 0,
     "isDead": false
   },
@@ -4730,16 +4830,6 @@
     "isDead": false
   },
   {
-    "address": "0xaeb60bf01b5c1a5381080b4b6c1a9f4e521661de",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 2,
-    "feeds": 19,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x8340391b2aacdfbe90869953cd5aa93d28f123f1",
     "baseXP": 0,
     "newXP": 0,
@@ -4760,33 +4850,23 @@
     "isDead": false
   },
   {
-    "address": "0x0dacd18480fbd5f80a1cc41fb8f51bb186fe0782",
+    "address": "0x11305eb45fcf932d1a312c911c99b3980bf551b4",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 16,
+    "feeds": 15,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xd9a5b8c4428db19c54611504c021f11204140db9",
+    "address": "0xff2a8a949fcbe30370b9b640251addf04d3ca138",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 23,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x044e02a5ec7b4a4d07c981f00ca7c3e49be96f8c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 2,
-    "feeds": 20,
-    "missed": 0,
+    "feeds": 10,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -4840,6 +4920,26 @@
     "isDead": true
   },
   {
+    "address": "0x591305d91f62ac15282e3789d65f2c5696b473a5",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 16,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x2626541d549b134519a65d4f25a4541f916fc104",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 29,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xbfe7c65ed874f5b5a8ec2db4f374447c8c3ad91a",
     "baseXP": 0,
     "newXP": 0,
@@ -4880,22 +4980,22 @@
     "isDead": false
   },
   {
+    "address": "0x0c5f3d7574a2733f63e65491f42256fb120b9fa1",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 14,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x495200e805165747f8eb49f0aa47c4ae3257887a",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 11,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x4602d9f9dec124477e9a5f8944c3ee3b279570a7",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 2,
-    "feeds": 14,
     "missed": 1,
     "isDead": false
   },
@@ -4910,33 +5010,43 @@
     "isDead": false
   },
   {
-    "address": "0x5ccba660f6adae25e9480ef9b67570a0c311014a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 2,
-    "feeds": 17,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xed737741c91c6a2ed9727d1eb6a032949744a83a",
+    "address": "0x2e277513a7f8b1888f19e5770c6d40a478134a99",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 1,
-    "missed": 16,
+    "missed": 17,
     "isDead": true
   },
   {
-    "address": "0x2f3ca287776893ead02d6b3f1de3bc9fe81a7597",
+    "address": "0xd3b7e0ac7bc72fbafdb24985888a64b6e10907f9",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 22,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x01a0e9d3b866f7268f06b03331d7d4980db93bbc",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 15,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xa74dfc86f8e81351ece829d500a2a00a6f3d3226",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 16,
-    "missed": 0,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -4945,28 +5055,18 @@
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 23,
+    "feeds": 24,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0xb2997c8acf17d63f5d2aa08db5329b80ee219ba7",
+    "address": "0xbf4146515d4c32ff7441eff9d32b7c017c0644d8",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 19,
+    "feeds": 16,
     "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xebbaedce6b4d9339280b933726e7902c38cf5064",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 2,
-    "feeds": 8,
-    "missed": 6,
     "isDead": false
   },
   {
@@ -4980,12 +5080,22 @@
     "isDead": false
   },
   {
-    "address": "0x0d7e3d4de520f4c5dfdc36c39a1e5d41e980fe2e",
+    "address": "0xaeeed1f1957e60a739f639e20c4ce5a1279f3c57",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 13,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x768144b29ff8e3cbfca51d96b46f2cf841fdb1ab",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 9,
     "missed": 0,
     "isDead": false
   },
@@ -5110,6 +5220,46 @@
     "isDead": false
   },
   {
+    "address": "0x7499d229e6b04434fdb548e8226e5bb556188eff",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 13,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xa857ec0639fc780c5390b61f73fe1ef0340e1a08",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 14,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xc5c6d849ebcb8bc7ac41a80cefd208a87d7ae5ab",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 11,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xb653b2ce4c8ea853afc3b69160f931478b0f0229",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 9,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x4f280dd7672b4073b1d31fd424423256f3e2a744",
     "baseXP": 0,
     "newXP": 0,
@@ -5170,12 +5320,12 @@
     "isDead": false
   },
   {
-    "address": "0x19f0d180e78dc21bd95689650d4838265db37978",
+    "address": "0x3c52d8261446840ac816cf742790a9085090ea43",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 15,
+    "feeds": 9,
     "missed": 0,
     "isDead": false
   },
@@ -5210,13 +5360,13 @@
     "isDead": false
   },
   {
-    "address": "0xea20b607b7c4e6749f1f7889efe94030629fed61",
+    "address": "0x6d350fb6948c0442a2526b9dc3d009abbbe523f9",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 7,
-    "missed": 1,
+    "feeds": 11,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -5250,7 +5400,27 @@
     "isDead": false
   },
   {
+    "address": "0x17693958df6fcab2cdd28203a790f555a4fa34f6",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 10,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xd55888e628ae37f7136f8f21aff328fb7955ebe3",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 14,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xc0e9d80504a520217ad30e446c738355c8d3cd9d",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -5267,6 +5437,46 @@
     "level": 2,
     "feeds": 14,
     "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xb8a120819d130a12966cc60a476f07ab01c17360",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 14,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x976387ca0f67602aed792ae7ebb2c60762780b41",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 14,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xf42caa1d3f346f859157c5c2bf06d83379f5c824",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 7,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x4d35f6f6357a8ab60576b2b0e2e7dc79f6506808",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 5,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -5291,6 +5501,16 @@
   },
   {
     "address": "0x347e4275d7c8083f52f1be9b52ed2ee9ad10a548",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 7,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xd57e9faaeb48acd002f99c876a960bc46a6cff42",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -5330,12 +5550,32 @@
     "isDead": false
   },
   {
+    "address": "0x2ad5960dfc859a83229609334767ffffd4f2e0ce",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 8,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xd6b3efd30d7ab1f44f737b0b015246d873597441",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
     "feeds": 7,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xf28720b5f0be281359bc1bc5edb047b71082b4fb",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 8,
     "missed": 0,
     "isDead": false
   },
@@ -5360,6 +5600,16 @@
     "isDead": false
   },
   {
+    "address": "0x4597d416c27c1fa8cf9b4d89b4e9b12c53b61940",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 8,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0xa3cab16d85bfd71b13dc3ddfb2643c949049fe05",
     "baseXP": 0,
     "newXP": 0,
@@ -5370,13 +5620,13 @@
     "isDead": false
   },
   {
-    "address": "0xef26d0b7e41db4191e399caa6993f65a9e6f5b64",
+    "address": "0xc01580c3d1ff832800e2536bcbfda1f11eadf67e",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 6,
-    "missed": 0,
+    "feeds": 4,
+    "missed": 2,
     "isDead": false
   },
   {
@@ -5440,12 +5690,12 @@
     "isDead": false
   },
   {
-    "address": "0x6b42229a06a23c3b1deb16f9a5e2a4462d9e9369",
+    "address": "0x17f67d8fc5dc6f0b4442564af539edddc76aaf1d",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 2,
-    "feeds": 6,
+    "feeds": 3,
     "missed": 0,
     "isDead": false
   },
@@ -5456,6 +5706,16 @@
     "xp": 0,
     "level": 2,
     "feeds": 3,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x0dc71b4a1e0d9db08b79e00a2d6778515bb9a556",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 2,
+    "feeds": 2,
     "missed": 0,
     "isDead": false
   },
@@ -5477,6 +5737,26 @@
     "level": 2,
     "feeds": 2,
     "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5284951604d9b833166f2ca04d35b6d60fb577a2",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 21,
+    "isDead": false
+  },
+  {
+    "address": "0x564fc5027be63048121d54608cabf441e1f63473",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 20,
     "isDead": false
   },
   {
@@ -5520,13 +5800,13 @@
     "isDead": false
   },
   {
-    "address": "0x93d5b72ce7312c925ce15112be96493e50c02e76",
+    "address": "0xc0fde0b26d1d8e4d99577b143794ee05bc4f1bad",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
-    "missed": 20,
+    "missed": 19,
     "isDead": false
   },
   {
@@ -5560,6 +5840,16 @@
     "isDead": false
   },
   {
+    "address": "0x4164d436e36d76d19522d132f2a97ce89ffd5958",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 19,
+    "isDead": false
+  },
+  {
     "address": "0xa2541aa0ffa2527872dad8ccbd56a7833d19d16b",
     "baseXP": 0,
     "newXP": 0,
@@ -5570,47 +5860,47 @@
     "isDead": false
   },
   {
-    "address": "0x9ea886dc372f06398a2ee23ffba2e10ef03ea6fe",
+    "address": "0x072e382e590ed992953f2746fc281ae6e0d9232b",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 7,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xeb26226f2511dc656f5e5146506f0f843a1e9a0a",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 6,
+    "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0x2319b3d19db24fb596924a366c5ed74b717ab943",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
     "missed": 19,
-    "isDead": false
-  },
-  {
-    "address": "0x6bad1163763f24b4f5efd26e742f98af971ec179",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 19,
-    "isDead": false
-  },
-  {
-    "address": "0xa5bd16192fe5fa66a80bbc776c6d6b1d8c7cd529",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0xa6b0c0491e3556677ca26c5e3676f71723ab2074",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 15,
     "isDead": false
   },
   {
     "address": "0x549f38f32550e106016c2435fc40aefc1a0644c7",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 19,
+    "isDead": false
+  },
+  {
+    "address": "0x854f3d54358850ae4704ff8ab1bbd1cf21b94fc5",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -5640,43 +5930,13 @@
     "isDead": false
   },
   {
-    "address": "0x5b6239f3d7612ca9ca51db0e6f90c9195ae98eb7",
+    "address": "0x166516ab48afedd5621c9c6dba9e4bdae806c47d",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
     "missed": 19,
-    "isDead": false
-  },
-  {
-    "address": "0xc772c9eacf557cbeb20ab541c2b4a9f541cf121e",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 19,
-    "isDead": false
-  },
-  {
-    "address": "0x15291548a50fe232381b9ab065bae0805ef9e447",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x33f5de9ac1ae9e13a09d230d9a0af0895dd21a27",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 17,
     "isDead": false
   },
   {
@@ -5750,26 +6010,6 @@
     "isDead": false
   },
   {
-    "address": "0x5f52ca3c16d383f19c802b2441bbf1bc781f54aa",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 5,
-    "missed": 7,
-    "isDead": false
-  },
-  {
-    "address": "0x3bd62695ff1b6af4f0998e775b3558b64e6779c9",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 11,
-    "isDead": false
-  },
-  {
     "address": "0xfdde3390ec266e7cbf4788cee81a7e341bcc2917",
     "baseXP": 0,
     "newXP": 0,
@@ -5788,26 +6028,6 @@
     "feeds": 3,
     "missed": 17,
     "isDead": true
-  },
-  {
-    "address": "0x0f5c591bfc8cd98b85579bfbcba2b101a194e187",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 20,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xc4fd3b7707e11bf5a598ecb9aceba63f20c6742c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 8,
-    "missed": 1,
-    "isDead": false
   },
   {
     "address": "0x1fddfcfd4b05ff5d8fadcbae39e8e10445ae3445",
@@ -5830,26 +6050,6 @@
     "isDead": false
   },
   {
-    "address": "0x2e9722658ffca98aec6bfad9591bac50db4f40f5",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 18,
-    "isDead": false
-  },
-  {
-    "address": "0x3ceda7e3efe4647b842169742240297eaab8106c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 18,
-    "isDead": false
-  },
-  {
     "address": "0xd3d6d9ea2421933bd0c79bfce39d9da66c29334b",
     "baseXP": 0,
     "newXP": 0,
@@ -5868,6 +6068,16 @@
     "feeds": 1,
     "missed": 18,
     "isDead": true
+  },
+  {
+    "address": "0x39818d395af3b17462f0eba0754e3c562cf2ff8a",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 5,
+    "missed": 9,
+    "isDead": false
   },
   {
     "address": "0xa5599137a923d266a0771306cc8f78f64039af2a",
@@ -5900,26 +6110,6 @@
     "isDead": true
   },
   {
-    "address": "0x74fd323d6621b36a531a8a0aafca10c55adb83fd",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 11,
-    "isDead": false
-  },
-  {
-    "address": "0x9b7889fcceb9d57ff01cd3f25fcca58cf171b86b",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 18,
-    "isDead": false
-  },
-  {
     "address": "0xa0dfc2f929c890b595f64ae3eb7b89040692347a",
     "baseXP": 0,
     "newXP": 0,
@@ -5940,27 +6130,17 @@
     "isDead": false
   },
   {
-    "address": "0x6efbfd40afcaff0c7b5d9f628e86da1758e8a1d9",
+    "address": "0x20337afb68ac8804ae07fa692bf678977f54e83b",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 18,
-    "isDead": true
-  },
-  {
-    "address": "0xd1eda12f35e78f5135bfa2966fb3a8b7fc143e01",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 18,
+    "feeds": 8,
+    "missed": 1,
     "isDead": false
   },
   {
-    "address": "0xdd51e1eaf7a8166640f6f9bfe514cc724bc66fe5",
+    "address": "0xd1eda12f35e78f5135bfa2966fb3a8b7fc143e01",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6000,16 +6180,6 @@
     "isDead": false
   },
   {
-    "address": "0x5c2491bacb3dcda7bc74e4083dc098354ddce95c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 8,
-    "missed": 4,
-    "isDead": false
-  },
-  {
     "address": "0x9ac2b5fcd0f37bb9041c6207e815f71eef672cb3",
     "baseXP": 0,
     "newXP": 0,
@@ -6017,6 +6187,16 @@
     "level": 1,
     "feeds": 1,
     "missed": 18,
+    "isDead": false
+  },
+  {
+    "address": "0x0f03f1df2b5380af381a10333f5b2c584b33f386",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 3,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -6040,7 +6220,7 @@
     "isDead": false
   },
   {
-    "address": "0xfb46d9ae130d5cf6b22ade200daf9cdc6663df64",
+    "address": "0xb534e04f3c600f25a2ffc5f5cac51dbe5f064a3f",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6050,14 +6230,14 @@
     "isDead": false
   },
   {
-    "address": "0xb4de1cb38f9b30e51959ac9772115b21bd23760d",
+    "address": "0xfb46d9ae130d5cf6b22ade200daf9cdc6663df64",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 3,
-    "missed": 16,
-    "isDead": true
+    "feeds": 1,
+    "missed": 18,
+    "isDead": false
   },
   {
     "address": "0xb904d13fc8fd4f0b4469f58494667896dd165848",
@@ -6070,13 +6250,13 @@
     "isDead": false
   },
   {
-    "address": "0x2bee4671c3292be3f5678a2e4942bebc0ccda30e",
+    "address": "0x8cc769177f7991dcb3c36af1f7d64f1e9259b418",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 18,
+    "feeds": 14,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -6110,6 +6290,36 @@
     "isDead": false
   },
   {
+    "address": "0x305721518025fa0ff886290d0abcd4251ccf90ca",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 2,
+    "missed": 6,
+    "isDead": false
+  },
+  {
+    "address": "0x95f43144b6e161afab45adf7f15aabfac658bc7f",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 6,
+    "missed": 14,
+    "isDead": false
+  },
+  {
+    "address": "0x69f52fa79bf764b4e4cef2a7c5c9f7358551fd4b",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 18,
+    "isDead": true
+  },
+  {
     "address": "0x37c46cdd277d6c16e58c26a35e2c1b148e3c6f4c",
     "baseXP": 0,
     "newXP": 0,
@@ -6130,6 +6340,16 @@
     "isDead": true
   },
   {
+    "address": "0x152c64dd327beefbf11d133565b03496455d50d4",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 17,
+    "isDead": false
+  },
+  {
     "address": "0x9baebefc1b63964068bd41033cf882a8fbcea458",
     "baseXP": 0,
     "newXP": 0,
@@ -6140,13 +6360,23 @@
     "isDead": false
   },
   {
-    "address": "0xdef17530c9de5c58f150562b065617082450d2dc",
+    "address": "0xe92d17b6387032c3cf8dfde8795381d1c680942a",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 4,
-    "missed": 1,
+    "feeds": 1,
+    "missed": 17,
+    "isDead": false
+  },
+  {
+    "address": "0x3916a50e0a4abf9f1bbd28d3ea8ce530feaac73e",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 12,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -6161,26 +6391,6 @@
   },
   {
     "address": "0xfcc443bdaf3b3b6c775dffeebdd8f0b1d7e01f6d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 17,
-    "isDead": true
-  },
-  {
-    "address": "0x47b1060c527bad082a4601435b3c29ae809802a1",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 17,
-    "isDead": false
-  },
-  {
-    "address": "0xcf81e2a36d46354d96d48df651ff828f9377cc2d",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6210,14 +6420,24 @@
     "isDead": false
   },
   {
-    "address": "0x7883879ae44faa803185cb98862a2d1954d010f2",
+    "address": "0x928b156a89b6d6dc7b5644dbf0e84fb0a9433239",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 17,
-    "isDead": true
+    "feeds": 4,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x9ffab84c7839eae9a36b72ac39ee64636fa1d9da",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 11,
+    "missed": 0,
+    "isDead": false
   },
   {
     "address": "0x2a2aa57690a2df40cc1186d83eb977d6f962a95e",
@@ -6230,17 +6450,7 @@
     "isDead": false
   },
   {
-    "address": "0x02e0f81ab1a17647dce56386fe90cf1e6180590f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 5,
-    "missed": 6,
-    "isDead": false
-  },
-  {
-    "address": "0x5453db2081d4e14a2703ef31621f013ee841373f",
+    "address": "0x1e9d29cfdea0d7db7d9b33bdad8885aedc23f5dc",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6300,7 +6510,7 @@
     "isDead": false
   },
   {
-    "address": "0xab002cc82f0f991da5f6b6790befad9f5cce1f2c",
+    "address": "0x9252302d4597f48d0fd1dfb14169658892cb877e",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6310,27 +6520,27 @@
     "isDead": false
   },
   {
-    "address": "0x0801f9479329271fdd06a13e9c8846451ae24cb7",
+    "address": "0xf504550b5d7074e598715f6412b75422b0a6fc48",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 5,
-    "missed": 3,
+    "feeds": 9,
+    "missed": 6,
     "isDead": false
   },
   {
-    "address": "0xa12ab984ddcc39928413b165141930c63503c2ab",
+    "address": "0xe644440734ad1aa2f4de483e49117a4e11fc5ce3",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 13,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 17,
     "isDead": false
   },
   {
-    "address": "0xc7da8d74586b8f1a0077936df0927bf274b41e4b",
+    "address": "0xc6daaa0d813b4a1b23d3de5891fa4b3e492a3923",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6350,13 +6560,13 @@
     "isDead": false
   },
   {
-    "address": "0xfe2a7e9100071c04f626ae03d2549ac8295d4b48",
+    "address": "0xa44b993f5332ef282a2928b886a4cba594c9cbf0",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 17,
+    "feeds": 18,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -6368,6 +6578,26 @@
     "feeds": 1,
     "missed": 17,
     "isDead": false
+  },
+  {
+    "address": "0xe45b1747619c2c6810b9649cd087995e13dfe8e2",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 17,
+    "isDead": false
+  },
+  {
+    "address": "0xeae7d8cf54c44347e3cd9be223e7df8a4f1ba88c",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 2,
+    "missed": 16,
+    "isDead": true
   },
   {
     "address": "0x622fffe61d52ca3cd9df1416c553e511e48eaeca",
@@ -6400,66 +6630,6 @@
     "isDead": false
   },
   {
-    "address": "0x28ba7be1c233e4ffb5922bac375ec0da5ec3d379",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 14,
-    "isDead": false
-  },
-  {
-    "address": "0xff5cc3d4c4c6ae7542061e39d0ce95b8bde167dc",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 16,
-    "isDead": false
-  },
-  {
-    "address": "0xb85b691491f1b6ca826d0a700ebcc27c85e8495a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 10,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0x38819768f210b764ba86dee6f3aa5ca576315868",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 16,
-    "isDead": false
-  },
-  {
-    "address": "0x4e52f8dde6cc9d933e5ca6dac3ad260e5a4a3686",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 16,
-    "isDead": false
-  },
-  {
-    "address": "0xc6aee3221b567256a9b342630c1ac54b0616e224",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 16,
-    "isDead": false
-  },
-  {
     "address": "0xcb9888a2f2cf3ab6b6d15f5b457e26d7ce71d80c",
     "baseXP": 0,
     "newXP": 0,
@@ -6470,7 +6640,7 @@
     "isDead": false
   },
   {
-    "address": "0x5a13bf41a1281e438e31c9c601febd0c098e1f9b",
+    "address": "0xeb4c73a842ebe970193d54f6b45a0ccc8a3b80d8",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6480,7 +6650,7 @@
     "isDead": false
   },
   {
-    "address": "0xb408f423853525a9515d600464419e1f10d0ef04",
+    "address": "0xa28a92fba3c85aa186a4eee67743f9a0a57f70d5",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6490,7 +6660,7 @@
     "isDead": false
   },
   {
-    "address": "0x97126f44dca4ef7c8fdb5e6ac6d993aac8a81e06",
+    "address": "0xfb404c547e4efe0be20790f36989ea598fc3cdff",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6500,7 +6670,7 @@
     "isDead": false
   },
   {
-    "address": "0x3e1f923b51a2529607a362745d1a2f122f10e1de",
+    "address": "0xd30ca5e102a8bc05e4d80163a3553942b83241f5",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6520,24 +6690,14 @@
     "isDead": false
   },
   {
-    "address": "0x460a039487c9972b70c5b789bddecf5187ca86da",
+    "address": "0x398123176fb8fa1774254ea32db202e8b923cbf4",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 11,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xffb8c9ec9951b1d22ae0676a8965de43412ceb7d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 16,
-    "isDead": false
+    "feeds": 3,
+    "missed": 11,
+    "isDead": true
   },
   {
     "address": "0xcd7089f2559000e3207104faa8806e2ecbebb917",
@@ -6550,47 +6710,17 @@
     "isDead": true
   },
   {
-    "address": "0xa81eab4ebe6adf60471e18daed0990e1564dca7a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 11,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x7fa618ea206f7c27e12dd21b3b3713cc66a893dd",
+    "address": "0xdde316bd986fad886f76067bac8723ef0805bbe6",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
-    "missed": 15,
-    "isDead": false
+    "missed": 16,
+    "isDead": true
   },
   {
-    "address": "0xbeaed0c6ceac44b3b2d3585df357932b55c0d4e9",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0x5a2857c8bd1049774bd3fa021f8e44f5e28e13c4",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 16,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x80ebc094da3f6d946fd1fa66196e042478c4a18e",
+    "address": "0xf533bc3d3b4fd762c711c4a02ed453885189b6b8",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6630,16 +6760,6 @@
     "isDead": true
   },
   {
-    "address": "0x8a66b1ee1fb5b50f22ad655529c7aace5241d237",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
     "address": "0xa11cc82f3542cd338d8281b4a1be1880ad16523d",
     "baseXP": 0,
     "newXP": 0,
@@ -6660,13 +6780,13 @@
     "isDead": true
   },
   {
-    "address": "0x099dc436afe676584e2c0f6b8c527da6f66cac98",
+    "address": "0x4e955e365b675c36b0d95d2fc9fa262d99feded0",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 15,
+    "feeds": 3,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -6680,53 +6800,13 @@
     "isDead": false
   },
   {
-    "address": "0xf7e7c1aa347f441c716948f186b0ef6c6234d8c4",
+    "address": "0x44e97326eca5d9b0aad8115d01a9ca2f0a6a6fdb",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
     "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0xac4096740367875466cedf361fc058d133caa380",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x05ce02d44b69a65a572e0293a400846f5bfa0e31",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x4c408728e3deaa23aa34568c8ef6bc01b350798a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x3c18eb7f716966d9d15d741399487c513bd1a4c6",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 0,
     "isDead": false
   },
   {
@@ -6740,47 +6820,7 @@
     "isDead": false
   },
   {
-    "address": "0x39f793d279a9ce16bb4f8db52b9f7384eab6b85d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0xe73b59d076837c725dee844065e90c2e5f558534",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
     "address": "0x217c17d7aeba49aa7d79aff30f1c9c2078f7124d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0x6b31426b2fc2ff3040f233ea33a6167be469bb6a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x3d3da51e41bd7b6b57c76115e7117a69a6ff8fc3",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -6810,54 +6850,14 @@
     "isDead": true
   },
   {
-    "address": "0x59ad8755b4cf88b2cf4930241123c4b65f02e697",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0xc2907edf7092967c847e26065fc8023290ddc38f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0xdf354e12c1af1dfe241a2812e7451293d3b75477",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0x88da017c6d7a220e653e207134185a8345f3f421",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0xa3a89bc2e6136b636939e1f5e32ec8149c86965c",
+    "address": "0x8f24ade4c9e51b854a53d0665d7d46bb458e756b",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 3,
     "missed": 10,
-    "isDead": true
+    "isDead": false
   },
   {
     "address": "0xd9507772bdad1c6c670723d8176ccaf99a34442e",
@@ -6880,23 +6880,23 @@
     "isDead": false
   },
   {
-    "address": "0x9f358c9359efd052b8316e75052718a6f47564c2",
+    "address": "0xfa5b9e20387567b745cf44fd8bd1ea259476115f",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
     "missed": 15,
-    "isDead": true
+    "isDead": false
   },
   {
-    "address": "0x432dcf3a5c41f421a19f179eb7e8fbd80986a441",
+    "address": "0x8cc7d79a96130c02e8f6a443bee6729a8405db95",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 8,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 15,
     "isDead": false
   },
   {
@@ -6920,16 +6920,6 @@
     "isDead": false
   },
   {
-    "address": "0xe6607a55247cb8fbdb5066fe76c0b591e76f0ccf",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 11,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x8857348616a1b93aedff7a44c3d952e5c61bc996",
     "baseXP": 0,
     "newXP": 0,
@@ -6938,36 +6928,6 @@
     "feeds": 1,
     "missed": 15,
     "isDead": true
-  },
-  {
-    "address": "0x76eab94acb86d33666b124d64f63e0d791c5ee31",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 5,
-    "missed": 10,
-    "isDead": false
-  },
-  {
-    "address": "0x3dab515d259219d748f722ecc7376b21331e048b",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 15,
-    "isDead": false
-  },
-  {
-    "address": "0x4a5c60ddb4ecb8d7b6cb0e967e0c962f73ea3ce4",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
-    "isDead": false
   },
   {
     "address": "0xfb426e49460d22101b85843308eaad123608755c",
@@ -6980,17 +6940,7 @@
     "isDead": false
   },
   {
-    "address": "0xbfd30dfb736dc6dd26a5516062c94c1ae8e5bc7b",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 7,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0x6471eb05fcc3781ff9683bb31cbde02b2ea40183",
+    "address": "0xb4d6770288d56b0ef7c6df626e1e6bdcfa343721",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7010,46 +6960,6 @@
     "isDead": false
   },
   {
-    "address": "0xf43d201a363464ba596e977aa87feb7e5fe08878",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
-    "isDead": false
-  },
-  {
-    "address": "0x2426079026043f3c19dc57a0ffb5309cf660b351",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
-    "isDead": true
-  },
-  {
-    "address": "0x0ec7f62de4571934df433a6ec63360f3cca7356c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 14,
-    "isDead": false
-  },
-  {
-    "address": "0x90bb554dc6aa4612a158d07c74599183679357bb",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 10,
-    "missed": 1,
-    "isDead": false
-  },
-  {
     "address": "0x7300180fa2c4562fd014d327fd9031949aef3c71",
     "baseXP": 0,
     "newXP": 0,
@@ -7060,23 +6970,33 @@
     "isDead": false
   },
   {
-    "address": "0x0d187213e66bf354dab7eb2de63ed54f8edf11f7",
+    "address": "0x2e350acb04aba5ca350d5ca3f7541eb38a9eee61",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 2,
-    "missed": 13,
-    "isDead": true
+    "feeds": 1,
+    "missed": 14,
+    "isDead": false
   },
   {
-    "address": "0xf14841658b250934c3a7f7888ca61e52b0a044ac",
+    "address": "0xf2d14261487d7891fa9426ab2989c112ebaedbde",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 2,
-    "missed": 13,
+    "feeds": 7,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x20fb5889258f0ca10f277cd067dad6963e769d50",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 14,
     "isDead": false
   },
   {
@@ -7090,13 +7010,33 @@
     "isDead": false
   },
   {
-    "address": "0x42c10f69fc261ec51634b502f031195b0176018e",
+    "address": "0x169ad703d891f9e18f8bf87c99e1e5486346c4ec",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
-    "missed": 1,
+    "missed": 14,
+    "isDead": false
+  },
+  {
+    "address": "0x5c5b1ca858b47f8f143a7057601cc5a54d65e6d2",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 14,
+    "isDead": false
+  },
+  {
+    "address": "0x03ef616425b3aaaee08010f3898390fa542b89d4",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 14,
     "isDead": false
   },
   {
@@ -7120,16 +7060,6 @@
     "isDead": false
   },
   {
-    "address": "0x745d71f5411fdfebc6cf4cce10e484cb6a3faaf7",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 14,
-    "isDead": false
-  },
-  {
     "address": "0xcfae56a683895f2687f3198dcb32a48be8e687c8",
     "baseXP": 0,
     "newXP": 0,
@@ -7140,17 +7070,27 @@
     "isDead": false
   },
   {
-    "address": "0x8649abc613342f0b3839692b661f006b11d2ddd5",
+    "address": "0xee49b79e295d127ab76914d1135253350e2c708d",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 4,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 14,
     "isDead": false
   },
   {
-    "address": "0x8d6ee7d1e00fc44cc790b33b2d104570e184702b",
+    "address": "0x95b0dfeed8bcd0cffff97a3f8ac92ae657a1180f",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 14,
+    "isDead": true
+  },
+  {
+    "address": "0x2e53b7e601ec85fbbda9f56ab8dd98484f89eb20",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7160,7 +7100,7 @@
     "isDead": false
   },
   {
-    "address": "0x12a25d3a8d0ef4f1097ef0127a33ba09b7868c1a",
+    "address": "0x8d6ee7d1e00fc44cc790b33b2d104570e184702b",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7180,24 +7120,24 @@
     "isDead": true
   },
   {
-    "address": "0x17506e98aefa1c78bfa721c4d97cee7a72e5d606",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xc191a3dfa1fa0237305dae3f5dc1ef40b8d8b53f",
+    "address": "0x013b77c14ec5b2510452cda5f7db0f9875df229c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
     "missed": 13,
-    "isDead": false
+    "isDead": true
+  },
+  {
+    "address": "0x49d79f0d6a96ae5f6e6dd114fb602b56b3fed0ad",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 2,
+    "missed": 11,
+    "isDead": true
   },
   {
     "address": "0xe26cd4338c746d13f3bc2ba6dd6b6001807b258b",
@@ -7220,16 +7160,6 @@
     "isDead": false
   },
   {
-    "address": "0x797c1e7a2234fffe56348cb8321307bc8dab8154",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 13,
-    "isDead": false
-  },
-  {
     "address": "0x2546c5cc95fb7998287bf37562e3d0fc80c74ed2",
     "baseXP": 0,
     "newXP": 0,
@@ -7237,26 +7167,6 @@
     "level": 1,
     "feeds": 2,
     "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0x520b7b136ca2271f02531b427178235fca44bbee",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 13,
-    "isDead": true
-  },
-  {
-    "address": "0x78ca717053751d798ebf95ad9fd90103311da2f1",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 13,
     "isDead": false
   },
   {
@@ -7300,13 +7210,13 @@
     "isDead": false
   },
   {
-    "address": "0x2fc06d9811b52d2aecb3209b86e1793411994d1c",
+    "address": "0xde625d11875ab3d9f725377f459f957046fd4791",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 9,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 13,
     "isDead": false
   },
   {
@@ -7320,7 +7230,17 @@
     "isDead": false
   },
   {
-    "address": "0x85f66166a240130ca78234679fff34336f8db04d",
+    "address": "0x44ef1c3abfa8d2d8d99a826ef997b85706b7aaaf",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 12,
+    "isDead": true
+  },
+  {
+    "address": "0xb03915c81d4c53166ea256e89edc0335be216082",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7330,7 +7250,7 @@
     "isDead": false
   },
   {
-    "address": "0xb03915c81d4c53166ea256e89edc0335be216082",
+    "address": "0x56170956ed8653db2b70a147e976d42659981124",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7370,6 +7290,26 @@
     "isDead": false
   },
   {
+    "address": "0x5106d075ee0f3a16c6915c834a3121366fa4f77d",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 12,
+    "isDead": false
+  },
+  {
+    "address": "0x7c5cccf1e2ae97753ec55bdae04bb16de36afcd3",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 12,
+    "isDead": false
+  },
+  {
     "address": "0xdfe231c11236e859466864db5daa1983f4325059",
     "baseXP": 0,
     "newXP": 0,
@@ -7388,16 +7328,6 @@
     "feeds": 1,
     "missed": 11,
     "isDead": false
-  },
-  {
-    "address": "0x920f8b1dbf3399df54dbda00b72d3c5ed3afa171",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 11,
-    "isDead": true
   },
   {
     "address": "0x38bc5986cfe135fa89f6f5abe8e0809d6492e87d",
@@ -7420,23 +7350,13 @@
     "isDead": false
   },
   {
-    "address": "0xef5e1c176899ed45e059b975f9e0232730cd731e",
+    "address": "0x893496eb13fafeb4d4d87966b358237e04aa7110",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 11,
-    "isDead": false
-  },
-  {
-    "address": "0xe4509ee22dc3ccb2892ddfd322db1e9024f0652e",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 11,
+    "feeds": 3,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -7460,6 +7380,16 @@
     "isDead": true
   },
   {
+    "address": "0x02ae636c5e18e8c979ecc55db3d9bfcbcdec0653",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 11,
+    "isDead": false
+  },
+  {
     "address": "0x73a2af419c1526b06af77987b80c3986281bdf56",
     "baseXP": 0,
     "newXP": 0,
@@ -7481,16 +7411,6 @@
   },
   {
     "address": "0xbd7321f98b9c304c2066e1b3630d9f1d701756b4",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xedd028db23cab7cb92c8695b95624966b3cc8b87",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7550,47 +7470,7 @@
     "isDead": false
   },
   {
-    "address": "0x9cf46546d32b0698f4313936ff41ec4abdb4b49e",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xc915baa8ed83d2014cc1a4bebc1a7b107ae0fea6",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 11,
-    "isDead": false
-  },
-  {
-    "address": "0x64c0f0003b98b4554a5964278e8dcb92e700eb63",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x8053e6f6347937ccd93c5c5a4f42008d42b348a6",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x75466dda57aed3bb068ce1afe63c41f73344834f",
+    "address": "0x3c96ac495b5a1c85b05a84af246c887677ade3cd",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7611,16 +7491,6 @@
   },
   {
     "address": "0xffa4f609c6548a30500734f831e6e940eceba09a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xc83ed61f1a541232ec194cc34a072475f6254235",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7660,43 +7530,13 @@
     "isDead": false
   },
   {
-    "address": "0x6dd74e43fbd34bcde70450f945e61350c618011c",
+    "address": "0xc697d97de97662f880bf829d343356c0be133de4",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 2,
-    "missed": 10,
-    "isDead": false
-  },
-  {
-    "address": "0xb4bddec502a1425f9a38daff8c1551e4c0c7f807",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 3,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x8d41cd35c467a8bd1d5e0ea7f07d644a0c304f88",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 11,
-    "isDead": false
-  },
-  {
-    "address": "0x81b0279ee95ffefdda0c7b06bb896a9659e147d1",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 10,
+    "feeds": 6,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -7730,33 +7570,13 @@
     "isDead": false
   },
   {
-    "address": "0xada6d92bde610714f2b91f13d39713e06dd30866",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 6,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0xe7205f4d352ed9444c72eb3e7fa96c860b861245",
+    "address": "0x4827a1ba796dd7150c7ee011a7f525417a4611be",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
     "missed": 10,
-    "isDead": false
-  },
-  {
-    "address": "0xf602b5e172159734cc46d0c59c1239d62c1873d5",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 7,
     "isDead": false
   },
   {
@@ -7800,37 +7620,17 @@
     "isDead": false
   },
   {
-    "address": "0x51d769a7e3f69e166eac6b1275dc21216c84f957",
+    "address": "0x5609ff333f79de623ff5d6634ca76bf0aa32eb62",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 5,
-    "missed": 1,
+    "feeds": 2,
+    "missed": 6,
     "isDead": false
   },
   {
-    "address": "0x0b48cfa0ed4d9cd844a489ac5b9f91f936b94791",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 10,
-    "isDead": false
-  },
-  {
-    "address": "0xa86922b8b55853f4638d1889fb4f329c295fa2f3",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 10,
-    "isDead": false
-  },
-  {
-    "address": "0x4827616632a9ac010fb98e306dc967d5a99e044a",
+    "address": "0x2711d47b32516cbac68e5f1f084647b0f31bfbd0",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7840,27 +7640,7 @@
     "isDead": false
   },
   {
-    "address": "0x8be8d63f7611eef91e4cd7781cf5cc5e31bd727c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 10,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xed381987beedaa86b437f4beb919ae3fcdc10ace",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 9,
-    "isDead": false
-  },
-  {
-    "address": "0xaa75845f7fafeab5cabb76eca13ef61851ac874f",
+    "address": "0xcc7490242098eb01bc1d637c3732899445643fb5",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7880,26 +7660,6 @@
     "isDead": false
   },
   {
-    "address": "0x7168b6336ebe62095513973298627893e5fd0155",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 9,
-    "isDead": false
-  },
-  {
-    "address": "0x3ad81c9affa339c5ffdf53e6b277ee8277d21be1",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 9,
-    "isDead": false
-  },
-  {
     "address": "0x5a62b0b25651141b5c26fe42519750143a302bb8",
     "baseXP": 0,
     "newXP": 0,
@@ -7910,7 +7670,27 @@
     "isDead": false
   },
   {
+    "address": "0x13980623dd412cae6d5c4e0ac70a5483c5bf98c0",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": true
+  },
+  {
     "address": "0x165ee2bc5dc4377ccdf62c0847e71555028c6327",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0x6e11cbee1f6f417043818495c4cec5b03bcf19cb",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7930,13 +7710,33 @@
     "isDead": false
   },
   {
-    "address": "0x00df3231f973d9bba9df848b2fb690405b5b8888",
+    "address": "0xa45e6d2741940aa75abeaf5b399ad6b5b353cc05",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 3,
-    "missed": 5,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0x040b642c43827e39f2438bfca932c3f21cc37637",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 8,
+    "missed": 4,
+    "isDead": false
+  },
+  {
+    "address": "0x032cd46f158d45dd931215a2dd49dddb9c18d817",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 4,
+    "missed": 6,
     "isDead": false
   },
   {
@@ -7950,7 +7750,27 @@
     "isDead": false
   },
   {
+    "address": "0x793dd1cea398be0028288be520abd74bfbb7f444",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": false
+  },
+  {
     "address": "0x801a79d50d47659f42910d88f33d80623bc121d9",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 9,
+    "isDead": false
+  },
+  {
+    "address": "0x1a8131546072074fa43d84ebc76eb5bb7b2d6d5a",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -7980,6 +7800,16 @@
     "isDead": false
   },
   {
+    "address": "0xd8848c83309bd69d97bc812c34a74e069ae85d11",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 8,
+    "isDead": false
+  },
+  {
     "address": "0x1dd8152edba2b148e496847b514cad904ec01de4",
     "baseXP": 0,
     "newXP": 0,
@@ -7997,16 +7827,6 @@
     "level": 1,
     "feeds": 8,
     "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x7de3ad5351a017ccd178bb7d3a797ce7fb5592dc",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 8,
     "isDead": false
   },
   {
@@ -8030,7 +7850,27 @@
     "isDead": true
   },
   {
+    "address": "0xc51f58fcd77348b4767e3d7eb4d7529e49787f26",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 2,
+    "missed": 6,
+    "isDead": false
+  },
+  {
     "address": "0x2977027bc7a55ce7bc0f88d3987ca0904b500c6e",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 8,
+    "isDead": false
+  },
+  {
+    "address": "0xa3576e271fcb1a7b8cdd0f297213eff9bcb3d654",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8080,6 +7920,16 @@
     "isDead": false
   },
   {
+    "address": "0xbadc1123f9d295ce7f3e0083c06711f8bebaa309",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 8,
+    "isDead": false
+  },
+  {
     "address": "0xde26f7845535b656ad68cc5830ed40861c0bbc8b",
     "baseXP": 0,
     "newXP": 0,
@@ -8091,16 +7941,6 @@
   },
   {
     "address": "0x59169dbb675023aa1897aeb840130b7edda9b891",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 8,
-    "isDead": false
-  },
-  {
-    "address": "0x224a0714beb94a2812e27d9ce76b1f793ffe462c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8127,16 +7967,6 @@
     "level": 1,
     "feeds": 1,
     "missed": 8,
-    "isDead": false
-  },
-  {
-    "address": "0xbc429886c07f2230af275af93a383e5e878cc9c0",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 4,
     "isDead": false
   },
   {
@@ -8170,13 +8000,23 @@
     "isDead": false
   },
   {
-    "address": "0x567752946095c2f7474aa79f45fc11f3b2541593",
+    "address": "0xa42797c01ac2b72d7977b53f1e8c2a24357e240f",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 8,
+    "feeds": 3,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x486a35d7a5bdb37a1024a4c645125af63a72a200",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 6,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -8200,7 +8040,7 @@
     "isDead": false
   },
   {
-    "address": "0x18f9d6b0915c199756bc6c0bf0b0f880b360e8c2",
+    "address": "0x58bf9a39e4d5e48a5314eb6a19cf5cd51ee809b4",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8240,27 +8080,7 @@
     "isDead": false
   },
   {
-    "address": "0x0b649327a84d4471b34ed735a662f31c925f1a1f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 3,
-    "missed": 5,
-    "isDead": false
-  },
-  {
     "address": "0xce82a67fa2184d7010ef9b1a4934900106d95057",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 7,
-    "isDead": false
-  },
-  {
-    "address": "0x54c595d82c70bcc0f7b7a0cceed93445163bdb0b",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8280,7 +8100,17 @@
     "isDead": false
   },
   {
-    "address": "0xe24cbb454c6c0dfeb0611f8b65c32938f22569f7",
+    "address": "0x65c21644f0c852ba6445fb469bd92b401e226532",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 7,
+    "isDead": false
+  },
+  {
+    "address": "0xe0ee3dec2de8363611982baabaa7afa17c8eea27",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8320,17 +8150,17 @@
     "isDead": false
   },
   {
-    "address": "0x6e11fc9b7df187b02127736772f0ab05b248a360",
+    "address": "0xed6e3833482a617e394165bdc611a7c66abd48f3",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 5,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 7,
     "isDead": false
   },
   {
-    "address": "0xee0ea6fd16afe26f386c702e122fd0768a93aa71",
+    "address": "0xafa9284d28d4b83ccf7ffe2c24aac2fa033ee34a",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8370,13 +8200,13 @@
     "isDead": false
   },
   {
-    "address": "0xd10c742325b7d49c4bfd21f8447830a85934c7cd",
+    "address": "0x32c15be32ae31d06037b56daa2eb125820d0f190",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 7,
+    "feeds": 7,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -8410,6 +8240,26 @@
     "isDead": false
   },
   {
+    "address": "0x8981b6ffb5b53c3864ea76af703fa4164c9e646d",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 6,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x788af51431275b2535104487125fce1f4d9569ea",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 6,
+    "isDead": false
+  },
+  {
     "address": "0x8c3bcd9e49a9d7b1b99ce2d781dc3366d1a23a5d",
     "baseXP": 0,
     "newXP": 0,
@@ -8430,26 +8280,6 @@
     "isDead": false
   },
   {
-    "address": "0x3e27e6a480feb8bbefb3a93fe0d07b06e644a342",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0x6141db7097aac8e27abba97f536da94633f57ca6",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 2,
-    "isDead": false
-  },
-  {
     "address": "0x52274880878b03787f6358e0a84f8e5dbcb2ddc4",
     "baseXP": 0,
     "newXP": 0,
@@ -8461,6 +8291,16 @@
   },
   {
     "address": "0xf2a978d103d43cee6dbadb2e6178a43517328253",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 6,
+    "isDead": false
+  },
+  {
+    "address": "0x14e1b90752e181cd9092d92500fbf935f69d6984",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8490,16 +8330,6 @@
     "isDead": false
   },
   {
-    "address": "0x39dad914177ea9a46766cbe62dd6ef79f48bf1ea",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 6,
-    "isDead": false
-  },
-  {
     "address": "0x4fd6714a7f443b8a11c44e542c15cda0f4955848",
     "baseXP": 0,
     "newXP": 0,
@@ -8510,37 +8340,7 @@
     "isDead": false
   },
   {
-    "address": "0x6377988fd090a6bb7e1fbff42b45f7dd226b55a4",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 3,
-    "missed": 5,
-    "isDead": false
-  },
-  {
-    "address": "0x9cf1394182f6967de4002f2bcd3ceb843707e087",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 6,
-    "isDead": false
-  },
-  {
     "address": "0xb00f58ae9fc82b8964d2ba277befa7568f86a68d",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 6,
-    "isDead": false
-  },
-  {
-    "address": "0x92fc6c8f63c89f48cef7b1604f6f3213b8bfdd7c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8570,7 +8370,7 @@
     "isDead": false
   },
   {
-    "address": "0x4b8df89f825c4a96f6eb33c8051b8c8b6a9c1540",
+    "address": "0xa439d81be81d76351ac2d1f16ef794c09de89cd2",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8610,16 +8410,6 @@
     "isDead": false
   },
   {
-    "address": "0x2912113f8bbd71c81216f25b3c3e60ec59f35ae1",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 5,
-    "isDead": false
-  },
-  {
     "address": "0x59470d66025015c0c5c48a6b86973fdf62e60bb6",
     "baseXP": 0,
     "newXP": 0,
@@ -8630,57 +8420,17 @@
     "isDead": false
   },
   {
-    "address": "0xa983f442c601f0ad8799f9a3c3a86af1a45cb21b",
+    "address": "0x0da62f1ec25487f3613d485351c7b998745c70ea",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
-    "missed": 5,
-    "isDead": false
-  },
-  {
-    "address": "0x7ccf320b639659eda8f55d677b385a41aaea610f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 5,
-    "isDead": false
-  },
-  {
-    "address": "0x97136df5029a10365210795d252cbd351ca57955",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 5,
-    "isDead": false
-  },
-  {
-    "address": "0xee87bfe7f0b3d039794ddb0df20e2f01beecc23a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 5,
+    "missed": 0,
     "isDead": false
   },
   {
     "address": "0x1ea5fcafe28d7e731313d5c44180500b667a0c23",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 5,
-    "isDead": false
-  },
-  {
-    "address": "0x9d1998f74b3cd14b1c6af50c07cd9de6dd9b0bf7",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8710,13 +8460,13 @@
     "isDead": false
   },
   {
-    "address": "0x49bbed8a3298517772efc4defaf535b79f5c4ba7",
+    "address": "0xc276bcd768299222a3e9591c8f128d3b548ea7c1",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 1,
-    "missed": 5,
+    "feeds": 3,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -8730,7 +8480,7 @@
     "isDead": false
   },
   {
-    "address": "0xfd7ac2b19d361dd0bad89de6a18a398420bfcdce",
+    "address": "0x5bac4f9538fbe117e4fcdb3ff9b4381c294305ed",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8740,33 +8490,13 @@
     "isDead": false
   },
   {
-    "address": "0xcf95d567b534e51e3adfb93fcb8df09c245b080f",
+    "address": "0x9f498442dad00fb9abfd8c95f27b0bdfca27aff1",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
-    "feeds": 3,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x5bac4f9538fbe117e4fcdb3ff9b4381c294305ed",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 4,
-    "isDead": false
-  },
-  {
-    "address": "0x623e25d3ff94e180fc7d0de19643f9f56bbf5c71",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 4,
+    "feeds": 2,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -8780,16 +8510,6 @@
     "isDead": false
   },
   {
-    "address": "0xfac1999a9ee4fb49e75d783aaafdec895a8bd171",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 3,
-    "isDead": false
-  },
-  {
     "address": "0xd2f59c1bf38cd5967e282c705574cea61f64831e",
     "baseXP": 0,
     "newXP": 0,
@@ -8800,7 +8520,7 @@
     "isDead": false
   },
   {
-    "address": "0xfe684385eea689942d6f441f9edd92db823b716c",
+    "address": "0x4cfca4159f867f7f915217c74b23b77561b23766",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8830,6 +8550,16 @@
     "isDead": false
   },
   {
+    "address": "0x582045ea8b92f99b744c2e4c6d3667987f23479a",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 4,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x12e5ba5527e1c740ec6b914aed6bf78610508144",
     "baseXP": 0,
     "newXP": 0,
@@ -8840,23 +8570,33 @@
     "isDead": false
   },
   {
-    "address": "0x5b787e4888485dd1a0233c55d1c7736300903c5b",
+    "address": "0xc5e3075112dd67cfb50a7fc19cf476b2fbefbbb3",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 5,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x09583a1a1e7e3dfb938f02f89abc1e0b35d9560b",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 3,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xa54203d69a23f6b8f5145ecc00f1d8c90a904f77",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 1,
     "feeds": 1,
-    "missed": 4,
-    "isDead": false
-  },
-  {
-    "address": "0x940be08b712b35216393f1fe7b9fc13b2efd8a47",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 4,
-    "missed": 2,
+    "missed": 3,
     "isDead": false
   },
   {
@@ -8870,17 +8610,7 @@
     "isDead": false
   },
   {
-    "address": "0x35ddaf63298a0f6b36bbece75b32552f762f1fcf",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 2,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x00000058b470df25c5189df13699a8317f34fb04",
+    "address": "0x34deda0ec34e42331443b22f753182985f3264fe",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8890,7 +8620,47 @@
     "isDead": false
   },
   {
-    "address": "0x5567d9b78ca19b3c26cbb2e43e95fe37b6a246e0",
+    "address": "0x9fa3c2f4f3c961e64e3335a98f779cdd4bd9f8b3",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x9ee327974ecbbddbdf736750d302f72c63a04b32",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xeaab4e4d6c822c3cc739621919179df9f1b18634",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x0d7a0212b083e6222c3e033834436f55ad86fbf5",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xd111886cb7eff60f390e8f4c4f7c288c21988d51",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8920,6 +8690,36 @@
     "isDead": false
   },
   {
+    "address": "0xf5b1516843b05617b78da217cc3a62ee119212eb",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xafb570e7b46ba5a7ed16185425afd54cfdbbb8d2",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x50ac157fcd3e0e1943e455e40855ae297abb5d2b",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
     "address": "0xfabbbc676d78aed679fae8af54770efcc21c9063",
     "baseXP": 0,
     "newXP": 0,
@@ -8927,6 +8727,26 @@
     "level": 1,
     "feeds": 1,
     "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xa4b636030d1926a537fb0d8d8a4db33083a880af",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xc9ac106eebb9b8e537785b45b3bc9c4c6c80c454",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 3,
+    "missed": 0,
     "isDead": false
   },
   {
@@ -8940,7 +8760,7 @@
     "isDead": false
   },
   {
-    "address": "0x397134335575eccc0e7629fe7a1f2ab8ed50343b",
+    "address": "0xf27299358993b7b482738530d4ec89fffdb223c9",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -8970,17 +8790,7 @@
     "isDead": false
   },
   {
-    "address": "0xf5bf9737def2a6bc3492141daea5704f4e8153c4",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xcd3f48ef1d6e5142ccfc2dec8c3ef6feda83cfa4",
+    "address": "0x37c660a2005bbe02c817065cb6a70553a1166740",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9000,7 +8810,37 @@
     "isDead": false
   },
   {
+    "address": "0x6ccc6c1d4cdf41a69ca1caa0facc047d1af21802",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xa7e15312ad151f449b7f3d6a5b5a17f65d49100b",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
     "address": "0x319ed342df6cb1ea00b71967bb8a2a76de48b39f",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xb8566125b1a63b4e3c2c085a103607978c54d163",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9020,7 +8860,27 @@
     "isDead": false
   },
   {
-    "address": "0x7628fdeed07880689276dce60f8de05bb5a892cf",
+    "address": "0x5d8433d503861bda143638d9d275a4fb7d279b1b",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0x8de13180019ecd3ea773a625d7a73b196b29fcb3",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xa2248f5c8d13ef7ed62773dd991f2ed086495fc8",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9050,7 +8910,17 @@
     "isDead": false
   },
   {
-    "address": "0xb0652778de464eb78dabe0a3d18f3eb14f28d97e",
+    "address": "0x9bdff98e2474e8babb4f4b05c52ae417c3b39089",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xb258074624757113fdcc57f7f8b2310f0e546bdf",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9080,7 +8950,17 @@
     "isDead": false
   },
   {
-    "address": "0x3df5396873fd17b427eeeff2738b3a59e255c119",
+    "address": "0xbee87eba9dab6ba3cc2cd2158f5f55bc7c8b275f",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xe32cbbcbebd01a31b42b9ac1ec7a2ff14f95842c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9100,6 +8980,26 @@
     "isDead": false
   },
   {
+    "address": "0x42bd6d4a7c572074e97063a0a74e467278933901",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 2,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x67b1216c0cd3e0badc3f2671e4fcec55dbb9531d",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
     "address": "0xcda5eda78e7905103f7add9935e808096cb0da70",
     "baseXP": 0,
     "newXP": 0,
@@ -9110,7 +9010,7 @@
     "isDead": false
   },
   {
-    "address": "0xb057a043bd3d5ddbcd8f3b6e29dd4e0a054ff100",
+    "address": "0xb9508945f92330a69ad379613e333ba351dd1bc2",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9120,7 +9020,7 @@
     "isDead": false
   },
   {
-    "address": "0xb9508945f92330a69ad379613e333ba351dd1bc2",
+    "address": "0xa368e07951bf31bb8deea2b113f0b65c38ebcf09",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9180,17 +9080,7 @@
     "isDead": false
   },
   {
-    "address": "0x0418f70c1e21facb44bf4cbfc3bf8f53196b4a43",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0x1ffa4a00a3d89b35a885ac1e78b563f470b9391d",
+    "address": "0x4d71b8b6c3c6f726fc13f081062d8574f5d98433",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9230,16 +9120,6 @@
     "isDead": false
   },
   {
-    "address": "0x75e2e6e9b675bbe9ed599da0ff5a36880a5f4815",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 1,
-    "isDead": false
-  },
-  {
     "address": "0x81c29855e4b3b5b283f15cd18b0ec47d37012763",
     "baseXP": 0,
     "newXP": 0,
@@ -9270,6 +9150,16 @@
     "isDead": false
   },
   {
+    "address": "0xa44c7901976b045bec9a3fee78454b44a6b2b372",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 2,
+    "missed": 0,
+    "isDead": false
+  },
+  {
     "address": "0x900c02e3bb34a641a6aaee2953e1f9cf19c1a3f2",
     "baseXP": 0,
     "newXP": 0,
@@ -9277,6 +9167,16 @@
     "level": 1,
     "feeds": 2,
     "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x288f9cc5f7e594b37429c7591be1e5549404afa2",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 1,
     "isDead": false
   },
   {
@@ -9320,26 +9220,6 @@
     "isDead": false
   },
   {
-    "address": "0x08a98ce3ab985fc844f7227c9cc3db5878c534fb",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x9ad2bf10f2007cd6bc9d64b35052cd026042ac96",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 1,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
     "address": "0x251983331c8a740ba587eb3442d2bbd38c766260",
     "baseXP": 0,
     "newXP": 0,
@@ -9350,7 +9230,27 @@
     "isDead": false
   },
   {
-    "address": "0x6743529cfb72d35e915906514e45644996367604",
+    "address": "0xd3c4c7e53d2c63969133ce2d59923ee81b9ce41e",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xbd885d0d50a80cf0f7f38d8c8c23107b370240dc",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x89b9dff98a080ed02aa1f95c8462ff93918b5415",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9361,6 +9261,26 @@
   },
   {
     "address": "0x13e4fbe531db5aab3e4220d31e63aabce07818a8",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x54f57517dfef7088b06134a83f221e2637aa8e54",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x36003dfd0a8c320dfc8191eb317c4119d02c1c1c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9390,7 +9310,17 @@
     "isDead": false
   },
   {
-    "address": "0x9e3e83b4e0974a6c361830bb72d32b72f37268d2",
+    "address": "0xb80e22cf18bb8891e264592c32c936c033e6e41c",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 1,
+    "feeds": 1,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x1cf7e3bd2461f22d4fe108b0c8bc989af8fc02ed",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9430,26 +9360,6 @@
     "isDead": true
   },
   {
-    "address": "0x5dd649c8c1c5381427c70f6b951167f09c7839c2",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 19,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0xc0fde0b26d1d8e4d99577b143794ee05bc4f1bad",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 19,
-    "isDead": false
-  },
-  {
     "address": "0x162c945888209e6730625ef889653a79e449e4ed",
     "baseXP": 0,
     "newXP": 0,
@@ -9460,17 +9370,7 @@
     "isDead": false
   },
   {
-    "address": "0xb46a0f0ba16ce4e5599b020df3d9cc91e78e993b",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 3,
-    "missed": 12,
-    "isDead": true
-  },
-  {
-    "address": "0x4164d436e36d76d19522d132f2a97ce89ffd5958",
+    "address": "0x6bad1163763f24b4f5efd26e742f98af971ec179",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9480,57 +9380,27 @@
     "isDead": false
   },
   {
-    "address": "0x072e382e590ed992953f2746fc281ae6e0d9232b",
+    "address": "0x92a166c7d643d662bfd81946c6355e8b4184f9dd",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 7,
-    "missed": 3,
-    "isDead": false
-  },
-  {
-    "address": "0xeb26226f2511dc656f5e5146506f0f843a1e9a0a",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 6,
-    "missed": 9,
-    "isDead": false
-  },
-  {
-    "address": "0x2bab7ff825678993feaf8f5769e47343c445c123",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 16,
+    "feeds": 20,
     "missed": 0,
     "isDead": false
   },
   {
-    "address": "0x1e115de33ee2e947377bc91fd973dbe9393a4aa6",
+    "address": "0xa6b0c0491e3556677ca26c5e3676f71723ab2074",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 13,
-    "missed": 1,
+    "feeds": 2,
+    "missed": 15,
     "isDead": false
   },
   {
-    "address": "0x2319b3d19db24fb596924a366c5ed74b717ab943",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 19,
-    "isDead": false
-  },
-  {
-    "address": "0x854f3d54358850ae4704ff8ab1bbd1cf21b94fc5",
+    "address": "0x5b6239f3d7612ca9ca51db0e6f90c9195ae98eb7",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9540,17 +9410,97 @@
     "isDead": false
   },
   {
-    "address": "0x166516ab48afedd5621c9c6dba9e4bdae806c47d",
+    "address": "0x33f5de9ac1ae9e13a09d230d9a0af0895dd21a27",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 2,
+    "missed": 17,
+    "isDead": false
+  },
+  {
+    "address": "0x6a9e771912c7b238c2a12034898f261c739294fa",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 22,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5f52ca3c16d383f19c802b2441bbf1bc781f54aa",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 5,
+    "missed": 7,
+    "isDead": false
+  },
+  {
+    "address": "0x3ceda7e3efe4647b842169742240297eaab8106c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
     "feeds": 1,
-    "missed": 19,
+    "missed": 18,
     "isDead": false
   },
   {
-    "address": "0xe11fdb36fe7a3777ea1e2e47812748c1ec8d2553",
+    "address": "0xa369a594c6bdd11735540f3399d31b2a32fec730",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 18,
+    "isDead": false
+  },
+  {
+    "address": "0xe10ce618839c7cc4589b66a543b165a9d2bca600",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 20,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x5c2491bacb3dcda7bc74e4083dc098354ddce95c",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 8,
+    "missed": 4,
+    "isDead": false
+  },
+  {
+    "address": "0x0801f9479329271fdd06a13e9c8846451ae24cb7",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 5,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0x28ba7be1c233e4ffb5922bac375ec0da5ec3d379",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 2,
+    "missed": 14,
+    "isDead": false
+  },
+  {
+    "address": "0x3e1f923b51a2529607a362745d1a2f122f10e1de",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9560,7 +9510,27 @@
     "isDead": false
   },
   {
-    "address": "0xb584c4716b030130b1644bc000b25b7a93fb7c8d",
+    "address": "0x72a1ec32165ec55c35d8d3deff56ed351515a084",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 6,
+    "missed": 8,
+    "isDead": true
+  },
+  {
+    "address": "0xcb9c2ddb66a9b39ad3012c489caf311cf35c9af9",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 17,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xee44c476dda4a6db63068152f7c964d39d18cc6c",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9570,7 +9540,7 @@
     "isDead": false
   },
   {
-    "address": "0xc19df42f42545a66551452436fd2c666f6459241",
+    "address": "0x35ee07ec53555f82ee66606fe97282e05a9890fc",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9580,7 +9550,47 @@
     "isDead": false
   },
   {
-    "address": "0xc515667a75e6ca1d47cdf18aff1836db64b132cb",
+    "address": "0xe73b59d076837c725dee844065e90c2e5f558534",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0xdf354e12c1af1dfe241a2812e7451293d3b75477",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 15,
+    "isDead": false
+  },
+  {
+    "address": "0xa3a89bc2e6136b636939e1f5e32ec8149c86965c",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 3,
+    "missed": 10,
+    "isDead": true
+  },
+  {
+    "address": "0x432dcf3a5c41f421a19f179eb7e8fbd80986a441",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 8,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0xc191a3dfa1fa0237305dae3f5dc1ef40b8d8b53f",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9590,13 +9600,13 @@
     "isDead": false
   },
   {
-    "address": "0x7499d229e6b04434fdb548e8226e5bb556188eff",
+    "address": "0x797c1e7a2234fffe56348cb8321307bc8dab8154",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 13,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 13,
     "isDead": false
   },
   {
@@ -9610,77 +9620,57 @@
     "isDead": false
   },
   {
-    "address": "0xc5c6d849ebcb8bc7ac41a80cefd208a87d7ae5ab",
+    "address": "0xf5d868ecd9c9c9923c61da96f0779ef46f829457",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 10,
-    "missed": 2,
+    "feeds": 1,
+    "missed": 11,
     "isDead": false
   },
   {
-    "address": "0xb47edb425234e0b373dafdf5f97fea99410a0b65",
+    "address": "0xc915baa8ed83d2014cc1a4bebc1a7b107ae0fea6",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 2,
-    "missed": 1,
+    "feeds": 1,
+    "missed": 11,
     "isDead": false
   },
   {
-    "address": "0x893496eb13fafeb4d4d87966b358237e04aa7110",
+    "address": "0x18e5af061c11868d553eddc043f01416d00732bb",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 3,
-    "missed": 0,
+    "feeds": 1,
+    "missed": 9,
     "isDead": false
   },
   {
-    "address": "0x2ad5960dfc859a83229609334767ffffd4f2e0ce",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 8,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x8981b6ffb5b53c3864ea76af703fa4164c9e646d",
+    "address": "0x38b75ceecf0a430fc2cb4e4bb751c4a7353fd6f1",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
     "feeds": 6,
-    "missed": 0,
+    "missed": 1,
     "isDead": false
   },
   {
-    "address": "0x4597d416c27c1fa8cf9b4d89b4e9b12c53b61940",
+    "address": "0x6377988fd090a6bb7e1fbff42b45f7dd226b55a4",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
-    "feeds": 8,
-    "missed": 0,
+    "feeds": 3,
+    "missed": 5,
     "isDead": false
   },
   {
-    "address": "0x791c2c048f6b72b60c84d4cb7db20f6bc9da62b6",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 7,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x172202cae664e4b15a56695177816e57f93555b3",
+    "address": "0x9cf1394182f6967de4002f2bcd3ceb843707e087",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9690,7 +9680,37 @@
     "isDead": false
   },
   {
-    "address": "0x0da62f1ec25487f3613d485351c7b998745c70ea",
+    "address": "0x92fc6c8f63c89f48cef7b1604f6f3213b8bfdd7c",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 6,
+    "isDead": false
+  },
+  {
+    "address": "0xef26d0b7e41db4191e399caa6993f65a9e6f5b64",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 6,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x2912113f8bbd71c81216f25b3c3e60ec59f35ae1",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 2,
+    "missed": 5,
+    "isDead": false
+  },
+  {
+    "address": "0x7ccf320b639659eda8f55d677b385a41aaea610f",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9700,17 +9720,67 @@
     "isDead": false
   },
   {
-    "address": "0x134d230fab42d29ce0c00b4c0d8cb9067054cf19",
+    "address": "0xcf95d567b534e51e3adfb93fcb8df09c245b080f",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 3,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x3faef32ae63be125ade5a0b8f9b5edf8ef460cf5",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 4,
+    "isDead": false
+  },
+  {
+    "address": "0xe1ebc95a0cd6e543cba41e33863649d11871e6cb",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 5,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x35ddaf63298a0f6b36bbece75b32552f762f1fcf",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
     "level": 0,
     "feeds": 2,
-    "missed": 0,
+    "missed": 2,
     "isDead": false
   },
   {
-    "address": "0xeb2e79bf927543a9f32709bcefcfe6496eb3086a",
+    "address": "0xa470df3631ea72e734c0ef4dae965810f6e68034",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 3,
+    "missed": 1,
+    "isDead": false
+  },
+  {
+    "address": "0xe09fc7c9b4787659f8cd553dea0ce13d095273b0",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 3,
+    "isDead": false
+  },
+  {
+    "address": "0xf5bf9737def2a6bc3492141daea5704f4e8153c4",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9720,7 +9790,17 @@
     "isDead": false
   },
   {
-    "address": "0xb258074624757113fdcc57f7f8b2310f0e546bdf",
+    "address": "0x7628fdeed07880689276dce60f8de05bb5a892cf",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 2,
+    "isDead": false
+  },
+  {
+    "address": "0xb0652778de464eb78dabe0a3d18f3eb14f28d97e",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9740,47 +9820,7 @@
     "isDead": false
   },
   {
-    "address": "0xbee87eba9dab6ba3cc2cd2158f5f55bc7c8b275f",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0xe32cbbcbebd01a31b42b9ac1ec7a2ff14f95842c",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 2,
-    "isDead": false
-  },
-  {
-    "address": "0x42bd6d4a7c572074e97063a0a74e467278933901",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 2,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x4f59a12b1cabf875338ea8eb482004bc5c710267",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 2,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0xa368e07951bf31bb8deea2b113f0b65c38ebcf09",
+    "address": "0x75e2e6e9b675bbe9ed599da0ff5a36880a5f4815",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9790,37 +9830,7 @@
     "isDead": false
   },
   {
-    "address": "0xc9a07cdcc973db02d9fa2967a0f50f683423fd61",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0xa44c7901976b045bec9a3fee78454b44a6b2b372",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 2,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x288f9cc5f7e594b37429c7591be1e5549404afa2",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 1,
-    "isDead": false
-  },
-  {
-    "address": "0xd3c4c7e53d2c63969133ce2d59923ee81b9ce41e",
+    "address": "0x08a98ce3ab985fc844f7227c9cc3db5878c534fb",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9830,27 +9840,7 @@
     "isDead": false
   },
   {
-    "address": "0xbd885d0d50a80cf0f7f38d8c8c23107b370240dc",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x54f57517dfef7088b06134a83f221e2637aa8e54",
-    "baseXP": 0,
-    "newXP": 0,
-    "xp": 0,
-    "level": 0,
-    "feeds": 1,
-    "missed": 0,
-    "isDead": false
-  },
-  {
-    "address": "0x36003dfd0a8c320dfc8191eb317c4119d02c1c1c",
+    "address": "0x9ad2bf10f2007cd6bc9d64b35052cd026042ac96",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
@@ -9861,6 +9851,16 @@
   },
   {
     "address": "0xd4132138668a7e6982b6e624835866394fc2056c",
+    "baseXP": 0,
+    "newXP": 0,
+    "xp": 0,
+    "level": 0,
+    "feeds": 1,
+    "missed": 0,
+    "isDead": false
+  },
+  {
+    "address": "0x82c3943fc8e47b56a4bc503086bf7a75c6767b40",
     "baseXP": 0,
     "newXP": 0,
     "xp": 0,
