@@ -36,17 +36,31 @@ if (fs.existsSync(snapshotPath)) {
   previousSnapshot = JSON.parse(fs.readFileSync(snapshotPath, "utf8"));
 }
 
+// 🌀 گرفتن تمام بازیکن‌ها بدون محدودیت
+const fetchAllPlayers = async (batchSize = 1000): Promise<string[]> => {
+  const all: string[] = [];
+  let start = 0;
+  while (true) {
+    const chunk: string[] = await contract.getPlayers(start, batchSize);
+    if (chunk.length === 0) break;
+    all.push(...chunk);
+    if (chunk.length < batchSize) break;
+    start += batchSize;
+  }
+  return all;
+};
+
 const main = async () => {
   try {
-    console.log("📦 Reading players from contract...");
-    const onChainAddresses: string[] = await contract.getPlayers(0, 1000);
-    const snapshotAddresses: string[] = previousSnapshot.map((p: { address: string }) => p.address.toLowerCase());
+    console.log("📦 Reading all players from contract...");
+    const onChainAddresses = await fetchAllPlayers();
+    const snapshotAddresses: string[] = previousSnapshot.map((p) => p.address.toLowerCase());
 
-    // ادغام آدرس‌ها: آدرس‌هایی که فقط در اسنپ‌شات هستن هم باید باشن
+    // ترکیب آدرس‌ها
     const allAddresses = Array.from(new Set([...onChainAddresses.map((a) => a.toLowerCase()), ...snapshotAddresses]));
 
     const snapshotMap = new Map<string, number>(
-      previousSnapshot.map((p: { address: string; xp: number }) => [p.address.toLowerCase(), p.xp])
+      previousSnapshot.map((p) => [p.address.toLowerCase(), p.xp])
     );
 
     console.log(`📊 Total unique players: ${allAddresses.length}`);
@@ -69,54 +83,45 @@ const main = async () => {
           result.baseXP = Number(bunny?.baseXP || 0);
           result.newXP = Number(bunny?.newXP || 0);
           result.xp = result.baseXP + result.newXP;
-        } catch (err: unknown) {
-          const msg = (err as any)?.reason || (err as any)?.message || "unknown error";
-          console.warn(`⚠️ ${addr} (bunnies):`, msg);
+        } catch (err) {
+          console.warn(`⚠️ ${addr} (bunnies):`, (err as any)?.reason || (err as any)?.message || "unknown error");
         }
 
         try {
-          const level = await contract.getLevel(addr);
-          result.level = Number(level);
-        } catch (err: unknown) {
-          const msg = (err as any)?.reason || (err as any)?.message || "unknown error";
-          console.warn(`⚠️ ${addr} (level):`, msg);
+          result.level = Number(await contract.getLevel(addr));
+        } catch (err) {
+          console.warn(`⚠️ ${addr} (level):`, (err as any)?.reason || (err as any)?.message || "unknown error");
         }
 
         try {
-          const feeds = await contract.getFeedCount(addr);
-          result.feeds = Number(feeds);
-        } catch (err: unknown) {
-          const msg = (err as any)?.reason || (err as any)?.message || "unknown error";
-          console.warn(`⚠️ ${addr} (feeds):`, msg);
+          result.feeds = Number(await contract.getFeedCount(addr));
+        } catch (err) {
+          console.warn(`⚠️ ${addr} (feeds):`, (err as any)?.reason || (err as any)?.message || "unknown error");
         }
 
         try {
-          const missed = await contract.getMissedDays(addr);
-          result.missed = Number(missed);
-        } catch (err: unknown) {
-          const msg = (err as any)?.reason || (err as any)?.message || "unknown error";
-          console.warn(`⚠️ ${addr} (missed):`, msg);
+          result.missed = Number(await contract.getMissedDays(addr));
+        } catch (err) {
+          console.warn(`⚠️ ${addr} (missed):`, (err as any)?.reason || (err as any)?.message || "unknown error");
         }
 
         try {
-          const isDead = await contract.isBunnyDead(addr);
-          result.isDead = Boolean(isDead);
-        } catch (err: unknown) {
-          const msg = (err as any)?.reason || (err as any)?.message || "unknown error";
-          console.warn(`⚠️ ${addr} (isDead):`, msg);
+          result.isDead = Boolean(await contract.isBunnyDead(addr));
+        } catch (err) {
+          console.warn(`⚠️ ${addr} (isDead):`, (err as any)?.reason || (err as any)?.message || "unknown error");
         }
 
-        // اگر هیچ دیتایی نداشت، حذفش کن
+        // حذف کامل آیتم خالی
         if (
-          result.baseXP === 0 &&
-          result.newXP === 0 &&
-          result.level === 0 &&
-          result.feeds === 0 &&
-          result.missed === 0 &&
-          result.xp === 0
-        ) {
-          return null;
-        }
+  result.baseXP === 0 &&
+  result.newXP === 0 &&
+  result.level === 0 &&
+  result.feeds === 0 &&
+  result.missed === 0 &&
+  result.xp === 0
+) {
+  console.warn(`⚠️ ${addr} has zero data but will be kept`);
+}
 
         return result;
       })
