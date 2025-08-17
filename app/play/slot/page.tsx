@@ -154,14 +154,14 @@ function targetFromResult(prizeWei?: bigint, wl?: boolean, fm?: boolean): Symbol
   return nonMatch();
 }
 
-/* ------- 1559 caps ------- */
+/* ------- 1559 caps (no BigInt literals) ------- */
 async function getCapped1559(pc: ReturnType<typeof usePublicClient> | null){
   if(!pc) return null;
   try{
     const fees = await pc.estimateFeesPerGas();
     const base = (fees.maxFeePerGas && fees.maxPriorityFeePerGas)
       ? (fees.maxFeePerGas - fees.maxPriorityFeePerGas)
-      : (await pc.getBlock()).baseFeePerGas ?? 0n;
+      : (await pc.getBlock()).baseFeePerGas ?? BigInt(0);
 
     if(!ENV_MAX_FEE || !ENV_MAX_PRIO) return null;
     const capFee  = parseGwei(ENV_MAX_FEE);
@@ -170,7 +170,7 @@ async function getCapped1559(pc: ReturnType<typeof usePublicClient> | null){
     let maxPriorityFeePerGas = fees.maxPriorityFeePerGas ?? capPrio;
     if(maxPriorityFeePerGas > capPrio) maxPriorityFeePerGas = capPrio;
 
-    let maxFeePerGas = fees.maxFeePerGas ?? (base*2n + maxPriorityFeePerGas);
+    let maxFeePerGas = fees.maxFeePerGas ?? (base * BigInt(2) + maxPriorityFeePerGas);
     if(maxFeePerGas > capFee) maxFeePerGas = capFee;
 
     if(maxFeePerGas < base + maxPriorityFeePerGas) return null;
@@ -621,7 +621,6 @@ export default function WheelPage(){
   const [leverKick,setLeverKick] = useState(0);
   const disablingAuditOnce = useRef(false);
 
-  // auto-disable audit for owner (gas saver)
   useEffect(()=>{ (async ()=>{
     if(!isOwner || !auditOn || disablingAuditOnce.current || !activeChainId) return;
     disablingAuditOnce.current=true;
@@ -655,7 +654,7 @@ export default function WheelPage(){
         const est = await wagmiPublic!.estimateContractGas({
           address:CONTRACT_ADDRESS, abi:ABI, functionName:'spin', value:feeWei, account:address!,
         });
-        gas = (est * 125n) / 100n;
+        gas = (est * BigInt(125)) / BigInt(100);
       }catch(e:any){
         console.warn('estimateContractGas failed', e?.shortMessage || e?.message);
       }
@@ -715,12 +714,12 @@ export default function WheelPage(){
   /** owner-only export (WL/FM) */
   async function exportSpotsCsv() {
     if (!isOwner || !wagmiPublic) return;
-    const START = 14244229n;
-    const STEP  = 5000n;
+    const START = BigInt(14244229);
+    const STEP  = BigInt(5000);
     const latest = await wagmiPublic.getBlockNumber();
     const rows: string[] = ['type,player,blockNumber,txHash,logIndex'];
     for (let from = START; from <= latest; from += STEP) {
-      const to = (from + STEP - 1n) > latest ? latest : (from + STEP - 1n);
+      const to = (from + STEP - BigInt(1)) > latest ? latest : (from + STEP - BigInt(1));
       const logs = await wagmiPublic.getLogs({ address: CONTRACT_ADDRESS, fromBlock: from, toBlock: to });
       for (const log of logs) {
         try {
@@ -751,7 +750,7 @@ export default function WheelPage(){
     }
   }
 
-  // share helpers (no roll number in text)
+  // share helpers (no roll number) + /play/slot
   function makeShareText(r: {prizeWei?:bigint; wl?:boolean; fm?:boolean}){
     const parts:string[] = ['🎰 I just spun MEGAPUNKS Slot!'];
     if (r.fm) parts.push('Hit a 🎟️ FreeMint!');
@@ -762,14 +761,14 @@ export default function WheelPage(){
   }
   function tweetShare(r:{prizeWei?:bigint; wl?:boolean; fm?:boolean}){
     const text = makeShareText(r);
-    const url = typeof window !== 'undefined' ? window.location.origin + '/play/wheel' : '';
-    const intent = new URL('https://twitter.com/intent/tweet');
+    const url = typeof window !== 'undefined' ? window.location.origin + '/play/slot' : '';
+    const intent = new URL('https://x.com/intent/tweet');
     intent.searchParams.set('text', text);
     if (url) intent.searchParams.set('url', url);
     window.open(intent.toString(), '_blank','noopener,noreferrer');
   }
   async function nativeShare(r:{prizeWei?:bigint; wl?:boolean; fm?:boolean}){
-    const text = makeShareText(r) + ' ' + (typeof window !== 'undefined' ? window.location.origin + '/play/wheel' : '');
+    const text = makeShareText(r) + ' ' + (typeof window !== 'undefined' ? window.location.origin + '/play/slot' : '');
     if (navigator.share) {
       try{ await navigator.share({ text }); }catch{}
     } else {
