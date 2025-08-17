@@ -24,6 +24,9 @@ export default function LandingHeader() {
             <Link href="/play/faucet">
               <button className="button-pixel px-6 py-2 text-lg">🚰 Faucet</button>
             </Link>
+            <Link href="/play/slot">
+              <button className="button-pixel px-6 py-2 text-lg">Casino</button>
+            </Link>
           </div>
           {/* Mobile menu icon */}
           <button

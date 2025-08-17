@@ -15,7 +15,7 @@ const megaeth = {
     decimals: 18,
   },
   rpcUrls: {
-    default: { http: ['https://rpc.megaeth.xyz'] },
+    default: { http: ['https://carrot.megaeth.com/rpc'] },
   },
   blockExplorers: {
     default: { name: 'MegaETH Explorer', url: 'https://explorer.megaeth.xyz' },
@@ -27,7 +27,7 @@ const config = createConfig({
   connectors: [injected()],
   chains: [megaeth],
   transports: {
-    [megaeth.id]: http('https://rpc.megaeth.xyz'),
+    [megaeth.id]: http('https://carrot.megaeth.com/rpc'),
   },
   ssr: true,
 })

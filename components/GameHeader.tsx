@@ -14,7 +14,7 @@ export default function GameHeader() {
 
   const links = [
     { href: "/play/guide", label: "How to play" },
-    { href: "/play/task", label: "Task" },
+    { href: "/play/slot", label: "Casino" },
     { href: "/play/mint", label: "Mint" },
     { href: "/play/leaderboard", label: "Dashboard" },
     { href: "/play/wallet-checker", label: "Wallet Checker" },
