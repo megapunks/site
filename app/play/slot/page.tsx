@@ -75,7 +75,7 @@ const ABI = [
   {"inputs":[],"name":"prizePool","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"totalPayout","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"totalSpins","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"whitelistWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"whitelistWnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"winnersCount","outputs":[{"internalType":"uint256","name":"wlCount","type":"uint256"},{"internalType":"uint256","name":"fmCount","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
@@ -107,6 +107,22 @@ function fmtEth(v?: bigint, dp = 5) {
   if (!dp) return a;
   const frac = (b + '000000000000000000').slice(0, dp);
   return `${a}.${frac}`.replace(/\.$/, '');
+}
+
+/* — decodeEventLog type-safe wrapper — */
+function decodeLogSafe(log: { data?: Hex; topics?: readonly Hex[] | Hex[] }) {
+  const topicsArr = (log.topics ?? []) as Hex[];
+  if (topicsArr.length === 0) return null;
+  try {
+    const tuple = [topicsArr[0], ...topicsArr.slice(1)] as [Hex, ...Hex[]];
+    return decodeEventLog({
+      abi: ABI,
+      data: (log.data || '0x') as Hex,
+      topics: tuple,
+    });
+  } catch {
+    return null;
+  }
 }
 
 /* =========================
@@ -154,7 +170,7 @@ function targetFromResult(prizeWei?: bigint, wl?: boolean, fm?: boolean): Symbol
   return nonMatch();
 }
 
-/* ------- 1559 caps (no BigInt literals) ------- */
+/* ------- 1559 caps ------- */
 async function getCapped1559(pc: ReturnType<typeof usePublicClient> | null){
   if(!pc) return null;
   try{
@@ -170,7 +186,7 @@ async function getCapped1559(pc: ReturnType<typeof usePublicClient> | null){
     let maxPriorityFeePerGas = fees.maxPriorityFeePerGas ?? capPrio;
     if(maxPriorityFeePerGas > capPrio) maxPriorityFeePerGas = capPrio;
 
-    let maxFeePerGas = fees.maxFeePerGas ?? (base * BigInt(2) + maxPriorityFeePerGas);
+    let maxFeePerGas = fees.maxFeePerGas ?? (base*BigInt(2) + maxPriorityFeePerGas);
     if(maxFeePerGas > capFee) maxFeePerGas = capFee;
 
     if(maxFeePerGas < base + maxPriorityFeePerGas) return null;
@@ -289,7 +305,7 @@ function Reel({
   const brakeCfg=useRef<{start:number;from:number;to:number;dur:number}|null>(null);
   const prevSpin=useRef(false);
 
-  // feel longer without changing machine size
+  // longer presence on screen
   const SPIN_SPEED = 1200;
   const BRAKE_MS   = 1500;
   const EXTRA_CYCLES = 3;
@@ -359,11 +375,11 @@ function Reel({
 const SKIN_URL  = '/skins/slot-skin.png';
 const LEVER_URL = '/skins/lvl.png';
 
-// image 850×365 – DO NOT CHANGE SIZE
+// 850×365 artwork – do not change sizing
 const ASPECT_W = 850;
 const ASPECT_H = 365;
 
-/** Window placement as % of image (current tuned) */
+/** Window placement (unchanged) */
 const INNER = { left: 8.0, right: 8.0, top: 19.5, bottom: 26.5 };
 
 function SkinnedSlot({
@@ -459,7 +475,7 @@ function MachinePanel({
       </div>
 
       <style jsx>{`
-        .control-panel{ margin-top:-8px; }
+        .control-panel{ margin-top: 10px; }
         .panel-wood{
           position: relative;
           border-radius: 0 0 10px 10px;
@@ -589,7 +605,7 @@ function useCountdownToUtcMidnight(tick=1000){
 /* =========================
    Page
 ========================= */
-export default function WheelPage(){
+export default function SlotPage(){
   const { address, isConnected } = useAccount();
   const connectedChainId = useChainId();
   const wagmiPublic = usePublicClient();
@@ -621,6 +637,7 @@ export default function WheelPage(){
   const [leverKick,setLeverKick] = useState(0);
   const disablingAuditOnce = useRef(false);
 
+  // auto-disable audit for owner (gas saver)
   useEffect(()=>{ (async ()=>{
     if(!isOwner || !auditOn || disablingAuditOnce.current || !activeChainId) return;
     disablingAuditOnce.current=true;
@@ -675,25 +692,25 @@ export default function WheelPage(){
       setTxHash(hash);
       const receipt = await wagmiPublic!.waitForTransactionReceipt({ hash });
 
-      let prizeWei:bigint|undefined; let wl=false; let fm=false; let prizeRoll:bigint|undefined;
+      let prizeWei:bigint|undefined; let wl=false; let fm=false; // let prizeRoll:bigint|undefined;
       for(const log of receipt.logs){
-        try{
-          const parsed = decodeEventLog({ abi:ABI, data:log.data, topics:log.topics as Hex[] });
-          if(parsed.eventName==='Spun')     { const a:any=parsed.args; prizeWei=a.prizeWei; prizeRoll=a.prizeRoll; }
-          if(parsed.eventName==='SpunLite') { const a:any=parsed.args; prizeWei=a.prizeWei; prizeRoll=a.prizeRoll; }
-          if(parsed.eventName==='WhitelistWon') wl=true;
-          if(parsed.eventName==='FreeMintWon')  fm=true;
-        }catch{}
+        const parsed = decodeLogSafe(log);
+        if(!parsed) continue;
+
+        if(parsed.eventName==='Spun'){ const a:any=parsed.args; prizeWei=a.prizeWei; /* prizeRoll=a.prizeRoll; */ }
+        if(parsed.eventName==='SpunLite'){ const a:any=parsed.args; prizeWei=a.prizeWei; /* prizeRoll=a.prizeRoll; */ }
+        if(parsed.eventName==='WhitelistWon') wl=true;
+        if(parsed.eventName==='FreeMintWon')  fm=true;
       }
 
       setTarget(targetFromResult(prizeWei, wl, fm));
       play('brake',{restart:true,volume:0.75});
       setSpinning(false);
 
-      const res = { prizeWei, prizeRoll, wl, fm };
+      const res = { prizeWei, /* prizeRoll, */ wl, fm };
       setResult(res);
 
-      setTimeout(()=>{ stop('spin'); if(bigWin(res)) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }, 2000);
+      setTimeout(()=>{ stop('spin'); if(bigWin(res)) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }, 1600);
     }catch(e:any){
       setSpinning(false); stop('spin');
       const msg = e?.shortMessage || e?.message || 'Transaction failed';
@@ -722,13 +739,12 @@ export default function WheelPage(){
       const to = (from + STEP - BigInt(1)) > latest ? latest : (from + STEP - BigInt(1));
       const logs = await wagmiPublic.getLogs({ address: CONTRACT_ADDRESS, fromBlock: from, toBlock: to });
       for (const log of logs) {
-        try {
-          const ev = decodeEventLog({ abi: ABI, data: log.data, topics: log.topics as Hex[] });
-          if (ev.eventName === 'WhitelistWon' || ev.eventName === 'FreeMintWon') {
-            const player = (ev as any).args.player as `0x${string}`;
-            rows.push(`${ev.eventName},${player},${log.blockNumber?.toString() || ''},${log.transactionHash || ''},${log.logIndex?.toString() || ''}`);
-          }
-        } catch {}
+        const ev = decodeLogSafe(log);
+        if(!ev) continue;
+        if (ev.eventName === 'WhitelistWon' || ev.eventName === 'FreeMintWon') {
+          const player = (ev as any).args.player as `0x${string}`;
+          rows.push(`${ev.eventName},${player},${log.blockNumber?.toString() || ''},${log.transactionHash || ''},${log.logIndex?.toString() || ''}`);
+        }
       }
     }
     const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
@@ -750,39 +766,33 @@ export default function WheelPage(){
     }
   }
 
-  // share helpers (no roll number) + /play/slot
-  function makeShareText(r: {prizeWei?:bigint; wl?:boolean; fm?:boolean}){
-    const parts:string[] = ['🎰 I just spun MEGAPUNKS Slot!'];
-    if (r.fm) parts.push('Hit a 🎟️ FreeMint!');
-    if (r.wl) parts.push('Won a ✅ Whitelist spot!');
-    if (typeof r.prizeWei !== 'undefined') parts.push(`Scored ${fmtEth(r.prizeWei,5)} ETH`);
-    parts.push('Try your luck:');
-    return parts.join(' ');
+  /* ===== Share helpers ===== */
+  const TW_HANDLE = 'Megaeth_Punks';
+  const SHARE_TEMPLATES = (amt: string) => [
+    `Spun the @${TW_HANDLE} slot and bagged ${amt} ETH 💰`,
+    `Hit spin. Got paid. ${amt} ETH from the @${TW_HANDLE} slot ⚡`,
+    `One pull, one win – ${amt} ETH in the bag! 🎯 Thanks @${TW_HANDLE}`,
+    `Lucky lever at @${TW_HANDLE}! Pulled and landed ${amt} ETH ✨`,
+    `Daily spin at @${TW_HANDLE}: ${amt} ETH secured 🧲`,
+  ];
+
+  function pickRandomShareText(r: {prizeWei?:bigint; wl?:boolean; fm?:boolean}) {
+    const url = typeof window !== 'undefined' ? window.location.origin + '/play/slot' : 'https://megapunks.org/play/slot';
+    const extras = r.fm ? ' + FreeMint 🎟️' : r.wl ? ' + Whitelist ✅' : '';
+    const amount = typeof r.prizeWei !== 'undefined' ? fmtEth(r.prizeWei,5) : '0';
+    const base = SHARE_TEMPLATES(amount);
+    const chosen = base[Math.floor(Math.random()*base.length)];
+    return `${chosen}${extras}\n${url}\n#MegaPunks #MegaETH`;
   }
+
   function tweetShare(r:{prizeWei?:bigint; wl?:boolean; fm?:boolean}){
-    const text = makeShareText(r);
-    const url = typeof window !== 'undefined' ? window.location.origin + '/play/slot' : '';
-    const intent = new URL('https://x.com/intent/tweet');
+    const text = pickRandomShareText(r);
+    const intent = new URL('https://twitter.com/intent/tweet');
     intent.searchParams.set('text', text);
-    if (url) intent.searchParams.set('url', url);
     window.open(intent.toString(), '_blank','noopener,noreferrer');
   }
-  async function nativeShare(r:{prizeWei?:bigint; wl?:boolean; fm?:boolean}){
-    const text = makeShareText(r) + ' ' + (typeof window !== 'undefined' ? window.location.origin + '/play/slot' : '');
-    if (navigator.share) {
-      try{ await navigator.share({ text }); }catch{}
-    } else {
-      await navigator.clipboard.writeText(text);
-      alert('Copied! Paste it anywhere ✨');
-    }
-  }
-  function copyTx(){
-    if(txHash) navigator.clipboard.writeText(txHash).then(()=> alert('TX copied'));
-  }
-  function closeModal(){
-    setResult(null);
-    setGrayscale(false);
-  }
+
+  function closeModal(){ setResult(null); setGrayscale(false); }
 
   return (
     <main
@@ -790,43 +800,43 @@ export default function WheelPage(){
       className={`mx-auto max-w-6xl px-4 py-3 text-zinc-100 ${grayscale ? 'grayscale' : ''}`}
       style={{ imageRendering:'pixelated' as any }}
     >
-      {/* ===== Hero: title + subtitle + sound button on right ===== */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-6 mb-4 sm:mb-5">
+      {/* Hero title + sound button row */}
+      <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-wide drop-shadow-[0_0_12px_rgba(0,229,255,.35)] text-cyan-200">
+          <h1 className="text-[32px] sm:text-[42px] leading-tight font-extrabold tracking-[0.02em] drop-shadow-[0_0_12px_rgba(0,229,255,.35)] text-cyan-200">
             Spin the MegaETH Slot
           </h1>
-          <p className="mt-1 text-xs sm:text-base text-cyan-100/80">
+          <p className="mt-2 text-sm sm:text-base text-cyan-100/90">
             One spin a day. ETH &amp; spots up for grabs.
           </p>
         </div>
 
-        {/* Pixel sound button pinned to the right of hero */}
-        <button
-          onClick={() => setMuted(m => !m)}
-          className="btn-pixel btn-pixel--sm self-start"
-          title={muted ? 'Unmute' : 'Mute'}
-          aria-label="Toggle sound"
-          style={{ imageRendering:'pixelated' as any }}
-        >
-          {muted ? '🔇' : '🔊'}
-          <span className="hidden sm:inline">&nbsp;Sound</span>
-        </button>
+        {/* Pixel sound button */}
+        <div className="mt-1">
+          <button
+            onClick={() => setMuted(m => !m)}
+            className="pixel-sound-btn"
+            title={muted ? 'Unmute' : 'Mute'}
+          >
+            <span className="inline-block mr-1">{muted ? '🔇' : '🔊'}</span>
+            <span>Sound</span>
+          </button>
+        </div>
       </div>
 
-      {/* Owner tools (if any) */}
-      {(isOwner || auditOn) && (
-        <div className="mb-2 flex justify-end gap-2">
-          {isOwner && auditOn && (
-            <button
-              onClick={disableAuditManually}
-              className="rounded-lg border border-amber-500/60 bg-amber-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-amber-500/20"
-              title="Disable audit log to save gas"
-            >
-              Disable audit
-            </button>
-          )}
-          {isOwner && (
+      {/* Owner tools (right side, small) */}
+      <div className="mt-3 flex items-center gap-2 justify-end">
+        {isOwner && (
+          <>
+            {auditOn && (
+              <button
+                onClick={disableAuditManually}
+                className="rounded-lg border border-amber-500/60 bg-amber-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-amber-500/20"
+                title="Disable audit log to save gas"
+              >
+                Disable audit
+              </button>
+            )}
             <button
               onClick={exportSpotsCsv}
               className="rounded-lg border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-emerald-500/20"
@@ -834,12 +844,12 @@ export default function WheelPage(){
             >
               Export spots CSV
             </button>
-          )}
-        </div>
-      )}
+          </>
+        )}
+      </div>
 
       {/* Stats */}
-      <div className="grid gap-3 sm:gap-4 sm:grid-cols-3 mb-5">
+      <div className="mt-4 grid gap-4 sm:grid-cols-3">
         <PixelCard><div className="p-4">
           <div className="text-sm text-cyan-200/90">Prize Pool</div>
           <div className="mt-1 text-2xl text-cyan-100">{prizePoolWei !== undefined ? `${fmtEth(prizePoolWei,5)} ETH` : '—'}</div>
@@ -854,8 +864,8 @@ export default function WheelPage(){
         </div></PixelCard>
       </div>
 
-      {/* Machine */}
-      <div className="machine-stack mt-4 sm:mt-5 mb-6 space-y-0">
+      {/* Machine + panel (extra spacing) */}
+      <div className="machine-stack mt-6 sm:mt-8 space-y-0">
         <SkinnedSlot
           spinning={spinning}
           target={target}
@@ -871,84 +881,57 @@ export default function WheelPage(){
         />
       </div>
 
-      {/* Result Modal */}
+      {/* Result Modal (pixel style, faucet-like) */}
       {result && !spinning && isConnected && (
-        <div className="fixed inset-0 z-50 grid place-items-center p-4 bg-black/30 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-2xl border border-cyan-500/30 bg-zinc-950/85 p-6 shadow-[0_0_40px_rgba(0,255,255,.15)]">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-2xl">🎉</span>
-              <h3 className="text-2xl font-extrabold tracking-wide text-cyan-200 drop-shadow-[0_0_8px_rgba(0,229,255,.25)]">
-                Spin Complete!
-              </h3>
-            </div>
+        <div className="fixed inset-0 z-50 grid place-items-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="w-full max-w-2xl rounded-2xl border border-yellow-300 bg-[#1e1b4b] p-6 shadow-2xl text-yellow-200 font-pixel">
+            <h3 className="text-2xl mb-2">🎉 Spin Complete!</h3>
 
-            <div className="text-base leading-relaxed text-zinc-100">
-              {result.fm && <div className="mb-1">You snagged a <span className="font-extrabold text-yellow-300">FreeMint</span> spot! 🪄</div>}
-              {result.wl && <div className="mb-1">You won a <span className="font-extrabold text-emerald-300">Whitelist</span> spot! ✅</div>}
+            <div className="text-base leading-relaxed">
+              {result.fm && <div className="mb-1">You snagged a <b>FreeMint</b> spot! 🪄</div>}
+              {result.wl && <div className="mb-1">You won a <b>Whitelist</b> spot! ✅</div>}
               {typeof result.prizeWei !== 'undefined'
-                ? <div className="mb-1">You pocketed <span className="font-extrabold text-cyan-300">{fmtEth(result.prizeWei,5)} ETH</span></div>
-                : <div className="mb-1">Spin confirmed. Fingers crossed for the next one! ✌️</div>}
-              <div className="text-xs text-zinc-500 mt-2">
-                {txHash ? <>Tx: <span className="break-all">{txHash}</span></> : null}
-              </div>
+                ? <div className="mb-1">You pocketed <b>{fmtEth(result.prizeWei,5)} ETH</b> 🪙</div>
+                : <div className="mb-1">Spin confirmed. Good luck next time! ✌️</div>}
+              {txHash && (
+                <div className="text-[11px] opacity-70 mt-2 break-all">
+                  Tx: {txHash}
+                </div>
+              )}
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-2">
               <button
-                className="rounded-xl bg-zinc-800 px-4 py-2 text-sm hover:bg-zinc-700"
+                className="px-4 py-2 rounded-xl bg-yellow-400 text-black font-bold hover:brightness-105"
+                onClick={()=>tweetShare(result)}
+                title="Share on X"
+              >
+                🐦 Tweet
+              </button>
+              <button
+                className="px-4 py-2 rounded-xl border border-yellow-300/60 hover:bg-yellow-300/10"
                 onClick={closeModal}
               >
                 Close
               </button>
-
-              <button
-                className="rounded-xl bg-cyan-600/20 border border-cyan-500/50 px-4 py-2 text-sm hover:bg-cyan-600/30"
-                onClick={()=>tweetShare(result)}
-                title="Share on X (Twitter)"
-              >
-                Share on X
-              </button>
-
-              <button
-                className="rounded-xl bg-emerald-600/20 border border-emerald-500/50 px-4 py-2 text-sm hover:bg-emerald-600/30"
-                onClick={()=>nativeShare(result)}
-                title="Invite friends"
-              >
-                Invite friends
-              </button>
-
-              {txHash && (
-                <button
-                  className="rounded-xl bg-zinc-800 px-4 py-2 text-sm hover:bg-zinc-700"
-                  onClick={copyTx}
-                  title="Copy TX hash"
-                >
-                  Copy TX
-                </button>
-              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* pixel button styles */}
       <style jsx>{`
-        .btn-pixel{
-          position: relative;
+        .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
+        .pixel-sound-btn{
           display:inline-flex; align-items:center; gap:6px;
-          padding:10px 14px;
-          font-weight:900; color:#1a1300; border:0;
+          padding: 8px 14px; font-weight:900; color:#1a1300; border:0;
           background: linear-gradient(180deg,#FFD84D,#FF9D00);
           clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px));
           box-shadow: 0 4px 0 #7a3b00, 0 0 0 2px #5b2a00 inset;
-          text-shadow: 0 1px 0 rgba(255,255,255,.35);
-          transition: filter .12s ease, transform .06s ease;
+          image-rendering: pixelated;
         }
-        .btn-pixel:hover{ filter: brightness(1.05); }
-        .btn-pixel:active{ transform: translateY(1px); }
-        .btn-pixel--sm{ font-size:12px; padding:8px 12px; }
-
-        .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
+        @media (max-width: 640px){
+          main { padding-left: 12px; padding-right: 12px; }
+        }
       `}</style>
     </main>
   );
