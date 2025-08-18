@@ -23,7 +23,7 @@ import {
 const ReactModal = dynamic(() => import('react-modal'), { ssr: false });
 
 /* =========================
-   Contract
+   Contract (ABI صحیح)
 ========================= */
 const CONTRACT_ADDRESS = '0xa697635aAc186eF41A2Ea23aBE939848f2BB1DFe' as const;
 
@@ -631,10 +631,16 @@ export default function SlotPage(){
   useSilenceSiteClickSfx();
   useAmbienceAutostart(ensureAmbience);
 
-  /* react-modal appElement (prevents runtime quirks) */
+  /* react-modal appElement (safe for TS) */
   useEffect(() => {
     (async () => {
-      try { (await import('react-modal')).setAppElement('#__next'); } catch {}
+      try {
+        const mod = await import('react-modal');
+        const setApp =
+          (mod as any).setAppElement ||
+          (mod as any).default?.setAppElement;
+        if (typeof setApp === 'function') setApp('#__next');
+      } catch {}
     })();
   }, []);
 
@@ -811,7 +817,7 @@ export default function SlotPage(){
           <h1 className="text-[32px] sm:text-[42px] leading-tight font-extrabold tracking-[0.02em] drop-shadow-[0_0_12px_rgba(0,229,255,.35)] text-cyan-200">
             Spin the MegaETH Slot
           </h1>
-        <p className="mt-2 text-sm sm:text-base text-cyan-100/90">
+          <p className="mt-2 text-sm sm:text-base text-cyan-100/90">
             One spin a day. ETH &amp; spots up for grabs.
           </p>
         </div>
@@ -888,12 +894,12 @@ export default function SlotPage(){
         />
       </div>
 
-      {/* Result Modal – faucet style */}
+      {/* Result Modal – faucet style (عرض کوچک) */}
       <ReactModal
         isOpen={Boolean(result && !spinning && isConnected)}
         onRequestClose={closeModal}
         ariaHideApp={false}
-        className="bg-[#1e1b4b] text-yellow-200 rounded-xl max-w-md w-full p-6 font-pixel border border-yellow-300 shadow-xl text-center"
+        className="bg-[#1e1b4b] text-yellow-200 rounded-xl max-w-sm w-full p-6 font-pixel border border-yellow-300 shadow-xl text-center"
         overlayClassName="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4"
       >
         <h2 className="text-lg mb-3">🎉 Spin Complete!</h2>
