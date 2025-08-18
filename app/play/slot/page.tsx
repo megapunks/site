@@ -1,13 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
-import {
-  useAccount,
-  usePublicClient,
-  useWriteContract,
-  useChainId,
-} from 'wagmi';
+import { useAccount, usePublicClient, useWriteContract, useChainId } from 'wagmi';
 import {
   decodeEventLog,
   formatEther,
@@ -19,11 +13,10 @@ import {
   http,
 } from 'viem';
 
-/* ===== react-modal: load client-only ===== */
-const ReactModal = dynamic(() => import('react-modal'), { ssr: false });
+import SlotResultModal from './SlotResultModal';
 
 /* =========================
-   Contract (ABI صحیح)
+   Contract
 ========================= */
 const CONTRACT_ADDRESS = '0xa697635aAc186eF41A2Ea23aBE939848f2BB1DFe' as const;
 
@@ -64,24 +57,10 @@ const ABI = [
   {"stateMutability":"payable","type":"receive"},
   {"inputs":[],"name":"auditLog","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},
   {"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"canSpin","outputs":[{"internalType":"bool","name":"allowed","type":"bool"},{"internalType":"uint256","name":"today","type":"uint256"},{"internalType":"uint256","name":"lastDay","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"DAY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"ENTRY_FEE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"epochSeedCommit","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},
-  {"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"epochSeedReveal","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"fmRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"fmWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"freeMintWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"gotFreeMint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},
-  {"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"gotWhitelist","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},
-  {"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastSpinDay","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"minReserve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"prizePool","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"totalPayout","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"totalSpins","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"winnersCount","outputs":[{"internalType":"uint256","name":"wlCount","type":"uint256"},{"internalType":"uint256","name":"fmCount","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"wlWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
+  {"inputs":[],"name":"fmRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
 ] as const;
 
 /* ============ Gas caps (.env) ============ */
@@ -89,7 +68,7 @@ const ENV_MAX_FEE = process.env.NEXT_PUBLIC_MAX_FEE_GWEI;
 const ENV_MAX_PRIO = process.env.NEXT_PUBLIC_MAX_PRIORITY_GWEI;
 
 /* =========================
-   Sounds (+ ambience)
+   Sounds
 ========================= */
 const SOUND = {
   lever: '/sounds/lever.mp3',
@@ -112,20 +91,14 @@ function fmtEth(v?: bigint, dp = 5) {
   return `${a}.${frac}`.replace(/\.$/, '');
 }
 
-/* — decodeEventLog type-safe wrapper — */
+/* decodeEventLog safe wrapper */
 function decodeLogSafe(log: { data?: Hex; topics?: readonly Hex[] | Hex[] }) {
   const topicsArr = (log.topics ?? []) as Hex[];
   if (topicsArr.length === 0) return null;
   try {
     const tuple = [topicsArr[0], ...topicsArr.slice(1)] as [Hex, ...Hex[]];
-    return decodeEventLog({
-      abi: ABI,
-      data: (log.data || '0x') as Hex,
-      topics: tuple,
-    });
-  } catch {
-    return null;
-  }
+    return decodeEventLog({ abi: ABI, data: (log.data || '0x') as Hex, topics: tuple });
+  } catch { return null; }
 }
 
 /* =========================
@@ -145,19 +118,13 @@ const SYM_SRC: Record<SymbolKey, string> = {
 };
 const randSym = () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
 function nonMatch(): SymbolKey[] {
-  const a = randSym(), b = randSym();
-  let c: SymbolKey = randSym();
+  const a = randSym(), b = randSym(); let c: SymbolKey = randSym();
   if (a === b) { while (c === a) c = randSym(); }
-  else if (c === a || c === b) {
-    let alt: SymbolKey = randSym();
-    while (alt === a || alt === b) alt = randSym();
-    c = alt;
-  }
+  else if (c === a || c === b) { let alt: SymbolKey = randSym(); while (alt === a || alt === b) alt = randSym(); c = alt; }
   return [a, b, c];
 }
 function twoKind(sym: SymbolKey): SymbolKey[] {
-  let other: SymbolKey = randSym();
-  while (other === sym) other = randSym();
+  let other: SymbolKey = randSym(); while (other === sym) other = randSym();
   const pos = Math.floor(Math.random() * 3);
   const arr: SymbolKey[] = [other, other, other];
   arr[pos] = sym; arr[(pos+1)%3] = sym;
@@ -233,14 +200,12 @@ function useSounds() {
   useEffect(() => { Object.values(refs.current).forEach(a => a.muted = muted); }, [muted]);
 
   const ensureAmbience = () => {
-    const a = refs.current.ambience;
-    if (!a) return;
+    const a = refs.current.ambience; if (!a) return;
     if (a.paused) { a.currentTime = 0; a.volume = 0.35; a.play().catch(()=>{}); }
   };
 
   const play = (key: keyof typeof SOUND, opt?: {restart?: boolean; volume?: number}) => {
-    const a = refs.current[key];
-    if (!a) return;
+    const a = refs.current[key]; if (!a) return;
     if (opt?.volume !== undefined) a.volume = opt.volume;
     if (opt?.restart ?? true) a.currentTime = 0;
     a.play().catch(()=>{});
@@ -276,7 +241,7 @@ function useAmbienceAutostart(ensureAmbience: () => void) {
 }
 
 /* =========================
-   Reel (dynamic height synced to window)
+   Reel (dynamic height)
 ========================= */
 type ReelMode='idle'|'spin'|'brake';
 function Reel({
@@ -308,7 +273,6 @@ function Reel({
   const brakeCfg=useRef<{start:number;from:number;to:number;dur:number}|null>(null);
   const prevSpin=useRef(false);
 
-  // longer presence on screen
   const SPIN_SPEED = 1200;
   const BRAKE_MS   = 1500;
   const EXTRA_CYCLES = 3;
@@ -353,15 +317,10 @@ function Reel({
   const icon = Math.round(cellH * 0.74);
 
   return (
-    <div
-      ref={wrapRef}
-      className="relative overflow-hidden"
-      style={{ width:'100%', height:'100%', imageRendering:'pixelated' as any, borderRadius: 8, background:'transparent', border:'none' }}
-    >
-      <div
-        className={`absolute left-0 top-0 w-full will-change-transform ${landing?'scale-105':''}`}
-        style={{ transform:`translateY(-${pos}px)` }}
-      >
+    <div ref={wrapRef} className="relative overflow-hidden"
+      style={{ width:'100%', height:'100%', imageRendering:'pixelated' as any, borderRadius: 8, background:'transparent', border:'none' }}>
+      <div className={`absolute left-0 top-0 w-full will-change-transform ${landing?'scale-105':''}`}
+           style={{ transform:`translateY(-${pos}px)` }}>
         {STRIP.map((s,i)=>(
           <div key={i} className="flex items-center justify-center select-none" style={{height:cellH}}>
             <img src={SYM_SRC[s]} alt={s} style={{ width:icon, height:icon, imageRendering:'pixelated' as any }} />
@@ -377,12 +336,8 @@ function Reel({
 ========================= */
 const SKIN_URL  = '/skins/slot-skin.png';
 const LEVER_URL = '/skins/lvl.png';
-
-// 850×365 artwork – do not change sizing
 const ASPECT_W = 850;
 const ASPECT_H = 365;
-
-/** Window placement (unchanged) */
 const INNER = { left: 8.0, right: 8.0, top: 19.5, bottom: 26.5 };
 
 function SkinnedSlot({
@@ -396,43 +351,15 @@ function SkinnedSlot({
   useEffect(()=>{ if(leverKickSignal>0){ setLeverDown(true); const t=setTimeout(()=>setLeverDown(false),380); return ()=>clearTimeout(t);} },[leverKickSignal]);
 
   return (
-    <div
-      className="relative mx-auto w-full max-w-[900px]"
-      style={{ aspectRatio:`${ASPECT_W} / ${ASPECT_H}`, imageRendering:'pixelated' as any }}
-    >
-      {/* machine skin */}
-      <div
-        className="absolute inset-0 bg-no-repeat bg-center"
-        style={{ backgroundImage:`url(${SKIN_URL})`, backgroundSize:'contain', imageRendering:'pixelated' as any }}
-        aria-hidden
-      />
-
-      {/* lever */}
-      <img
-        src={LEVER_URL}
-        alt="lever"
-        className="absolute pointer-events-none select-none transition-transform duration-300"
-        style={{
-          top: '37.5%',
-          right: '-3.5%',
-          width: '9.8%',
-          transform: leverDown ? 'translateY(10%)' : 'translateY(0)',
-          transformOrigin: 'top center',
-          imageRendering:'pixelated' as any,
-        }}
-      />
-
-      {/* reels window */}
-      <div
-        className="absolute grid grid-cols-3"
-        style={{
-          left:  `${INNER.left}%`,
-          right: `${INNER.right}%`,
-          top:   `${INNER.top}%`,
-          bottom:`${INNER.bottom}%`,
-          imageRendering:'pixelated' as any,
-        }}
-      >
+    <div className="relative mx-auto w-full max-w-[900px]"
+         style={{ aspectRatio:`${ASPECT_W} / ${ASPECT_H}`, imageRendering:'pixelated' as any }}>
+      <div className="absolute inset-0 bg-no-repeat bg-center"
+           style={{ backgroundImage:`url(${SKIN_URL})`, backgroundSize:'contain', imageRendering:'pixelated' as any }} aria-hidden />
+      <img src={LEVER_URL} alt="lever"
+           className="absolute pointer-events-none select-none transition-transform duration-300"
+           style={{ top:'37.5%', right:'-3.5%', width:'9.8%', transform:leverDown?'translateY(10%)':'translateY(0)', transformOrigin:'top center', imageRendering:'pixelated' as any }} />
+      <div className="absolute grid grid-cols-3"
+           style={{ left:`${INNER.left}%`, right:`${INNER.right}%`, top:`${INNER.top}%`, bottom:`${INNER.bottom}%`, imageRendering:'pixelated' as any }}>
         <Reel targetSym={target[0]} globalSpinning={spinning} stopDelayMs={0}   idle={idle} onStop={()=>setStopped(v=>v+1)} />
         <Reel targetSym={target[1]} globalSpinning={spinning} stopDelayMs={250} idle={idle} onStop={()=>setStopped(v=>v+1)} />
         <Reel targetSym={target[2]} globalSpinning={spinning} stopDelayMs={500} idle={idle} onStop={()=>setStopped(v=>v+1)} />
@@ -446,12 +373,7 @@ function SkinnedSlot({
 ========================= */
 function MachinePanel({
   h, m, s, feeEth, onSpin, disabled,
-}: {
-  h: number; m: number; s: number;
-  feeEth: string;
-  onSpin: () => void;
-  disabled?: boolean;
-}) {
+}: { h: number; m: number; s: number; feeEth: string; onSpin: () => void; disabled?: boolean; }) {
   return (
     <div className="control-panel">
       <div className="panel-wood">
@@ -462,13 +384,7 @@ function MachinePanel({
               {String(h).padStart(2,'0')}:{String(m).padStart(2,'0')}:{String(s).padStart(2,'0')}
             </span>
           </div>
-
-          <button
-            className="slot-btn"
-            onClick={onSpin}
-            disabled={disabled}
-            title={`Entry: ${feeEth} ETH`}
-          >
+          <button className="slot-btn" onClick={onSpin} disabled={disabled} title={`Entry: ${feeEth} ETH`}>
             <span className="slot-btn-line">
               <span className="slot-btn-title">SLOT</span>
               <span className="slot-btn-badge">{feeEth} ETH</span>
@@ -479,61 +395,19 @@ function MachinePanel({
 
       <style jsx>{`
         .control-panel{ margin-top: 10px; }
-        .panel-wood{
-          position: relative;
-          border-radius: 0 0 10px 10px;
-          padding: 8px;
-          background: transparent;
-          backdrop-filter: none;
-          box-shadow: none;
-          border: none;
-          image-rendering: pixelated;
-        }
-        .panel-inner{
-          display: grid;
-          gap: 10px;
-          justify-items: center;
-          text-align: center;
-          padding: 8px 10px 10px;
-          border-radius: 6px;
-          background: transparent;
-          box-shadow: none;
-        }
-        .lcd{
-          display: inline-flex; align-items: baseline; gap: 10px;
-          padding: 6px 10px; border-radius: 4px;
-          background: transparent; box-shadow: none;
-          font-family: ui-monospace, Menlo, Consolas, monospace;
-        }
+        .panel-wood{ position: relative; border-radius: 0 0 10px 10px; padding: 8px; background: transparent; backdrop-filter: none; box-shadow: none; border: none; image-rendering: pixelated; }
+        .panel-inner{ display: grid; gap: 10px; justify-items: center; text-align: center; padding: 8px 10px 10px; border-radius: 6px; background: transparent; box-shadow: none; }
+        .lcd{ display: inline-flex; align-items: baseline; gap: 10px; padding: 6px 10px; border-radius: 4px; background: transparent; box-shadow: none; font-family: ui-monospace, Menlo, Consolas, monospace; }
         .lcd .label{ font-size: 15px; color:#b8f1ff; opacity:.95; }
         .lcd .digits{ font-weight: 900; font-size: 20px; letter-spacing: .02em; color: #58F0FF; }
-
-        .slot-btn{
-          position: relative; display: inline-flex; align-items: center; justify-content: center;
-          padding: 22px 56px; font-weight: 900; color: #1a1300; border: 0;
-          background: linear-gradient(180deg,#FFD84D,#FF9D00);
-          image-rendering: pixelated;
-          clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px));
-          box-shadow: 0 6px 0 #7a3b00, 0 0 0 2px #5b2a00 inset;
-          text-shadow: 0 1px 0 rgba(255,255,255,.35);
-          transition: filter .15s ease, transform .06s ease;
-        }
+        .slot-btn{ position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 22px 56px; font-weight: 900; color: #1a1300; border: 0; background: linear-gradient(180deg,#FFD84D,#FF9D00); image-rendering: pixelated; clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px)); box-shadow: 0 6px 0 #7a3b00, 0 0 0 2px #5b2a00 inset; text-shadow: 0 1px 0 rgba(255,255,255,.35); transition: filter .15s ease, transform .06s ease; }
         .slot-btn:hover{ filter: brightness(1.06); }
         .slot-btn:active{ transform: translateY(1px); }
         .slot-btn:disabled{ opacity:.6; cursor:not-allowed; filter:none; }
         .slot-btn-line{ display:inline-flex; align-items:center; gap:14px; }
-        .slot-btn-title{ font-size:34px; }
-        .slot-btn-badge{
-          font-weight:900; padding:6px 10px; font-size:12px; color:#1a1300;
-          background: rgba(0,0,0,.18);
-          clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px));
-          box-shadow: 0 0 0 2px #5b2a00 inset; white-space: nowrap;
-        }
-        @media (max-width:640px){
-          .slot-btn-title{ font-size:28px; }
-          .slot-btn{ padding:20px 44px; }
-          .lcd .digits{ font-size:18px; }
-        }
+        .slot-btn-title{ font-size:34px; letter-spacing:.02em; }
+        .slot-btn-badge{ font-weight:900; padding:6px 10px; font-size:12px; color:#1a1300; background: rgba(0,0,0,.18); clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px)); box-shadow: 0 0 0 2px #5b2a00 inset; white-space: nowrap; }
+        @media (max-width:640px){ .slot-btn-title{ font-size:28px; } .slot-btn{ padding:20px 44px; } .lcd .digits{ font-size:18px; } }
       `}</style>
     </div>
   );
@@ -548,7 +422,7 @@ const megaChain = defineChain({
   id: MEGA_CHAIN_ID || 6342,
   name: 'Mega ETH Testnet',
   nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-  rpcUrls: { default: { http: [MEGA_RPC || 'https://example.invalid'] } },
+  rpcUrls: { default: { http: [MEGA_RPC || ''] } },
   testnet: true,
 });
 
@@ -631,19 +505,6 @@ export default function SlotPage(){
   useSilenceSiteClickSfx();
   useAmbienceAutostart(ensureAmbience);
 
-  /* react-modal appElement (safe for TS) */
-  useEffect(() => {
-    (async () => {
-      try {
-        const mod = await import('react-modal');
-        const setApp =
-          (mod as any).setAppElement ||
-          (mod as any).default?.setAppElement;
-        if (typeof setApp === 'function') setApp('#__next');
-      } catch {}
-    })();
-  }, []);
-
   const [loading,setLoading] = useState(false);
   const [txHash,setTxHash] = useState<Hex|null>(null);
   const [result,setResult] = useState<{ prizeWei?:bigint; wl?:boolean; fm?:boolean } | null>(null);
@@ -688,19 +549,11 @@ export default function SlotPage(){
           address:CONTRACT_ADDRESS, abi:ABI, functionName:'spin', value:feeWei, account:address!,
         });
         gas = (est * BigInt(125)) / BigInt(100);
-      }catch(e:any){
-        console.warn('estimateContractGas failed', e?.shortMessage || e?.message);
-      }
+      }catch(e:any){ console.warn('estimateContractGas failed', e?.shortMessage || e?.message); }
 
       const caps = await getCapped1559(wagmiPublic);
 
-      const txArgs:any = {
-        chainId: activeChainId,
-        address: CONTRACT_ADDRESS,
-        abi: ABI,
-        functionName: 'spin',
-        value: feeWei,
-      };
+      const txArgs:any = { chainId: activeChainId, address: CONTRACT_ADDRESS, abi: ABI, functionName: 'spin', value: feeWei };
       if(gas) txArgs.gas = gas;
       if(caps){ txArgs.maxFeePerGas = caps.maxFeePerGas; txArgs.maxPriorityFeePerGas = caps.maxPriorityFeePerGas; }
 
@@ -710,8 +563,7 @@ export default function SlotPage(){
 
       let prizeWei:bigint|undefined; let wl=false; let fm=false;
       for(const log of receipt.logs){
-        const parsed = decodeLogSafe(log);
-        if(!parsed) continue;
+        const parsed = decodeLogSafe(log); if(!parsed) continue;
         if(parsed.eventName==='Spun'){ const a:any=parsed.args; prizeWei=a.prizeWei; }
         if(parsed.eventName==='SpunLite'){ const a:any=parsed.args; prizeWei=a.prizeWei; }
         if(parsed.eventName==='WhitelistWon') wl=true;
@@ -722,25 +574,19 @@ export default function SlotPage(){
       play('brake',{restart:true,volume:0.75});
       setSpinning(false);
 
-      const res = { prizeWei, wl, fm };
-      setResult(res);
-
-      setTimeout(()=>{ stop('spin'); if(bigWin(res)) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }, 1600);
+      setResult({ prizeWei, wl, fm });
+      setTimeout(()=>{ stop('spin'); if(bigWin({prizeWei,wl,fm})) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }, 1600);
     }catch(e:any){
       setSpinning(false); stop('spin');
       const msg = e?.shortMessage || e?.message || 'Transaction failed';
       alert(msg);
       console.error(e);
-    }finally{
-      setLoading(false);
-    }
+    }finally{ setLoading(false); }
   }
 
   async function disableAuditManually(){
     if(!isOwner || !activeChainId) return;
-    try{
-      await writeContractAsync({ chainId:activeChainId, address:CONTRACT_ADDRESS, abi:ABI, functionName:'setAuditLog', args:[false] });
-    }catch{}
+    try{ await writeContractAsync({ chainId:activeChainId, address:CONTRACT_ADDRESS, abi:ABI, functionName:'setAuditLog', args:[false] }); }catch{}
   }
 
   /** owner-only export (WL/FM) */
@@ -754,8 +600,7 @@ export default function SlotPage(){
       const to = (from + STEP - BigInt(1)) > latest ? latest : (from + STEP - BigInt(1));
       const logs = await wagmiPublic.getLogs({ address: CONTRACT_ADDRESS, fromBlock: from, toBlock: to });
       for (const log of logs) {
-        const ev = decodeLogSafe(log);
-        if(!ev) continue;
+        const ev = decodeLogSafe(log); if(!ev) continue;
         if (ev.eventName === 'WhitelistWon' || ev.eventName === 'FreeMintWon') {
           const player = (ev as any).args.player as `0x${string}`;
           rows.push(`${ev.eventName},${player},${log.blockNumber?.toString() || ''},${log.transactionHash || ''},${log.logIndex?.toString() || ''}`);
@@ -764,54 +609,25 @@ export default function SlotPage(){
     }
     const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = `megapunks_spots_${Number(START)}_${Number(latest)}.csv`;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
+    const a = document.createElement('a'); a.href = url; a.download = `megapunks_spots_${Number(START)}_${Number(latest)}.csv`;
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   }
 
   function onAllStopped(){
     stop('spin');
     setGrayscale(false);
-    if (result) {
-      if (bigWin(result)) play('win',{restart:true,volume:1});
-      else play('tick',{restart:true,volume:0.85});
-    } else {
-      play('tick',{restart:true,volume:0.85});
-    }
+    if (result) { if (bigWin(result)) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }
+    else play('tick',{restart:true,volume:0.85});
   }
 
-  /* ===== Share helpers ===== */
-  const TW_HANDLE = 'Megaeth_Punks';
-  const SHARE_TEMPLATES = (amt: string) => [
-    `Spun the @${TW_HANDLE} slot and bagged ${amt} ETH 🪙`,
-    `Hit spin. Got paid. ${amt} ETH from the @${TW_HANDLE} slot ⚡`,
-    `One pull, one win – ${amt} ETH in the wallet! 🎯 Thanks @${TW_HANDLE}`,
-    `Lucky lever at @${TW_HANDLE}! Pulled and landed ${amt} ETH ✨`,
-    `Daily spin at @${TW_HANDLE}: ${amt} ETH secured 🧲`,
-  ];
-
-  function pickRandomShareText(r: {prizeWei?:bigint; wl?:boolean; fm?:boolean}) {
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      (typeof window !== 'undefined' ? window.location.origin : 'https://megapunks.org');
-    const url = `${baseUrl}/play/slot`;
-    const extras = r.fm ? ' + FreeMint 🎟️' : r.wl ? ' + Whitelist ✅' : '';
-    const amount = typeof r.prizeWei !== 'undefined' ? fmtEth(r.prizeWei,5) : '0';
-    const base = SHARE_TEMPLATES(amount);
-    const chosen = base[Math.floor(Math.random()*base.length)];
-    return `${chosen}${extras}\n${url}\n#MegaPunks #MegaETH`;
-  }
-
-  function closeModal(){ setResult(null); setGrayscale(false); }
+  /* ===== Modal state & share props ===== */
+  const isModalOpen = Boolean(result && !spinning && isConnected);
+  const amountEth = typeof result?.prizeWei !== 'undefined' ? fmtEth(result?.prizeWei,5) : undefined;
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/play/slot` : 'https://megapunks.org/play/slot';
 
   return (
-    <main
-      data-skin="neon"
-      className={`mx-auto max-w-6xl px-4 py-3 text-zinc-100 ${grayscale ? 'grayscale' : ''}`}
-      style={{ imageRendering:'pixelated' as any }}
-    >
-      {/* Hero title + sound button row */}
+    <main data-skin="neon" className={`mx-auto max-w-6xl px-4 py-3 text-zinc-100 ${grayscale ? 'grayscale' : ''}`} style={{ imageRendering:'pixelated' as any }}>
+      {/* Hero + pixel sound */}
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-[32px] sm:text-[42px] leading-tight font-extrabold tracking-[0.02em] drop-shadow-[0_0_12px_rgba(0,229,255,.35)] text-cyan-200">
@@ -821,14 +637,8 @@ export default function SlotPage(){
             One spin a day. ETH &amp; spots up for grabs.
           </p>
         </div>
-
-        {/* Pixel sound button */}
         <div className="mt-1">
-          <button
-            onClick={() => setMuted(m => !m)}
-            className="pixel-sound-btn"
-            title={muted ? 'Unmute' : 'Mute'}
-          >
+          <button onClick={() => setMuted(m => !m)} className="pixel-sound-btn" title={muted ? 'Unmute' : 'Mute'}>
             <span className="inline-block mr-1">{muted ? '🔇' : '🔊'}</span>
             <span>Sound</span>
           </button>
@@ -840,106 +650,34 @@ export default function SlotPage(){
         {isOwner && (
           <>
             {auditOn && (
-              <button
-                onClick={disableAuditManually}
-                className="rounded-lg border border-amber-500/60 bg-amber-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-amber-500/20"
-                title="Disable audit log to save gas"
-              >
-                Disable audit
-              </button>
+              <button onClick={disableAuditManually} className="rounded-lg border border-amber-500/60 bg-amber-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-amber-500/20">Disable audit</button>
             )}
-            <button
-              onClick={exportSpotsCsv}
-              className="rounded-lg border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-emerald-500/20"
-              title="Export WL/FM winners to CSV (from block 14244229)"
-            >
-              Export spots CSV
-            </button>
+            <button onClick={exportSpotsCsv} className="rounded-lg border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-xs sm:text-sm hover:bg-emerald-500/20">Export spots CSV</button>
           </>
         )}
       </div>
 
       {/* Stats */}
       <div className="mt-4 grid gap-4 sm:grid-cols-3">
-        <PixelCard><div className="p-4">
-          <div className="text-sm text-cyan-200/90">Prize Pool</div>
-          <div className="mt-1 text-2xl text-cyan-100">{prizePoolWei !== undefined ? `${fmtEth(prizePoolWei,5)} ETH` : '—'}</div>
-        </div></PixelCard>
-        <PixelCard><div className="p-4">
-          <div className="text-sm text-emerald-200/90">WL Remaining</div>
-          <div className="mt-1 text-2xl text-emerald-100">{wlRemaining !== undefined ? wlRemaining.toString() : '—'}</div>
-        </div></PixelCard>
-        <PixelCard><div className="p-4">
-          <div className="text-sm text-yellow-200/90">FreeMint Remaining</div>
-          <div className="mt-1 text-2xl text-yellow-100">{fmRemaining !== undefined ? fmRemaining.toString() : '—'}</div>
-        </div></PixelCard>
+        <PixelCard><div className="p-4"><div className="text-sm text-cyan-200/90">Prize Pool</div><div className="mt-1 text-2xl text-cyan-100">{prizePoolWei !== undefined ? `${fmtEth(prizePoolWei,5)} ETH` : '—'}</div></div></PixelCard>
+        <PixelCard><div className="p-4"><div className="text-sm text-emerald-200/90">WL Remaining</div><div className="mt-1 text-2xl text-emerald-100">{wlRemaining !== undefined ? wlRemaining.toString() : '—'}</div></div></PixelCard>
+        <PixelCard><div className="p-4"><div className="text-sm text-yellow-200/90">FreeMint Remaining</div><div className="mt-1 text-2xl text-yellow-100">{fmRemaining !== undefined ? fmRemaining.toString() : '—'}</div></div></PixelCard>
       </div>
 
       {/* Machine + panel */}
       <div className="machine-stack mt-6 sm:mt-8 space-y-0">
-        <SkinnedSlot
-          spinning={spinning}
-          target={target}
-          onAllStopped={onAllStopped}
-          idle={!isConnected && !spinning}
-          leverKickSignal={leverKick}
-        />
-        <MachinePanel
-          h={h} m={m} s={s}
-          feeEth={fmtEth(feeWei,5)}
-          onSpin={async () => {
-            await handleSpin();
-          }}
-          disabled={(isConnected && (!allowedToday || loading))}
-        />
+        <SkinnedSlot spinning={spinning} target={target} onAllStopped={onAllStopped} idle={!isConnected && !spinning} leverKickSignal={leverKick} />
+        <MachinePanel h={h} m={m} s={s} feeEth={fmtEth(feeWei,5)} onSpin={handleSpin} disabled={(isConnected && (!allowedToday || loading))} />
       </div>
 
-      {/* Result Modal – faucet style (عرض کوچک) */}
-      <ReactModal
-        isOpen={Boolean(result && !spinning && isConnected)}
-        onRequestClose={closeModal}
-        ariaHideApp={false}
-        className="bg-[#1e1b4b] text-yellow-200 rounded-xl max-w-sm w-full p-6 font-pixel border border-yellow-300 shadow-xl text-center"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4"
-      >
-        <h2 className="text-lg mb-3">🎉 Spin Complete!</h2>
-
-        {result?.fm && <p className="mb-1 text-base">You snagged a <strong>FreeMint</strong> spot! 🪄</p>}
-        {result?.wl && <p className="mb-1 text-base">You won a <strong>Whitelist</strong> spot! ✅</p>}
-        {typeof result?.prizeWei !== 'undefined'
-          ? <p className="mb-2 text-base">You pocketed <strong>{fmtEth(result.prizeWei,5)} ETH</strong> 🪙</p>
-          : <p className="mb-2 text-base">Spin confirmed. Good luck next time!</p>
-        }
-
-        {txHash && (
-          <p className="mb-4 text-[11px] text-yellow-300/80 break-all">
-            Tx: {txHash}
-          </p>
-        )}
-
-        <div className="flex flex-col space-y-2">
-          <a
-            href={`https://x.com/intent/tweet?text=${encodeURIComponent(pickRandomShareText(result!))}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-pixel"
-          >
-            🐰 TWEET IT!
-          </a>
-          <a
-            href="https://x.com/Megaeth_Punks"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-pixel"
-          >
-            ⭐ FOLLOW @MEGAETH_PUNKS
-          </a>
-        </div>
-
-        <button onClick={closeModal} className="mt-4 text-xs text-yellow-300 hover:underline">
-          Maybe later
-        </button>
-      </ReactModal>
+      {/* Result Modal (shared faucet style) */}
+      <SlotResultModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setResult(null)}
+        twitterHandle="Megaeth_Punks"
+        shareUrl={shareUrl}
+        result={isModalOpen ? { amountEth, wonWL: !!result?.wl, wonFM: !!result?.fm, txHash: txHash || undefined } : null}
+      />
 
       <style jsx>{`
         .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
