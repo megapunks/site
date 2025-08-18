@@ -35,7 +35,6 @@ const ABI = [
   {"inputs":[],"name":"fund","outputs":[],"stateMutability":"payable","type":"function"},
   {"inputs":[],"name":"InsufficientReserve","type":"error"},
   {"inputs":[],"name":"NoCommit","type":"error"},
-  {"inputs":[],"name":"NotOwner","type":"error"},
   {"inputs":[{"internalType":"uint256","name":"newRemaining","type":"uint256"}],"name":"reduceFMRemaining","outputs":[],"stateMutability":"nonpayable","type":"function"},
   {"inputs":[],"name":"ReduceOnly","type":"error"},
   {"inputs":[{"internalType":"uint256","name":"newRemaining","type":"uint256"}],"name":"reduceWLRemaining","outputs":[],"stateMutability":"nonpayable","type":"function"},
@@ -109,7 +108,7 @@ function fmtEth(v?: bigint, dp = 5) {
   return `${a}.${frac}`.replace(/\.$/, '');
 }
 
-/* — decodeEventLog type-safe wrapper — */
+/** decodeEventLog (type-safe-ish) */
 function decodeLogSafe(log: { data?: Hex; topics?: readonly Hex[] | Hex[] }) {
   const topicsArr = (log.topics ?? []) as Hex[];
   if (topicsArr.length === 0) return null;
@@ -195,15 +194,85 @@ async function getCapped1559(pc: ReturnType<typeof usePublicClient> | null){
 }
 
 /* =========================
-   Small stat card
+   Pixel Frame (machine style) + pulse/compact
 ========================= */
-function PixelCard({ children, className='' }:{children:React.ReactNode; className?:string}) {
+function PixelFrame({
+  label,
+  value,
+  tone = 'cyan',
+  pulse = false,
+  compact = true,
+}: {
+  label: string;
+  value: React.ReactNode;
+  tone?: 'cyan' | 'emerald' | 'yellow';
+  pulse?: boolean;
+  compact?: boolean;
+}) {
+  const palette = {
+    cyan:    { glow: 'rgba(0,229,255,.22)', border: '#46f0ff', text: 'text-cyan-100' },
+    emerald: { glow: 'rgba(16,255,160,.20)', border: '#4bffb2', text: 'text-emerald-100' },
+    yellow:  { glow: 'rgba(255,216,0,.20)',  border: '#ffd84d', text: 'text-yellow-100' },
+  }[tone];
+
+  const H = compact ? 84 : 104;
+
   return (
     <div
-      className={`rounded-2xl border border-cyan-500/30 bg-[#0b1020]/50 backdrop-blur-sm shadow-[0_0_24px_rgba(0,200,255,.12)] ${className}`}
-      style={{ imageRendering:'pixelated' as any }}
+      className={`mp-pixel-box ${pulse ? 'is-pulse' : ''}`}
+      style={{ ['--mp-border' as any]: palette.border, ['--mp-glow' as any]: palette.glow, ['--h' as any]: `${H}px` }}
     >
-      {children}
+      <div className="mp-pixel-inner">
+        <div className="text-[11px] sm:text-xs opacity-90 text-cyan-200 leading-none">{label}</div>
+        <div className={`mt-1.5 sm:mt-2 text-xl sm:text-2xl ${palette.text}`}>{value}</div>
+      </div>
+
+      <style jsx>{`
+        .mp-pixel-box{
+          position: relative;
+          padding: 9px 10px;
+          height: var(--h);
+          background: linear-gradient(180deg, rgba(16,20,48,.9), rgba(10,14,32,.9));
+          clip-path: polygon(0 12px,12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px));
+          box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 22px var(--mp-glow);
+          image-rendering: pixelated;
+          transition: box-shadow .2s ease, filter .2s ease;
+        }
+        .mp-pixel-box:before{
+          content:'';
+          position:absolute; inset:6px;
+          box-shadow: 0 0 0 2px var(--mp-border) inset;
+          opacity:.35; pointer-events:none;
+          clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px));
+        }
+        .mp-pixel-box:after{
+          content:'';
+          position:absolute; left:10px; right:10px; top:10px; height:10px;
+          background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0));
+          opacity:.35; pointer-events:none;
+          clip-path: polygon(0 0,100% 0,100% 10px,0 10px);
+        }
+        .mp-pixel-box:hover{ filter: brightness(1.03); box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 28px var(--mp-glow); }
+
+        .mp-pixel-inner{
+          height: 100%;
+          display: grid; align-content: center;
+          border-radius: 4px;
+          padding: 10px 12px;
+          background:
+            linear-gradient(180deg, rgba(14,18,40,.85), rgba(9,12,26,.85)),
+            radial-gradient(1px 1px at 1px 1px, rgba(255,255,255,.06) 1px, transparent 1px);
+          background-size: auto, 6px 6px;
+          box-shadow: 0 0 0 2px rgba(255,255,255,.04) inset;
+          text-shadow: 0 1px 0 rgba(0,0,0,.35);
+        }
+
+        .mp-pixel-box.is-pulse{ animation: mpPulse 1.1s ease-in-out 3; }
+        @keyframes mpPulse{
+          0%,100%{ box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 22px var(--mp-glow); }
+          50%    { box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 38px var(--mp-glow); }
+        }
+      `}</style>
     </div>
   );
 }
@@ -305,7 +374,6 @@ function Reel({
   const brakeCfg=useRef<{start:number;from:number;to:number;dur:number}|null>(null);
   const prevSpin=useRef(false);
 
-  // longer presence on screen
   const SPIN_SPEED = 1200;
   const BRAKE_MS   = 1500;
   const EXTRA_CYCLES = 3;
@@ -439,7 +507,7 @@ function SkinnedSlot({
 }
 
 /* =========================
-   Control Panel (transparent/glassy)
+   Control Panel
 ========================= */
 function MachinePanel({
   h, m, s, feeEth, onSpin, disabled,
@@ -481,7 +549,6 @@ function MachinePanel({
           border-radius: 0 0 10px 10px;
           padding: 8px;
           background: transparent;
-          backdrop-filter: none;
           box-shadow: none;
           border: none;
           image-rendering: pixelated;
@@ -630,19 +697,32 @@ export default function SlotPage(){
 
   const [loading,setLoading] = useState(false);
   const [txHash,setTxHash] = useState<Hex|null>(null);
-  const [result,setResult] = useState<{ prizeWei?:bigint; prizeRoll?:bigint; wl?:boolean; fm?:boolean } | null>(null);
+  const [result,setResult] = useState<{ prizeWei?:bigint; wl?:boolean; fm?:boolean } | null>(null);
   const [spinning,setSpinning] = useState(false);
   const [target,setTarget] = useState<SymbolKey[]>(['diamond','diamond','diamond']);
   const [grayscale,setGrayscale] = useState(false);
   const [leverKick,setLeverKick] = useState(0);
   const disablingAuditOnce = useRef(false);
 
-  // auto-disable audit for owner (gas saver)
+  // Pulse state for Prize Pool card
+  const [ppPulse, setPpPulse] = useState(false);
+  const prevPP = useRef<bigint | undefined>(undefined);
+
   useEffect(()=>{ (async ()=>{
     if(!isOwner || !auditOn || disablingAuditOnce.current || !activeChainId) return;
     disablingAuditOnce.current=true;
     try{ await writeContractAsync({ chainId:activeChainId, address:CONTRACT_ADDRESS, abi:ABI, functionName:'setAuditLog', args:[false] }); }catch{}
   })(); },[isOwner,auditOn,activeChainId,writeContractAsync]);
+
+  // trigger pulse when prize pool changes
+  useEffect(() => {
+    if (typeof prizePoolWei !== 'undefined' && prevPP.current !== undefined && prizePoolWei !== prevPP.current) {
+      setPpPulse(true);
+      const t = setTimeout(() => setPpPulse(false), 1400);
+      return () => clearTimeout(t);
+    }
+    prevPP.current = prizePoolWei;
+  }, [prizePoolWei]);
 
   const bigWin = (r?:{prizeWei?:bigint; wl?:boolean; fm?:boolean}) =>
     !!r && (r.fm || r.wl || (r.prizeWei && r.prizeWei>=parseEther('0.5')));
@@ -654,7 +734,6 @@ export default function SlotPage(){
 
     const canWrite = isConnected && activeChainId;
     if(!canWrite){
-      // demo mode
       setResult(null); setGrayscale(false); setSpinning(true); play('spin',{restart:true,volume:0.6});
       const r=Math.random(); const demoTarget = r<0.15 ? twoKind('bell') : r<0.30 ? twoKind('lemon') : nonMatch();
       setTimeout(()=>{ setTarget(demoTarget); play('brake',{restart:true,volume:0.7}); setSpinning(false); },600);
@@ -665,7 +744,6 @@ export default function SlotPage(){
     try{
       setLoading(true); setResult(null); setGrayscale(false); setSpinning(true); play('spin',{restart:true,volume:0.6});
 
-      // Estimate gas (+25%)
       let gas: bigint | undefined;
       try{
         const est = await wagmiPublic!.estimateContractGas({
@@ -692,13 +770,13 @@ export default function SlotPage(){
       setTxHash(hash);
       const receipt = await wagmiPublic!.waitForTransactionReceipt({ hash });
 
-      let prizeWei:bigint|undefined; let wl=false; let fm=false; // let prizeRoll:bigint|undefined;
+      let prizeWei:bigint|undefined; let wl=false; let fm=false;
       for(const log of receipt.logs){
         const parsed = decodeLogSafe(log);
         if(!parsed) continue;
 
-        if(parsed.eventName==='Spun'){ const a:any=parsed.args; prizeWei=a.prizeWei; /* prizeRoll=a.prizeRoll; */ }
-        if(parsed.eventName==='SpunLite'){ const a:any=parsed.args; prizeWei=a.prizeWei; /* prizeRoll=a.prizeRoll; */ }
+        if(parsed.eventName==='Spun'){ const a:any=parsed.args; prizeWei=a.prizeWei; }
+        if(parsed.eventName==='SpunLite'){ const a:any=parsed.args; prizeWei=a.prizeWei; }
         if(parsed.eventName==='WhitelistWon') wl=true;
         if(parsed.eventName==='FreeMintWon')  fm=true;
       }
@@ -707,7 +785,7 @@ export default function SlotPage(){
       play('brake',{restart:true,volume:0.75});
       setSpinning(false);
 
-      const res = { prizeWei, /* prizeRoll, */ wl, fm };
+      const res = { prizeWei, wl, fm };
       setResult(res);
 
       setTimeout(()=>{ stop('spin'); if(bigWin(res)) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }, 1600);
@@ -766,7 +844,6 @@ export default function SlotPage(){
     }
   }
 
-  /* ===== Share helpers ===== */
   const TW_HANDLE = 'Megaeth_Punks';
   const SHARE_TEMPLATES = (amt: string) => [
     `Spun the @${TW_HANDLE} slot and bagged ${amt} ETH 💰`,
@@ -776,14 +853,21 @@ export default function SlotPage(){
     `Daily spin at @${TW_HANDLE}: ${amt} ETH secured 🧲`,
   ];
 
-  function pickRandomShareText(r: {prizeWei?:bigint; wl?:boolean; fm?:boolean}) {
-    const url = typeof window !== 'undefined' ? window.location.origin + '/play/slot' : 'https://megapunks.org/play/slot';
-    const extras = r.fm ? ' + FreeMint 🎟️' : r.wl ? ' + Whitelist ✅' : '';
-    const amount = typeof r.prizeWei !== 'undefined' ? fmtEth(r.prizeWei,5) : '0';
-    const base = SHARE_TEMPLATES(amount);
-    const chosen = base[Math.floor(Math.random()*base.length)];
-    return `${chosen}${extras}\n${url}\n#MegaPunks #MegaETH`;
-  }
+  function pickRandomShareText(r: {prizeWei?: bigint; wl?: boolean; fm?: boolean}) {
+  const url = typeof window !== 'undefined'
+    ? window.location.origin + '/play/slot'
+    : 'https://megapunks.org/play/slot';
+
+  const extras = r.fm ? ' + FreeMint 🎟️' : r.wl ? ' + Whitelist ✅' : '';
+
+  const amount = typeof r.prizeWei !== 'undefined' ? fmtEth(r.prizeWei, 5) : '0';
+
+  const base = SHARE_TEMPLATES(amount);
+  const chosen = base[Math.floor(Math.random() * base.length)];
+
+  return `${chosen}${extras}\n${url}\n#MegaPunks #MegaETH`;
+}
+
 
   function tweetShare(r:{prizeWei?:bigint; wl?:boolean; fm?:boolean}){
     const text = pickRandomShareText(r);
@@ -824,7 +908,7 @@ export default function SlotPage(){
         </div>
       </div>
 
-      {/* Owner tools (right side, small) */}
+      {/* Owner tools */}
       <div className="mt-3 flex items-center gap-2 justify-end">
         {isOwner && (
           <>
@@ -848,23 +932,14 @@ export default function SlotPage(){
         )}
       </div>
 
-      {/* Stats */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-3">
-        <PixelCard><div className="p-4">
-          <div className="text-sm text-cyan-200/90">Prize Pool</div>
-          <div className="mt-1 text-2xl text-cyan-100">{prizePoolWei !== undefined ? `${fmtEth(prizePoolWei,5)} ETH` : '—'}</div>
-        </div></PixelCard>
-        <PixelCard><div className="p-4">
-          <div className="text-sm text-emerald-200/90">WL Remaining</div>
-          <div className="mt-1 text-2xl text-emerald-100">{wlRemaining !== undefined ? wlRemaining.toString() : '—'}</div>
-        </div></PixelCard>
-        <PixelCard><div className="p-4">
-          <div className="text-sm text-yellow-200/90">FreeMint Remaining</div>
-          <div className="mt-1 text-2xl text-yellow-100">{fmRemaining !== undefined ? fmRemaining.toString() : '—'}</div>
-        </div></PixelCard>
+      {/* Stats – pixel frames (machine style) */}
+      <div className="mt-5 sm:mt-6 grid gap-4 sm:grid-cols-3">
+        <PixelFrame label="Prize Pool"          value={prizePoolWei !== undefined ? `${fmtEth(prizePoolWei,5)} ETH` : '—'} tone="cyan"    pulse={ppPulse} />
+        <PixelFrame label="WL Remaining"        value={wlRemaining !== undefined ? wlRemaining.toString() : '—'}                           tone="emerald" />
+        <PixelFrame label="FreeMint Remaining"  value={fmRemaining !== undefined ? fmRemaining.toString() : '—'}                           tone="yellow"  />
       </div>
 
-      {/* Machine + panel (extra spacing) */}
+      {/* Machine + panel */}
       <div className="machine-stack mt-6 sm:mt-8 space-y-0">
         <SkinnedSlot
           spinning={spinning}
@@ -881,58 +956,48 @@ export default function SlotPage(){
         />
       </div>
 
-      {/* Result Modal – styled like Faucet */}
+      {/* Result Modal (faucet-style) */}
       {result && !spinning && isConnected && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4">
-          <div className="bg-[#1e1b4b] text-yellow-200 rounded-xl max-w-sm w-full p-6 font-pixel border border-yellow-300 shadow-xl text-center">
-            <h3 className="text-lg mb-3">🎉 Spin Complete!</h3>
+        <div className="fixed inset-0 z-50 grid place-items-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="w-full max-w-sm sm:max-w-md rounded-2xl border border-yellow-300 bg-[#1e1b4b] p-6 shadow-2xl text-yellow-200 font-pixel text-center">
+            <h3 className="text-xl sm:text-2xl mb-3">🎉 Spin Complete!</h3>
 
-            <p className="mb-3 text-base">
-              {result.fm && <>You snagged a <strong>FreeMint</strong> spot! 🪄</>}
-              {!result.fm && result.wl && <>You won a <strong>Whitelist</strong> spot! ✅</>}
-              {!result.fm && !result.wl && typeof result.prizeWei !== 'undefined' && <>You pocketed <strong>{fmtEth(result.prizeWei,5)} ETH</strong> 🪙</>}
-              {!result.fm && !result.wl && typeof result.prizeWei === 'undefined' && <>Spin confirmed. Good luck next time!</>}
-            </p>
-
-            {txHash && (
-              <p className="mb-4 text-xs text-yellow-100 break-all">
-                Tx: <span className="font-mono">{txHash}</span>
-              </p>
-            )}
-
-            <p className="mb-4 text-sm">Want to support us? Share or follow:</p>
-
-            <div className="flex flex-col space-y-2">
-              <button
-                onClick={()=>tweetShare(result)}
-                className="button-pixel"
-                title="Share on X"
-              >
-                🐰 Tweet it!
-              </button>
-              <a
-                href={`https://x.com/${TW_HANDLE}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-pixel"
-                title={`Follow @${TW_HANDLE}`}
-              >
-                ⭐ Follow @{TW_HANDLE}
-              </a>
+            <div className="text-base leading-relaxed">
+              {result.fm && <div className="mb-1">You snagged a <b>FreeMint</b> spot! 🪄</div>}
+              {result.wl && <div className="mb-1">You won a <b>Whitelist</b> spot! ✅</div>}
+              {typeof result.prizeWei !== 'undefined'
+                ? <div className="mb-1">You pocketed <b>{fmtEth(result.prizeWei,5)} ETH</b> 🪙</div>
+                : <div className="mb-1">Spin confirmed. Good luck next time! ✌️</div>}
+              {txHash && (
+                <div className="text-[11px] opacity-70 mt-2 break-all">
+                  Tx: {txHash}
+                </div>
+              )}
             </div>
 
-            <button
-              onClick={closeModal}
-              className="mt-4 text-xs text-yellow-300 hover:underline"
-            >
-              Maybe later
-            </button>
+            <div className="mt-5 flex flex-col sm:flex-row justify-center gap-2">
+              <button
+                className="button-pixel bg-yellow-400 text-black"
+                onClick={()=>tweetShare(result)}
+                title="Share on X"
+              >
+                🐦 TWEET IT!
+              </button>
+              <button
+                className="button-pixel bg-transparent text-yellow-200 border border-yellow-300/70"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
 
       <style jsx>{`
         .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
+
+        /* Pixel sound button */
         .pixel-sound-btn{
           display:inline-flex; align-items:center; gap:6px;
           padding: 8px 14px; font-weight:900; color:#1a1300; border:0;
@@ -941,6 +1006,14 @@ export default function SlotPage(){
           box-shadow: 0 4px 0 #7a3b00, 0 0 0 2px #5b2a00 inset;
           image-rendering: pixelated;
         }
+
+        /* Pixel buttons used in modal */
+        .button-pixel{
+          font-weight:900; padding: 12px 18px;
+          clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px));
+          box-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 0 2px rgba(0,0,0,.35) inset;
+        }
+
         @media (max-width: 640px){
           main { padding-left: 12px; padding-right: 12px; }
         }
