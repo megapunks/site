@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import Modal from 'react-modal';
+import dynamic from 'next/dynamic';
 import {
   useAccount,
   usePublicClient,
@@ -18,6 +18,9 @@ import {
   defineChain,
   http,
 } from 'viem';
+
+/* ===== react-modal: load client-only ===== */
+const ReactModal = dynamic(() => import('react-modal'), { ssr: false });
 
 /* =========================
    Contract
@@ -76,7 +79,6 @@ const ABI = [
   {"inputs":[],"name":"prizePool","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"totalPayout","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"totalSpins","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"whitelistWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"winnersCount","outputs":[{"internalType":"uint256","name":"wlCount","type":"uint256"},{"internalType":"uint256","name":"fmCount","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
@@ -440,7 +442,7 @@ function SkinnedSlot({
 }
 
 /* =========================
-   Control Panel (transparent/glassy)
+   Control Panel
 ========================= */
 function MachinePanel({
   h, m, s, feeEth, onSpin, disabled,
@@ -520,7 +522,7 @@ function MachinePanel({
         .slot-btn:active{ transform: translateY(1px); }
         .slot-btn:disabled{ opacity:.6; cursor:not-allowed; filter:none; }
         .slot-btn-line{ display:inline-flex; align-items:center; gap:14px; }
-        .slot-btn-title{ font-size:34px; letter-spacing:.02em; }
+        .slot-btn-title{ font-size:34px; }
         .slot-btn-badge{
           font-weight:900; padding:6px 10px; font-size:12px; color:#1a1300;
           background: rgba(0,0,0,.18);
@@ -546,7 +548,7 @@ const megaChain = defineChain({
   id: MEGA_CHAIN_ID || 6342,
   name: 'Mega ETH Testnet',
   nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-  rpcUrls: { default: { http: [MEGA_RPC || ''] } },
+  rpcUrls: { default: { http: [MEGA_RPC || 'https://example.invalid'] } },
   testnet: true,
 });
 
@@ -628,6 +630,13 @@ export default function SlotPage(){
 
   useSilenceSiteClickSfx();
   useAmbienceAutostart(ensureAmbience);
+
+  /* react-modal appElement (prevents runtime quirks) */
+  useEffect(() => {
+    (async () => {
+      try { (await import('react-modal')).setAppElement('#__next'); } catch {}
+    })();
+  }, []);
 
   const [loading,setLoading] = useState(false);
   const [txHash,setTxHash] = useState<Hex|null>(null);
@@ -777,19 +786,15 @@ export default function SlotPage(){
   ];
 
   function pickRandomShareText(r: {prizeWei?:bigint; wl?:boolean; fm?:boolean}) {
-    const url = typeof window !== 'undefined' ? window.location.origin + '/play/slot' : 'https://megapunks.org/play/slot';
+    const baseUrl =
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      (typeof window !== 'undefined' ? window.location.origin : 'https://megapunks.org');
+    const url = `${baseUrl}/play/slot`;
     const extras = r.fm ? ' + FreeMint 🎟️' : r.wl ? ' + Whitelist ✅' : '';
     const amount = typeof r.prizeWei !== 'undefined' ? fmtEth(r.prizeWei,5) : '0';
     const base = SHARE_TEMPLATES(amount);
     const chosen = base[Math.floor(Math.random()*base.length)];
     return `${chosen}${extras}\n${url}\n#MegaPunks #MegaETH`;
-  }
-
-  function tweetShare(r:{prizeWei?:bigint; wl?:boolean; fm?:boolean}){
-    const text = pickRandomShareText(r);
-    const intent = new URL('https://twitter.com/intent/tweet');
-    intent.searchParams.set('text', text);
-    window.open(intent.toString(), '_blank','noopener,noreferrer');
   }
 
   function closeModal(){ setResult(null); setGrayscale(false); }
@@ -806,7 +811,7 @@ export default function SlotPage(){
           <h1 className="text-[32px] sm:text-[42px] leading-tight font-extrabold tracking-[0.02em] drop-shadow-[0_0_12px_rgba(0,229,255,.35)] text-cyan-200">
             Spin the MegaETH Slot
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-cyan-100/90">
+        <p className="mt-2 text-sm sm:text-base text-cyan-100/90">
             One spin a day. ETH &amp; spots up for grabs.
           </p>
         </div>
@@ -876,13 +881,15 @@ export default function SlotPage(){
         <MachinePanel
           h={h} m={m} s={s}
           feeEth={fmtEth(feeWei,5)}
-          onSpin={handleSpin}
+          onSpin={async () => {
+            await handleSpin();
+          }}
           disabled={(isConnected && (!allowedToday || loading))}
         />
       </div>
 
-      {/* Result Modal – faucet style (compact) */}
-      <Modal
+      {/* Result Modal – faucet style */}
+      <ReactModal
         isOpen={Boolean(result && !spinning && isConnected)}
         onRequestClose={closeModal}
         ariaHideApp={false}
@@ -926,7 +933,7 @@ export default function SlotPage(){
         <button onClick={closeModal} className="mt-4 text-xs text-yellow-300 hover:underline">
           Maybe later
         </button>
-      </Modal>
+      </ReactModal>
 
       <style jsx>{`
         .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
