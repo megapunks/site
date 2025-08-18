@@ -202,12 +202,14 @@ function PixelFrame({
   tone = 'cyan',
   pulse = false,
   compact = true,
+  width,
 }: {
   label: string;
   value: React.ReactNode;
   tone?: 'cyan' | 'emerald' | 'yellow';
   pulse?: boolean;
   compact?: boolean;
+  width?: number | string;
 }) {
   const palette = {
     cyan:    { glow: 'rgba(0,229,255,.22)', border: '#46f0ff', text: 'text-cyan-100' },
@@ -215,15 +217,23 @@ function PixelFrame({
     yellow:  { glow: 'rgba(255,216,0,.20)',  border: '#ffd84d', text: 'text-yellow-100' },
   }[tone];
 
-  const H = compact ? 84 : 104;
+  const H = compact ? 100 : 120;
+  const W = typeof width === 'number' ? `${width}px` : (width ?? '300px'); // 👈 عرض دیفالت باریک‌تر (220px)
 
   return (
     <div
       className={`mp-pixel-box ${pulse ? 'is-pulse' : ''}`}
-      style={{ ['--mp-border' as any]: palette.border, ['--mp-glow' as any]: palette.glow, ['--h' as any]: `${H}px` }}
+      style={{
+        ['--mp-border' as any]: palette.border,
+        ['--mp-glow' as any]: palette.glow,
+        ['--h' as any]: `${H}px`,
+        ['--w' as any]: W,
+      }}
     >
       <div className="mp-pixel-inner">
-        <div className="text-[11px] sm:text-xs opacity-90 text-cyan-200 leading-none">{label}</div>
+        <div className="text-[18px] sm:text-base opacity-90 text-cyan-200 leading-none">
+          {label}
+        </div>
         <div className={`mt-1.5 sm:mt-2 text-xl sm:text-2xl ${palette.text}`}>{value}</div>
       </div>
 
@@ -232,6 +242,7 @@ function PixelFrame({
           position: relative;
           padding: 9px 10px;
           height: var(--h);
+          width: var(--w);   /* 👈 عرض محدود */
           background: linear-gradient(180deg, rgba(16,20,48,.9), rgba(10,14,32,.9));
           clip-path: polygon(0 12px,12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px));
           box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 22px var(--mp-glow);
@@ -239,25 +250,27 @@ function PixelFrame({
           transition: box-shadow .2s ease, filter .2s ease;
         }
         .mp-pixel-box:before{
-          content:'';
-          position:absolute; inset:6px;
-          box-shadow: 0 0 0 2px var(--mp-border) inset;
+          content:''; position:absolute; inset:6px;
+          box-shadow: 0 0 0 4px var(--mp-border) inset;
           opacity:.35; pointer-events:none;
           clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px));
         }
         .mp-pixel-box:after{
-          content:'';
-          position:absolute; left:10px; right:10px; top:10px; height:10px;
+          content:''; position:absolute; left:10px; right:10px; top:10px; height:10px;
           background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0));
           opacity:.35; pointer-events:none;
           clip-path: polygon(0 0,100% 0,100% 10px,0 10px);
         }
-        .mp-pixel-box:hover{ filter: brightness(1.03); box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 28px var(--mp-glow); }
+        .mp-pixel-box:hover{
+          filter: brightness(1.03);
+          box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset, 0 0 28px var(--mp-glow);
+        }
 
         .mp-pixel-inner{
           height: 100%;
           display: grid; align-content: center;
-          border-radius: 4px;
+          border-radius: 3px;
+          justify-items: center; 
           padding: 10px 12px;
           background:
             linear-gradient(180deg, rgba(14,18,40,.85), rgba(9,12,26,.85)),
@@ -276,6 +289,7 @@ function PixelFrame({
     </div>
   );
 }
+
 
 /* =========================
    Sounds hooks + ambience
@@ -933,7 +947,7 @@ export default function SlotPage(){
       </div>
 
       {/* Stats – pixel frames (machine style) */}
-      <div className="mt-5 sm:mt-6 grid gap-4 sm:grid-cols-3">
+      <div className="mt-5 sm:mt-6 grid grid-flow-col auto-cols-max gap-2 sm:gap-2 justify-center sm:justify-center">
         <PixelFrame label="Prize Pool"          value={prizePoolWei !== undefined ? `${fmtEth(prizePoolWei,5)} ETH` : '—'} tone="cyan"    pulse={ppPulse} />
         <PixelFrame label="WL Remaining"        value={wlRemaining !== undefined ? wlRemaining.toString() : '—'}                           tone="emerald" />
         <PixelFrame label="FreeMint Remaining"  value={fmRemaining !== undefined ? fmRemaining.toString() : '—'}                           tone="yellow"  />
