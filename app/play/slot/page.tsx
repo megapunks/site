@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Modal from 'react-modal';
 import {
   useAccount,
   usePublicClient,
@@ -19,7 +20,7 @@ import {
 } from 'viem';
 
 /* =========================
-   Contract (UNCHANGED)
+   Contract
 ========================= */
 const CONTRACT_ADDRESS = '0xa697635aAc186eF41A2Ea23aBE939848f2BB1DFe' as const;
 
@@ -75,7 +76,7 @@ const ABI = [
   {"inputs":[],"name":"prizePool","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"totalPayout","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"totalSpins","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
-  {"inputs":[],"name":"whitelistWnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"whitelistWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"winnersCount","outputs":[{"internalType":"uint256","name":"wlCount","type":"uint256"},{"internalType":"uint256","name":"fmCount","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"wlWinnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
@@ -630,7 +631,7 @@ export default function SlotPage(){
 
   const [loading,setLoading] = useState(false);
   const [txHash,setTxHash] = useState<Hex|null>(null);
-  const [result,setResult] = useState<{ prizeWei?:bigint; prizeRoll?:bigint; wl?:boolean; fm?:boolean } | null>(null);
+  const [result,setResult] = useState<{ prizeWei?:bigint; wl?:boolean; fm?:boolean } | null>(null);
   const [spinning,setSpinning] = useState(false);
   const [target,setTarget] = useState<SymbolKey[]>(['diamond','diamond','diamond']);
   const [grayscale,setGrayscale] = useState(false);
@@ -692,13 +693,12 @@ export default function SlotPage(){
       setTxHash(hash);
       const receipt = await wagmiPublic!.waitForTransactionReceipt({ hash });
 
-      let prizeWei:bigint|undefined; let wl=false; let fm=false; // let prizeRoll:bigint|undefined;
+      let prizeWei:bigint|undefined; let wl=false; let fm=false;
       for(const log of receipt.logs){
         const parsed = decodeLogSafe(log);
         if(!parsed) continue;
-
-        if(parsed.eventName==='Spun'){ const a:any=parsed.args; prizeWei=a.prizeWei; /* prizeRoll=a.prizeRoll; */ }
-        if(parsed.eventName==='SpunLite'){ const a:any=parsed.args; prizeWei=a.prizeWei; /* prizeRoll=a.prizeRoll; */ }
+        if(parsed.eventName==='Spun'){ const a:any=parsed.args; prizeWei=a.prizeWei; }
+        if(parsed.eventName==='SpunLite'){ const a:any=parsed.args; prizeWei=a.prizeWei; }
         if(parsed.eventName==='WhitelistWon') wl=true;
         if(parsed.eventName==='FreeMintWon')  fm=true;
       }
@@ -707,7 +707,7 @@ export default function SlotPage(){
       play('brake',{restart:true,volume:0.75});
       setSpinning(false);
 
-      const res = { prizeWei, /* prizeRoll, */ wl, fm };
+      const res = { prizeWei, wl, fm };
       setResult(res);
 
       setTimeout(()=>{ stop('spin'); if(bigWin(res)) play('win',{restart:true,volume:1}); else play('tick',{restart:true,volume:0.85}); }, 1600);
@@ -769,9 +769,9 @@ export default function SlotPage(){
   /* ===== Share helpers ===== */
   const TW_HANDLE = 'Megaeth_Punks';
   const SHARE_TEMPLATES = (amt: string) => [
-    `Spun the @${TW_HANDLE} slot and bagged ${amt} ETH 💰`,
+    `Spun the @${TW_HANDLE} slot and bagged ${amt} ETH 🪙`,
     `Hit spin. Got paid. ${amt} ETH from the @${TW_HANDLE} slot ⚡`,
-    `One pull, one win – ${amt} ETH in the bag! 🎯 Thanks @${TW_HANDLE}`,
+    `One pull, one win – ${amt} ETH in the wallet! 🎯 Thanks @${TW_HANDLE}`,
     `Lucky lever at @${TW_HANDLE}! Pulled and landed ${amt} ETH ✨`,
     `Daily spin at @${TW_HANDLE}: ${amt} ETH secured 🧲`,
   ];
@@ -824,7 +824,7 @@ export default function SlotPage(){
         </div>
       </div>
 
-      {/* Owner tools (right side, small) */}
+      {/* Owner tools */}
       <div className="mt-3 flex items-center gap-2 justify-end">
         {isOwner && (
           <>
@@ -864,7 +864,7 @@ export default function SlotPage(){
         </div></PixelCard>
       </div>
 
-      {/* Machine + panel (extra spacing) */}
+      {/* Machine + panel */}
       <div className="machine-stack mt-6 sm:mt-8 space-y-0">
         <SkinnedSlot
           spinning={spinning}
@@ -881,43 +881,52 @@ export default function SlotPage(){
         />
       </div>
 
-      {/* Result Modal (pixel style, faucet-like) */}
-      {result && !spinning && isConnected && (
-        <div className="fixed inset-0 z-50 grid place-items-center p-4 bg-black/40 backdrop-blur-sm">
-          <div className="w-full max-w-2xl rounded-2xl border border-yellow-300 bg-[#1e1b4b] p-6 shadow-2xl text-yellow-200 font-pixel">
-            <h3 className="text-2xl mb-2">🎉 Spin Complete!</h3>
+      {/* Result Modal – faucet style (compact) */}
+      <Modal
+        isOpen={Boolean(result && !spinning && isConnected)}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        className="bg-[#1e1b4b] text-yellow-200 rounded-xl max-w-md w-full p-6 font-pixel border border-yellow-300 shadow-xl text-center"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4"
+      >
+        <h2 className="text-lg mb-3">🎉 Spin Complete!</h2>
 
-            <div className="text-base leading-relaxed">
-              {result.fm && <div className="mb-1">You snagged a <b>FreeMint</b> spot! 🪄</div>}
-              {result.wl && <div className="mb-1">You won a <b>Whitelist</b> spot! ✅</div>}
-              {typeof result.prizeWei !== 'undefined'
-                ? <div className="mb-1">You pocketed <b>{fmtEth(result.prizeWei,5)} ETH</b> 🪙</div>
-                : <div className="mb-1">Spin confirmed. Good luck next time! ✌️</div>}
-              {txHash && (
-                <div className="text-[11px] opacity-70 mt-2 break-all">
-                  Tx: {txHash}
-                </div>
-              )}
-            </div>
+        {result?.fm && <p className="mb-1 text-base">You snagged a <strong>FreeMint</strong> spot! 🪄</p>}
+        {result?.wl && <p className="mb-1 text-base">You won a <strong>Whitelist</strong> spot! ✅</p>}
+        {typeof result?.prizeWei !== 'undefined'
+          ? <p className="mb-2 text-base">You pocketed <strong>{fmtEth(result.prizeWei,5)} ETH</strong> 🪙</p>
+          : <p className="mb-2 text-base">Spin confirmed. Good luck next time!</p>
+        }
 
-            <div className="mt-5 flex flex-wrap items-center gap-2">
-              <button
-                className="px-4 py-2 rounded-xl bg-yellow-400 text-black font-bold hover:brightness-105"
-                onClick={()=>tweetShare(result)}
-                title="Share on X"
-              >
-                🐦 Tweet
-              </button>
-              <button
-                className="px-4 py-2 rounded-xl border border-yellow-300/60 hover:bg-yellow-300/10"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-            </div>
-          </div>
+        {txHash && (
+          <p className="mb-4 text-[11px] text-yellow-300/80 break-all">
+            Tx: {txHash}
+          </p>
+        )}
+
+        <div className="flex flex-col space-y-2">
+          <a
+            href={`https://x.com/intent/tweet?text=${encodeURIComponent(pickRandomShareText(result!))}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-pixel"
+          >
+            🐰 TWEET IT!
+          </a>
+          <a
+            href="https://x.com/Megaeth_Punks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-pixel"
+          >
+            ⭐ FOLLOW @MEGAETH_PUNKS
+          </a>
         </div>
-      )}
+
+        <button onClick={closeModal} className="mt-4 text-xs text-yellow-300 hover:underline">
+          Maybe later
+        </button>
+      </Modal>
 
       <style jsx>{`
         .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
