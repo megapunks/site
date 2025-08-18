@@ -448,7 +448,7 @@ const ASPECT_W = 850;
 const ASPECT_H = 365;
 
 /** Window placement (unchanged) */
-const INNER = { left: 8.0, right: 8.0, top: 19.5, bottom: 26.5 };
+const INNER = { left: 5.0, right: 9.0, top: 19.5, bottom: 26.5 };
 
 function SkinnedSlot({
   spinning, target, onAllStopped, idle, leverKickSignal,
