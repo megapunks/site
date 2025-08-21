@@ -22,10 +22,11 @@ import {
 } from 'viem';
 
 /* =========================
-   Contract (V6 aligned)
+   Contract (V6 time‑gated)
 ========================= */
-const CONTRACT_ADDRESS = '0xC73AAA1294303AEb04419520c63c14BBbd7D4c8d' as const;
+const CONTRACT_ADDRESS = '0xa7D51588EFD6a7D3533E8b1423e6dC08496834Df' as const;
 
+// ABI copied from the deployed contract you shared
 const ABI = [
   {"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"adminWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},
   {"inputs":[],"name":"fund","outputs":[],"stateMutability":"payable","type":"function"},
@@ -56,7 +57,6 @@ const ABI = [
   {"inputs":[],"name":"spin","outputs":[],"stateMutability":"payable","type":"function"},
   {"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"player","type":"address"},{"indexed":true,"internalType":"uint256","name":"periodId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"spinIndex","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"prizeRoll","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"prizeWei","type":"uint256"},{"indexed":false,"internalType":"bytes32","name":"entropy","type":"bytes32"},{"indexed":false,"internalType":"bytes32","name":"periodSaltHash","type":"bytes32"}],"name":"Spun","type":"event"},
   {"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"player","type":"address"},{"indexed":true,"internalType":"uint256","name":"periodId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"prizeRoll","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"prizeWei","type":"uint256"}],"name":"SpunLite","type":"event"},
-  {"inputs":[],"name":"syncEpoch","outputs":[],"stateMutability":"nonpayable","type":"function"},
   {"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},
   {"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"player","type":"address"},{"indexed":true,"internalType":"uint256","name":"periodId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"wlRemainingInEpoch","type":"uint256"}],"name":"WhitelistWon","type":"event"},
   {"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawn","type":"event"},
@@ -86,6 +86,7 @@ const ABI = [
   {"inputs":[],"name":"minReserve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"PERIOD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+  {"inputs":[{"internalType":"uint256","name":"periodId","type":"uint256"}],"name":"previewThresholds","outputs":[{"internalType":"uint256[]","name":"wlTs","type":"uint256[]"},{"internalType":"uint256[]","name":"fmTs","type":"uint256[]"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"RAND_MAX","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[],"name":"RAND_MIN","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
   {"inputs":[{"internalType":"uint256","name":"periodId","type":"uint256"}],"name":"secondsLeftInEpoch","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
@@ -150,7 +151,7 @@ function decodeLogSafe(log: { data?: Hex; topics?: readonly Hex[] | Hex[] }) {
 }
 
 /* =========================
-   PNG Symbols
+   PNG Symbols (slot machine)
 ========================= */
 type SymbolKey = 'diamond' | 'seven' | 'lemon' | 'cherry' | 'bell' | 'mystery' | 'coin' | 'clover';
 const SYMBOLS: SymbolKey[] = ['diamond', 'seven', 'lemon', 'cherry', 'bell', 'mystery', 'coin', 'clover'];
@@ -221,7 +222,7 @@ async function getCapped1559(pc: PublicClient | null) {
 }
 
 /* =========================
-   Pixel Frame
+   Pixel Frame (stat card)
 ========================= */
 function PixelFrame({
   label,
@@ -348,7 +349,7 @@ function useAmbienceAutostart(ensureAmbience: () => void) {
 }
 
 /* =========================
-   Reel
+   Reel (single column)
 ========================= */
 type ReelMode = 'idle' | 'spin' | 'brake';
 function Reel({
@@ -544,7 +545,7 @@ function MachinePanel({ h, m, s, feeEth, onSpin, disabled }: { h: number; m: num
         .slot-btn-line{ display:inline-flex; align-items:center; gap:14px; }
         .slot-btn-title{ font-size:34px; letter-spacing:.02em; }
         .slot-btn-badge{ font-weight:900; padding:6px 10px; font-size:12px; color:#1a1300; background: rgba(0,0,0,.18); clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%); box-shadow: 0 0 0 2px #5b2a00 inset; white-space: nowrap; }
-        @media (max-width:640px){ .slot-btn-title{ font-size:28px; } .slot-btn{ padding:20px 44px; } .lcd .digits{ font-size:18px; } }
+        @media (max-width:640px){ .slot-btn-title{ font-size:28px; } .slot-btn{ padding:20px 44px; } .lcd .digits{ font-size:18px; }
       `}</style>
     </div>
   );
@@ -704,14 +705,15 @@ function FAQSection() {
     {
       q: 'How do Whitelist & Free Mint work?', a: (
         <ul className="list-disc pl-5 space-y-2 leading-relaxed">
-          <li>Each epoch has at least <Accent>10 Whitelist</Accent> and <Accent>1 Free Mint</Accent>. Any unused spots will <Info>roll over</Info> to the next epoch.</li>
-          <li>Awarded by the <b>same main roll</b> (single roll): about <Accent>1%</Accent> for WL (numbers <b>1..10</b>) and <Accent>0.1%</Accent> for Free Mint (e.g. <b>777</b>).</li>
-          <li>Per-wallet lifetime cap: max <Accent>one WL</Accent> and <Accent>one Free Mint</Accent>.</li>
+          <li>Each epoch has <Accent>10 Whitelist</Accent> and <Accent>1 Free Mint</Accent>.</li>
+          <li><b>Time‑gated</b>, not probabilistic: each spot unlocks at a random second inside the epoch (<Info>backstops</Info> at start/end). First eligible spin <b>after</b> that time wins it.</li>
+          <li><b>No rollover:</b> unused spots in an epoch simply expire.</li>
+          <li>Per‑wallet lifetime cap: max <Accent>one WL</Accent> and <Accent>one Free Mint</Accent>.</li>
         </ul>
       )
     },
-    { q: 'What if the prize pool is low?', a: (<p className="leading-relaxed">If the pre-fee contract balance is below <Info>minReserve</Info> or below the prize for that spin, the tx reverts with <Danger>InsufficientReserve</Danger> and <b>no funds move</b>.</p>) },
-    { q: 'Which network and why gas?', a: (<p className="leading-relaxed">We are live on the <Accent>MegaEth Testnet</Accent>. Each spin is an on-chain tx; you pay gas <b>plus</b> the <Accent>0.001 ETH</Accent> entry fee.</p>) },
+    { q: 'What if the prize pool is low?', a: (<p className="leading-relaxed">If the pre‑fee contract balance is below <Info>minReserve</Info> or below the prize for that spin, the tx reverts with <Danger>InsufficientReserve</Danger> and <b>no funds move</b>.</p>) },
+    { q: 'Which network and why gas?', a: (<p className="leading-relaxed">We are live on the <Accent>MegaEth Testnet</Accent>. Each spin is an on‑chain tx; you pay gas <b>plus</b> the <Accent>0.001 ETH</Accent> entry fee.</p>) },
   ];
 
   return (
@@ -751,35 +753,9 @@ function FAQSection() {
 }
 
 /* =========================
-   Export helpers
+   Export helpers (owner)
 ========================= */
 function sleep(ms: number) { return new Promise(res => setTimeout(res, ms)); }
-
-async function getLogsWithRetry(
-  client: PublicClient,
-  params: { fromBlock: bigint; toBlock: bigint },
-  maxRetries = 5
-): Promise<any[]> {
-  let delay = 350;
-  for (let i = 0; i <= maxRetries; i++) {
-    try {
-      return await client.getLogs({
-        ...params,
-        address: CONTRACT_ADDRESS,
-      });
-    } catch (e: any) {
-      const msg = (e?.shortMessage || e?.message || '').toLowerCase();
-      const rateLimited = /429|rate|limit|too many|throttle/.test(msg);
-      const sizeExceeded = /response size|too large|exceed/.test(msg);
-      if (i === maxRetries) throw e;
-      if (sizeExceeded) throw new Error('SPLIT_RANGE');
-      if (rateLimited || !msg) { await sleep(delay); delay = Math.min(delay * 2, 5000); continue; }
-      throw e;
-    }
-  }
-  return [];
-}
-
 
 /* =========================
    Page
@@ -833,7 +809,7 @@ export default function SlotPage() {
     })();
   }, [isOwner, auditOn, activeChainId, writeContractAsync]);
 
-  // Prize pool pulse
+  // Prize pool visual pulse
   useEffect(() => {
     if (typeof prizePoolWei !== 'undefined' && prevPP.current !== undefined && prizePoolWei !== prevPP.current) {
       setPpPulse(true);
@@ -862,7 +838,7 @@ export default function SlotPage() {
 
     const canWrite = isConnected && activeChainId;
     if (!canWrite) {
-      // demo spin
+      // demo spin (disconnected)
       setResult(null); setGrayscale(false); setSpinning(true); play('spin', { restart: true, volume: 0.6 });
       const r = Math.random(); const demoTarget = r < 0.15 ? twoKind('bell') : r < 0.30 ? twoKind('lemon') : nonMatch();
       setTimeout(() => { setTarget(demoTarget); play('brake', { restart: true, volume: 0.7 }); setSpinning(false); }, 600);
@@ -894,7 +870,7 @@ export default function SlotPage() {
       if (receipt.status !== 'success') {
         setSpinning(false);
         stop('spin');
-        alert('Transaction reverted. Likely reasons: InsufficientReserve or AlreadySpunThisPeriod, or insufficient gas.');
+        alert('Transaction reverted. Possible reasons: InsufficientReserve / AlreadySpunThisPeriod / insufficient gas.');
         return;
       }
 
@@ -937,75 +913,72 @@ export default function SlotPage() {
     }
   }
 
-  /* ===== Export spots CSV (owner only) ===== */
+  /* ===== Export WL/FM CSV (owner only) ===== */
   async function exportSpotsCsv() {
-  if (!isOwner) return;
+    if (!isOwner) return;
 
-  // کلاینت مستقل از RPC شبکه‌ی MegaEth
-  const client = createPublicClient({ chain: megaChain, transport: http(MEGA_RPC) });
+    // independent viem client avoids wagmi type noise during Next build
+    const client = createPublicClient({ chain: megaChain, transport: http(MEGA_RPC) });
 
-  try {
-    const latest = await client.getBlockNumber();
-    const start  = DEPLOY_BLOCK > BigInt(0) ? DEPLOY_BLOCK : BigInt(0);
+    try {
+      const latest = await client.getBlockNumber();
+      const start  = DEPLOY_BLOCK > BigInt(0) ? DEPLOY_BLOCK : BigInt(0);
 
-    const rows: string[] = ['type,player,blockNumber,txHash,logIndex'];
+      const rows: string[] = ['type,player,blockNumber,txHash,logIndex'];
 
-    async function scanRange(from: bigint, to: bigint) {
-      let cursor = from;
-      while (cursor <= to) {
-        const end = (cursor + LOG_CHUNK > to) ? to : (cursor + LOG_CHUNK);
-        try {
-          // فقط رویدادهای WL/FM
-          const logs = await client.getLogs({
-            address: CONTRACT_ADDRESS,
-            fromBlock: cursor,
-            toBlock: end,
-            events: [EV_WL, EV_FM],
-          });
+      async function scanRange(from: bigint, to: bigint) {
+        let cursor = from;
+        while (cursor <= to) {
+          const end = (cursor + LOG_CHUNK > to) ? to : (cursor + LOG_CHUNK);
+          try {
+            const logs = await client.getLogs({
+              address: CONTRACT_ADDRESS,
+              fromBlock: cursor,
+              toBlock: end,
+              events: [EV_WL, EV_FM],
+            });
 
-          for (const lg of logs) {
-            const type = lg.eventName as 'WhitelistWon' | 'FreeMintWon';
-            const player = (lg as any).args?.player as `0x${string}`;
-            rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
-          }
+            for (const lg of logs) {
+              const type = lg.eventName as 'WhitelistWon' | 'FreeMintWon';
+              const player = (lg as any).args?.player as `0x${string}`;
+              rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
+            }
 
-          await sleep(RATE_SLEEPMS);
-          cursor = end + BigInt(1);
-        } catch (e: any) {
-          const msg = (e?.shortMessage || e?.message || '').toLowerCase();
-          if (/size|too large|exceed/.test(msg)) {
-            const mid = cursor + (end - cursor) / BigInt(2);
-            await scanRange(cursor, mid);
-            await scanRange(mid + BigInt(1), end);
+            await sleep(RATE_SLEEPMS);
             cursor = end + BigInt(1);
-          } else if (/429|rate|limit|throttle/.test(msg) || !msg) {
-            await sleep(RATE_SLEEPMS * 2);
-          } else {
-            console.error(e);
-            alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
-            return;
+          } catch (e: any) {
+            const msg = (e?.shortMessage || e?.message || '').toLowerCase();
+            if (/size|too large|exceed/.test(msg)) {
+              const mid = cursor + (end - cursor) / BigInt(2);
+              await scanRange(cursor, mid);
+              await scanRange(mid + BigInt(1), end);
+              cursor = end + BigInt(1);
+            } else if (/429|rate|limit|throttle/.test(msg) || !msg) {
+              await sleep(RATE_SLEEPMS * 2);
+            } else {
+              console.error(e);
+              alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
+              return;
+            }
           }
         }
       }
+
+      await scanRange(start, latest);
+
+      const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const ts = new Date().toISOString().replace(/[:.]/g, '-');
+      a.href = url;
+      a.download = `megapunks_spots_${Number(start)}_${Number(latest)}_${ts}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    } catch (e: any) {
+      console.error(e);
+      alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
     }
-
-    await scanRange(start, latest);
-
-    const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    const ts = new Date().toISOString().replace(/[:.]/g, '-');
-    a.href = url;
-    a.download = `megapunks_spots_${Number(start)}_${Number(latest)}_${ts}.csv`;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-  } catch (e: any) {
-    console.error(e);
-    alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
   }
-}
-
-
 
   const TW_HANDLE = 'Megaeth_Punks';
   const SHARE_TEMPLATES = (amt: string) => [
@@ -1040,7 +1013,7 @@ export default function SlotPage() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-[32px] sm:text-[42px] leading-tight font-extrabold tracking-[0.02em] drop-shadow-[0_0_12px_rgba(0,229,255,.35)] text-cyan-200">Spin the MegaETH Slot</h1>
-          <p className="mt-2 text-sm sm:text-base text-cyan-100/90">One spin per <b>6h epoch</b>. ETH prizes + per-epoch WL/FM that roll over.</p>
+          <p className="mt-2 text-sm sm:text-base text-cyan-100/90">One spin per <b>6h epoch</b>. ETH prizes + time‑gated WL/FM (no rollover).</p>
         </div>
 
         {/* Pixel sound button */}
@@ -1125,7 +1098,7 @@ export default function SlotPage() {
       <style jsx>{`
         .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
         .pixel-sound-btn{ display:inline-flex; align-items:center; gap:6px; padding: 8px 14px; font-weight:900; color:#1a1300; border:0; background: linear-gradient(180deg,#FFD84D,#FF9D00); clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%); box-shadow: 0 4px 0 #7a3b00, 0 0 0 2px #5b2a00 inset; image-rendering: pixelated; }
-        .button-pixel{ font-weight:900; padding: 12px 18px; clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px)); box-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 0 2px rgba(0,0,0,.35) inset; }
+        .button-pixel{ font-weight:900; padding: 12px 18px; clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%); box-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 0 2px rgba(0,0,0,.35) inset; }
         @media (max-width: 640px){ main { padding-left: 12px; padding-right: 12px; } }
       `}</style>
     </main>

@@ -5,7 +5,7 @@ import { getBunnyContract } from "@/lib/bunnyContract";
 import { ethers } from "ethers";
 
 type TaskType = "profile_share" | "discord" | "follow1" | "follow2" | "like_rt13" | "like_rt3" |
- "like_rt4" | "like_rt5" | "like_rt6" | "like_rt7" | "like_rt8" | "like_rt9" | "like_rt10" | "like_rt11" | "like_rt12"| "follow3"  ;
+ "like_rt4" | "like_rt5" | "like_rt6" | "like_rt7" | "like_rt8" | "like_rt9" | "like_rt10" | "like_rt11" | "like_rt12"| "follow3" | "like_rt14" ;
 
 const TASKS: Record<TaskType, {
   label: string;
@@ -142,6 +142,14 @@ const TASKS: Record<TaskType, {
     url: "https://x.com/Jimmy_cook21",
     icon: "⭐",
     xp: 10,
+  },
+  like_rt14: {
+    label: "🔁 Like & RT +20 XP",
+    taskId: "rt-task-14",
+    taskType: "likeRT",
+    url: "https://x.com/Megaeth_Punks/status/1958598537337610293",
+    icon: "🔁",
+    xp: 20,
   },
 };
 
