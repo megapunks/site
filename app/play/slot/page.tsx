@@ -755,22 +755,29 @@ function FAQSection() {
 ========================= */
 function sleep(ms: number) { return new Promise(res => setTimeout(res, ms)); }
 
-async function getLogsWithRetry(client: PublicClient, params: any, maxRetries = 5) {
+async function getLogsWithRetry(
+  client: PublicClient,
+  params: { fromBlock: bigint; toBlock: bigint },
+  maxRetries = 5
+): Promise<any[]> {
   let delay = 350;
   for (let i = 0; i <= maxRetries; i++) {
     try {
-      return await client.getLogs({ ...params, address: CONTRACT_ADDRESS, events: [EV_WL, EV_FM] });
+      return await client.getLogs({
+        ...params,
+        address: CONTRACT_ADDRESS,
+        events: [EV_WL, EV_FM],
+      });
     } catch (e: any) {
       const msg = (e?.shortMessage || e?.message || '').toLowerCase();
       const rateLimited = /429|rate|limit|too many|throttle/.test(msg);
       const sizeExceeded = /response size|too large|exceed/.test(msg);
       if (i === maxRetries) throw e;
 
-      if (sizeExceeded && typeof params.fromBlock === 'bigint' && typeof params.toBlock === 'bigint') {
-        // پرحجم بود، بازه را نصف می‌کنیم (مدیریتش در کالر)
+      if (sizeExceeded) {
+        // به کالر می‌گیم بازه رو نصف کنه
         throw new Error('SPLIT_RANGE');
       }
-
       if (rateLimited || !msg) {
         await sleep(delay);
         delay = Math.min(delay * 2, 5000);
@@ -781,6 +788,7 @@ async function getLogsWithRetry(client: PublicClient, params: any, maxRetries = 
   }
   return [];
 }
+
 
 /* =========================
    Page
@@ -940,59 +948,64 @@ export default function SlotPage() {
 
   /* ===== Export spots CSV (owner only) ===== */
   async function exportSpotsCsv() {
-    if (!isOwner || !wagmiPublic) return;
+  if (!isOwner || !wagmiPublic) return;
 
-    try {
-      const latest = await wagmiPublic.getBlockNumber();
-      const start  = DEPLOY_BLOCK > BigInt(0) ? DEPLOY_BLOCK : BigInt(0);
+  // 👇 این خط مشکل narrowing رو حل می‌کنه
+  const client = wagmiPublic as PublicClient;
 
-      const rows: string[] = ['type,player,blockNumber,txHash,logIndex'];
+  try {
+    const latest = await client.getBlockNumber();
+    const start  = DEPLOY_BLOCK > BigInt(0) ? DEPLOY_BLOCK : BigInt(0);
 
-      async function scanRange(from: bigint, to: bigint) {
-        let cursor = from;
-        while (cursor <= to) {
-          const end = (cursor + LOG_CHUNK > to) ? to : (cursor + LOG_CHUNK);
-          try {
-            const logs = await getLogsWithRetry(wagmiPublic, { fromBlock: cursor, toBlock: end });
-            for (const lg of logs as any[]) {
-              const type = lg.eventName; // 'WhitelistWon' | 'FreeMintWon'
-              const player = lg.args?.player as `0x${string}`;
-              rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
-            }
-            await sleep(RATE_SLEEPMS);
+    const rows: string[] = ['type,player,blockNumber,txHash,logIndex'];
+
+    async function scanRange(from: bigint, to: bigint) {
+      let cursor = from;
+      while (cursor <= to) {
+        const end = (cursor + LOG_CHUNK > to) ? to : (cursor + LOG_CHUNK);
+        try {
+          const logs = await getLogsWithRetry(client, { fromBlock: cursor, toBlock: end });
+          for (const lg of logs as any[]) {
+            const type = lg.eventName; // 'WhitelistWon' | 'FreeMintWon'
+            const player = lg.args?.player as `0x${string}`;
+            rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
+          }
+          await sleep(RATE_SLEEPMS);
+          cursor = end + BigInt(1);
+        } catch (e: any) {
+          if (e?.message === 'SPLIT_RANGE') {
+           
+            const mid = cursor + (end - cursor) / BigInt(2);
+            await scanRange(cursor, mid);
+            await scanRange(mid + BigInt(1), end);
             cursor = end + BigInt(1);
-          } catch (e: any) {
-            if (e?.message === 'SPLIT_RANGE') {
-              const mid = cursor + ((end - cursor) >> BigInt(1));
-              await scanRange(cursor, mid);
-              await scanRange(mid + BigInt(1), end);
-              cursor = end + BigInt(1);
-            } else {
-              console.error(e);
-              alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
-              return;
-            }
+          } else {
+            console.error(e);
+            alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
+            return;
           }
         }
       }
-
-      await scanRange(start, latest);
-
-      const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      const ts = new Date().toISOString().replace(/[:.]/g, '-');
-      a.href = url;
-      a.download = `megapunks_spots_${Number(start)}_${Number(latest)}_${ts}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch (e: any) {
-      console.error(e);
-      alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
     }
+
+    await scanRange(start, latest);
+
+    const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    a.href = url;
+    a.download = `megapunks_spots_${Number(start)}_${Number(latest)}_${ts}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  } catch (e: any) {
+    console.error(e);
+    alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
   }
+}
+
 
   const TW_HANDLE = 'Megaeth_Punks';
   const SHARE_TEMPLATES = (amt: string) => [
