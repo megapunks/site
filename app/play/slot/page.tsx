@@ -883,7 +883,7 @@ export default function SlotPage() {
 
       const caps = await getCapped1559(wagmiPublic ?? null);
 
-      const txArgs: any = { chainId: activeChainId, address: CONTRACT_ADDRESS, abi: ABI, functionName: 'spin', value: feeWei };
+      const txArgs: any = { address: CONTRACT_ADDRESS, abi: ABI, functionName: 'spin', value: feeWei };
       if (gas) txArgs.gas = gas;
       if (caps) { txArgs.maxFeePerGas = caps.maxFeePerGas; txArgs.maxPriorityFeePerGas = caps.maxPriorityFeePerGas; }
 
@@ -939,9 +939,10 @@ export default function SlotPage() {
 
   /* ===== Export spots CSV (owner only) ===== */
   async function exportSpotsCsv() {
-  if (!isOwner || !wagmiPublic) return;
+  if (!isOwner) return;
 
-  const client = wagmiPublic as PublicClient;
+  // کلاینت مستقل از RPC شبکه‌ی MegaEth
+  const client = createPublicClient({ chain: megaChain, transport: http(MEGA_RPC) });
 
   try {
     const latest = await client.getBlockNumber();
@@ -954,26 +955,31 @@ export default function SlotPage() {
       while (cursor <= to) {
         const end = (cursor + LOG_CHUNK > to) ? to : (cursor + LOG_CHUNK);
         try {
-          const logs = await getLogsWithRetry(client, { fromBlock: cursor, toBlock: end });
+          // فقط رویدادهای WL/FM
+          const logs = await client.getLogs({
+            address: CONTRACT_ADDRESS,
+            fromBlock: cursor,
+            toBlock: end,
+            events: [EV_WL, EV_FM],
+          });
 
-
-          for (const log of logs) {
-            const ev = decodeLogSafe(log as any);
-            if (!ev) continue;
-            if (ev.eventName === 'WhitelistWon' || ev.eventName === 'FreeMintWon') {
-              const player = (ev as any).args.player as `0x${string}`;
-              rows.push(`${ev.eventName},${player},${(log as any).blockNumber?.toString() || ''},${(log as any).transactionHash || ''},${(log as any).logIndex?.toString() || ''}`);
-            }
+          for (const lg of logs) {
+            const type = lg.eventName as 'WhitelistWon' | 'FreeMintWon';
+            const player = (lg as any).args?.player as `0x${string}`;
+            rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
           }
 
           await sleep(RATE_SLEEPMS);
           cursor = end + BigInt(1);
         } catch (e: any) {
-          if (e?.message === 'SPLIT_RANGE') {
+          const msg = (e?.shortMessage || e?.message || '').toLowerCase();
+          if (/size|too large|exceed/.test(msg)) {
             const mid = cursor + (end - cursor) / BigInt(2);
             await scanRange(cursor, mid);
             await scanRange(mid + BigInt(1), end);
             cursor = end + BigInt(1);
+          } else if (/429|rate|limit|throttle/.test(msg) || !msg) {
+            await sleep(RATE_SLEEPMS * 2);
           } else {
             console.error(e);
             alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
@@ -991,9 +997,7 @@ export default function SlotPage() {
     const ts = new Date().toISOString().replace(/[:.]/g, '-');
     a.href = url;
     a.download = `megapunks_spots_${Number(start)}_${Number(latest)}_${ts}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(url);
   } catch (e: any) {
     console.error(e);

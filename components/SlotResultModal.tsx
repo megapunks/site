@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import Modal from 'react-modal';
 
 type ResultLike = {
-  amountEth?: string;   // مثلاً '0.00312'
+  amountEth?: string;  
   wonWL?: boolean;
   wonFM?: boolean;
   txHash?: string | null;
@@ -13,12 +13,11 @@ type ResultLike = {
 interface Props {
   isOpen: boolean;
   onRequestClose: () => void;
-  twitterHandle?: string;   // پیش‌فرض: 'Megaeth_Punks'
-  shareUrl?: string;        // پیش‌فرض: https://megapunks.org/play/slot
+  twitterHandle?: string;   
+  shareUrl?: string;        
   result: ResultLike | null;
 }
 
-/** الگوهای متن — از این‌ها یکی به صورت تصادفی انتخاب می‌شود */
 function shareTemplates(handle: string, amt: string) {
   return [
     `Spun the @${handle} slot and bagged ${amt} ETH 💰`,
@@ -38,7 +37,6 @@ export default function SlotResultModal({
 }: Props) {
   const url = shareUrl || 'https://megapunks.org/play/slot';
 
-  // متن رندوم فقط وقتی مودال باز می‌شود محاسبه شود
   const tweetText = useMemo(() => {
     if (!result) return '';
     const amt = result.amountEth || '0';
