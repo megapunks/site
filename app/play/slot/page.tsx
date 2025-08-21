@@ -201,7 +201,7 @@ async function getCapped1559(pc: PublicClient | null) {
     const fees = await pc.estimateFeesPerGas();
     const base = (fees.maxFeePerGas && fees.maxPriorityFeePerGas)
       ? (fees.maxFeePerGas - fees.maxPriorityFeePerGas)
-      : (await pc.getBlock()).baseFeePerGas ?? 0n;
+      : (await pc.getBlock()).baseFeePerGas ?? BigInt(0);
 
     if (!ENV_MAX_FEE || !ENV_MAX_PRIO) return null;
     const capFee = parseGwei(ENV_MAX_FEE);
@@ -210,7 +210,7 @@ async function getCapped1559(pc: PublicClient | null) {
     let maxPriorityFeePerGas = fees.maxPriorityFeePerGas ?? capPrio;
     if (maxPriorityFeePerGas > capPrio) maxPriorityFeePerGas = capPrio;
 
-    let maxFeePerGas = fees.maxFeePerGas ?? (base * 2n + maxPriorityFeePerGas);
+    let maxFeePerGas = fees.maxFeePerGas ?? (base * BigInt(2) + maxPriorityFeePerGas);
     if (maxFeePerGas > capFee) maxFeePerGas = capFee;
 
     if (maxFeePerGas < base + maxPriorityFeePerGas) return null;
@@ -643,8 +643,8 @@ function useLiveContractReads(args: { publicClient: PublicClient | null, address
    Epoch countdown
 ========================= */
 function useEpochCountdown(secsLeftFromChain?: bigint) {
-  const [ms, setMs] = useState<number>(() => Number((secsLeftFromChain ?? 0n)) * 1000);
-  useEffect(() => { setMs(Number((secsLeftFromChain ?? 0n)) * 1000); }, [secsLeftFromChain]);
+  const [ms, setMs] = useState<number>(() => Number((secsLeftFromChain ?? BigInt(0))) * 1000);
+  useEffect(() => { setMs(Number((secsLeftFromChain ?? BigInt(0))) * 1000); }, [secsLeftFromChain]);
   useEffect(() => { const id = setInterval(() => setMs(v => Math.max(0, v - 1000)), 1000); return () => clearInterval(id); }, []);
   const h = Math.floor(ms / 3_600_000);
   const m = Math.floor((ms % 3_600_000) / 60_000);
@@ -767,7 +767,7 @@ async function getLogsWithRetry(client: PublicClient, params: any, maxRetries = 
       if (i === maxRetries) throw e;
 
       if (sizeExceeded && typeof params.fromBlock === 'bigint' && typeof params.toBlock === 'bigint') {
-      
+        // پرحجم بود، بازه را نصف می‌کنیم (مدیریتش در کالر)
         throw new Error('SPLIT_RANGE');
       }
 
@@ -877,7 +877,7 @@ export default function SlotPage() {
       let gas: bigint | undefined;
       try {
         const est = await wagmiPublic!.estimateContractGas({ address: CONTRACT_ADDRESS, abi: ABI, functionName: 'spin', value: feeWei, account: address! });
-        gas = (est * 110n) / 100n;
+        gas = (est * BigInt(110)) / BigInt(100);
       } catch (e: any) {
         console.warn('estimateContractGas failed', e?.shortMessage || e?.message);
       }
@@ -944,7 +944,7 @@ export default function SlotPage() {
 
     try {
       const latest = await wagmiPublic.getBlockNumber();
-      const start  = DEPLOY_BLOCK > 0n ? DEPLOY_BLOCK : 0n;
+      const start  = DEPLOY_BLOCK > BigInt(0) ? DEPLOY_BLOCK : BigInt(0);
 
       const rows: string[] = ['type,player,blockNumber,txHash,logIndex'];
 
@@ -960,13 +960,13 @@ export default function SlotPage() {
               rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
             }
             await sleep(RATE_SLEEPMS);
-            cursor = end + 1n;
+            cursor = end + BigInt(1);
           } catch (e: any) {
             if (e?.message === 'SPLIT_RANGE') {
-              const mid = cursor + ((end - cursor) >> 1n);
+              const mid = cursor + ((end - cursor) >> BigInt(1));
               await scanRange(cursor, mid);
-              await scanRange(mid + 1n, end);
-              cursor = end + 1n;
+              await scanRange(mid + BigInt(1), end);
+              cursor = end + BigInt(1);
             } else {
               console.error(e);
               alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
@@ -1102,7 +1102,7 @@ export default function SlotPage() {
               {txHash && <div className="text-[11px] opacity-70 mt-2 break-all">Tx: {txHash}</div>}
             </div>
             <div className="mt-5 flex flex-col sm:flex-row justify-center gap-2">
-              <button className="button-pixel bg-yellow-400 text-black" onClick={() => tweetShare(result)} title="Share on X"> TWEET IT!</button>
+              <button className="button-pixel bg-yellow-400 text-black" onClick={() => tweetShare(result)} title="Share on X">🐦 TWEET IT!</button>
               <button className="button-pixel bg-transparent text-yellow-200 border border-yellow-300/70" onClick={closeModal}>Close</button>
             </div>
           </div>
@@ -1111,7 +1111,7 @@ export default function SlotPage() {
 
       <style jsx>{`
         .machine-stack .control-panel .panel-wood{ border-top-left-radius: 0; border-top-right-radius: 0; }
-        .pixel-sound-btn{ display:inline-flex; align-items:center; gap:6px; padding: 8px 14px; font-weight:900; color:#1a1300; border:0; background: linear-gradient(180deg,#FFD84D,#FF9D00); clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px)); box-shadow: 0 4px 0 #7a3b00, 0 0 0 2px #5b2a00 inset; image-rendering: pixelated; }
+        .pixel-sound-btn{ display:inline-flex; align-items:center; gap:6px; padding: 8px 14px; font-weight:900; color:#1a1300; border:0; background: linear-gradient(180deg,#FFD84D,#FF9D00); clip-path: polygon(0 8px,8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%); box-shadow: 0 4px 0 #7a3b00, 0 0 0 2px #5b2a00 inset; image-rendering: pixelated; }
         .button-pixel{ font-weight:900; padding: 12px 18px; clip-path: polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px)); box-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 0 2px rgba(0,0,0,.35) inset; }
         @media (max-width: 640px){ main { padding-left: 12px; padding-right: 12px; } }
       `}</style>
