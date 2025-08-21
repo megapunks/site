@@ -8,7 +8,7 @@ export async function GET() {
     const contract = await getBunnyContract();
 
     const addresses = [
-      "0x20273d97114adc750376B4180b290C418485f15A", // خودت
+      "0x20273d97114adc750376B4180b290C418485f15A", 
       "0x0000000000000000000000000000000000000001",
       "0x0000000000000000000000000000000000000002"
     ];
@@ -39,7 +39,7 @@ export async function GET() {
       .filter((p) => p.xp > 0 || p.feeds > 0)
       .sort((a, b) => b.xp - a.xp || b.level - a.level);
 
-    return NextResponse.json(sorted); // ✅ فقط خروجی بده، ننویس به فایل
+    return NextResponse.json(sorted);
   } catch (err: any) {
     console.error("❌ Error generating leaderboard:", err);
     return NextResponse.json({ error: err.message }, { status: 500 });

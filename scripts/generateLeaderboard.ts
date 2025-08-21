@@ -30,13 +30,11 @@ interface Player {
   isDead: boolean;
 }
 
-// 👥 لود کردن اسنپ‌شات قبلی
 let previousSnapshot: { address: string; xp: number }[] = [];
 if (fs.existsSync(snapshotPath)) {
   previousSnapshot = JSON.parse(fs.readFileSync(snapshotPath, "utf8"));
 }
 
-// 🌀 گرفتن تمام بازیکن‌ها بدون محدودیت
 const fetchAllPlayers = async (batchSize = 1000): Promise<string[]> => {
   const all: string[] = [];
   let start = 0;
@@ -56,7 +54,6 @@ const main = async () => {
     const onChainAddresses = await fetchAllPlayers();
     const snapshotAddresses: string[] = previousSnapshot.map((p) => p.address.toLowerCase());
 
-    // ترکیب آدرس‌ها
     const allAddresses = Array.from(new Set([...onChainAddresses.map((a) => a.toLowerCase()), ...snapshotAddresses]));
 
     const snapshotMap = new Map<string, number>(
@@ -111,7 +108,6 @@ const main = async () => {
           console.warn(`⚠️ ${addr} (isDead):`, (err as any)?.reason || (err as any)?.message || "unknown error");
         }
 
-        // حذف کامل آیتم خالی
         if (
   result.baseXP === 0 &&
   result.newXP === 0 &&

@@ -766,23 +766,14 @@ async function getLogsWithRetry(
       return await client.getLogs({
         ...params,
         address: CONTRACT_ADDRESS,
-        events: [EV_WL, EV_FM],
       });
     } catch (e: any) {
       const msg = (e?.shortMessage || e?.message || '').toLowerCase();
       const rateLimited = /429|rate|limit|too many|throttle/.test(msg);
       const sizeExceeded = /response size|too large|exceed/.test(msg);
       if (i === maxRetries) throw e;
-
-      if (sizeExceeded) {
-        // به کالر می‌گیم بازه رو نصف کنه
-        throw new Error('SPLIT_RANGE');
-      }
-      if (rateLimited || !msg) {
-        await sleep(delay);
-        delay = Math.min(delay * 2, 5000);
-        continue;
-      }
+      if (sizeExceeded) throw new Error('SPLIT_RANGE');
+      if (rateLimited || !msg) { await sleep(delay); delay = Math.min(delay * 2, 5000); continue; }
       throw e;
     }
   }
@@ -950,7 +941,6 @@ export default function SlotPage() {
   async function exportSpotsCsv() {
   if (!isOwner || !wagmiPublic) return;
 
-  // 👇 این خط مشکل narrowing رو حل می‌کنه
   const client = wagmiPublic as PublicClient;
 
   try {
@@ -965,16 +955,21 @@ export default function SlotPage() {
         const end = (cursor + LOG_CHUNK > to) ? to : (cursor + LOG_CHUNK);
         try {
           const logs = await getLogsWithRetry(client, { fromBlock: cursor, toBlock: end });
-          for (const lg of logs as any[]) {
-            const type = lg.eventName; // 'WhitelistWon' | 'FreeMintWon'
-            const player = lg.args?.player as `0x${string}`;
-            rows.push(`${type},${player},${lg.blockNumber?.toString() || ''},${lg.transactionHash || ''},${lg.logIndex?.toString() || ''}`);
+
+
+          for (const log of logs) {
+            const ev = decodeLogSafe(log as any);
+            if (!ev) continue;
+            if (ev.eventName === 'WhitelistWon' || ev.eventName === 'FreeMintWon') {
+              const player = (ev as any).args.player as `0x${string}`;
+              rows.push(`${ev.eventName},${player},${(log as any).blockNumber?.toString() || ''},${(log as any).transactionHash || ''},${(log as any).logIndex?.toString() || ''}`);
+            }
           }
+
           await sleep(RATE_SLEEPMS);
           cursor = end + BigInt(1);
         } catch (e: any) {
           if (e?.message === 'SPLIT_RANGE') {
-           
             const mid = cursor + (end - cursor) / BigInt(2);
             await scanRange(cursor, mid);
             await scanRange(mid + BigInt(1), end);
@@ -1005,6 +1000,7 @@ export default function SlotPage() {
     alert(`Export failed: ${e?.shortMessage || e?.message || e}`);
   }
 }
+
 
 
   const TW_HANDLE = 'Megaeth_Punks';

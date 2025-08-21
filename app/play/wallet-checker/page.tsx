@@ -41,7 +41,6 @@ export default function WalletCheckerPage() {
         type: "error",
       };
 
-      // اولویت: Guarantee > FreeMint > Whitelist
       if (gtd.includes(targetAddress)) {
         msg = {
           text: "✅ You have a guaranteed mint spot. You're in!",
